@@ -9,6 +9,7 @@ const ButtonContainer = styled.button`
 	border: 0;
 	padding: 0;
 	border-radius: 50px;
+	cursor: pointer;
 `;
 
 export default function ImgUploadButton() {
