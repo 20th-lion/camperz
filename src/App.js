@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import PostUploadPage from './pages/PostUploadPage';
 
 export default function App() {
-  return (
-    <>
-      <div></div>
-    </>
-  );
+	return (
+		<>
+			<PostUploadPage />
+		</>
+	);
 }
