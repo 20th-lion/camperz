@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ImgUploadButton from '../component/common/ImgUploadButton';
+
 const PostTextArea = styled.textarea`
 	width: 300px;
 	height: 600px;
