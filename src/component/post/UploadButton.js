@@ -9,11 +9,19 @@ export default function UploadButton({ fileImage, text, preConvertedImg }) {
 	if (!(fileImage === '' && text === '')) {
 		uploadValidation = true;
 	}
-	// console.log(text);
 
 	const handlePostUpload = () => {
 		imageUpload(preConvertedImg).then((res) => {
-			console.log(res);
+			const postContent = {
+				post: {
+					content: text,
+					image: res.data.filename, //"imageurl1, imageurl2" 형식으로
+				},
+			};
+			// console.log(postContent);
+			postUploader(postContent).then((res) => {
+				console.log(res);
+			});
 		});
 		// if (uploadValidation === true) {
 		// 	console.log('업로드 완료!');

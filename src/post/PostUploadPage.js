@@ -30,7 +30,7 @@ export default function PostUploadPage() {
 			setPreConvertedImg(e.target.files[0]);
 			setFileImage(URL.createObjectURL(e.target.files[0]));
 		}
-		console.log(e.target.files[0]);
+		// console.log(e.target.files[0]);
 		//e.target.files[0]는 0번째 이미지 값입니다.
 	};
 
