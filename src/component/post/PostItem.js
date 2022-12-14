@@ -65,13 +65,14 @@ export default function PostItem({
             </StyledItemBlock>
         </>
     );
+
 }
 
 const StyledItemBlock = styled.div`
-  border: 1px solid black;
+	border: 1px solid black;
 `;
 
 const Simg = styled.img`
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 `;
