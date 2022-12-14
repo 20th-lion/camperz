@@ -6,27 +6,11 @@ import { useNavigate } from "react-router-dom/dist";
 
 export default function Splash() {
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
-      isLogin() ? navigate('/home'): navigate('/login')
+      isLogin() ? navigate('/home') : navigate('/login')
     }, 1500);
-  },[])
-
-/*   const Moving = () => {
-    useEffect(() => {
-    setTimeout(() => {
-      {
-        return (
-          <>
-            isLogin()
-            ? <HomePage />
-            : <LoginPage />
-          </>
-        )
-      }
-    }, 500);
-  }, []);
-} */
+  }, [])
 
   return (
     <>
