@@ -1,10 +1,10 @@
-import client from "./client";
+import { axiosPrivate } from "./customAxios";
 
 export const getPostList = async () => {
 
     const reqPath = "/post/rkwl123/userpost";
 
-    const res = await client.get(reqPath)
+    const res = await axiosPrivate.get(reqPath)
     return res
 
 }
