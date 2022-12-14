@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import ProfilePage from './pages/Profile/ProfilePage';
 import ProductUploadPage from './pages/Product/ProductUploadPage';
+import PostUploadPage from './pages/post/PostUploadPage';
 
 export default function App() {
 	return (
@@ -11,6 +12,7 @@ export default function App() {
 				<Routes>
 					<Route path="/profile" element={<ProfilePage />}></Route>
 					<Route path="/product" element={<ProductUploadPage />}></Route>
+					<Route path="/postUpload" element={<PostUploadPage />}></Route>
 				</Routes>
 			</BrowserRouter>
 		</>

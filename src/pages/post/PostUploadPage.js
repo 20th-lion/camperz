@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ImgUploadButton from '../component/common/ImgUploadButton';
-import UploadButton from '../component/post/UploadButton';
+import ImgUploadButton from '../../component/common/ImgUploadButton';
+import UploadButton from '../../component/post/UploadButton';
 // import NavBar from '../component/common/NavBar';
 
 const PostTextArea = styled.textarea`
