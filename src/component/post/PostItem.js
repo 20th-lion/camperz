@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import HeartButton from "./HeartBtton";
+import { addHeart } from "../../lib/apis/HeartApis";
+import { deleteHeart } from "../../lib/apis/HeartApis";
 
 export default function PostItem({
     id,
@@ -11,6 +14,35 @@ export default function PostItem({
     heartCount,
     commentCount,
 }) {
+    const [pushHeart, setPushHeart] = useState(false);
+    const [count, setCount] = useState(heartCount);
+
+    const pushHeartButton = async () => {
+        await addHeart(id).then((res) => {
+            setPushHeart(res.data.post.hearted);
+            setCount(res.data.post.heartCount);
+            //console.log(res);
+        }).catch(
+            (err) => console.log(err)
+        )
+    }
+
+    const cancelHeartButton = async () => {
+        await deleteHeart(id).then((res) => {
+            setPushHeart(res.data.post.hearted);
+            setCount(res.data.post.heartCount);
+            //console.log(res);
+        }).catch(
+            (err) => console.log(err)
+        )
+    }
+
+    const handleHeartClick = () => {
+
+        pushHeart ? cancelHeartButton() : pushHeartButton();
+    }
+
+
     return (
         <>
             <StyledItemBlock>
@@ -25,8 +57,10 @@ export default function PostItem({
                 </div>
                 <div>작성일{createdAt}</div>
                 <div>업데이트 시간{updatedAt}</div>
-                <div>하트{hearted ? 'true' : 'false'}</div>
-                <div>좋아요{heartCount}</div>
+                <div>
+                    좋아요<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
+                </div>
+                <div>좋아요{count}</div>
                 <div>댓글{commentCount}</div>
             </StyledItemBlock>
         </>
