@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_PUBLIC_URL;
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 const TOKEN = localStorage.getItem('token');
 
 export const axiosPublic = axios.create({
