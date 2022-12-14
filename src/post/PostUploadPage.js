@@ -25,7 +25,7 @@ export default function PostUploadPage() {
 
 	return (
 		<>
-			<UploadButton />
+			<UploadButton text={text} fileImage={fileImage} />
 			<PostTextArea
 				onChange={(e) => handleChange(e)}
 				value={text}
