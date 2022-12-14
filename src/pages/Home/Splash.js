@@ -10,7 +10,6 @@ export default function Splash() {
     setTimeout(() => {
       isLogin() ? navigate('/home') : navigate('/login')
     }, 1500);
-  }, [])
 
   return (
     <>
@@ -19,7 +18,6 @@ export default function Splash() {
           <img src='CAMPERZ_LIGHT' alt='CAMPERZ' />
         </h1>
       </div>
-      {/* <Moving /> */}
     </>
   )
 }
