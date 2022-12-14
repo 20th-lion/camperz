@@ -23,6 +23,16 @@ export default function PostUploadPage() {
 		setText(e.target.value);
 	};
 
+	const handleImgChange = (e) => {
+		if (e.target.files[0] === undefined) {
+			console.log('사진없음');
+		} else {
+			setFileImage(URL.createObjectURL(e.target.files[0]));
+		}
+		// console.log(e.target.files[0]);
+		//e.target.files[0]는 0번째 이미지 값입니다.
+	};
+
 	return (
 		<>
 			<UploadButton text={text} fileImage={fileImage} />
@@ -32,7 +42,7 @@ export default function PostUploadPage() {
 				placeholder="게시물을 입력하세요..."
 			/>
 			{fileImage === '' ? <></> : <PictureArea src={fileImage} style={{ margin: 'auto' }} />}
-			<ImgUploadButton setFileImage={setFileImage} />
+			<ImgUploadButton setFileImage={setFileImage} handleImgChange={handleImgChange} />
 			{/* <NavBar /> */}
 		</>
 	);

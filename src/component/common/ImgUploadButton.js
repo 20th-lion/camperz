@@ -12,21 +12,11 @@ const ButtonContainer = styled.button`
 	cursor: pointer;
 `;
 
-export default function ImgUploadButton({ setFileImage }) {
+export default function ImgUploadButton({ setFileImage, handleImgChange }) {
 	const fileInput = React.useRef(null);
 
 	const handleButtonClick = (e) => {
 		fileInput.current.click();
-	};
-
-	const handleChange = (e) => {
-		if (e.target.files[0] === undefined) {
-			console.log('사진없음');
-		} else {
-			setFileImage(URL.createObjectURL(e.target.files[0]));
-		}
-		// console.log(e.target.files[0]);
-		//e.target.files[0]는 0번째 이미지 값입니다.
 	};
 
 	return (
@@ -36,7 +26,8 @@ export default function ImgUploadButton({ setFileImage }) {
 				ref={fileInput}
 				multiple={true}
 				style={{ display: 'none' }}
-				onChange={handleChange}
+				onChange={handleImgChange}
+				//handleImgChange에 함수를 전달하면 이미지 업로드 했을 때의 값을 가져올 수 있습니다.
 			/>
 			<ButtonContainer onClick={handleButtonClick} />
 		</>
