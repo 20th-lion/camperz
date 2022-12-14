@@ -12,7 +12,7 @@ const ButtonContainer = styled.button`
 	cursor: pointer;
 `;
 
-export default function ImgUploadButton() {
+export default function ImgUploadButton({ setFileImage }) {
 	const fileInput = React.useRef(null);
 
 	const handleButtonClick = (e) => {
@@ -20,7 +20,12 @@ export default function ImgUploadButton() {
 	};
 
 	const handleChange = (e) => {
-		console.log(e.target.files[0]);
+		if (e.target.files[0] === undefined) {
+			console.log('사진없음');
+		} else {
+			setFileImage(URL.createObjectURL(e.target.files[0]));
+		}
+		// console.log(e.target.files[0]);
 		//e.target.files[0]는 0번째 이미지 값입니다.
 	};
 
