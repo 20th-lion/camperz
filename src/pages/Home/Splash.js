@@ -12,22 +12,6 @@ export default function Splash() {
     }, 1500);
   },[])
 
-/*   const Moving = () => {
-    useEffect(() => {
-    setTimeout(() => {
-      {
-        return (
-          <>
-            isLogin()
-            ? <HomePage />
-            : <LoginPage />
-          </>
-        )
-      }
-    }, 500);
-  }, []);
-} */
-
   return (
     <>
       <div className='splash'>
@@ -35,7 +19,6 @@ export default function Splash() {
           <img src='CAMPERZ_LIGHT' alt='CAMPERZ' />
         </h1>
       </div>
-      {/* <Moving /> */}
     </>
   )
 }
