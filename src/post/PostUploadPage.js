@@ -18,7 +18,7 @@ const PictureArea = styled.img`
 export default function PostUploadPage() {
 	const [text, setText] = useState('');
 	const [fileImage, setFileImage] = useState('');
-
+	const [preConvertedImg, setPreConvertedImg] = useState('');
 	const handleChange = (e) => {
 		setText(e.target.value);
 	};
@@ -27,15 +27,16 @@ export default function PostUploadPage() {
 		if (e.target.files[0] === undefined) {
 			console.log('사진없음');
 		} else {
+			setPreConvertedImg(e.target.files[0]);
 			setFileImage(URL.createObjectURL(e.target.files[0]));
 		}
-		// console.log(e.target.files[0]);
+		console.log(e.target.files[0]);
 		//e.target.files[0]는 0번째 이미지 값입니다.
 	};
 
 	return (
 		<>
-			<UploadButton text={text} fileImage={fileImage} />
+			<UploadButton text={text} fileImage={fileImage} preConvertedImg={preConvertedImg} />
 			<PostTextArea
 				onChange={(e) => handleChange(e)}
 				value={text}

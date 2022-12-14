@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from '../common/Button';
 import { postUploader } from '../../lib/apis/postUploadApis';
+import { imageUpload } from '../../lib/apis/imageUploadApi';
 
-export default function UploadButton({ fileImage, text }) {
+export default function UploadButton({ fileImage, text, preConvertedImg }) {
 	let uploadValidation = false;
 
 	if (!(fileImage === '' && text === '')) {
@@ -10,19 +11,17 @@ export default function UploadButton({ fileImage, text }) {
 	}
 	// console.log(text);
 
-	const postContent = {
-		post: {
-			content: text,
-			image: String, //"imageurl1, imageurl2" 형식으로
-		},
-	};
 	const handlePostUpload = () => {
+		imageUpload(preConvertedImg).then((res) => {
+			console.log(res);
+		});
 		// if (uploadValidation === true) {
 		// 	console.log('업로드 완료!');
 		// } 밸리데이션을 버튼에서 하고 있기 때문에 빼도 되지 않을까?
-		postUploader(postContent).then((res) => {
-			console.log(res);
-		});
+		// postUploader(postContent).then((res) => {
+		// 	console.log(res);
+		// }
+		// );
 	};
 	return (
 		<>
