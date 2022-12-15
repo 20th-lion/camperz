@@ -13,7 +13,7 @@ export default function NavBar() {
 						<Link to="/chat/list">채팅</Link>
 					</li>
 					<li>
-						<Link to="/post/upload">게시글</Link>
+						<Link to="/postUpload">게시글</Link>
 					</li>
 					<li>
 						<Link to="/profile">프로필</Link>
