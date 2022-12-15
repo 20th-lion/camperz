@@ -12,7 +12,7 @@ const linktext = {
 	textAlign: 'center',
 	paddingTop: '10px',
 };
-export default function searchButton() {
+export default function SearchButton() {
 	return (
 		<>
 			{/* //link에 있는 주소는 search 페이지로 이동 예정입니다.  */}
