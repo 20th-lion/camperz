@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { isLogin } from '../../utils/isLogin';
-import HomePage from './HomePage';
-import LoginPage from '../Login/LoginPage';
 import { useNavigate } from "react-router-dom/dist";
 
 export default function Splash() {
@@ -10,6 +8,8 @@ export default function Splash() {
     setTimeout(() => {
       isLogin() ? navigate('/home') : navigate('/login')
     }, 1500);
+  }, []);
+
 
   return (
     <>
@@ -19,5 +19,5 @@ export default function Splash() {
         </h1>
       </div>
     </>
-  )
+  );
 }
