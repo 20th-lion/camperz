@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { getUserInfo } from '../../lib/apis/profileApis';
+import { useNavigate } from 'react-router-dom';
+
 import Header from '../../component/common/Header';
 import Button from '../../component/common/Button';
 import ProfileForm from '../../component/form/ProfileForm';
+import { getUserInfo } from '../../lib/apis/profileApis';
 import { editProfile } from './../../lib/apis/profileApis';
-import { useNavigate } from 'react-router-dom';
 
 export default function ProfileEditPage() {
 	const navigate = useNavigate();
