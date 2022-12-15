@@ -4,6 +4,7 @@ import ProfilePage from './pages/Profile/ProfilePage';
 import ProductUploadPage from './pages/Product/ProductUploadPage';
 import PostUploadPage from './pages/post/PostUploadPage';
 import Page404 from './pages/ErrorPage/Page404';
+import PostDetailPage from './pages/post/PostDetailPage';
 
 export default function App() {
 	return (
@@ -14,6 +15,7 @@ export default function App() {
 					<Route path="/product" element={<ProductUploadPage />}></Route>
 					<Route path="/postUpload" element={<PostUploadPage />}></Route>
 					<Route path="/pageNotFound" element={<Page404 />}></Route>
+					<Route path="/postDetail" element={<PostDetailPage />}></Route>
 				</Routes>
 			</BrowserRouter>
 		</>
