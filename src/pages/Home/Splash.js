@@ -1,32 +1,14 @@
 import { useEffect } from "react";
 import { isLogin } from '../../utils/isLogin';
-import HomePage from './HomePage';
-import LoginPage from '../Login/LoginPage';
 import { useNavigate } from "react-router-dom/dist";
 
 export default function Splash() {
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     setTimeout(() => {
-      isLogin() ? navigate('/home'): navigate('/login')
+      isLogin() ? navigate('/home') : navigate('/login')
     }, 1500);
-  },[])
-
-/*   const Moving = () => {
-    useEffect(() => {
-    setTimeout(() => {
-      {
-        return (
-          <>
-            isLogin()
-            ? <HomePage />
-            : <LoginPage />
-          </>
-        )
-      }
-    }, 500);
   }, []);
-} */
 
   return (
     <>
@@ -35,7 +17,6 @@ export default function Splash() {
           <img src='CAMPERZ_LIGHT' alt='CAMPERZ' />
         </h1>
       </div>
-      {/* <Moving /> */}
     </>
-  )
+  );
 }
