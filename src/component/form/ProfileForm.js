@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import { imageUpload } from './../../lib/apis/imageUploadApi';
-import iconSrc from '../../assets/img/img-upload-icon.svg';
+import iconSrc from '../../assets/image/img-upload-icon.svg';
 
 export default function ProfileForm({ setUserInfo, userInfo }) {
 	const photoInput = useRef();

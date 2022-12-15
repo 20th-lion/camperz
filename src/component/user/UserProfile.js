@@ -33,7 +33,14 @@ export default React.memo(function UserProfile({ type, user }) {
 
 	return (
 		<UserProfileBlock>
-			<img src={image} alt="프로필 이미지"></img>
+			<img
+				style={{
+					width: '100px',
+					height: '100px',
+				}}
+				src={image}
+				alt="프로필 이미지"
+			></img>
 			<div>id:{accountname}</div>
 			<div>이름:{username}</div>
 			<div onClick={goFllowerPage}>팔로워:{followerCount}</div>
