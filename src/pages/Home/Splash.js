@@ -10,6 +10,7 @@ export default function Splash() {
     }, 1500);
   }, []);
 
+
   return (
     <>
       <div className='splash'>

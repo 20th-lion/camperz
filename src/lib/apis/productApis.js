@@ -7,3 +7,13 @@ export const getProductList = async () => {
 
 	return res;
 };
+
+export const registProduct = async (productInfo) => {
+	productInfo.price = parseInt(productInfo.price);
+	const reqPath = '/product';
+	const productData = {
+		product: productInfo,
+	};
+	const res = axiosPrivate.post(reqPath, productData);
+	return res;
+};
