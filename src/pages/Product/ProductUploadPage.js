@@ -33,10 +33,7 @@ export default function ProductUploadPage() {
 
 	return (
 		<>
-			<Header
-				leftChild={<Button onClick={() => navigate(-1)} text={'뒤로가기'} active />}
-				rightChild={<Button onClick={handleSave} text={'저장'} active={isCompleted} />}
-			/>
+			<Header rightChild={<Button onClick={handleSave} text={'저장'} active={isCompleted} />} />
 			<div>
 				<ProductForm setProductInfo={setProductInfo} productInfo={productInfo} />
 			</div>

@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { imageUpload } from './../../lib/apis/imageUploadApi';
 import iconSrc from '../../assets/img/img-upload-icon.svg';
 
-export default function ProfileForm({ image, username, accountname, intro, setUserInfo, userInfo }) {
+export default function ProfileForm({ setUserInfo, userInfo }) {
 	const photoInput = useRef();
+	const { image, username, accountname, intro } = userInfo;
 
 	const onChange = (e) => {
 		const { name, value } = e.target;

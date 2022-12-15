@@ -8,13 +8,13 @@ import ProductEditPage from './pages/Product/ProductEditPage';
 import PostUploadPage from './pages/post/PostUploadPage';
 import Page404 from './pages/ErrorPage/Page404';
 
-
 export default function App() {
 	return (
 		<>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/profile" element={<ProfilePage />}></Route>
+					<Route path="/profile/" element={<ProfilePage />}></Route>
+					<Route path="/profile/:accountname" element={<ProfilePage />}></Route>
 					<Route path="/account/edit" element={<ProfileEditPage />}></Route>
 					<Route path="/product" element={<ProductUploadPage />}></Route>
 					<Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
