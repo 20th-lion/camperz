@@ -14,3 +14,15 @@ export const getMyInfo = async () => {
 
 	return res;
 };
+
+export const editProfile = async (userInfo) => {
+	const reqPath = `/user`;
+
+	const userData = {
+		user: {
+			...userInfo,
+		},
+	};
+	const res = await axiosPrivate.put(reqPath, userData);
+	return res;
+};
