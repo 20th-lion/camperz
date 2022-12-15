@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../common/Button';
-import { postUploader } from '../../lib/apis/postUploadApis';
+import { postUploader } from '../../lib/apis/postApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
 
 export default function UploadButton({ fileImage, text, preConvertedImg }) {
