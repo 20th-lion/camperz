@@ -17,7 +17,7 @@ export default function ProfilePage() {
 		<>
 			<Header rightChild={<Button onClick={() => {}} text={'모달'} active />} />
 			<div>프로필</div>
-			<UserProfile type={'mine'} user={user} />
+			<UserProfile type={accountname ? 'other' : 'mine'} user={user} />
 			<div>상품목록</div>
 			<ProductList user={user} />
 			<div>포스트목록</div>
