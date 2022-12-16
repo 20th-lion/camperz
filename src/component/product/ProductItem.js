@@ -6,7 +6,7 @@ import { modals } from '../modal/Modals';
 import { removeProduct } from '../../lib/apis/productApis';
 import { useModals } from './../../lib/hooks/useModals';
 
-export default function ProductItem({ itemName, price, itemImage, link, id, onload }) {
+export default function ProductItem({ itemName, price, itemImage, link, id, onload, type }) {
 	const navigate = useNavigate();
 	const { openModal } = useModals();
 
@@ -24,8 +24,10 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 				navigate(`/product/${id}/edit`);
 			},
 			onMove: () => {},
+			type,
 		});
 	};
+
 	return (
 		<>
 			<StyledItemBlock onClick={handleModalClick}>

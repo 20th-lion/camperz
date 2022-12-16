@@ -37,7 +37,7 @@ export default function ProfilePage() {
 			<div>프로필</div>
 			<UserProfile type={type} user={user} />
 			<div>상품목록</div>
-			<ProductList user={user} />
+			<ProductList user={user} type={type} />
 			<div>포스트목록</div>
 			<PostList user={user} type={type} />
 			<NavBar />
