@@ -5,15 +5,15 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 import { getUserInfo } from '../../lib/apis/profileApis';
 
-export default React.memo(function UserProfile({ type }) {
+export default React.memo(function UserProfile({ type, user }) {
 	const navigate = useNavigate();
 	const [userInfo, setUserInfo] = useState({});
 
 	const { image, accountname, username, followerCount, followingCount } = userInfo;
 
 	useEffect(() => {
-		getUserInfo().then((res) => {
-			const { accountname, username, followingCount, followerCount, image } = res.data.user;
+		getUserInfo(user).then((res) => {
+			const { accountname, username, followingCount, followerCount, image } = res.data.profile;
 			setUserInfo({
 				accountname,
 				username,
@@ -24,13 +24,20 @@ export default React.memo(function UserProfile({ type }) {
 		});
 	}, []);
 
+	const goFllowerPage = () => {
+		navigate(`/profile/${user}/follower`);
+	};
+	const goFllowingPage = () => {
+		navigate(`/profile/${user}/following`);
+	};
+
 	return (
 		<UserProfileBlock>
 			<img src={image} alt="프로필 이미지"></img>
 			<div>id:{accountname}</div>
 			<div>이름:{username}</div>
-			<div>팔로워:{followerCount}</div>
-			<div>팔로잉{followingCount}</div>
+			<div onClick={goFllowerPage}>팔로워:{followerCount}</div>
+			<div onClick={goFllowingPage}>팔로잉{followingCount}</div>
 			{type === 'mine' ? (
 				<>
 					<Button text="프로필 수정" onClick={() => navigate('/profile/edit')} />

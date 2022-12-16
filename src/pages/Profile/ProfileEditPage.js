@@ -28,14 +28,13 @@ export default function ProfileEditPage() {
 		});
 	};
 	const handleSave = async () => {
-		console.log(userInfo);
 		await editProfile(userInfo);
 		navigate('/profile');
 	};
 	return (
 		<div>
-			<Header rightChild={<Button text={'저장'} onClick={handleSave} />} />
-			<ProfileForm {...userInfo} setUserInfo={setUserInfo} userInfo={userInfo} />
+			<Header leftChild={null} rightChild={<Button text={'저장'} onClick={handleSave} />} />
+			<ProfileForm setUserInfo={setUserInfo} userInfo={userInfo} />
 		</div>
 	);
 }

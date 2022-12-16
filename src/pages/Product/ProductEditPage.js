@@ -25,17 +25,7 @@ export default function ProductEditPage() {
 	};
 	return (
 		<>
-			<Header
-				leftChild={
-					<Button
-						text="<-"
-						onClick={() => {
-							navigate(-1);
-						}}
-					/>
-				}
-				rightChild={<Button text="저장" onClick={handleSave} />}
-			/>
+			<Header rightChild={<Button text="저장" onClick={handleSave} />} />
 			<ProductForm productInfo={productInfo} setProductInfo={setProductInfo} />
 		</>
 	);
