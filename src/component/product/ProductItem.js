@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function ProductItem({ itemName, price, itemImage, link, id }) {
+import { modals } from '../modal/Modals';
+import { removeProduct } from '../../lib/apis/productApis';
+import { ModalsDispatchContext } from './../context/ModalsContext';
+
+export default function ProductItem({ itemName, price, itemImage, link, id, onload }) {
+	const navigate = useNavigate();
+	const { open } = useContext(ModalsDispatchContext);
+
+	const handleModalClick = () => {
+		open(modals.productEditModal, {
+			onRemove: async () => {
+				await removeProduct(id).then((res) => console.log(res));
+				onload();
+			},
+			onEdit: () => {
+				navigate(`/product/${id}/edit`);
+			},
+			onMove: () => {},
+		});
+	};
 	return (
 		<>
-			<StyledItemBlock onClick={() => {}}>
+			<StyledItemBlock onClick={handleModalClick}>
 				<div>상품명{itemName}</div>
 				<div>가격{price}</div>
 				<div
