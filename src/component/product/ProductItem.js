@@ -1,19 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { modals } from '../modal/Modals';
 import { removeProduct } from '../../lib/apis/productApis';
-import { ModalsDispatchContext } from './../context/ModalsContext';
+import { useModals } from './../../lib/hooks/useModals';
 
 export default function ProductItem({ itemName, price, itemImage, link, id, onload }) {
 	const navigate = useNavigate();
-	const { open } = useContext(ModalsDispatchContext);
+	const { openModal } = useModals();
 
 	const handleModalClick = () => {
-		open(modals.productEditModal, {
+		openModal(modals.productEditModal, {
 			onRemove: () => {
-				open(modals.confirmModal, {
+				openModal(modals.confirmModal, {
 					onRemove: async () => {
 						await removeProduct(id);
 						onload();

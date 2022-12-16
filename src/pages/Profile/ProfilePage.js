@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import Button from '../../component/common/Button';
@@ -9,19 +9,19 @@ import ProductList from '../../component/product/ProductList';
 import PostList from './../../component/post/PostList';
 
 import { logout } from '../../lib/utils/logout';
-import { ModalsDispatchContext } from '../../component/context/ModalsContext';
 import { modals } from './../../component/modal/Modals';
+import { useModals } from './../../lib/hooks/useModals';
 
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 
-	const { open } = useContext(ModalsDispatchContext);
+	const { openModal } = useModals();
 	const navigate = useNavigate();
 
 	const handleModalClick = () => {
-		open(modals.profileModal, {
+		openModal(modals.profileModal, {
 			onSetting: () => {},
 			onLogout: () => {
 				logout();
