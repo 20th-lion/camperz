@@ -12,12 +12,12 @@ export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
-
+	const type = accountname ? 'other' : 'mine';
 	return (
 		<>
 			<Header rightChild={<Button onClick={() => {}} text={'모달'} active />} />
 			<div>프로필</div>
-			<UserProfile type={accountname ? 'other' : 'mine'} user={user} />
+			<UserProfile type={type} user={user} />
 			<div>상품목록</div>
 			<ProductList user={user} />
 			<div>포스트목록</div>
