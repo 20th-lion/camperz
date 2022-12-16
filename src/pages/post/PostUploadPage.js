@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ImgUploadButton from '../component/common/ImgUploadButton';
-import UploadButton from '../component/post/UploadButton';
-// import NavBar from '../component/common/NavBar';
+import ImgUploadButton from '../../component/common/ImgUploadButton';
+import UploadButton from '../../component/post/UploadButton';
+import NavBar from '../../component/common/NavBar';
 
 const PostTextArea = styled.textarea`
 	width: 300px;
@@ -44,7 +44,7 @@ export default function PostUploadPage() {
 			/>
 			{fileImage === '' ? <></> : <PictureArea src={fileImage} style={{ margin: 'auto' }} />}
 			<ImgUploadButton setFileImage={setFileImage} handleImgChange={handleImgChange} />
-			{/* <NavBar /> */}
+			<NavBar />
 		</>
 	);
 }

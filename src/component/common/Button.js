@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
 
+
 export default function Button({ onClick, text, active }) {
 	return (
 		<>
