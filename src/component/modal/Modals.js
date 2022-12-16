@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { ModalsStateContext, ModalsDispatchContext } from '../context/ModalsContext';
 import ProfileModal from './ProfileModal';
-import ProductEditModal from './ProductEditModal';
+import ProductModal from './ProductModal';
 import ConfirmModal from './ConfirmModal';
 
 export const modals = {
 	profileModal: ProfileModal,
-	productEditModal: ProductEditModal,
+	productModal: ProductModal,
 	confirmModal: ConfirmModal,
 };
 

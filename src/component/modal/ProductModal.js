@@ -1,6 +1,6 @@
 import ReactModal from 'react-modal';
 
-export default function ProductEditModal({ onRemove, onEdit, onMove, onClose }) {
+export default function ProductModal({ onRemove, onEdit, onMove, onClose }) {
 	const handleClickRemove = () => {
 		onRemove();
 		onClose();

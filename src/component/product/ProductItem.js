@@ -11,7 +11,7 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 	const { openModal } = useModals();
 
 	const handleModalClick = () => {
-		openModal(modals.productEditModal, {
+		openModal(modals.productModal, {
 			onRemove: () => {
 				openModal(modals.confirmModal, {
 					onRemove: async () => {
