@@ -12,9 +12,13 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 
 	const handleModalClick = () => {
 		open(modals.productEditModal, {
-			onRemove: async () => {
-				await removeProduct(id).then((res) => console.log(res));
-				onload();
+			onRemove: () => {
+				open(modals.confirmModal, {
+					onRemove: async () => {
+						await removeProduct(id);
+						onload();
+					},
+				});
 			},
 			onEdit: () => {
 				navigate(`/product/${id}/edit`);
