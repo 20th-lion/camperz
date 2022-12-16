@@ -1,10 +1,36 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function ProductItem({ itemName, price, itemImage, link, id }) {
+import { modals } from '../modal/Modals';
+import { removeProduct } from '../../lib/apis/productApis';
+import { useModals } from './../../lib/hooks/useModals';
+
+export default function ProductItem({ itemName, price, itemImage, link, id, onload, type }) {
+	const navigate = useNavigate();
+	const { openModal } = useModals();
+
+	const handleModalClick = () => {
+		openModal(modals.productModal, {
+			onRemove: () => {
+				openModal(modals.confirmModal, {
+					onRemove: async () => {
+						await removeProduct(id);
+						onload();
+					},
+				});
+			},
+			onEdit: () => {
+				navigate(`/product/${id}/edit`);
+			},
+			onMove: () => {},
+			type,
+		});
+	};
+
 	return (
 		<>
-			<StyledItemBlock onClick={() => {}}>
+			<StyledItemBlock onClick={handleModalClick}>
 				<div>상품명{itemName}</div>
 				<div>가격{price}</div>
 				<div
