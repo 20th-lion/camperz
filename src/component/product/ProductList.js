@@ -3,7 +3,9 @@ import { getProductList } from '../../lib/apis/productApis';
 import ProductItem from '../../component/product/ProductItem';
 import styled from 'styled-components';
 
-export default React.memo(function ProductList({user}) {
+
+export default React.memo(function ProductList({ user }) {
+
 	const [productList, setProductList] = useState([]);
 
 	const loadproductList = async () => {

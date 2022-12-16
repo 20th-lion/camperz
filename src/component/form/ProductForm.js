@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 import { imageUpload } from '../../lib/apis/imageUploadApi';
-import iconSrc from '../../assets/img/img-upload-icon.svg';
+import iconSrc from '../../assets/image/img-upload-icon.svg';
 
 export default function ProductForm({ setProductInfo, productInfo }) {
 	const photoInput = useRef();
@@ -17,7 +17,7 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 	const onRegistImg = async () => {
 		const file = photoInput.current.files[0];
 		await imageUpload(file).then((res) => {
-			const itemImage = process.env.REACT_APP_BASE_URL + res.data.filename;
+			const itemImage = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
 			setProductInfo({ ...productInfo, itemImage });
 		});
 	};
@@ -47,15 +47,25 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 			</div>
 			<div>
 				이름
-				<input type="text" name="itemName" onChange={(e) => onChange(e)} />
+				<input
+					type="text"
+					value={productInfo.itemName}
+					name="itemName"
+					onChange={(e) => onChange(e)}
+				/>
 			</div>
 			<div>
 				가격
-				<input type="number" name="price" onChange={(e) => onChange(e)} />
+				<input
+					type="number"
+					value={productInfo.price}
+					name="price"
+					onChange={(e) => onChange(e)}
+				/>
 			</div>
 			<div>
 				링크
-				<input type="text" name="link" onChange={(e) => onChange(e)} />
+				<input type="text" name="link" value={productInfo.link} onChange={(e) => onChange(e)} />
 			</div>
 		</div>
 	);
