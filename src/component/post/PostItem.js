@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import HeartButton from "./HeartBtton";
-import { addHeart } from "../../lib/apis/HeartApis";
-import { deleteHeart } from "../../lib/apis/HeartApis";
+import { addHeart } from "../../lib/apis/heartApis";
+import { deleteHeart } from "../../lib/apis/heartApis";
 
 export default function PostItem({
     id,

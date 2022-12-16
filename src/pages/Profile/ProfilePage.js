@@ -5,7 +5,7 @@ import NavBar from '../../component/common/NavBar';
 import Header from '../../component/common/Header';
 import UserProfile from '../../component/user/UserProfile';
 import ProductList from '../../component/product/ProductList';
-
+import PostList from '../../component/post/PostList';
 
 export default function ProfilePage() {
 	const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function ProfilePage() {
 			<div>상품목록</div>
 			<ProductList></ProductList>
 			<div>포스트목록</div>
-
+			<PostList></PostList>
 			<NavBar />
 		</>
 	);
