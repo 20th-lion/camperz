@@ -6,6 +6,7 @@ import ProductForm from './../../component/form/ProductForm';
 import Header from '../../component/common/Header';
 import Button from '../../component/common/Button';
 import { editProduct } from './../../lib/apis/productApis';
+import { imageUpload } from '../../lib/apis/imageUploadApi';
 
 export default function ProductEditPage() {
 	const navigate = useNavigate();
@@ -19,13 +20,17 @@ export default function ProductEditPage() {
 		});
 	}, []);
 
-	const handleSave = () => {
+	const handleSaveBtn = async () => {
+		await imageUpload(productInfo.itemImage).then((res) => {
+			const itemImage = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
+			setProductInfo({ ...productInfo, itemImage });
+		});
 		editProduct(id, productInfo);
 		navigate('/profile');
 	};
 	return (
 		<>
-			<Header rightChild={<Button text="저장" onClick={handleSave} />} />
+			<Header rightChild={<Button text="저장" onClick={handleSaveBtn} />} />
 			<ProductForm productInfo={productInfo} setProductInfo={setProductInfo} />
 		</>
 	);

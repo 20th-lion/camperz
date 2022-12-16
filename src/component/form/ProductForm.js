@@ -21,6 +21,15 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 			setProductInfo({ ...productInfo, itemImage });
 		});
 	};
+	const handleImgChange = (e) => {
+		setProductInfo({
+			...productInfo,
+			itemImage: URL.createObjectURL(e.target.files[0]),
+		});
+
+		// console.log(e.target.files[0]);
+		//e.target.files[0]는 0번째 이미지 값입니다.
+	};
 	return (
 		<div>
 			<div
@@ -41,7 +50,7 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 					ref={photoInput}
 					type="file"
 					accept="image/*"
-					onChange={onRegistImg}
+					onChange={handleImgChange}
 				/>
 				<PictureArea src={productInfo.itemImage} alt="상품 이미지" />
 			</div>
