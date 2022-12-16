@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-import { imageUpload } from './../../lib/apis/imageUploadApi';
 import iconSrc from '../../assets/image/img-upload-icon.svg';
 
 export default function ProfileForm({ setUserInfo, userInfo }) {
@@ -16,11 +15,10 @@ export default function ProfileForm({ setUserInfo, userInfo }) {
 		});
 	};
 
-	const onRegistImg = async () => {
-		const file = photoInput.current.files[0];
-		await imageUpload(file).then((res) => {
-			const image = 'https://mandarin.api.weniv.co.kr/' + res.data.filename;
-			setUserInfo({ ...userInfo, image });
+	const handleImgChange = (e) => {
+		setUserInfo({
+			...userInfo,
+			image: URL.createObjectURL(e.target.files[0]),
 		});
 	};
 
@@ -37,9 +35,7 @@ export default function ProfileForm({ setUserInfo, userInfo }) {
 						photoInput.current.click();
 					}}
 				>
-					<label htmlFor="image">
-						<LabelImg />
-					</label>
+					<LabelImg />
 					<input
 						name="image"
 						id="image"
@@ -47,7 +43,7 @@ export default function ProfileForm({ setUserInfo, userInfo }) {
 						ref={photoInput}
 						type="file"
 						accept="image/*"
-						onChange={onRegistImg}
+						onChange={handleImgChange}
 					/>
 					<PictureArea src={image} alt="z" />
 				</div>
