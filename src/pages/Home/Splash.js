@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isLogin } from '../../utils/isLogin';
+import { isLogin } from '../../lib/utils/isLogin';
 import { useNavigate } from 'react-router-dom/dist';
 
 export default function Splash() {
