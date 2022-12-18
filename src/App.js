@@ -13,9 +13,9 @@ export default function App() {
 				<Routes>
 					<Route path="/profile" element={<ProfilePage />}></Route>
 					<Route path="/product" element={<ProductUploadPage />}></Route>
-					<Route path="/postUpload" element={<PostUploadPage />}></Route>
-					<Route path="/pageNotFound" element={<Page404 />}></Route>
-					<Route path="/postDetail" element={<PostDetailPage />}></Route>
+					<Route path="/postupload" element={<PostUploadPage />}></Route>
+					<Route path="/pagenotfound" element={<Page404 />}></Route>
+					<Route path="/postdetail" element={<PostDetailPage />}></Route>
 				</Routes>
 			</BrowserRouter>
 		</>

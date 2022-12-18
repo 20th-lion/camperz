@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import commentbtn from '../../assets/image/commentbtn.svg';
-export default function CommentBox() {
+import { postComment } from '../../lib/apis/commentApis';
+
+export default function CommentBox({ post_id }) {
 	const [btnHandler, setBtnHandler] = useState(false);
+	const [commentContent, setCommentContent] = useState('');
+
 	const commentInputValidator = (e) => {
-		console.log(e.target.value);
+		setCommentContent(e.target.value);
+		// console.log(e.target.value);
 		if (e.target.value.length === 0) {
 			setBtnHandler(false);
 		}
@@ -13,6 +18,11 @@ export default function CommentBox() {
 			setBtnHandler(true);
 		}
 	};
+
+	const btnClickEvent = () => {
+		postComment(post_id, commentContent);
+	};
+
 	return (
 		<>
 			<CommentContainer>
@@ -22,7 +32,7 @@ export default function CommentBox() {
 					}}
 				/>
 				{btnHandler === true ? (
-					<CommentUploadButton>
+					<CommentUploadButton onClick={btnClickEvent}>
 						<CommentUploadButtonImg src={commentbtn} />
 					</CommentUploadButton>
 				) : (
