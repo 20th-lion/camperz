@@ -14,12 +14,11 @@ export default function LoginByEmail() {
         console.log(errorMsg);
       } else if (res.data.message) {
         const loginErrMsg = res.data.message;
-        console.log(loginErrMsg);
         setLoginErrMsg([,<span>*{loginErrMsg}</span>]);
       }
       const { accountname, token } = res.data.user;
       localStorage.setItem('token', token);
-      localStorage.setItem('accountname', accountname);
+      localStorage.setItem('accountname', accountname); 
       navigate('/home');
     })
   }
@@ -27,14 +26,11 @@ export default function LoginByEmail() {
   return (
     <>
       <AuthForm
-        className='loginByEmail'
+        className='LoginByEmail'
         formType='login'
         errorMsg={loginErrMsg}
         onSubmit={handleLogin} />
-      <Link to="/join">이메일로 회원가입</Link>
+      <Link to="/register">이메일로 회원가입</Link>
     </>
   )
 }
-
-
-
