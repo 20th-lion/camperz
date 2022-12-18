@@ -53,7 +53,7 @@ const CommentInput = styled.input`
 	background-color: ${palette.bottomBar[1]};
 `;
 
-const CommentUploadButtonImg = styled.image`
+const CommentUploadButtonImg = styled.img`
 	width: 24px;
 	height: 24px;
 `;
