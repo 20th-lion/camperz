@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 import { getPostList } from '../../lib/apis/postApis';
-
 import PostItem from './PostItem';
 import PostPicture from './PostPicture';
 

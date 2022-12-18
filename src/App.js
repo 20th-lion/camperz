@@ -9,6 +9,8 @@ import Page404 from './pages/ErrorPage/Page404';
 import PostUploadPage from './pages/Post/PostUploadPage';
 import Provider from './component/context/Provider';
 import Modals from './component/modal/Modals';
+import PostList from './component/post/PostList';
+import FollowPage from './pages/follow/FollowPage';
 
 export default function App() {
 	return (
@@ -23,6 +25,7 @@ export default function App() {
 						<Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
 						<Route path="/postUpload" element={<PostUploadPage />}></Route>
 						<Route path="/pageNotFound" element={<Page404 />}></Route>
+            					<Route path="profile/:accountname/follower" element={<FollowPage />}></Route>
 					</Routes>
 					<Modals />
 				</BrowserRouter>

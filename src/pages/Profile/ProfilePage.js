@@ -1,16 +1,15 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
 import Header from '../../component/common/Header';
 import UserProfile from '../../component/user/UserProfile';
 import ProductList from '../../component/product/ProductList';
 import PostList from './../../component/post/PostList';
-
 import { logout } from '../../lib/utils/logout';
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
+
 
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
