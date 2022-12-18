@@ -1,4 +1,6 @@
 import React from 'react';
+import CommentBox from '../common/CommentBox';
+import { getCommentList } from '../../lib/apis/commentApis';
 
 export default function PostDetailComment({ post_id }) {
 	let commenterName;
@@ -14,6 +16,7 @@ export default function PostDetailComment({ post_id }) {
 			{commenterImg}
 			{commenterName}
 			{comment}
+			<CommentBox />
 		</>
 	);
 }
