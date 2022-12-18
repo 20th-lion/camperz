@@ -12,7 +12,7 @@ export default function PostDetailPage({ post_id }) {
 		<>
 			{/* <Headers /> */}
 			<PostDetailContent post_id={post_id} />
-			<PostDetailComment />
+			<PostDetailComment post_id={post_id} />
 		</>
 	);
 }
