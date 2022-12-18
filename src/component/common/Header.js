@@ -1,3 +1,5 @@
+import BackButton from './BackButton';
+
 export default function Header({ leftChild, rightChild }) {
 	return (
 		<div>
@@ -5,3 +7,7 @@ export default function Header({ leftChild, rightChild }) {
 		</div>
 	);
 }
+
+Header.defaultProps = {
+	leftChild: <BackButton />,
+};
