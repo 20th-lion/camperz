@@ -15,6 +15,8 @@ import PostUploadPage from './pages/Post/PostUploadPage';
 import Provider from './component/context/Provider';
 import Modals from './component/modal/Modals';
 import FollowPage from './pages/follow/FollowPage';
+import ChatListPage from './pages/Chat/ChatListPage';
+import ChatRoomPage from './pages/Chat/ChatRoomPage';
 
 export default function App() {
 	return (
@@ -38,6 +40,8 @@ export default function App() {
 							path="/profile/:accountname/follower"
 							element={<FollowPage />}
 						></Route>
+						<Route path="/chatlist" element={<ChatListPage />}></Route>
+						<Route path="/chatlist/:id" element={<ChatRoomPage />}></Route>
 					</Routes>
 					<Modals />
 				</BrowserRouter>
