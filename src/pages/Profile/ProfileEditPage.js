@@ -6,6 +6,7 @@ import Button from '../../component/common/Button';
 import ProfileForm from '../../component/form/ProfileForm';
 import { getUserInfo } from '../../lib/apis/profileApis';
 import { editProfile } from './../../lib/apis/profileApis';
+import { imageUpload } from '../../lib/apis/imageUploadApi';
 
 export default function ProfileEditPage() {
 	const navigate = useNavigate();
@@ -27,13 +28,17 @@ export default function ProfileEditPage() {
 			});
 		});
 	};
-	const handleSave = async () => {
+	const handleSaveBtn = async () => {
+		await imageUpload(userInfo.itemImage).then((res) => {
+			const image = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
+			setUserInfo({ ...userInfo, image });
+		});
 		await editProfile(userInfo);
 		navigate('/profile');
 	};
 	return (
 		<div>
-			<Header leftChild={null} rightChild={<Button text={'저장'} onClick={handleSave} />} />
+			<Header leftChild={null} rightChild={<Button text={'저장'} onClick={handleSaveBtn} />} />
 			<ProfileForm setUserInfo={setUserInfo} userInfo={userInfo} />
 		</div>
 	);
