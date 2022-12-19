@@ -13,8 +13,27 @@ export default function ProfileModal({ onClose, onLogout, onSetting }) {
 		navigate('/');
 		onClose();
 	};
+
+	const handleClose = () => {
+		onClose();
+	};
+
 	return (
-		<ReactModal isOpen ariaHideApp={false}>
+		<ReactModal
+			isOpen
+			ariaHideApp={false}
+			onRequestClose={handleClose}
+			style={{
+				overlay: {
+					position: 'fixed',
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					backgroundColor: 'rgba(0, 0, 0, 0.25)',
+				},
+			}}
+		>
 			<div>
 				<button onClick={handleClickSetting}>설정 및 개인정보</button>
 				<button onClick={handleClickLogout}>로그아웃</button>
