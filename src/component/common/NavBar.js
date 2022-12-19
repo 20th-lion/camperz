@@ -7,7 +7,7 @@ export default function NavBar() {
 			<nav>
 				<StyledUl>
 					<li>
-						<Link to="/">홈</Link>
+						<Link to="/home">홈</Link>
 					</li>
 					<li>
 						<Link to="/chat/list">채팅</Link>

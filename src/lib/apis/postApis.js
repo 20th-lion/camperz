@@ -13,3 +13,10 @@ export const postUploader = async ({ postContent }) => {
 	const res = await axiosPrivate.post(reqPath, postContent);
 	return res;
 };
+
+export const postDetailLoader = async ({ post_id }) => {
+	const reqPath = `/post/:${post_id}`;
+
+	const res = await axiosPrivate.get(reqPath);
+	return res;
+};

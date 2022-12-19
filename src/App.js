@@ -1,15 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Splash from './pages/Home/Splash';
+import HomePage from './pages/Home/HomePage';
+import LoginPage from './pages/Login/LoginPage';
+import LoginByEmail from './pages/Login/LoginByEmail';
+import Register from './pages/Register/Register';
 import ProfilePage from './pages/Profile/ProfilePage';
 import ProductUploadPage from './pages/Product/ProductUploadPage';
 import ProfileEditPage from './pages/Profile/ProfileEditPage';
 import ProductEditPage from './pages/Product/ProductEditPage';
 import Page404 from './pages/ErrorPage/Page404';
-import PostUploadPage from './pages/post/PostUploadPage';
+import PostDetailPage from './pages/post/PostDetailPage';
+import PostUploadPage from './pages/Post/PostUploadPage';
 import Provider from './component/context/Provider';
 import Modals from './component/modal/Modals';
-import PostList from './component/post/PostList';
 import FollowerPage from './pages/follow/FollowerPage';
 import FollowingPage from './pages/follow/FollowingPage';
 
@@ -19,6 +24,11 @@ export default function App() {
 			<Provider>
 				<BrowserRouter>
 					<Routes>
+						<Route path='/' element={<Splash />}></Route>
+						<Route path='/home' element={<HomePage />}></Route>
+						<Route path='/login' element={<LoginPage />}></Route>
+						<Route path='/login/email' element={<LoginByEmail />}></Route>
+						<Route path='/register' element={<Register />}></Route>
 						<Route path="/profile/" element={<ProfilePage />}></Route>
 						<Route path="/profile/:accountname" element={<ProfilePage />}></Route>
 						<Route path="/profile/edit" element={<ProfileEditPage />}></Route>
@@ -28,10 +38,13 @@ export default function App() {
 						<Route path="/pageNotFound" element={<Page404 />}></Route>
 						<Route path="/profile/:accountname/follower" element={<FollowerPage />}></Route>
 						<Route path="/profile/:accountname/following" element={<FollowingPage />}></Route>
+						<Route path="/postdetail" element={<PostDetailPage />}></Route>
+
 					</Routes>
 					<Modals />
 				</BrowserRouter>
 			</Provider>
+
 		</>
 	);
 }

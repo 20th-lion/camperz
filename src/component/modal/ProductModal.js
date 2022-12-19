@@ -15,8 +15,12 @@ export default function ProductModal({ onRemove, onEdit, onMove, onClose, type }
 		onMove();
 		onClose();
 	};
+
+	const handleClose = () => {
+		onClose();
+	};
 	return (
-		<ReactModal isOpen ariaHideApp={false}>
+		<ReactModal isOpen ariaHideApp={false} onRequestClose={handleClose}>
 			<div>
 				{type === 'mine' ? (
 					<>

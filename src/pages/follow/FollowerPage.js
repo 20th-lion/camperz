@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { followerList } from "../../lib/apis/followApis"
 import FollowContents from "../../component/follow/FollowContents";
+import Header from "../../component/common/Header";
 
 export default function FollowerPage() {
 
@@ -29,6 +30,7 @@ export default function FollowerPage() {
     return (
         <>
             <p>팔로우창</p>
+            <Header></Header>
             <FollowContents
                 followData={followerData}
                 followMessage={followerMessage}

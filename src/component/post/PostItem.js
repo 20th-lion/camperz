@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import HeartButton from "./HeartBtton";
-import { addHeart } from "../../lib/apis/heartApis";
-import { deleteHeart } from "../../lib/apis/heartApis";
-
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import HeartButton from './HeartBtton';
+import { addHeart } from '../../lib/apis/heartApis';
+import { deleteHeart } from '../../lib/apis/heartApis';
 
 export default function PostItem({ id, content, image, createdAt, updatedAt, hearted, heartCount, commentCount }) {
 	const [pushHeart, setPushHeart] = useState(false);

@@ -9,8 +9,13 @@ export default function ConfirmModal({ onRemove, onClose }) {
 		onRemove();
 		onClose();
 	};
+
+	const handleClose = () => {
+		onClose();
+	};
+
 	return (
-		<ReactModal isOpen ariaHideApp={false}>
+		<ReactModal isOpen ariaHideApp={false} onRequestClose={handleClose}>
 			<div>
 				<button onClick={handleClickCancel}>취소</button>
 				<button onClick={handleClickRemove}>삭제</button>

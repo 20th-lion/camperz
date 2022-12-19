@@ -1,15 +1,14 @@
 import { useEffect } from "react";
-import { isLogin } from '../../utils/isLogin';
+import { isLogin } from '../../lib/utils/isLogin';
 import { useNavigate } from "react-router-dom/dist";
 
 export default function Splash() {
   const navigate = useNavigate();
-  useEffect(() => {
+  useEffect(()=>{
     setTimeout(() => {
-      isLogin() ? navigate('/home') : navigate('/login')
+      isLogin() ? navigate('/home'): navigate('/login')
     }, 1500);
-  }, []);
-
+  },[])
 
   return (
     <>
@@ -19,5 +18,5 @@ export default function Splash() {
         </h1>
       </div>
     </>
-  );
+  )
 }

@@ -10,6 +10,7 @@ export default function FollowButton({ isfollow, onClick }) {
                 isfollow={isfollow}
                 onClick={onClick}
             />
+
         </>
     );
 
