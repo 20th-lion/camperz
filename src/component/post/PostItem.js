@@ -54,7 +54,7 @@ export default function PostItem({ id, content, image, createdAt, updatedAt, hea
 					<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
 				</div>
 				<div>좋아요{count}</div>
-				<Link to={{ pathname: `/postdetail/${id}` }}>
+				<Link to={`/postdetail/${id}`}>
 					<div>댓글{commentCount}</div>
 				</Link>
 			</StyledItemBlock>
