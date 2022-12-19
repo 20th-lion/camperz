@@ -33,7 +33,7 @@ export default function App() {
 						<Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
 						<Route path="/postupload" element={<PostUploadPage />}></Route>
 						<Route path="/pagenotfound" element={<Page404 />}></Route>
-						<Route path="/postdetail" element={<PostDetailPage />}></Route>
+						<Route path="/postdetail/:id" element={<PostDetailPage />}></Route>
 						<Route
 							path="/profile/:accountname/follower"
 							element={<FollowPage />}

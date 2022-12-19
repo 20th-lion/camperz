@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import HeartButton from './HeartBtton';
 import { addHeart } from '../../lib/apis/HeartApis';
@@ -53,7 +54,9 @@ export default function PostItem({ id, content, image, createdAt, updatedAt, hea
 					<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
 				</div>
 				<div>좋아요{count}</div>
-				<div>댓글{commentCount}</div>
+				<Link to={{ pathname: `/postdetail/${id}` }}>
+					<div>댓글{commentCount}</div>
+				</Link>
 			</StyledItemBlock>
 		</>
 	);

@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CommentBox from '../common/CommentBox';
 import { getCommentList } from '../../lib/apis/commentApis';
 
 export default function PostDetailComment({ post_id }) {
-	let commenterName;
-	let commenterImg;
-	let comment;
+	const [commenterName, setCommenterName] = useState('');
+	const [commenterImg, setCommenterImg] = useState('');
+	const [comment, setComment] = useState('');
 
 	getCommentList(post_id).then((res) => {
-		commenterName = res.comment.id;
-		commenterImg = res.comment.author.image;
-		comment = res.comment.content;
+		setCommenterName(res.comment.id);
+		setCommenterImg(res.comment.author.image);
+		setComment(res.comment.content);
 	});
 
 	return (
