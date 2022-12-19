@@ -18,7 +18,7 @@ export default function LoginByEmail() {
       }
       const { accountname, token } = res.data.user;
       localStorage.setItem('token', token);
-      localStorage.setItem('accountname', accountname); 
+      localStorage.setItem('accountname', accountname); //TODO:
       navigate('/home');
     })
   }

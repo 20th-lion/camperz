@@ -1,4 +1,4 @@
-import client from './client';
+import axiosPublic from './customAxios';
 
 export const getLoginApiResponse = async (inputs) => {
   const reqPath = '/user/login';
@@ -9,7 +9,7 @@ export const getLoginApiResponse = async (inputs) => {
     'Content-type': 'application/json',
   };
   try {
-    const res = await client.post(reqPath, loginData, { headers });
+    const res = await axiosPublic.post(reqPath, loginData, { headers });
     return res;
   } catch (error) {
     return error;
