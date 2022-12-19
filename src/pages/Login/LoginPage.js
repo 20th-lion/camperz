@@ -9,8 +9,8 @@ export default function LoginPage() {
           <button type='button' className={style}>{sns} 계정으로 로그인</button>
         </li>
       </>
-    );
-  };
+    )
+  }
 
   return (
     <>
@@ -26,12 +26,12 @@ export default function LoginPage() {
           </ul>
           <div>
             <Link to={'/login/email'}>이메일로 로그인</Link>
-            |
+            <span>|</span>
             <Link to={'/join'}>회원가입</Link>
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }
 
