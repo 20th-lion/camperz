@@ -25,14 +25,16 @@ export default function App() {
 						<Route path="/product" element={<ProductUploadPage />}></Route>
 						<Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
 						<Route path="/postupload" element={<PostUploadPage />}></Route>
-					  <Route path="/pagenotfound" element={<Page404 />}></Route>
-					  <Route path="/postdetail" element={<PostDetailPage />}></Route>
-            <Route path="/profile/:accountname/follower" element={<FollowPage />}></Route>
+						<Route path="/pagenotfound" element={<Page404 />}></Route>
+						<Route path="/postdetail/:id" element={<PostDetailPage />}></Route>
+						<Route
+							path="/profile/:accountname/follower"
+							element={<FollowPage />}
+						></Route>
 					</Routes>
 					<Modals />
 				</BrowserRouter>
 			</Provider>
-
 		</>
 	);
 }
