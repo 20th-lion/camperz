@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import palette from '../../lib/styles/palette';
 export default function ChatItem({ author, content }) {
 	return (
 		<>
@@ -14,7 +15,13 @@ export default function ChatItem({ author, content }) {
 	);
 }
 const ChatListContainer = styled.div`
+	background-color: ${palette.khaki[2]};
 	display: flex;
+	cursor: pointer;
+	&:hover {
+		background-color: ${palette.khaki[1]};
+		color: white;
+	}
 `;
 
 const UserProfileImg = styled.img``;
