@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CommentBox from '../common/CommentBox';
 import { getCommentList } from '../../lib/apis/commentApis';
 

@@ -7,7 +7,7 @@ import ProfileEditPage from './pages/Profile/ProfileEditPage';
 import ProductEditPage from './pages/Product/ProductEditPage';
 import Page404 from './pages/ErrorPage/Page404';
 import PostDetailPage from './pages/post/PostDetailPage';
-import PostUploadPage from './pages/Post/PostUploadPage';
+import PostUploadPage from './pages/post/PostUploadPage';
 import Provider from './component/context/Provider';
 import Modals from './component/modal/Modals';
 import PostList from './component/post/PostList';
