@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-import { imageUpload } from '../../lib/apis/imageUploadApi';
 import iconSrc from '../../assets/image/img-upload-icon.svg';
 
 export default function ProductForm({ setProductInfo, productInfo }) {
@@ -14,15 +13,15 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 			[name]: value,
 		});
 	};
-	const onRegistImg = async () => {
-		const file = photoInput.current.files[0];
-		await imageUpload(file).then((res) => {
-			const itemImage = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
-			setProductInfo({ ...productInfo, itemImage });
+
+	const handleImgChange = (e) => {
+		setProductInfo({
+			...productInfo,
+			itemImage: URL.createObjectURL(e.target.files[0]),
 		});
 	};
 	return (
-		<div>
+		<>
 			<div
 				style={{
 					width: '200px',
@@ -41,7 +40,7 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 					ref={photoInput}
 					type="file"
 					accept="image/*"
-					onChange={onRegistImg}
+					onChange={handleImgChange}
 				/>
 				<PictureArea src={productInfo.itemImage} alt="상품 이미지" />
 			</div>
@@ -67,7 +66,7 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 				링크
 				<input type="text" name="link" value={productInfo.link} onChange={(e) => onChange(e)} />
 			</div>
-		</div>
+		</>
 	);
 }
 
