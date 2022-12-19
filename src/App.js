@@ -6,11 +6,12 @@ import ProductUploadPage from './pages/Product/ProductUploadPage';
 import ProfileEditPage from './pages/Profile/ProfileEditPage';
 import ProductEditPage from './pages/Product/ProductEditPage';
 import Page404 from './pages/ErrorPage/Page404';
-import PostUploadPage from './pages/Post/PostUploadPage';
+import PostUploadPage from './pages/post/PostUploadPage';
 import Provider from './component/context/Provider';
 import Modals from './component/modal/Modals';
 import PostList from './component/post/PostList';
-import FollowPage from './pages/follow/FollowPage';
+import FollowerPage from './pages/follow/FollowerPage';
+import FollowingPage from './pages/follow/FollowingPage';
 
 export default function App() {
 	return (
@@ -25,7 +26,8 @@ export default function App() {
 						<Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
 						<Route path="/postUpload" element={<PostUploadPage />}></Route>
 						<Route path="/pageNotFound" element={<Page404 />}></Route>
-            					<Route path="profile/:accountname/follower" element={<FollowPage />}></Route>
+						<Route path="/profile/:accountname/follower" element={<FollowerPage />}></Route>
+						<Route path="/profile/:accountname/following" element={<FollowingPage />}></Route>
 					</Routes>
 					<Modals />
 				</BrowserRouter>

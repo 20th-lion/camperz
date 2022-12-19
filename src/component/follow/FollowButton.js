@@ -2,12 +2,12 @@ import styled, { css } from "styled-components";
 import React from 'react';
 import palette from "../../lib/styles/palette";
 
-export default function FollowButton({ isFollow, onClick }) {
+export default function FollowButton({ isfollow, onClick }) {
     return (
         <>
             <StyledFollowButton
                 alt="팔로우 버튼"
-                isFollow={isFollow}
+                isfollow={isfollow}
                 onClick={onClick}
             />
         </>
@@ -19,7 +19,7 @@ const StyledFollowButton = styled.button`
 border: 1px solid black;
 ::after {
     ${(props) =>
-        props.isFollow
+        props.isfollow
             ? css`
             content: '취소';
             color: ${palette.khaki[0]};

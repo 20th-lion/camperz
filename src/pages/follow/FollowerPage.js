@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { followerList } from "../../lib/apis/followApis"
 import FollowContents from "../../component/follow/FollowContents";
 
-export default function FollowPage() {
+export default function FollowerPage() {
 
     const [followerData, setFollowerData] = useState();
-    const [followMessage, setFollowMessage] = useState('');
+    const [followerMessage, setFollowerMessage] = useState('');
 
     const getFollowerData = async () => {
         const accountname = 'rkwl123'
@@ -14,7 +14,7 @@ export default function FollowPage() {
             if (res.data.length > 0) {
                 setFollowerData(res.data);
             } else {
-                setFollowMessage('팔로워가 없다.');
+                setFollowerMessage('팔로워가 없다.');
             }
 
         }).catch(
@@ -28,10 +28,10 @@ export default function FollowPage() {
 
     return (
         <>
-            <p> 팔로우창</p>
+            <p>팔로우창</p>
             <FollowContents
-                followerData={followerData}
-                followMessage={followMessage}
+                followData={followerData}
+                followMessage={followerMessage}
             />
         </>
 
