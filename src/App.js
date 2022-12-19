@@ -1,6 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Splash from './pages/Home/Splash';
+import HomePage from './pages/Home/HomePage';
+import LoginPage from './pages/Login/LoginPage';
+import LoginByEmail from './pages/Login/LoginByEmail';
+import Register from './pages/Register/Register';
 import ProfilePage from './pages/Profile/ProfilePage';
 import ProductUploadPage from './pages/Product/ProductUploadPage';
 import ProfileEditPage from './pages/Profile/ProfileEditPage';
@@ -16,6 +21,11 @@ export default function App() {
 			<Provider>
 				<BrowserRouter>
 					<Routes>
+            <Route path='/' element={<Splash />}></Route>
+            <Route path='/home' element={<HomePage />}></Route>
+            <Route path='/login' element={<LoginPage />}></Route>
+            <Route path='/login/email' element={<LoginByEmail />}></Route>
+            <Route path='/register' element={<Register />}></Route>
 						<Route path="/profile/" element={<ProfilePage />}></Route>
 						<Route path="/profile/:accountname" element={<ProfilePage />}></Route>
 						<Route path="/profile/edit" element={<ProfileEditPage />}></Route>
