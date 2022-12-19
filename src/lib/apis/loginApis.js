@@ -1,4 +1,4 @@
-import axiosPublic from './customAxios';
+import { axiosPublic } from './customAxios';
 
 export const getLoginApiResponse = async (inputs) => {
   const reqPath = '/user/login';
