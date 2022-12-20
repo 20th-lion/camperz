@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import CommentBox from '../common/CommentBox';
+
 import { getCommentList } from '../../lib/apis/commentApis';
+
 import CommentItem from './CommentItem';
 import userImg from '../../assets/image/chat-profile.svg';
 export default function PostDetailComment({ post_id }) {
@@ -13,7 +15,7 @@ export default function PostDetailComment({ post_id }) {
 	return (
 		<>
 			{commentList.map((comment, idx) => (
-				<CommentItem key={idx} {...comment} />
+				<CommentItem key={idx} {...comment} post_id={post_id} />
 			))}
 			<CommentBox post_id={post_id} boxIcon={boxIcon} />
 		</>
