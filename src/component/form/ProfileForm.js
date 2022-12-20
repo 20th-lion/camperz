@@ -67,16 +67,6 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 		}
   };
   
-	const handleUsernameBlur = (e) => {
-		setErrorMsg({
-			...errorMsg,
-			usernameErr: validateUsername(e.target.value) || '',
-		});
-	};
-
-
-
-
 	const handlePreventSubmit = (e) => {
 		e.preventDefault();
 	};

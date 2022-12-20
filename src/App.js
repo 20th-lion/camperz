@@ -11,12 +11,12 @@ import ProductUploadPage from './pages/Product/ProductUploadPage';
 import ProfileEditPage from './pages/Profile/ProfileEditPage';
 import ProductEditPage from './pages/Product/ProductEditPage';
 import Page404 from './pages/ErrorPage/Page404';
-import PostDetailPage from './pages/post/PostDetailPage';
-import PostUploadPage from './pages/post/PostUploadPage';
+import PostDetailPage from './pages/Post/PostDetailPage';
+import PostUploadPage from './pages/Post/PostUploadPage';
 import Provider from './component/context/Provider';
 import Modals from './component/modal/Modals';
-import FollowerPage from './pages/follow/FollowerPage';
-import FollowingPage from './pages/follow/FollowingPage';
+import FollowerPage from './pages/Follow/FollowerPage';
+import FollowingPage from './pages/Follow/FollowingPage';
 import ChatListPage from './pages/Chat/ChatListPage';
 import ChatRoomPage from './pages/Chat/ChatRoomPage';
 
