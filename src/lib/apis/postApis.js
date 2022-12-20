@@ -23,15 +23,15 @@ export const postDetailLoader = async (postId) => {
 	return res;
 };
 
-
 export const postEditer = async (postId, postContent) => {
-	console.log(postId);
+	// console.log(postId);
 	const reqPath = `/post/${postId}`;
 	const userData = {
 		...postContent,
 	};
 	const res = await axiosPrivate.put(reqPath, userData);
-}
+	return res;
+};
 export const postDelete = async (id) => {
 	const reqPath = `/post/${id}`;
 
