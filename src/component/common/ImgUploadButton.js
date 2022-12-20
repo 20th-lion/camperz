@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import iconSrc from '../../assets/image/img-upload-icon.svg';
+import iconSrc from '../../assets/icons/img_upload_post.png';
 
 const ButtonContainer = styled.button`
 	width: 50px;

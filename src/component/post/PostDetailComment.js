@@ -4,7 +4,7 @@ import CommentBox from '../common/CommentBox';
 import { getCommentList } from '../../lib/apis/commentApis';
 
 import CommentItem from './CommentItem';
-import userImg from '../../assets/image/chat-profile.svg';
+import userImg from '../../assets/icons/basic_profile_chat.png';
 export default function PostDetailComment({ post_id }) {
 	const [commentList, setCommentList] = useState([]);
 	const boxIcon = userImg;

@@ -1,4 +1,4 @@
-import profileImg from '../../assets/image/chat-profile.svg';
+import profileImg from '../../assets/icons/basic_profile_chat.png';
 
 export const chatListData = [
 	{ author: { image: `${profileImg}`, userName: '캠핑왕' }, content: '그때 좋았다던 캠핑장이 어디지?' },

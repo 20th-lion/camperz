@@ -14,7 +14,6 @@ export default function PostList({ user }) {
 		});
 	};
 	useEffect(() => {
-		// loadPost();
 		getPostList(user).then((res) => {
 			setPostList([...res.data.post]);
 		});
@@ -29,7 +28,14 @@ export default function PostList({ user }) {
 				</div>
 				<div>
 					{toggle
-						? postList.map((post, idx) => <PostItem key={idx} {...post} />)
+						? postList.map((post, idx) => (
+								<PostItem
+									key={idx}
+									{...post}
+									setPostList={setPostList}
+									user={user}
+								/>
+						  ))
 						: postList.map((post, idx) => <PostPicture key={idx} {...post} />)}
 				</div>
 			</section>

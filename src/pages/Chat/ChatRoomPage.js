@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import CommentBox from '../../component/common/CommentBox';
-import userImg from '../../assets/image/chat-profile.svg';
-import plusBtn from '../../assets/image/plus-button.svg';
+import userImg from '../../assets/icons/basic_profile_chat.png';
+import plusBtn from '../../assets/icons/chat_upload.png';
 import placeImg from '../../assets/image/camp.jpg';
 export default function ChatRoomPage() {
 	const otherData =

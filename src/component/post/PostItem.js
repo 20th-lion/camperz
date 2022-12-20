@@ -1,20 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import HeartButton from './HeartBtton';
+
 import { addHeart } from '../../lib/apis/HeartApis';
 import { deleteHeart } from '../../lib/apis/HeartApis';
+import { postDelete } from '../../lib/apis/postApis';
+import { useModals } from './../../lib/hooks/useModals';
+import Button from './../common/Button';
+import HeartButton from './HeartBtton';
+import { modals } from '../modal/Modals';
+import { getPostList } from './../../lib/apis/postApis';
 
-export default function PostItem({ id, content, image, createdAt, updatedAt, hearted, heartCount, commentCount }) {
+export default function PostItem({
+	id,
+	content,
+	image,
+	createdAt,
+	updatedAt,
+	heartCount,
+	commentCount,
+	setPostList,
+	user,
+}) {
 	const [pushHeart, setPushHeart] = useState(false);
 	const [count, setCount] = useState(heartCount);
+	const { openModal } = useModals();
+	const navigate = useNavigate();
 
 	const pushHeartButton = async () => {
 		await addHeart(id)
 			.then((res) => {
 				setPushHeart(res.data.post.hearted);
 				setCount(res.data.post.heartCount);
-				//console.log(res);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -24,7 +41,6 @@ export default function PostItem({ id, content, image, createdAt, updatedAt, hea
 			.then((res) => {
 				setPushHeart(res.data.post.hearted);
 				setCount(res.data.post.heartCount);
-				//console.log(res);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -33,9 +49,25 @@ export default function PostItem({ id, content, image, createdAt, updatedAt, hea
 		pushHeart ? cancelHeartButton() : pushHeartButton();
 	};
 
+	const handleClickModal = () => {
+		openModal(modals.postItemModal, {
+			onEdit: () => {
+				navigate(`/postdetail/${id}/edit`);
+			},
+			onRemove: async () => {
+				await postDelete(id);
+				getPostList(user).then((res) => {
+					setPostList([...res.data.post]);
+				});
+			},
+			onReport: () => {},
+			type: user === localStorage.getItem('accountname'),
+		});
+	};
 	return (
 		<>
 			<StyledItemBlock>
+				<Button text="모달" onClick={handleClickModal} />
 				<div>아이디{id}</div>
 				<div>컨텐츠{content}</div>
 				<div
