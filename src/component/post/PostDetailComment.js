@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CommentBox from '../common/CommentBox';
 import { getCommentList } from '../../lib/apis/commentApis';
-
+import CommentItem from './CommentItem';
+import userImg from '../../assets/image/chat-profile.svg';
 export default function PostDetailComment({ post_id }) {
-	let commenterName;
-	let commenterImg;
-	let comment;
-
+	const [commentList, setCommentList] = useState([]);
+	const boxIcon = userImg;
 	getCommentList(post_id).then((res) => {
-		commenterName = res.comment.id;
-		commenterImg = res.comment.author.image;
-		comment = res.comment.content;
+		setCommentList([...res.data.comments]);
 	});
 
 	return (
 		<>
-			{commenterImg}
-			{commenterName}
-			{comment}
-			<CommentBox post_id={post_id} />
+			{commentList.map((comment, idx) => (
+				<CommentItem key={idx} {...comment} />
+			))}
+			<CommentBox post_id={post_id} boxIcon={boxIcon} />
 		</>
 	);
 }

@@ -1,24 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { postDetailLoader } from '../../lib/apis/postApis';
 import styled from 'styled-components';
 
-export default function PostDetailContent({ post_id }) {
-	let userName;
-	let content;
-	let image;
-	let updated;
-	let heartCount;
-	let conmentCount;
+export default function PostDetailContent({ id }) {
+	const [userName, setUserName] = useState('');
+	const [content, setcontent] = useState('');
+	const [image, setimage] = useState('');
+	const [updated, setUpdated] = useState('');
+	const [heartCount, setheartCount] = useState('');
+	const [conmentCount, setconmentCount] = useState('');
 
-	postDetailLoader(post_id).then((res) => {
-		userName = res.post.author.username;
-		content = res.post.content;
-		image = res.post.image;
-		updated = res.post.updatedAt;
-		heartCount = res.post.heartCount;
-		conmentCount = res.post.conmentCount;
-		console.log(res);
+	postDetailLoader(id).then((res) => {
+		setUserName(res.data.post.author.username);
+		setcontent(res.data.post.content);
+		setimage(res.data.post.image);
+		setUpdated(res.data.post.updatedAt);
+		setheartCount(res.data.post.heartCount);
+		setconmentCount(res.data.post.conmentCount);
 	});
+
 	return (
 		<>
 			<UserInfo>{userName}</UserInfo>

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
 import Button from '../common/Button';
 import { getUserInfo } from '../../lib/apis/profileApis';
 
-export default React.memo(function UserProfile({ type, user }) {
+import FollowButton from '../follow/FollowButton';
+import { followUser, unfollowUser } from '../../lib/apis/followApis';
+
+export default React.memo(function UserProfile({ type, user, isfollow }) {
 	const navigate = useNavigate();
 	const [userInfo, setUserInfo] = useState({});
-
 	const { image, accountname, username, followerCount, followingCount } = userInfo;
 
 	useEffect(() => {
 		getUserInfo(user).then((res) => {
-			const { accountname, username, followingCount, followerCount, image } = res.data.profile;
+			const { accountname, username, followingCount, followerCount, image, isfollow } = res.data.profile;
 			setUserInfo({
 				accountname,
 				username,
@@ -21,8 +22,10 @@ export default React.memo(function UserProfile({ type, user }) {
 				followerCount,
 				image,
 			});
+			setIsFollowed(isfollow);
 		});
-	}, []);
+
+	}, [userInfo]);
 
 	const goFllowerPage = () => {
 		navigate(`/profile/${user}/follower`);
@@ -30,6 +33,25 @@ export default React.memo(function UserProfile({ type, user }) {
 	const goFllowingPage = () => {
 		navigate(`/profile/${user}/following`);
 	};
+	const [is_Follow, setIsFollowed] = useState(isfollow);
+	const handleFollow = async () => {
+		if (is_Follow) {
+			await unfollowUser(accountname).then((res) => {
+				console.log(res);
+				setIsFollowed(false);
+
+			})
+		} else {
+			await followUser(accountname).then((res) => {
+				console.log(res);
+				setIsFollowed(true);
+			})
+		}
+
+	};
+
+
+
 
 	return (
 		<UserProfileBlock>
@@ -45,6 +67,7 @@ export default React.memo(function UserProfile({ type, user }) {
 			<div>이름:{username}</div>
 			<div onClick={goFllowerPage}>팔로워:{followerCount}</div>
 			<div onClick={goFllowingPage}>팔로잉{followingCount}</div>
+
 			{type === 'mine' ? (
 				<>
 					<Button text="프로필 수정" onClick={() => navigate('/profile/edit')} />
@@ -52,7 +75,7 @@ export default React.memo(function UserProfile({ type, user }) {
 				</>
 			) : (
 				<>
-					<Button text="언팔로우" onClick={() => {}} />
+					<FollowButton isfollow={is_Follow} onClick={handleFollow} />
 				</>
 			)}
 		</UserProfileBlock>

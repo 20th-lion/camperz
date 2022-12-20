@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import Splash from './pages/Home/Splash';
-import HomePage from './pages/Home/HomePage';
+import HomePage from './pages/Home/HomePage.js';
 import LoginPage from './pages/Login/LoginPage';
 import LoginByEmail from './pages/Login/LoginByEmail';
 import Register from './pages/Register/Register';
@@ -12,14 +11,13 @@ import ProfileEditPage from './pages/Profile/ProfileEditPage';
 import ProductEditPage from './pages/Product/ProductEditPage';
 import Page404 from './pages/ErrorPage/Page404';
 import PostDetailPage from './pages/post/PostDetailPage';
-import PostUploadPage from './pages/Post/PostUploadPage';
+import PostUploadPage from './pages/post/PostUploadPage';
 import Provider from './component/context/Provider';
 import Modals from './component/modal/Modals';
-import PostList from './component/post/PostList';
 import FollowerPage from './pages/follow/FollowerPage';
 import FollowingPage from './pages/follow/FollowingPage';
-import LoginPage from './pages/Login/LoginPage';
-import LoginByEmail from './pages/Login/LoginByEmail';
+import ChatListPage from './pages/Chat/ChatListPage';
+import ChatRoomPage from './pages/Chat/ChatRoomPage';
 
 
 export default function App() {
@@ -45,10 +43,13 @@ export default function App() {
 						<Route path="/profile/:accountname/following" element={<FollowingPage />}></Route>
 						<Route path='/login' element={<LoginPage />}></Route>
 						<Route path='/login/email' element={<LoginByEmail />}></Route>
+						<Route path="/chatlist" element={<ChatListPage />}></Route>
+						<Route path="/chatlist/:id" element={<ChatRoomPage />}></Route>
 					</Routes >
 					<Modals />
 				</BrowserRouter >
 			</Provider >
+
 
 		</>
 	);
