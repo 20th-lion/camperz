@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../component/common/Header';
 import NavBar from '../../component/common/NavBar';
 import Button from '../../component/common/Button';
-import defaultProfileImg from '../../assets/image/default-profile-img.svg';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
 import PostList from '../../component/post/PostList';
 
 export default function HomePage() {
