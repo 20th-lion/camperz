@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { registProduct } from '../../lib/apis/productApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
 
+
 import Header from '../../component/common/Header';
 import Button from '../../component/common/Button';
 import ProductForm from '../../component/form/ProductForm';
@@ -31,11 +32,9 @@ export default function ProductUploadPage() {
 	}
 
 	const handleSaveBtn = async () => {
-		console.log(productInfo.itemImage);
 		await imageUpload(productInfo.itemImage).then((res) => {
-			const imageUrl = 'https://mandarin.api.weniv.co.kr/' + res.data.filename;
-			console.log(res);
-			registProduct({ ...productInfo, itemImage: imageUrl });
+			const itemImage = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
+			registProduct({ ...productInfo, itemImage });
 		});
 		navigate('/profile');
 	};

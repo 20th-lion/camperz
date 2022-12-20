@@ -21,11 +21,10 @@ export default function ProductEditPage() {
 	}, []);
 
 	const handleSaveBtn = async () => {
-		await imageUpload(productInfo.itemImage).then((res) => {
+		await imageUpload(productInfo.itemImage).then(async (res) => {
 			const itemImage = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
-			setProductInfo({ ...productInfo, itemImage });
+			await editProduct(id, { ...productInfo, itemImage });
 		});
-		editProduct(id, productInfo);
 		navigate('/profile');
 	};
 	return (
