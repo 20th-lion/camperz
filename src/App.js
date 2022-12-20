@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Splash from './pages/Home/Splash';
+import HomePage from './pages/Home/HomePage.js';
 import LoginPage from './pages/Login/LoginPage';
 import LoginByEmail from './pages/Login/LoginByEmail';
 import Register from './pages/Register/Register';
