@@ -5,12 +5,14 @@ import styled from 'styled-components';
 import ProfileModal from './ProfileModal';
 import ProductModal from './ProductModal';
 import ConfirmModal from './ConfirmModal';
+import PostItemModal from './PostItemModal';
 import CommentModal from './CommentModal';
 
 export const modals = {
 	profileModal: ProfileModal,
 	productModal: ProductModal,
 	confirmModal: ConfirmModal,
+	postItemModal: PostItemModal,
 	commentModal: CommentModal,
 };
 
