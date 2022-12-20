@@ -1,11 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { postUploader } from '../../lib/apis/postApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
 
 export default function UploadButton({ fileImage, text, preConvertedImg }) {
 	let uploadValidation = false;
-
+	const navigate = useNavigate();
 	if (!(fileImage === '' && text === '')) {
 		uploadValidation = true;
 	}
@@ -21,6 +22,7 @@ export default function UploadButton({ fileImage, text, preConvertedImg }) {
 
 			postUploader(postContent).then((res) => {
 				console.log(res);
+				navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 			});
 		});
 		// if (uploadValidation === true) {
