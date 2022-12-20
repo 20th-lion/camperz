@@ -22,7 +22,10 @@ export default function ProductEditPage() {
 
 	const handleSaveBtn = async () => {
 		await imageUpload(productInfo.itemImage).then(async (res) => {
-			const itemImage = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
+			const itemImage = res.data.filename
+				? 'https://mandarin.api.weniv.co.kr/' + res.data.filename
+				: productInfo.itemImage;
+			console.log(res);
 			await editProduct(id, { ...productInfo, itemImage });
 		});
 		navigate('/profile');

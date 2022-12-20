@@ -4,6 +4,7 @@ import { getEmailValidApiResponse, getRegisterApiResponse } from '../../lib/apis
 import AuthForm from '../../component/form/AuthForm';
 import ProfileForm from '../../component/form/ProfileForm';
 import Button from '../../component/common/Button';
+import { imageUpload } from './../../lib/apis/imageUploadApi';
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Register() {
 
 	const handleVerifyEmail = async (newErrorMsg, inputs) => {
 		const newRegisterErrMsg = [...newErrorMsg];
-    await getEmailValidApiResponse(inputs.email).then((res) => {
+		await getEmailValidApiResponse(inputs.email).then((res) => {
 			if (res.data.message === '이미 가입된 이메일 주소 입니다.') {
 				newRegisterErrMsg[0] = '*이미 가입된 이메일 주소입니다.';
 			} else {
@@ -33,7 +34,7 @@ export default function Register() {
 		password: '',
 		accountname: '',
 		intro: '',
-		image: '',
+		image: 'https://mandarin.api.weniv.co.kr/1671513886026.png',
 	});
 
 	const [form, setForm] = useState('AuthForm');
@@ -42,11 +43,15 @@ export default function Register() {
 		setForm('ProfileForm');
 	};
 
-	const handleRegister = () => {
-		getRegisterApiResponse(userInfo).then((res) => {
-			if (res.data.message === '회원가입 성공') {
-				navigate('/login');
-			}
+	const handleRegister = async () => {
+		await imageUpload(userInfo.image).then((res) => {
+			const fileName = res.data.filename || '1671513886026.png';
+			const imageUrl = 'https://mandarin.api.weniv.co.kr/' + fileName;
+			getRegisterApiResponse({ ...userInfo, image: imageUrl }).then((res) => {
+				if (res.data.message === '회원가입 성공') {
+					navigate('/login');
+				}
+			});
 		});
 	};
 

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import iconSrc from '../../assets/image/img-upload-icon.svg';
+import defaultProfileImg from '../../assets/image/default-profile-img.svg';
 
 export default function ProductForm({ setProductInfo, productInfo }) {
 	const photoInput = useRef();
@@ -43,7 +44,10 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 					accept="image/*"
 					onChange={handleImgChange}
 				/>
-				<PictureArea src={currentImg || productInfo.itemImage} alt="상품 이미지" />
+				<PictureArea
+					src={currentImg || productInfo.itemImage || defaultProfileImg}
+					alt="상품 이미지"
+				/>
 			</div>
 			<div>
 				이름

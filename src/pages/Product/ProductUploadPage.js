@@ -4,11 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { registProduct } from '../../lib/apis/productApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
 
-
 import Header from '../../component/common/Header';
 import Button from '../../component/common/Button';
 import ProductForm from '../../component/form/ProductForm';
-import { useEffect } from 'react';
 
 export default function ProductUploadPage() {
 	const navigate = useNavigate();
@@ -18,9 +16,7 @@ export default function ProductUploadPage() {
 		link: '',
 		itemImage: '',
 	});
-	useEffect(() => {
-		console.log(productInfo);
-	}, [productInfo]);
+
 	let isCompleted = false;
 	if (
 		productInfo.itemName !== '' &&
