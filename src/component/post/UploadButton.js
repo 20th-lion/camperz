@@ -15,10 +15,10 @@ export default function UploadButton({ fileImage, text, preConvertedImg }) {
 			const postContent = {
 				post: {
 					content: text,
-					image: res.data.filename, //"imageurl1, imageurl2" 형식으로
+					image: `${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
 				},
 			};
-			// console.log(postContent);
+
 			postUploader(postContent).then((res) => {
 				console.log(res);
 			});

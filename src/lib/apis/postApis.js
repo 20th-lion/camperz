@@ -7,10 +7,12 @@ export const getPostList = async (accountname) => {
 	return res;
 };
 
-export const postUploader = async ({ postContent }) => {
+export const postUploader = async (postContent) => {
 	const reqPath = '/post';
-
-	const res = await axiosPrivate.post(reqPath, postContent);
+	const userData = {
+		...postContent,
+	};
+	const res = await axiosPrivate.post(reqPath, userData);
 	return res;
 };
 
