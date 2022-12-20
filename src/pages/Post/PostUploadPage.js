@@ -13,12 +13,21 @@ export default function PostUploadPage() {
 	const [preConvertedImg, setPreConvertedImg] = useState('');
 	// const navigate = useNavigate();
 	const { id } = useParams();
+
+	const [mode, setMode] = useState('');
+
 	useEffect(() => {
 		if (id !== undefined) {
 			postDetailLoader(id).then((res) => {
 				setText(res.data.post.content);
 				setFileImage(res.data.post.image);
 			});
+		}
+		if (id !== undefined) {
+			setMode('edit');
+		}
+		if (id === undefined) {
+			setMode('new');
 		}
 	}, []);
 
@@ -39,7 +48,13 @@ export default function PostUploadPage() {
 
 	return (
 		<>
-			<UploadButton text={text} fileImage={fileImage} preConvertedImg={preConvertedImg} />
+			<UploadButton
+				text={text}
+				fileImage={fileImage}
+				preConvertedImg={preConvertedImg}
+				mode={mode}
+				postId={id}
+			/>
 			<PostTextArea
 				onChange={(e) => handleChange(e)}
 				value={text}
