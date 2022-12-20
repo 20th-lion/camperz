@@ -10,7 +10,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 	const photoInput = useRef();
 
 	const { image, username, accountname, intro } = userInfo;
-
+	console.log(image);
 	const [currentImg, setCurrentImg] = useState(image);
 	const [errorMsg, setErrorMsg] = useState({
 		usernameErr: '',

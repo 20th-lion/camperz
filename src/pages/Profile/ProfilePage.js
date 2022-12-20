@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
@@ -12,16 +12,19 @@ import { useModals } from './../../lib/hooks/useModals';
 
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
-	console.log(myAccountname);
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = accountname ? 'other' : 'mine';
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 
+	useEffect(() => {
+		console.log('111');
+	}, []);
+
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => { },
+			onSetting: () => {},
 			onLogout: () => {
 				logout();
 				navigate('/');
