@@ -10,19 +10,18 @@ import { logout } from '../../lib/utils/logout';
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
 
-
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
+	console.log(myAccountname);
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = accountname ? 'other' : 'mine';
-
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => {},
+			onSetting: () => { },
 			onLogout: () => {
 				logout();
 				navigate('/');
