@@ -11,7 +11,12 @@ import { imageUpload } from '../../lib/apis/imageUploadApi';
 export default function ProfileEditPage() {
 	const navigate = useNavigate();
 	const savedAccountname = localStorage.getItem('accountname');
-	const [userInfo, setUserInfo] = useState({ image: '', username: '', accountname: '', intro: '' });
+	const [userInfo, setUserInfo] = useState({ image: undefined, username: '', accountname: '', intro: '' });
+	const [btnActive, setBtnActive] = useState(true);
+	const [errorMsg, setErrorMsg] = useState({
+		usernameErr: '',
+		accountnameErr: '',
+	});
 
 	useEffect(() => {
 		setPrevUserInfo();
@@ -29,17 +34,28 @@ export default function ProfileEditPage() {
 		});
 	};
 	const handleSaveBtn = async () => {
-		await imageUpload(userInfo.itemImage).then((res) => {
-			const image = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
-			setUserInfo({ ...userInfo, image });
+		await imageUpload(userInfo.image).then((res) => {
+			const imageUrl = 'https://mandarin.api.weniv.co.kr/' + res.data.filename;
+			console.log(res);
+			editProfile({ ...userInfo, image: imageUrl });
 		});
-		await editProfile(userInfo);
+		localStorage.setItem('accountname', userInfo.accountname);
 		navigate('/profile');
 	};
+
 	return (
 		<div>
-			<Header leftChild={null} rightChild={<Button text={'저장'} onClick={handleSaveBtn} />} />
-			<ProfileForm setUserInfo={setUserInfo} userInfo={userInfo} />
+			<Header
+				leftChild={null}
+				rightChild={<Button text={'저장'} onClick={handleSaveBtn} active={btnActive} />}
+			/>
+			<ProfileForm
+				setUserInfo={setUserInfo}
+				userInfo={userInfo}
+				setBtnActive={setBtnActive}
+				setErrorMsg={setErrorMsg}
+				errorMsg={errorMsg}
+			/>
 		</div>
 	);
 }

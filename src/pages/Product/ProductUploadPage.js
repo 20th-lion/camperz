@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { registProduct } from '../../lib/apis/productApis';
+import { imageUpload } from '../../lib/apis/imageUploadApi';
 
 import Header from '../../component/common/Header';
 import Button from '../../component/common/Button';
 import ProductForm from '../../component/form/ProductForm';
+import { useEffect } from 'react';
 
 export default function ProductUploadPage() {
 	const navigate = useNavigate();
@@ -15,7 +17,9 @@ export default function ProductUploadPage() {
 		link: '',
 		itemImage: '',
 	});
-
+	useEffect(() => {
+		console.log(productInfo);
+	}, [productInfo]);
 	let isCompleted = false;
 	if (
 		productInfo.itemName !== '' &&
@@ -26,14 +30,19 @@ export default function ProductUploadPage() {
 		isCompleted = true;
 	}
 
-	const handleSave = () => {
-		registProduct(productInfo);
+	const handleSaveBtn = async () => {
+		console.log(productInfo.itemImage);
+		await imageUpload(productInfo.itemImage).then((res) => {
+			const imageUrl = 'https://mandarin.api.weniv.co.kr/' + res.data.filename;
+			console.log(res);
+			registProduct({ ...productInfo, itemImage: imageUrl });
+		});
 		navigate('/profile');
 	};
 
 	return (
 		<>
-			<Header rightChild={<Button onClick={handleSave} text={'저장'} active={isCompleted} />} />
+			<Header rightChild={<Button onClick={handleSaveBtn} text={'저장'} active={isCompleted} />} />
 			<div>
 				<ProductForm setProductInfo={setProductInfo} productInfo={productInfo} />
 			</div>

@@ -17,33 +17,27 @@ export const getEmailValidApiResponse = async (email) => {
 };
 
 export const getAccountNameValidApiResponse = async (accountname) => {
-	// const reqPath = '/user/emailvalid';
-	// const registerData = {
-	//   user: {email},
-	// };
-	// const headers = {
-	//   'Content-type': 'application/json',
-	// };
-	// try {
-	//   const res = await axiosPublic.post(reqPath, registerData, { headers });
-	//   return res;
-	// } catch (error) {
-	//   return error;
-	// }
+	const reqPath = '/user/accountnamevalid';
+	const registerData = {
+		user: { accountname },
+	};
+	try {
+		const res = await axiosPublic.post(reqPath, registerData);
+		return res;
+	} catch (error) {
+		return error;
+	}
 };
 
-export const getRegisterApiResponse = async (email) => {
-	// const reqPath = '/user/emailvalid';
-	// const registerData = {
-	//   user: {email},
-	// };
-	// const headers = {
-	//   'Content-type': 'application/json',
-	// };
-	// try {
-	//   const res = await axiosPublic.post(reqPath, registerData, { headers });
-	//   return res;
-	// } catch (error) {
-	//   return error;
-	// }
+export const getRegisterApiResponse = async (userInfo) => {
+	const reqPath = '/user';
+	const registerData = {
+		user: { ...userInfo },
+	};
+	try {
+		const res = await axiosPublic.post(reqPath, registerData);
+		return res;
+	} catch (error) {
+		return error;
+	}
 };
