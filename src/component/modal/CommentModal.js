@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 
-export default function CommentModal({ onReport, onClose, type }) {
+export default function CommentModal({ onReport, onClose, onRemove, type }) {
 	const handleClickReport = () => {
 		onReport();
 		onClose();
@@ -9,12 +9,17 @@ export default function CommentModal({ onReport, onClose, type }) {
 	const handleClose = () => {
 		onClose();
 	};
+
+	const handleClickRemove = () => {
+		onRemove();
+		onClose();
+	};
 	return (
 		<ReactModal isOpen ariaHideApp={false} onRequestClose={handleClose}>
 			<div>
 				{type === 'mine' ? (
 					<>
-						<button onClick={handleClickReport}>댓글 삭제하기</button>
+						<button onClick={handleClickRemove}>댓글 삭제하기</button>
 					</>
 				) : (
 					<>
