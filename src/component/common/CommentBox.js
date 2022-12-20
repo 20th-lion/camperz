@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import commentbtn from '../../assets/image/commentbtn.svg';
+
 import { postComment } from '../../lib/apis/commentApis';
 
-export default function CommentBox({ post_id }) {
+export default function CommentBox({ post_id, boxIcon }) {
 	const [btnHandler, setBtnHandler] = useState(false);
 	const [commentContent, setCommentContent] = useState('');
 
@@ -26,6 +27,7 @@ export default function CommentBox({ post_id }) {
 	return (
 		<>
 			<CommentContainer>
+				<img src={boxIcon} />
 				<CommentInput
 					onChange={(e) => {
 						commentInputValidator(e);
