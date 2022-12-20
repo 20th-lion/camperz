@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import iconSrc from '../../assets/image/img-upload-icon.svg';
-import defaultProfileImg from '../../assets/image/default-profile-img.svg';
+import iconSrc from '../../assets/icons/img_upload_post.png';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
 import { validateUsername, validateAccountname } from '../../lib/utils/profileValidation';
 import { useEffect } from 'react';
 

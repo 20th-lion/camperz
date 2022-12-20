@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import iconSrc from '../../assets/image/404logo.svg';
+import iconSrc from '../../assets/icons/404_logo.png';
 import SearchButton from '../../component/common/SearchButton';
 
 const NotFoundImg = styled.img`
