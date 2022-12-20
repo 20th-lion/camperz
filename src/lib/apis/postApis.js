@@ -29,3 +29,10 @@ export const postDelete = async (id) => {
 	const res = await axiosPrivate.delete(reqPath);
 	return res;
 };
+
+export const getFeed = async (id) => {
+	const reqPath = `/post/feed`;
+
+	const res = await axiosPrivate.get(reqPath);
+	return res;
+};

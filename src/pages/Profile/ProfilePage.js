@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
@@ -18,10 +18,6 @@ export default function ProfilePage() {
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		console.log('111');
-	}, []);
-
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
 			onSetting: () => {},
@@ -36,7 +32,7 @@ export default function ProfilePage() {
 		<>
 			<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
 			<div>프로필</div>
-			<UserProfile type={type} user={user} />
+			<UserProfile user={user} type={type} />
 			<div>상품목록</div>
 			<ProductList user={user} type={type} />
 			<div>포스트목록</div>
