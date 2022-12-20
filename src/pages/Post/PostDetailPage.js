@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
 import PostDetailContent from '../../component/post/PostDetailContent';
 import PostDetailComment from '../../component/post/PostDetailComment';
 
@@ -10,6 +11,7 @@ export default function PostDetailPage() {
 	return (
 		<>
 			{/* <Headers /> */}
+
 			<PostDetailContent id={id} />
 			<PostDetailComment post_id={id} />
 		</>
