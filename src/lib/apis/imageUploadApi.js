@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const imageUpload = async (file) => {
-	console.log('api' + file);
 	const reqPath = '/image/uploadfile';
 	const formData = new FormData();
 	const header = {
