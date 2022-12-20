@@ -12,6 +12,7 @@ import { useModals } from './../../lib/hooks/useModals';
 
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
+	console.log(myAccountname);
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = accountname ? 'other' : 'mine';

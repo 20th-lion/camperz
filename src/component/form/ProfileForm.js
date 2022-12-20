@@ -6,13 +6,22 @@ import defaultProfileImg from '../../assets/image/default-profile-img.svg';
 import { validateUsername, validateAccountname } from '../../lib/utils/profileValidation';
 import { useEffect } from 'react';
 
-export default function ProfileForm({ setUserInfo, userInfo, setBtnActive, setErrorMsg, errorMsg }) {
+
+export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 	const photoInput = useRef();
+
 	const { image, username, accountname, intro } = userInfo;
+
+	const [currentImg, setCurrentImg] = useState(image);
+	const [errorMsg, setErrorMsg] = useState({
+		usernameErr: '',
+		accountnameErr: '',
+	});
 
 	useEffect(() => {
 		showingActive();
-	}, [errorMsg]);
+	}, [errorMsg, userInfo]);
+
 
 	const onChange = (e) => {
 		const { name, value } = e.target;
@@ -23,14 +32,15 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive, setEr
 	};
 
 	const handleImgChange = (e) => {
-		setUserInfo({
+		setUserInfo((userInfo) => ({
 			...userInfo,
-			image: URL.createObjectURL(e.target.files[0]),
-		});
+			image: e.target.files[0],
+		}));
+		setCurrentImg(URL.createObjectURL(e.target.files[0]));
 	};
 
 	const showingActive = () => {
-		!!errorMsg.usernameErr === false && !!errorMsg.accountnameErr === false
+		errorMsg.usernameErr === '' && errorMsg.accountnameErr === ''
 			? username && accountname
 				? setBtnActive(true)
 				: setBtnActive(false)
@@ -44,13 +54,28 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive, setEr
 		});
 	};
 
+
 	const handleAccountnameBlur = async (e) => {
-		let validationMsg = validateAccountname(e.target.value);
-		let accountnameErr = await validationMsg;
-		if (accountnameErr === '*이미 가입된 계정ID 입니다.') {
-			setErrorMsg({ ...errorMsg, accountnameErr });
-		} else setErrorMsg({ ...errorMsg, accountnameErr: '' });
+		const savedAccountname = localStorage.getItem('accountname');
+		
+    if (savedAccountname !== accountname) {
+			let validationMsg = validateAccountname(e.target.value);
+			let accountnameErr = await validationMsg;
+			if (accountnameErr === '*이미 가입된 계정ID 입니다.') {
+				setErrorMsg({ ...errorMsg, accountnameErr });
+			} else setErrorMsg({ ...errorMsg, accountnameErr: '' });
+		}
+  };
+  
+	const handleUsernameBlur = (e) => {
+		setErrorMsg({
+			...errorMsg,
+			usernameErr: validateUsername(e.target.value) || '',
+		});
 	};
+
+
+
 
 	const handlePreventSubmit = (e) => {
 		e.preventDefault();
@@ -81,7 +106,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive, setEr
 						onChange={handleImgChange}
 					/>
 					<PictureArea
-						src={!userInfo.image ? defaultProfileImg : userInfo.image}
+						src={currentImg || userInfo.image || defaultProfileImg}
 						alt="기본프로필사진"
 					/>
 				</div>
