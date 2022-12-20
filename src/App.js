@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Splash from './pages/Home/Splash';
 import HomePage from './pages/Home/HomePage.js';
+import SearchPage from './pages/Search/SearchPage.js';
 import LoginPage from './pages/Login/LoginPage';
 import LoginByEmail from './pages/Login/LoginByEmail';
 import Register from './pages/Register/Register';
@@ -28,6 +29,7 @@ export default function App() {
 					<Routes>
 						<Route path='/' element={<Splash />}></Route>
 						<Route path='/home' element={<HomePage />}></Route>
+						<Route path='/search' element={<SearchPage />}></Route>
 						<Route path='/login' element={<LoginPage />}></Route>
 						<Route path='/login/email' element={<LoginByEmail />}></Route>
 						<Route path='/register' element={<Register />}></Route>
