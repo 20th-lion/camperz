@@ -45,7 +45,7 @@ export default function PostItem({ id, content, image, createdAt, updatedAt, hea
 					}}
 				>
 					이미지
-					{image && <Simg src={'https://mandarin.api.weniv.co.kr/' + image} alt="" />}
+					{image && <Simg src={image} alt="" />}
 				</div>
 				<div>작성일{createdAt}</div>
 				<div>업데이트 시간{updatedAt}</div>

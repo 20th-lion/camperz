@@ -16,9 +16,12 @@ export default function UploadButton({ fileImage, text, preConvertedImg }) {
 			const postContent = {
 				post: {
 					content: text,
-					image: `${res.data.filename}`,
+					image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
 				},
 			};
+			if (res.data.filename === undefined) {
+				delete postContent.post.image;
+			}
 
 			postUploader(postContent).then((res) => {
 				console.log(res);
