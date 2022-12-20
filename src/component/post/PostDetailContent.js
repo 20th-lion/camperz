@@ -23,7 +23,7 @@ export default function PostDetailContent({ id }) {
 		<>
 			<UserInfo>{userName}</UserInfo>
 			<Content>{content}</Content>
-			<Image src={image} />
+			{image === 'undefined' ? <></> : <Image src={'https://mandarin.api.weniv.co.kr/' + image} />}
 			<SocialInfo>
 				{heartCount}
 				{conmentCount}
