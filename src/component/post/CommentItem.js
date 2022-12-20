@@ -10,21 +10,16 @@ export default function CommentItem({ author, content, createdAt, id, post_id })
 	const handleModalClick = () => {
 		openModal(modals.commentModal, {
 			onReport: () => {
-				reportComment(post_id, id).then((res) => {
-					console.log(res);
-				});
+				reportComment(post_id, id).then((res) => {});
 				console.log('신고시 실행되는 함수');
 			},
 			onClose: () => {
 				navigate(`/postdetail/${post_id}`);
 			},
 			onRemove: () => {
-				deleteComment(post_id, id).then((res) => {
-					console.log(res);
-				});
+				deleteComment(post_id, id).then((res) => {});
 				console.log('댓글 삭제시 실행되는 함수');
 			},
-			// onSetting: () => {},
 		});
 	};
 	return (

@@ -21,6 +21,7 @@ export default function CommentBox({ post_id, boxIcon }) {
 	};
 
 	const btnClickEvent = () => {
+		console.log(post_id, commentContent);
 		postComment(post_id, commentContent);
 	};
 

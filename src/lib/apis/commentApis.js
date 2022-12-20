@@ -12,7 +12,12 @@ export const getCommentList = async (post_id) => {
 export const postComment = async (post_id, commentContent) => {
 	const reqPath = `/post/${post_id}/comments`;
 
-	const res = await axiosPrivate.post(reqPath, commentContent);
+	const userData = {
+		comment: {
+			content: `${commentContent}`,
+		},
+	};
+	const res = await axiosPrivate.post(reqPath, userData);
 	return res;
 };
 
