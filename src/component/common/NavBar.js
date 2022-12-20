@@ -10,7 +10,7 @@ export default function NavBar() {
 						<Link to="/home">홈</Link>
 					</li>
 					<li>
-						<Link to="/chat/list">채팅</Link>
+						<Link to="/chatlist">채팅</Link>
 					</li>
 					<li>
 						<Link to="/postUpload">게시글</Link>
