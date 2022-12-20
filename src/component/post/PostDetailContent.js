@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { postDetailLoader } from '../../lib/apis/postApis';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default function PostDetailContent({ id }) {
 	const [userName, setUserName] = useState('');
@@ -21,6 +22,9 @@ export default function PostDetailContent({ id }) {
 
 	return (
 		<>
+			<Link to={`/postUpload/${id}`}>
+				<div>수정</div>
+			</Link>
 			<UserInfo>{userName}</UserInfo>
 			<Content>{content}</Content>
 			{image === 'https://mandarin.api.weniv.co.kr/undefined' ? <></> : <Image src={image} />}

@@ -1,25 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { postDetailLoader } from '../../lib/apis/postApis';
+import { useParams } from 'react-router-dom';
 import ImgUploadButton from '../../component/common/ImgUploadButton';
 import UploadButton from '../../component/post/UploadButton';
 import NavBar from '../../component/common/NavBar';
 // import { postUploader } from '../../lib/apis/postApis';
-const PostTextArea = styled.textarea`
-	width: 300px;
-	height: 500px;
-	resize: none;
-`;
 
-const PictureArea = styled.img`
-	width: 200px;
-	height: 150px;
-	object-fit: cover;
-`;
 export default function PostUploadPage() {
 	const [text, setText] = useState('');
 	const [fileImage, setFileImage] = useState('');
 	const [preConvertedImg, setPreConvertedImg] = useState('');
 	// const navigate = useNavigate();
+	const { id } = useParams();
+
+	const [mode, setMode] = useState('');
+
+	useEffect(() => {
+		if (id !== undefined) {
+			postDetailLoader(id).then((res) => {
+				setText(res.data.post.content);
+				setFileImage(res.data.post.image);
+			});
+		}
+		if (id !== undefined) {
+			setMode('edit');
+		}
+		if (id === undefined) {
+			setMode('new');
+		}
+	}, []);
 
 	const handleChange = (e) => {
 		setText(e.target.value);
@@ -38,7 +48,13 @@ export default function PostUploadPage() {
 
 	return (
 		<>
-			<UploadButton text={text} fileImage={fileImage} preConvertedImg={preConvertedImg} />
+			<UploadButton
+				text={text}
+				fileImage={fileImage}
+				preConvertedImg={preConvertedImg}
+				mode={mode}
+				postId={id}
+			/>
 			<PostTextArea
 				onChange={(e) => handleChange(e)}
 				value={text}
@@ -50,3 +66,16 @@ export default function PostUploadPage() {
 		</>
 	);
 }
+
+//styled commponent
+const PostTextArea = styled.textarea`
+	width: 300px;
+	height: 500px;
+	resize: none;
+`;
+
+const PictureArea = styled.img`
+	width: 200px;
+	height: 150px;
+	object-fit: cover;
+`;

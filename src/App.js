@@ -23,6 +23,7 @@ import ChatListPage from './pages/Chat/ChatListPage';
 import ChatRoomPage from './pages/Chat/ChatRoomPage';
 
 export default function App() {
+
   return (
     <>
       <GlobalStyle />
@@ -62,3 +63,4 @@ export default function App() {
     </>
   );
 }
+
