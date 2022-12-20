@@ -1,4 +1,6 @@
 import React from 'react';
+import GlobalStyle from './lib/styles/GlobalStyle'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Splash from './pages/Home/Splash';
 import HomePage from './pages/Home/HomePage.js';
@@ -38,7 +40,6 @@ export default function App() {
 						<Route path="/product" element={<ProductUploadPage />}></Route>
 						<Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
 						<Route path="/postUpload" element={<PostUploadPage />}></Route>
-						<Route path="/pageNotFound" element={<Page404 />}></Route>
 						<Route path="/postdetail/:id" element={<PostDetailPage />}></Route>
 						<Route
 							path="/profile/:accountname/follower"
@@ -52,6 +53,7 @@ export default function App() {
 						<Route path="/login/email" element={<LoginByEmail />}></Route>
 						<Route path="/chatlist" element={<ChatListPage />}></Route>
 						<Route path="/chatlist/:id" element={<ChatRoomPage />}></Route>
+            <Route path="/*" element={<Page404 />}></Route>
 					</Routes>
 					<Modals />
 				</BrowserRouter>
