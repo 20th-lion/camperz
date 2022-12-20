@@ -20,3 +20,10 @@ export const postDetailLoader = async (id) => {
 	const res = await axiosPrivate.get(reqPath);
 	return res;
 };
+
+export const postDelete = async (id) => {
+	const reqPath = `/post/${id}`;
+
+	const res = await axiosPrivate.delete(reqPath);
+	return res;
+};
