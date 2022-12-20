@@ -11,7 +11,7 @@ import { imageUpload } from '../../lib/apis/imageUploadApi';
 export default function ProfileEditPage() {
 	const navigate = useNavigate();
 	const savedAccountname = localStorage.getItem('accountname');
-	const [userInfo, setUserInfo] = useState({ image: undefined, username: '', accountname: '', intro: '' });
+	const [userInfo, setUserInfo] = useState({ image: '', username: '', accountname: '', intro: '' });
 	const [btnActive, setBtnActive] = useState(true);
 	const [errorMsg, setErrorMsg] = useState({
 		usernameErr: '',
@@ -35,9 +35,11 @@ export default function ProfileEditPage() {
 	};
 	const handleSaveBtn = async () => {
 		await imageUpload(userInfo.image).then((res) => {
-			const imageUrl = 'https://mandarin.api.weniv.co.kr/' + res.data.filename;
+			const image = res.data.filename
+				? 'https://mandarin.api.weniv.co.kr/' + res.data.filename
+				: userInfo.image;
 			console.log(res);
-			editProfile({ ...userInfo, image: imageUrl });
+			editProfile({ ...userInfo, image });
 		});
 		localStorage.setItem('accountname', userInfo.accountname);
 		navigate('/profile');

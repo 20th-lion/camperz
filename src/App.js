@@ -32,7 +32,7 @@ export default function App() {
 						<Route path="/login" element={<LoginPage />}></Route>
 						<Route path="/login/email" element={<LoginByEmail />}></Route>
 						<Route path="/register" element={<Register />}></Route>
-						<Route path="/profile/" element={<ProfilePage />}></Route>
+						<Route path="/profile" element={<ProfilePage />}></Route>
 						<Route path="/profile/:accountname" element={<ProfilePage />}></Route>
 						<Route path="/profile/edit" element={<ProfileEditPage />}></Route>
 						<Route path="/product" element={<ProductUploadPage />}></Route>

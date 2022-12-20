@@ -14,7 +14,8 @@ export default React.memo(function UserProfile({ type, user, isfollow }) {
 
 	useEffect(() => {
 		getUserInfo(user).then((res) => {
-			const { accountname, username, followingCount, followerCount, image, isfollow } = res.data.profile;
+			const { accountname, username, followingCount, followerCount, image, isfollow } =
+				res.data.profile;
 			setUserInfo({
 				accountname,
 				username,
@@ -24,34 +25,29 @@ export default React.memo(function UserProfile({ type, user, isfollow }) {
 			});
 			setIsFollowed(isfollow);
 		});
+	}, []);
 
-	}, [userInfo]);
-
-	const goFllowerPage = () => {
+	const goToFllowerPage = () => {
 		navigate(`/profile/${user}/follower`);
 	};
-	const goFllowingPage = () => {
+	const goToFllowingPage = () => {
 		navigate(`/profile/${user}/following`);
 	};
 	const [is_Follow, setIsFollowed] = useState(isfollow);
+
 	const handleFollow = async () => {
 		if (is_Follow) {
 			await unfollowUser(accountname).then((res) => {
 				console.log(res);
 				setIsFollowed(false);
-
-			})
+			});
 		} else {
 			await followUser(accountname).then((res) => {
 				console.log(res);
 				setIsFollowed(true);
-			})
+			});
 		}
-
 	};
-
-
-
 
 	return (
 		<UserProfileBlock>
@@ -65,8 +61,8 @@ export default React.memo(function UserProfile({ type, user, isfollow }) {
 			></img>
 			<div>id:{accountname}</div>
 			<div>이름:{username}</div>
-			<div onClick={goFllowerPage}>팔로워:{followerCount}</div>
-			<div onClick={goFllowingPage}>팔로잉{followingCount}</div>
+			<div onClick={goToFllowerPage}>팔로워:{followerCount}</div>
+			<div onClick={goToFllowingPage}>팔로잉{followingCount}</div>
 
 			{type === 'mine' ? (
 				<>

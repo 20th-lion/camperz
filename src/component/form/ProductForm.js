@@ -1,11 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import iconSrc from '../../assets/image/img-upload-icon.svg';
+import defaultProfileImg from '../../assets/image/default-profile-img.svg';
 
 export default function ProductForm({ setProductInfo, productInfo }) {
 	const photoInput = useRef();
-
+	const [currentImg, setCurrentImg] = useState('');
 	const onChange = (e) => {
 		const { name, value } = e.target;
 		setProductInfo({
@@ -17,8 +18,9 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 	const handleImgChange = (e) => {
 		setProductInfo({
 			...productInfo,
-			itemImage: URL.createObjectURL(e.target.files[0]),
+			itemImage: e.target.files[0],
 		});
+		setCurrentImg(URL.createObjectURL(e.target.files[0]));
 	};
 	return (
 		<>
@@ -42,7 +44,10 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 					accept="image/*"
 					onChange={handleImgChange}
 				/>
-				<PictureArea src={productInfo.itemImage} alt="상품 이미지" />
+				<PictureArea
+					src={currentImg || productInfo.itemImage || defaultProfileImg}
+					alt="상품 이미지"
+				/>
 			</div>
 			<div>
 				이름
