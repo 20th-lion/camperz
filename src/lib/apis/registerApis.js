@@ -1,20 +1,35 @@
 import { axiosPublic } from './customAxios';
 
 export const getEmailValidApiResponse = async (email) => {
-	const reqPath = '/user/emailvalid';
+  const reqPath = '/user/emailvalid';
+  const registerData = {
+    user: { email },
+  };
+  const headers = {
+    'Content-type': 'application/json',
+  };
+  try {
+    const res = await axiosPublic.post(reqPath, registerData, { headers });
+    return res;
+  } catch (error) {
+    return error;
+  }
+
+};
+
+export const getAccountNameValidApiResponse = async (accountname) => {
+	const reqPath = '/user/accountnamevalid';
 	const registerData = {
-		user: { email },
-	};
-	const headers = {
-		'Content-type': 'application/json',
+		user: { accountname },
 	};
 	try {
-		const res = await axiosPublic.post(reqPath, registerData, { headers });
+		const res = await axiosPublic.post(reqPath, registerData);
 		return res;
 	} catch (error) {
 		return error;
 	}
 };
+
 
 export const getAccountNameValidApiResponse = async (accountname) => {
 	const reqPath = '/user/accountnamevalid';

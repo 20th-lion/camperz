@@ -16,13 +16,12 @@ export default function ProfilePage() {
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = accountname ? 'other' : 'mine';
-
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => {},
+			onSetting: () => { },
 			onLogout: () => {
 				logout();
 				navigate('/');

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import FollowUser from "./FollowUser";
+import FollowUser from "../follow/FollowUser";
 
-export default function FollowContents({ followerData, followMessage }) {
+export default function FollowContents({ followData, followMessage }) {
     const [userData, setUserData] = useState();
 
     useEffect(() => {
-        setUserData(followerData);
-    }, [followerData]);
+        setUserData(followData);
+    }, [followData]);
     return (
         <StyledFollowBlock>
             {userData && userData.length === 0 ? (
@@ -21,7 +21,7 @@ export default function FollowContents({ followerData, followMessage }) {
                                 accountname={item.accountname}
                                 intro={item.intro}
                                 image={item.image}
-                                isFollow={item.isfollow}
+                                isfollow={item.isfollow}
                             />
                         </StyledFollowBlock>
 

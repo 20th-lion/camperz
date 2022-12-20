@@ -4,6 +4,7 @@ import { getEmailValidApiResponse, getRegisterApiResponse } from '../../lib/apis
 import AuthForm from '../../component/form/AuthForm';
 import ProfileForm from '../../component/form/ProfileForm';
 import Button from '../../component/common/Button';
+
 export default function Register() {
 	const navigate = useNavigate();
 	const [registerErrMsg, setRegisterErrMsg] = useState([,]);
@@ -14,9 +15,9 @@ export default function Register() {
 
 	const [btnActive, setBtnActive] = useState(false);
 
-	const handleVerifyEmail = (newErrorMsg, inputs) => {
+	const handleVerifyEmail = async (newErrorMsg, inputs) => {
 		const newRegisterErrMsg = [...newErrorMsg];
-		getEmailValidApiResponse(inputs.email).then((res) => {
+    await getEmailValidApiResponse(inputs.email).then((res) => {
 			if (res.data.message === '이미 가입된 이메일 주소 입니다.') {
 				newRegisterErrMsg[0] = '*이미 가입된 이메일 주소입니다.';
 			} else {

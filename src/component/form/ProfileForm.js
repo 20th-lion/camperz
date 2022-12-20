@@ -6,6 +6,7 @@ import defaultProfileImg from '../../assets/image/default-profile-img.svg';
 import { validateUsername, validateAccountname } from '../../lib/utils/profileValidation';
 import { useEffect } from 'react';
 
+
 export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 	const photoInput = useRef();
 
@@ -20,6 +21,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 	useEffect(() => {
 		showingActive();
 	}, [errorMsg, userInfo]);
+
 
 	const onChange = (e) => {
 		const { name, value } = e.target;
@@ -52,16 +54,28 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 		});
 	};
 
+
 	const handleAccountnameBlur = async (e) => {
 		const savedAccountname = localStorage.getItem('accountname');
-		if (savedAccountname !== accountname) {
+		
+    if (savedAccountname !== accountname) {
 			let validationMsg = validateAccountname(e.target.value);
 			let accountnameErr = await validationMsg;
 			if (accountnameErr === '*이미 가입된 계정ID 입니다.') {
 				setErrorMsg({ ...errorMsg, accountnameErr });
 			} else setErrorMsg({ ...errorMsg, accountnameErr: '' });
 		}
+  };
+  
+	const handleUsernameBlur = (e) => {
+		setErrorMsg({
+			...errorMsg,
+			usernameErr: validateUsername(e.target.value) || '',
+		});
 	};
+
+
+
 
 	const handlePreventSubmit = (e) => {
 		e.preventDefault();

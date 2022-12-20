@@ -8,7 +8,8 @@ export const validateUsername = (username) => {
 };
 
 export const validateAccountname = async (accountname) => {
-	const accountnameValidation = /[0-9A-Z._]+/i;
+	const accountnameValidation = /[0-9A-Z._]+/gi;
+
 	let validationMsg = '';
 	if (!accountnameValidation.test(accountname)) {
 		const errorMsg = '*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.';

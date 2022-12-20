@@ -14,25 +14,25 @@ export default function LoginPage() {
 		);
 	};
 
-	return (
-		<>
-			<section className="LoginPage">
-				<h2>
-					<img src="CAMPERZ_DARK" alt="CAMPERZ" />
-				</h2>
-				<div>
-					<ul>
-						<SocialLoginBtn style="kakaoLogin" sns="카카오톡" />
-						<SocialLoginBtn style="googleLogin" sns="구글" />
-						<SocialLoginBtn style="facebookLogin" sns="페이스북" />
-					</ul>
-					<div>
-						<Link to={'/login/email'}>이메일로 로그인</Link>
-						<span>|</span>
-						<Link to={'/register'}>회원가입</Link>
-					</div>
-				</div>
-			</section>
-		</>
-	);
+  return (
+    <>
+      <section className='LoginPage'>
+        <h2>
+          <img src="CAMPERZ_DARK" alt="CAMPERZ" />
+        </h2>
+        <div>
+          <ul>
+            <SocialLoginBtn style='kakaoLogin' sns='카카오톡' />
+            <SocialLoginBtn style='googleLogin' sns='구글' />
+            <SocialLoginBtn style='facebookLogin' sns='페이스북' />
+          </ul>
+          <div>
+            <Link to={'/login/email'}>이메일로 로그인</Link>
+            <span>|</span>
+            <Link to={'/register'}>회원가입</Link>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }

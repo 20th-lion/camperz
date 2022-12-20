@@ -3,17 +3,17 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
-import FollowButton from './FollowButton';
+import FollowButton from '../follow/FollowButton';
 
 export default function FollowUser({
     username,
     accountname,
     intro,
     image,
-    isFollow,
+    isfollow,
 }) {
     const navigate = useNavigate();
-    const [is_Follow, setIsFollowed] = useState(isFollow);
+    const [is_Follow, setIsFollowed] = useState(isfollow);
     let userIntro = intro;
 
     const handleFollow = async () => {
@@ -42,7 +42,7 @@ export default function FollowUser({
                 </StyledUserInfo>
             </StyledUserInfoContent>
 
-            <FollowButton isFollow={is_Follow} onClick={handleFollow} />
+            <FollowButton isfollow={is_Follow} onClick={handleFollow} />
 
         </StyledUserContainer>
     )
