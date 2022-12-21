@@ -26,7 +26,7 @@ export default function CommentBox({ post_id, boxIcon }) {
 	return (
 		<>
 			<CommentContainer>
-				<img src={boxIcon} />
+				<UserIcon src={boxIcon} />
 				<CommentInput
 					onChange={(e) => {
 						commentInputValidator(e);
@@ -44,11 +44,18 @@ export default function CommentBox({ post_id, boxIcon }) {
 	);
 }
 
+const UserIcon = styled.img`
+	margin-left: 3px;
+`;
+
 const CommentInput = styled.input`
+	padding-left: 15px;
+	padding-right: 40px;
 	display: inline-block;
 	width: 306px;
 	height: 36px;
 	margin: 0 auto;
+	margin-left: 15px;
 	border: 1px solid ${palette.bottomBar[2]};
 	border-radius: 18.5px;
 	background-color: ${palette.bottomBar[1]};
@@ -60,10 +67,11 @@ const CommentUploadButtonImg = styled.img`
 `;
 
 const CommentUploadButton = styled.div`
-	position: absolute;
-	left: 320px;
-	width: 28px;
-	height: 28px;
+	position: relative;
+	bottom: 31px;
+	left: 330px;
+	width: 24px;
+	height: 24px;
 	background-color: ${palette.bottomBar[0]};
 	border-radius: 50%;
 	cursor: pointer;
@@ -71,7 +79,9 @@ const CommentUploadButton = styled.div`
 `;
 
 const CommentContainer = styled.div`
-	display: flex;
+	/* gap: 10px; */
+	padding: 12px;
+	/* display: flex; */
 	width: 390px;
 	height: 61px;
 	background-color: ${palette.bottomBar[1]};
