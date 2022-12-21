@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-
+import styled from 'styled-components';
 import Header from '../../component/common/Header';
 import PostDetailContent from '../../component/post/PostDetailContent';
 import PostDetailComment from '../../component/post/PostDetailComment';
@@ -13,12 +13,18 @@ export default function PostDetailPage() {
 	return (
 		<>
 			<Header leftChild={<h2>뒤로가기</h2>} rightChild={'점'} />
-			<main>
+			<Main>
 				<PostDetailContent id={id} />
-
 				<PostDetailComment post_id={id} />
-			</main>
+			</Main>
 			<CommentBox post_id={id} boxIcon={boxIcon} />
 		</>
 	);
 }
+
+const Main = styled.main`
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 390px;
+	font-size: 14px;
+`;
