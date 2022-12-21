@@ -32,12 +32,14 @@ export default function ProfilePage() {
 	return (
 		<>
 			<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
-			<div>프로필</div>
-			<UserProfile user={user} type={type} />
-			<div>상품목록</div>
-			<ProductList user={user} type={type} />
-			<div>포스트목록</div>
-			<PostList user={user} type={type} />
+			<main>
+				<div>프로필</div>
+				<UserProfile user={user} type={type} />
+				<div>상품목록</div>
+				<ProductList user={user} type={type} />
+				<div>포스트목록</div>
+				<PostList user={user} type={type} />
+			</main>
 			<NavBar />
 		</>
 	);
