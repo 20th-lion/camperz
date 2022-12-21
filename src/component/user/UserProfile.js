@@ -15,7 +15,7 @@ export default function UserProfile({ type, user }) {
 		username: '',
 		followerCount: '',
 		followingCount: '',
-		isfollowed: '',
+		isfollow: '',
 	});
 	const { image, accountname, username, followerCount, followingCount, isfollow } = userInfo;
 
@@ -44,11 +44,11 @@ export default function UserProfile({ type, user }) {
 	const handleFollow = async () => {
 		if (isfollow) {
 			await unfollowUser(accountname).then((res) => {
-				setUserInfo({ ...userInfo, isfllow: false });
+				setUserInfo({ ...userInfo, isfollow: false });
 			});
 		} else {
 			await followUser(accountname).then((res) => {
-				setUserInfo({ ...userInfo, isfllow: true });
+				setUserInfo({ ...userInfo, isfollow: true });
 			});
 		}
 	};
