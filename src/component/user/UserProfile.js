@@ -7,11 +7,17 @@ import { getUserInfo } from '../../lib/apis/profileApis';
 import FollowButton from '../follow/FollowButton';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
 
-export default function UserProfile({ type, user, isfollow }) {
+export default function UserProfile({ type, user }) {
 	const navigate = useNavigate();
-	const [userInfo, setUserInfo] = useState({});
-	const { image, accountname, username, followerCount, followingCount } = userInfo;
-	const [is_Follow, setIsFollowed] = useState(isfollow);
+	const [userInfo, setUserInfo] = useState({
+		image: '',
+		accountname: '',
+		username: '',
+		followerCount: '',
+		followingCount: '',
+		isfollowed: '',
+	});
+	const { image, accountname, username, followerCount, followingCount, isfollow } = userInfo;
 
 	useEffect(() => {
 		getUserInfo(user).then((res) => {
@@ -23,10 +29,10 @@ export default function UserProfile({ type, user, isfollow }) {
 				followingCount,
 				followerCount,
 				image,
+				isfollow,
 			});
-			setIsFollowed(isfollow);
 		});
-	}, [is_Follow]);
+	}, [isfollow, user]);
 
 	const goToFllowerPage = () => {
 		navigate(`/profile/${user}/follower`);
@@ -36,15 +42,13 @@ export default function UserProfile({ type, user, isfollow }) {
 	};
 
 	const handleFollow = async () => {
-		if (is_Follow) {
+		if (isfollow) {
 			await unfollowUser(accountname).then((res) => {
-				console.log(res);
-				setIsFollowed(false);
+				setUserInfo({ ...userInfo, isfllow: false });
 			});
 		} else {
 			await followUser(accountname).then((res) => {
-				console.log(res);
-				setIsFollowed(true);
+				setUserInfo({ ...userInfo, isfllow: true });
 			});
 		}
 	};
@@ -71,7 +75,7 @@ export default function UserProfile({ type, user, isfollow }) {
 				</>
 			) : (
 				<>
-					<FollowButton isfollow={is_Follow} onClick={handleFollow} />
+					<FollowButton isfollow={isfollow} onClick={handleFollow} />
 				</>
 			)}
 		</UserProfileBlock>

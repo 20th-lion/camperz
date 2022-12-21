@@ -14,7 +14,7 @@ export default React.memo(function ProductList({ user, type }) {
 
 	useEffect(() => {
 		loadproductList();
-	}, []);
+	}, [user]);
 
 	return (
 		<>
