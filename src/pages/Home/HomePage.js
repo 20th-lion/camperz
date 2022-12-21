@@ -7,25 +7,30 @@ import Feed from '../../component/feed/Feed';
 import iconSearch from '../../assets/icons/icon_search.png';
 
 export default function HomePage() {
-	const navigate = useNavigate();
-	const handleSearching = () => {
-		navigate('/search');
-	};
-	return (
-		<>
-			<section className="FrameContainer">
-				<Header
-					leftChild={<h2>CAMPERZ 피드</h2>}
-					rightChild={<SearchBtnSmall src={iconSearch} onClick={handleSearching} />}
-				/>
-				<Feed></Feed>
-				<NavBar />
-			</section>
-		</>
-	);
+  const navigate = useNavigate();
+  const handleSearching = () => {
+    navigate('/search');
+  };
+  return (
+    <>
+      <section className="FrameContainer">
+        <Header
+          leftChild={<h2>CAMPERZ 피드</h2>}
+          rightChild={<SearchBtnSmall src={iconSearch} onClick={handleSearching} />}
+        />
+        <Main className="FrameMain">
+          <Feed></Feed>
+        </Main>
+        <NavBar />
+      </section>
+    </>
+  );
 }
 const SearchBtnSmall = styled.img`
 	width: 24px;
 	height: 24px;
 	cursor: pointer;
-`;
+`
+const Main = styled.main`
+    justify-content: center;
+`
