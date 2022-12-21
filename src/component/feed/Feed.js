@@ -38,13 +38,12 @@ const NoFeed = styled.div`
     flex-direction: column;
     align-items: center;
 `
-
 const Img = styled.img`
 	width: 110px;
 	height: 110px;
 	display: block;
-`;
+`
 const P = styled.p`
 	color: #767676;
 	padding: 20px 0 20px;
-`;
+`

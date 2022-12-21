@@ -38,11 +38,10 @@ export default function ProfileEditPage() {
 			const image = res.data.filename
 				? 'https://mandarin.api.weniv.co.kr/' + res.data.filename
 				: userInfo.image;
-			console.log(res);
 			editProfile({ ...userInfo, image });
 		});
 		localStorage.setItem('accountname', userInfo.accountname);
-		navigate('/profile');
+		navigate(`/profile/${savedAccountname}`);
 	};
 
 	return (

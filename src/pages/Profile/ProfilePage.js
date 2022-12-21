@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
 import Header from '../../component/common/Header';
@@ -13,14 +14,9 @@ import { useModals } from './../../lib/hooks/useModals';
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
 	const { accountname } = useParams();
-	const user = accountname || myAccountname;
-	const type = accountname ? 'other' : 'mine';
+	const type = accountname === myAccountname ? 'mine' : 'other';
 	const { openModal } = useModals();
 	const navigate = useNavigate();
-
-	useEffect(() => {
-		console.log('111');
-	}, []);
 
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
@@ -36,11 +32,11 @@ export default function ProfilePage() {
 		<>
 			<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
 			<div>프로필</div>
-			<UserProfile type={type} user={user} />
+			<UserProfile user={accountname} type={type} />
 			<div>상품목록</div>
-			<ProductList user={user} type={type} />
+			<ProductList user={accountname} type={type} />
 			<div>포스트목록</div>
-			<PostList user={user} type={type} />
+			<PostList user={accountname} type={type} />
 			<NavBar />
 		</>
 	);

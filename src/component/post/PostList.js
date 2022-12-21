@@ -8,11 +8,6 @@ export default function PostList({ user }) {
 	const [postList, setPostList] = useState([]);
 	const [toggle, setToggle] = useState(true);
 
-	const loadPost = async () => {
-		await getPostList(user).then((res) => {
-			setPostList([...res.data.post]);
-		});
-	};
 	useEffect(() => {
 		getPostList(user).then((res) => {
 			setPostList([...res.data.post]);
