@@ -14,8 +14,8 @@ import { useModals } from './../../lib/hooks/useModals';
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
 	const { accountname } = useParams();
-	const type = accountname === myAccountname ? 'mine' : 'other';
 	const user = accountname || myAccountname;
+	const type = user === myAccountname ? 'mine' : 'other';
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 

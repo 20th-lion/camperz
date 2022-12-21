@@ -12,7 +12,7 @@ export default function PostList({ user }) {
 		getPostList(user).then((res) => {
 			setPostList([...res.data.post]);
 		});
-	}, []);
+	}, [user]);
 
 	return (
 		<>
