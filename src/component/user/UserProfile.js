@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../common/Button';
+import ButtonBig from '../common/ButtonBig';
 import { getUserInfo } from '../../lib/apis/profileApis';
-
 import FollowButton from '../follow/FollowButton';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
+import * as s from '../common/ProfileInfo';
+import chatIcon from '../../assets/icons/yourProfile_chat.png';
+import shareIcon from '../../assets/icons/yourProfile_share.png';
+
 
 export default function UserProfile({ type, user }) {
 	const navigate = useNavigate();
@@ -15,13 +18,14 @@ export default function UserProfile({ type, user }) {
 		username: '',
 		followerCount: '',
 		followingCount: '',
-		isfollowed: '',
+		isfollow: '',
+		intro: '',
 	});
-	const { image, accountname, username, followerCount, followingCount, isfollow } = userInfo;
+	const { image, accountname, username, followerCount, followingCount, isfollow, intro } = userInfo;
 
 	useEffect(() => {
 		getUserInfo(user).then((res) => {
-			const { accountname, username, followingCount, followerCount, image, isfollow } =
+			const { accountname, username, followingCount, followerCount, image, isfollow, intro } =
 				res.data.profile;
 			setUserInfo({
 				accountname,
@@ -30,6 +34,7 @@ export default function UserProfile({ type, user }) {
 				followerCount,
 				image,
 				isfollow,
+				intro,
 			});
 		});
 	}, [isfollow, user]);
@@ -44,47 +49,49 @@ export default function UserProfile({ type, user }) {
 	const handleFollow = async () => {
 		if (isfollow) {
 			await unfollowUser(accountname).then((res) => {
-				setUserInfo({ ...userInfo, isfllow: false });
+				setUserInfo({ ...userInfo, isfollow: false });
 			});
 		} else {
 			await followUser(accountname).then((res) => {
-				setUserInfo({ ...userInfo, isfllow: true });
+				setUserInfo({ ...userInfo, isfollow: true });
 			});
 		}
 	};
 
 	return (
-		<UserProfileBlock>
-			<img
-				style={{
-					width: '100px',
-					height: '100px',
-				}}
-				src={image}
-				alt="프로필 이미지"
-			></img>
-			<div>id:{accountname}</div>
-			<div>이름:{username}</div>
-			<div onClick={goToFllowerPage}>팔로워:{followerCount}</div>
-			<div onClick={goToFllowingPage}>팔로잉{followingCount}</div>
+		<s.ProfileBackground>
+			<s.ProfileInfoContainer>
+				<s.ProfileImg src={image} alt="프로필 이미지"></s.ProfileImg>
+				<s.UserName>{username}</s.UserName>
+				<s.AccountName>@ {accountname}</s.AccountName>
+				<s.Intro>{intro}</s.Intro>
+				<s.Follow onClick={goToFllowerPage} position={'left'}>
+					<s.FollowCount>{followerCount}</s.FollowCount>
+					<s.FollowSpan>followers</s.FollowSpan>
+				</s.Follow>
+				<s.Follow onClick={goToFllowingPage} position={'right'}>
+					<s.FollowCount>{followingCount}</s.FollowCount>
+					<s.FollowSpan>followings</s.FollowSpan>
+				</s.Follow>
 
-			{type === 'mine' ? (
-				<>
-					<Button text="프로필 수정" onClick={() => navigate('/profile/edit')} />
-					<Button text="상품등록" onClick={() => navigate('/product')} />
-				</>
-			) : (
-				<>
-					<FollowButton isfollow={isfollow} onClick={handleFollow} />
-				</>
-			)}
-		</UserProfileBlock>
+				{type === 'mine' ? (
+					<s.ProfileBtnWrap>
+						<ButtonBig text="프로필 수정" onClick={() => navigate('/profile/edit')} />
+						<ButtonBig text="상품 등록" onClick={() => navigate('/product')} />
+					</s.ProfileBtnWrap>
+
+				) : (
+					<s.ProfileBtnWrap>
+						<s.ProfileBtnIcon>
+							<chatIcon />
+						</s.ProfileBtnIcon>
+						<FollowButton isfollow={isfollow} onClick={handleFollow} />
+						<s.ProfileBtnIcon>
+							<shareIcon />
+						</s.ProfileBtnIcon>
+					</s.ProfileBtnWrap>
+				)}
+			</s.ProfileInfoContainer>
+		</s.ProfileBackground>
 	);
 }
-
-const UserProfileBlock = styled.div`
-	text-align: center;
-	width: 80%;
-	padding: 30px;
-	border: 1px solid black;
-`;

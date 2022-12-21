@@ -12,7 +12,7 @@ export default function Button({ onClick, text, active }) {
 }
 
 const StyledButton = styled.button`
-	background-color: ${palette.khaki[0]};
+  background-color: ${palette.khaki[0]};
   width: 90px;
   height: 32px;
   border-radius: 32px;
