@@ -15,6 +15,7 @@ export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
 	const { accountname } = useParams();
 	const type = accountname === myAccountname ? 'mine' : 'other';
+	const user = accountname || myAccountname;
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 
@@ -32,11 +33,11 @@ export default function ProfilePage() {
 		<>
 			<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
 			<div>프로필</div>
-			<UserProfile user={accountname} type={type} />
+			<UserProfile user={user} type={type} />
 			<div>상품목록</div>
-			<ProductList user={accountname} type={type} />
+			<ProductList user={user} type={type} />
 			<div>포스트목록</div>
-			<PostList user={accountname} type={type} />
+			<PostList user={user} type={type} />
 			<NavBar />
 		</>
 	);
