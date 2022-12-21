@@ -1,7 +1,12 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
+	const navigate = useNavigate();
+	const accountname = localStorage.getItem('accountname');
+	const goToProfile = () => {
+		navigate(`/profile/${accountname}`);
+	};
 	return (
 		<>
 			<nav>
@@ -16,7 +21,7 @@ export default function NavBar() {
 						<Link to="/postUpload">게시글</Link>
 					</li>
 					<li>
-						<Link to="/profile">프로필</Link>
+						<button onClick={goToProfile}>프로필</button>
 					</li>
 				</StyledUl>
 			</nav>

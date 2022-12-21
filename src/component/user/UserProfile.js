@@ -7,12 +7,13 @@ import { getUserInfo } from '../../lib/apis/profileApis';
 import FollowButton from '../follow/FollowButton';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
 
-export default React.memo(function UserProfile({ type, user, isfollow }) {
+export default function UserProfile({ type, user, isfollow }) {
 	const navigate = useNavigate();
 	const [userInfo, setUserInfo] = useState({});
 	const { image, accountname, username, followerCount, followingCount } = userInfo;
 
 	useEffect(() => {
+		console.log('inforender');
 		getUserInfo(user).then((res) => {
 			const { accountname, username, followingCount, followerCount, image, isfollow } =
 				res.data.profile;
@@ -76,7 +77,7 @@ export default React.memo(function UserProfile({ type, user, isfollow }) {
 			)}
 		</UserProfileBlock>
 	);
-});
+}
 
 const UserProfileBlock = styled.div`
 	text-align: center;

@@ -16,9 +16,9 @@ export default function PostItem({
 	content,
 	image,
 	createdAt,
-	updatedAt,
 	heartCount,
 	commentCount,
+	author,
 	setPostList,
 	user,
 }) {
@@ -49,6 +49,9 @@ export default function PostItem({
 		pushHeart ? cancelHeartButton() : pushHeartButton();
 	};
 
+	const handleAuthorClick = () => {
+		navigate(`/profile/${author.accountname}`);
+	};
 	const handleClickModal = () => {
 		openModal(modals.postItemModal, {
 			onEdit: () => {
@@ -68,7 +71,12 @@ export default function PostItem({
 		<>
 			<StyledItemBlock>
 				<Button text="모달" onClick={handleClickModal} />
-				<div>아이디{id}</div>
+				<div onClick={handleAuthorClick}>
+					작성자
+					<div>{author.accountname}</div>
+					<div>{author.username}</div>
+					<img style={{ width: '50px', height: '50px' }} src={author.image} alt="" />
+				</div>
 				<div>컨텐츠{content}</div>
 				<div
 					style={{
@@ -80,7 +88,6 @@ export default function PostItem({
 					{image && <Simg src={image} alt="" />}
 				</div>
 				<div>작성일{createdAt}</div>
-				<div>업데이트 시간{updatedAt}</div>
 				<div>
 					좋아요
 					<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
