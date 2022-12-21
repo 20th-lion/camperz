@@ -90,6 +90,7 @@ const Nav = styled.nav`
   height: 60px;
   background-color: #E3E3D3;
   font-size: 10px;
+  font-weight: 400;
   border-top: 1px solid #DBDBDB;
 `
 const Ul = styled.ul`

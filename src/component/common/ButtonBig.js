@@ -13,10 +13,15 @@ export default function Button({ onClick, text, active }) {
 
 const StyledButton = styled.button`
 	background-color: ${palette.khaki[0]};
-	border: none;
-	color: white;
+  width: 120px;
+  height: 34px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #F3F1E8;
 	:hover {
 		cursor: pointer;
+
 	}
 	${(props) =>
 		props.active === false &&
