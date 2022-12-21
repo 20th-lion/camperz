@@ -70,7 +70,7 @@ const AuthorImg = styled.img`
 `;
 
 const ModalIconImg = styled.img`
-	margin-left: 230px;
+	margin-left: 228px;
 	cursor: pointer;
 	margin-top: 5px;
 `;
