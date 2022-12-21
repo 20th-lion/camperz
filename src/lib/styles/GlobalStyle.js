@@ -16,19 +16,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300; /* 100 = 얇게, 300 = 보통, 400 = 두껍게 */
   }
-
-  .FrameContainer {
-    max-width: 390px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    background-color: #F3F1E8;
-    box-shadow: 0px 0px 10px #adadad;
-  }
   
-  .FrameMain {
+  main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,9 +25,10 @@ const GlobalStyle = createGlobalStyle`
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    justify-content: center;
   }
 
-  .FrameMain::-webkit-scrollbar {
+  main::-webkit-scrollbar {
     display: none;
   }
 
