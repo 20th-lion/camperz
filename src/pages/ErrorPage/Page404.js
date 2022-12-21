@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import iconSrc from '../../assets/icons/404_logo.png';
-import SearchButton from '../../component/common/SearchButton';
+import SearchBtn from '../../component/common/SearchBtn';
 
 const NotFoundImg = styled.img`
 	width: 102px;
@@ -13,7 +13,7 @@ export default function Page404() {
 		<>
 			<NotFoundImg src={iconSrc} />
 			<div>페이지를 찾을 수 없습니다. :</div>
-			<SearchButton />
+			<SearchBtn />
 		</>
 	);
 }
