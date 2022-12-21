@@ -25,6 +25,7 @@ export default function PostItem({
 	author,
 	setPostList,
 	user,
+	type,
 }) {
 	const [pushHeart, setPushHeart] = useState(false);
 	const [count, setCount] = useState(heartCount);
@@ -62,13 +63,19 @@ export default function PostItem({
 				navigate(`/postUpload/${id}`);
 			},
 			onRemove: async () => {
-				await postDelete(id);
-				getPostList(user).then((res) => {
-					setPostList([...res.data.post]);
+				openModal(modals.confirmModal, {
+					onConfirm: async () => {
+						await postDelete(id);
+						getPostList(user).then((res) => {
+							setPostList([...res.data.post]);
+						});
+					},
+					message: '삭제하시겠어요?',
+					btnText: '삭제',
 				});
 			},
 			onReport: () => {},
-			type: user === localStorage.getItem('accountname'),
+			type: type,
 		});
 	};
 

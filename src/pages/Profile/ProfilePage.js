@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
@@ -16,15 +16,22 @@ export default function ProfilePage() {
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = user === myAccountname ? 'mine' : 'other';
+	
 	const { openModal } = useModals();
 	const navigate = useNavigate();
-
+	
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
 			onSetting: () => {},
 			onLogout: () => {
-				logout();
-				navigate('/');
+				openModal(modals.confirmModal, {
+					onConfirm: () => {
+						logout();
+						navigate('/');
+					},
+					message: '로그아웃 하시겠어요?',
+					btnText: '로그아웃',
+				});
 			},
 		});
 	};
