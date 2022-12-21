@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
-import { postUploader } from '../../lib/apis/postApis';
+import { postUploader, postEditer } from '../../lib/apis/postApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
 
-export default function UploadButton({ fileImage, text, preConvertedImg }) {
+export default function UploadButton({ fileImage, text, preConvertedImg, mode, postId }) {
 	let uploadValidation = false;
 	const navigate = useNavigate();
 	if (!(fileImage === '' && text === '')) {
@@ -13,20 +13,37 @@ export default function UploadButton({ fileImage, text, preConvertedImg }) {
 
 	const handlePostUpload = () => {
 		imageUpload(preConvertedImg).then((res) => {
-			const postContent = {
-				post: {
-					content: text,
-					image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
-				},
-			};
-			if (res.data.filename === undefined) {
-				delete postContent.post.image;
+			if (mode === 'edit') {
+				const postContent = {
+					post: {
+						content: text,
+						image: fileImage, //"imageurl1, imageurl2" 형식으로
+					},
+				};
+				if (res.data.filename === undefined) {
+					delete postContent.post.image;
+				}
+				postEditer(postId, postContent).then((res) => {
+					console.log(res);
+					navigate(`/postdetail/${res.data.post.id}`, { replace: true });
+				});
 			}
 
-			postUploader(postContent).then((res) => {
-				console.log(res);
-				navigate(`/postdetail/${res.data.post.id}`, { replace: true });
-			});
+			if (mode === 'new') {
+				const postContent = {
+					post: {
+						content: text,
+						image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
+					},
+				};
+				if (res.data.filename === undefined) {
+					delete postContent.post.image;
+				}
+				postUploader(postContent).then((res) => {
+					console.log(res);
+					navigate(`/postdetail/${res.data.post.id}`, { replace: true });
+				});
+			}
 		});
 		// if (uploadValidation === true) {
 		// 	console.log('업로드 완료!');

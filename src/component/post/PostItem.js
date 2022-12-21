@@ -55,7 +55,7 @@ export default function PostItem({
 	const handleClickModal = () => {
 		openModal(modals.postItemModal, {
 			onEdit: () => {
-				navigate(`/postdetail/${id}/edit`);
+				navigate(`/postUpload/${id}`);
 			},
 			onRemove: async () => {
 				await postDelete(id);
