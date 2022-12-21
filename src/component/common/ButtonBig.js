@@ -13,12 +13,8 @@ export default function Button({ onClick, text, active }) {
 
 const StyledButton = styled.button`
 	background-color: ${palette.khaki[0]};
-  width: 90px;
-  height: 32px;
-  border-radius: 32px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #F3F1E8;
+	border: none;
+	color: white;
 	:hover {
 		cursor: pointer;
 	}

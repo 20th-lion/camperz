@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import PostItem from '../post/PostItem';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
-import SearchBtn from '../../component/common/SearchBtn';
+import SearchButton from '../../component/common/SearchButton';
 
 import { getFeed } from './../../lib/apis/postApis';
 
@@ -25,7 +25,7 @@ export default function Feed() {
           <NoFeed>
             <Img src={defaultProfileImg} alt="기본프로필사진" />
             <P>유저를 검색해 팔로우 해보세요!</P>
-            <SearchBtn />
+            <SearchButton />
           </NoFeed>
         </>
       )}
