@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { followingList } from '../../lib/apis/followApis';
 import FollowContents from '../../component/follow/FollowContents';
+import Header from '../../component/common/Header';
 
 export default function FollowingPage() {
 	const { accountname } = useParams();
@@ -29,6 +30,7 @@ export default function FollowingPage() {
 	return (
 		<>
 			<p>팔로잉창</p>
+			<Header></Header>
 			<FollowContents followData={followingData} followMessage={followingMessage} />
 		</>
 	);

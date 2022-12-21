@@ -11,9 +11,9 @@ export default function UserProfile({ type, user, isfollow }) {
 	const navigate = useNavigate();
 	const [userInfo, setUserInfo] = useState({});
 	const { image, accountname, username, followerCount, followingCount } = userInfo;
+	const [is_Follow, setIsFollowed] = useState(isfollow);
 
 	useEffect(() => {
-		console.log('inforender');
 		getUserInfo(user).then((res) => {
 			const { accountname, username, followingCount, followerCount, image, isfollow } =
 				res.data.profile;
@@ -26,7 +26,7 @@ export default function UserProfile({ type, user, isfollow }) {
 			});
 			setIsFollowed(isfollow);
 		});
-	}, []);
+	}, [is_Follow]);
 
 	const goToFllowerPage = () => {
 		navigate(`/profile/${user}/follower`);
@@ -34,7 +34,6 @@ export default function UserProfile({ type, user, isfollow }) {
 	const goToFllowingPage = () => {
 		navigate(`/profile/${user}/following`);
 	};
-	const [is_Follow, setIsFollowed] = useState(isfollow);
 
 	const handleFollow = async () => {
 		if (is_Follow) {
