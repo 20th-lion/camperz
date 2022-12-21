@@ -16,16 +16,7 @@ export default function ProductUploadPage() {
 		link: '',
 		itemImage: '',
 	});
-
-	let isCompleted = false;
-	if (
-		productInfo.itemName !== '' &&
-		productInfo.price > 0 &&
-		productInfo.link !== '' &&
-		productInfo.itemImage !== ''
-	) {
-		isCompleted = true;
-	}
+	const [btnActive, setBtnActive] = useState(false);
 
 	const handleSaveBtn = async () => {
 		await imageUpload(productInfo.itemImage).then((res) => {
@@ -37,9 +28,13 @@ export default function ProductUploadPage() {
 
 	return (
 		<>
-			<Header rightChild={<Button onClick={handleSaveBtn} text={'저장'} active={isCompleted} />} />
+			<Header rightChild={<Button onClick={handleSaveBtn} text={'저장'} active={btnActive} />} />
 			<div>
-				<ProductForm setProductInfo={setProductInfo} productInfo={productInfo} />
+				<ProductForm
+					setProductInfo={setProductInfo}
+					productInfo={productInfo}
+					setBtnActive={setBtnActive}
+				/>
 			</div>
 		</>
 	);

@@ -12,6 +12,7 @@ export default function ProductEditPage() {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const [productInfo, setProductInfo] = useState({});
+	const [btnActive, setBtnActive] = useState(false);
 
 	useEffect(() => {
 		getProductDetail(id).then((res) => {
@@ -33,7 +34,11 @@ export default function ProductEditPage() {
 	return (
 		<>
 			<Header rightChild={<Button text="저장" onClick={handleSaveBtn} />} />
-			<ProductForm productInfo={productInfo} setProductInfo={setProductInfo} />
+			<ProductForm
+				productInfo={productInfo}
+				setProductInfo={setProductInfo}
+				setBtnActive={setBtnActive}
+			/>
 		</>
 	);
 }
