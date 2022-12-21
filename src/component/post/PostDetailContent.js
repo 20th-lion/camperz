@@ -16,7 +16,6 @@ export default function PostDetailContent({ id }) {
 	const [authorImg, setAuthorImg] = useState('');
 
 	postDetailLoader(id).then((res) => {
-		console.log(res);
 		setUserName(res.data.post.author.username);
 		setcontent(res.data.post.content);
 		setimage(res.data.post.image);
@@ -28,6 +27,7 @@ export default function PostDetailContent({ id }) {
 	});
 
 	const updatedAtPost = updated.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
+
 	return (
 		<>
 			<PostContentContainer>
@@ -40,11 +40,7 @@ export default function PostDetailContent({ id }) {
 				</PostItemHeader>
 				<ContentBox>{content}</ContentBox>
 
-				{image === 'https://mandarin.api.weniv.co.kr/undefined' ? (
-					<></>
-				) : (
-					<ImgContainer src={image} />
-				)}
+				{image === undefined ? <></> : <ImgContainer src={image} />}
 
 				<SocialBtn>
 					<HeartBtnImg src={heart} />
