@@ -11,6 +11,10 @@ import HeartButton from './HeartBtton';
 import { modals } from '../modal/Modals';
 import { getPostList } from './../../lib/apis/postApis';
 
+import morePostIcon from '../../assets/icons/more_post.png';
+import heart from '../../assets/icons/heart.png';
+import heartFill from '../../assets/icons/heart_fill.png';
+import message from '../../assets/icons/message.png';
 export default function PostItem({
 	id,
 	content,
@@ -67,45 +71,120 @@ export default function PostItem({
 			type: user === localStorage.getItem('accountname'),
 		});
 	};
+
+	const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
+
 	return (
 		<>
 			<StyledItemBlock>
-				<Button text="모달" onClick={handleClickModal} />
-				<div onClick={handleAuthorClick}>
-					작성자
-					<div>{author.accountname}</div>
-					<div>{author.username}</div>
-					<img style={{ width: '50px', height: '50px' }} src={author.image} alt="" />
-				</div>
-				<div>컨텐츠{content}</div>
-				<div
-					style={{
-						width: '10rem',
-						height: '100%',
-					}}
-				>
-					이미지
-					{image && <Simg src={image} alt="" />}
-				</div>
-				<div>작성일{createdAt}</div>
-				<div>
-					좋아요
-					<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
-				</div>
-				<div>좋아요{count}</div>
-				<Link to={`/postdetail/${id}`}>
-					<div>댓글{commentCount}</div>
-				</Link>
+				<PostItemHeader>
+					<img
+						onClick={handleAuthorClick}
+						style={{ width: '50px', height: '50px', borderRadius: '50%' }}
+						src={author.image}
+						alt="프로필 사진"
+					/>
+					<Name onClick={handleAuthorClick}>
+						<UserName>{author.username}</UserName>
+						<div>@ {author.accountname}</div>
+					</Name>
+
+					<ModalIconImg src={morePostIcon} onClick={handleClickModal} />
+				</PostItemHeader>
+				<ContentBox>{content}</ContentBox>
+				<ImgContainer>{image && <Simg src={image} alt="" />}</ImgContainer>
+
+				<SocialBtn>
+					<HeartButton
+						style={{ backgroundImage: heart }}
+						onClick={handleHeartClick}
+						pushHeart={pushHeart}
+					/>
+					{count}
+
+					<Link to={`/postdetail/${id}`}>
+						<CommentButtonImg src={message} />
+						{commentCount}
+					</Link>
+				</SocialBtn>
+				<DateContainer>{createdAtPost}</DateContainer>
 			</StyledItemBlock>
 		</>
 	);
 }
 
 const StyledItemBlock = styled.div`
-	border: 1px solid black;
+	/* border: 1px solid black; */
+	width: 390px;
+	font-size: 14px;
 `;
 
 const Simg = styled.img`
 	width: 100%;
 	height: 100%;
+`;
+
+const ModalIconImg = styled.img`
+	position: relative;
+	left: 220px;
+	cursor: pointer;
+	margin-top: 5px;
+`;
+
+const PostItemHeader = styled.div`
+	padding: 15px;
+	height: 80px;
+	/* border: 1px solid tomato; */
+`;
+
+const Name = styled.div`
+	color: #767676;
+	margin-left: 10px;
+	margin-top: 8px;
+	font-size: 12px;
+	display: inline-block;
+`;
+
+const UserName = styled.div`
+	color: black;
+	font-size: 14px;
+	margin-bottom: 2px;
+`;
+
+// const AccountName = styled.div``;
+
+const ContentBox = styled.p`
+	text-align: left;
+	/* border: 2px solid blue; */
+	width: 303px;
+	margin: 0px 0px 0px 75px;
+`;
+
+const ImgContainer = styled.div`
+	width: 303px;
+	height: 100%;
+	margin: 16px 0px 0px 75px;
+`;
+
+const SocialBtn = styled.div`
+	margin-top: 10px;
+	margin-left: 75px;
+	/* border: 1px solid green; */
+	display: flex;
+	gap: 5px;
+	color: #767676;
+	font-weight: 400;
+`;
+
+const HeartButtonImg = styled.img``;
+
+const CommentButtonImg = styled.img`
+	width: 20px;
+`;
+
+const DateContainer = styled.div`
+	font-size: 12px;
+	color: #767676;
+	margin-top: 10px;
+	margin-left: 75px;
 `;
