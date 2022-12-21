@@ -10,7 +10,7 @@ import NavBar from '../../component/common/NavBar';
 export default function PostUploadPage() {
 	const [text, setText] = useState('');
 	const [fileImage, setFileImage] = useState('');
-	const [preConvertedImg, setPreConvertedImg] = useState('');
+	const [preConvertedImg, setPreConvertedImg] = useState(undefined);
 	// const navigate = useNavigate();
 	const { id } = useParams();
 

@@ -10,48 +10,71 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 	if (!(fileImage === '' && text === '')) {
 		uploadValidation = true;
 	}
-
+	console.log(preConvertedImg);
 	const handlePostUpload = () => {
-		imageUpload(preConvertedImg).then((res) => {
+		if (preConvertedImg === undefined) {
 			if (mode === 'edit') {
 				const postContent = {
 					post: {
 						content: text,
-						image: fileImage, //"imageurl1, imageurl2" 형식으로
+						//"imageurl1, imageurl2" 형식으로
 					},
 				};
-				if (res.data.filename === undefined) {
-					delete postContent.post.image;
-				}
 				postEditer(postId, postContent).then((res) => {
 					console.log(res);
 					navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 				});
 			}
-
 			if (mode === 'new') {
-				const postContent = {
-					post: {
-						content: text,
-						image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
-					},
-				};
-				if (res.data.filename === undefined) {
-					delete postContent.post.image;
+				if (mode === 'new') {
+					const postContent = {
+						post: {
+							content: text,
+						},
+					};
+
+					postUploader(postContent).then((res) => {
+						console.log(res);
+						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
+					});
 				}
-				postUploader(postContent).then((res) => {
-					console.log(res);
-					navigate(`/postdetail/${res.data.post.id}`, { replace: true });
-				});
 			}
-		});
-		// if (uploadValidation === true) {
-		// 	console.log('업로드 완료!');
-		// } 밸리데이션을 버튼에서 하고 있기 때문에 빼도 되지 않을까?
-		// postUploader(postContent).then((res) => {
-		// 	console.log(res);
-		// }
-		// );
+		}
+		if (preConvertedImg !== undefined) {
+			imageUpload(preConvertedImg).then((res) => {
+				if (mode === 'edit') {
+					const postContent = {
+						post: {
+							content: text,
+							image: fileImage,
+						},
+					};
+					if (res.data.filename === undefined) {
+						delete postContent.post.image;
+					}
+					postEditer(postId, postContent).then((res) => {
+						console.log(res);
+						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
+					});
+				}
+
+				if (mode === 'new') {
+					const postContent = {
+						post: {
+							content: text,
+							image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
+						},
+					};
+					if (res.data.filename === undefined) {
+						delete postContent.post.image;
+					}
+					postUploader(postContent).then((res) => {
+						console.log(res);
+						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
+					});
+				}
+			});
+		}
 	};
 	return (
 		<>

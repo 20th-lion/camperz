@@ -14,10 +14,12 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 		openModal(modals.productModal, {
 			onRemove: () => {
 				openModal(modals.confirmModal, {
-					onRemove: async () => {
+					onConfirm: async () => {
 						await removeProduct(id);
 						onload();
 					},
+					message: '삭제하시겠어요?',
+					btnText: '삭제',
 				});
 			},
 			onEdit: () => {

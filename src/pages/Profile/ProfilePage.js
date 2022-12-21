@@ -16,15 +16,22 @@ export default function ProfilePage() {
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = user === myAccountname ? 'mine' : 'other';
+	
 	const { openModal } = useModals();
 	const navigate = useNavigate();
-
+	
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
 			onSetting: () => { },
 			onLogout: () => {
-				logout();
-				navigate('/');
+				openModal(modals.confirmModal, {
+					onConfirm: () => {
+						logout();
+						navigate('/');
+					},
+					message: '로그아웃 하시겠어요?',
+					btnText: '로그아웃',
+				});
 			},
 		});
 	};
