@@ -35,7 +35,7 @@ export default React.memo(function ProductList({ user, type }) {
 
 const StyledProductList = styled.ul`
 	display: flex;
-
 	overflow-x: scroll;
 	padding: 0;
+	margin-top: 16px;
 `;
