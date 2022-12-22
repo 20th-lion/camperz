@@ -1,6 +1,6 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
 import Header from '../../component/common/Header';
@@ -16,13 +16,13 @@ export default function ProfilePage() {
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = user === myAccountname ? 'mine' : 'other';
-	
+
 	const { openModal } = useModals();
 	const navigate = useNavigate();
-	
+
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => {},
+			onSetting: () => { },
 			onLogout: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
@@ -39,15 +39,17 @@ export default function ProfilePage() {
 	return (
 		<>
 			<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
-			<main>
-				<div>프로필</div>
+			<Main>
 				<UserProfile user={user} type={type} />
 				<div>상품목록</div>
 				<ProductList user={user} type={type} />
 				<div>포스트목록</div>
 				<PostList user={user} type={type} />
-			</main>
+			</Main>
 			<NavBar />
 		</>
 	);
 }
+const Main = styled.main`
+  justify-content: flex-start;
+`
