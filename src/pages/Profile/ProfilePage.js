@@ -22,7 +22,7 @@ export default function ProfilePage() {
 
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => { },
+			onSetting: () => {},
 			onLogout: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
@@ -37,33 +37,44 @@ export default function ProfilePage() {
 	};
 
 	return (
-		<ProfilePageBlock>
-			<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
-			<main>
-				<UserSection>
-					<UserProfile user={user} type={type} />
-				</UserSection>
-				<ProductSection>
-					<h2>판매 중인 상품</h2>
-					<ProductList user={user} type={type} />
-				</ProductSection>
-				<PostSection>
-					<PostList user={user} type={type} />
-				</PostSection>
-			</main>
-			<NavBar />
-		</ProfilePageBlock>
+		<>
+			<ProfilePageBlock>
+				<h1 className="ir">프로필 페이지</h1>
+				<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
+				<Main>
+					<ProfileSection>
+						<h2 className="ir">유저 프로필</h2>
+						<UserProfile user={user} type={type} />
+					</ProfileSection>
+					<ProductSection>
+						<h2>판매 중인 상품</h2>
+						<ProductList user={user} type={type} />
+					</ProductSection>
+					<PostSection>
+						<h2 className="ir">게시글 목록</h2>
+						<PostList user={user} type={type} />
+					</PostSection>
+				</Main>
+				<NavBar />
+			</ProfilePageBlock>
+		</>
 	);
 }
 
+const Main = styled.main`
+	justify-content: flex-start;
+`;
 const ProfilePageBlock = styled.div`
 	background-color: #f2f2f2;
 `;
 
-const UserSection = styled.section`
+const ProfileSection = styled.section`
 	width: 100%;
+	height: 314px;
 	background-color: #f3f1e8;
 	border-bottom: 0.5px solid #dbdbdb;
+	box-sizing: border-box;
+	margin-bottom: 6px;
 `;
 
 const ProductSection = styled.section`
@@ -73,7 +84,8 @@ const ProductSection = styled.section`
 	padding: 20px 16px;
 	border-top: 0.5px solid #dbdbdb;
 	border-bottom: 0.5px solid #dbdbdb;
-	margin-top: 6px;
+	margin-bottom: 6px;
+	box-sizing: border-box;
 	h2 {
 		font-weight: 400;
 	}
@@ -82,8 +94,7 @@ const ProductSection = styled.section`
 const PostSection = styled.section`
 	width: 100%;
 	background-color: #f3f1e8;
+	box-sizing: border-box;
 	border-top: 0.5px solid #dbdbdb;
-	border-bottom: 0.5px solid #dbdbdb;
-	margin-top: 6px;
+	margin-bottom: 6px;
 `;
-
