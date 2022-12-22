@@ -58,7 +58,7 @@ export default function Register() {
 
   return (
     <>
-      <Main>
+      <S_Main>
         {form === 'AuthForm' ? (
           <AuthForm
             formType="register"
@@ -80,11 +80,11 @@ export default function Register() {
             <ButtonRectangle text="CAMPERZ 시작하기" onClick={handleRegister} active={btnActive} />
           </section>
         )}
-      </Main>
+      </S_Main>
     </>
   );
 }
 
-const Main = styled.main`
+const S_Main = styled.main`
   justify-content: flex-start;
 `

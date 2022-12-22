@@ -28,22 +28,22 @@ const handleIconImg = (sns) => {
 export default function SocialLoginBtn({ sns }) {
   return (
     <>
-      <Li sns={sns}>
-        <Button sns={sns} type='button'>
+      <S_Li sns={sns}>
+        <S_Button sns={sns} type='button'>
           {sns} 계정으로 로그인
-        </Button>
-      </Li>
+        </S_Button>
+      </S_Li>
     </>
   )
 }
 
-const Li = styled.li`
+const S_Li = styled.li`
   height: 44px;
   border-radius: 44px; 
   border: 1px solid ${({ sns }) => handleBorderColor(sns)};
   font-size: 14px;
 `
-const Button = styled.li`
+const S_Button = styled.li`
   color: inherit;
   line-height: 44px;
   position: relative;

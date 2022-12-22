@@ -24,29 +24,29 @@ export default function CommentBox({ post_id, boxIcon }) {
 
 	return (
 		<>
-			<CommentContainer>
-				<UserIcon src={boxIcon} />
-				<CommentInput
+			<S_CommentBox>
+				<S_UserIcon src={boxIcon} />
+				<S_CommentInput
 					onChange={(e) => {
 						CommentInputValidator(e);
 					}}
 				/>
 				{btnHandler === true ? (
-					<CommentUploadButton onClick={btnClickEvent}>
-						<CommentUploadButtonImg src={commentbtn} />
-					</CommentUploadButton>
+					<S_CommentUploadButton onClick={btnClickEvent}>
+						<S_CommentUploadButtonImg src={commentbtn} />
+					</S_CommentUploadButton>
 				) : (
 					<></>
 				)}
-			</CommentContainer>
+			</S_CommentBox>
 		</>
 	);
 }
 
-const UserIcon = styled.img`
+const S_UserIcon = styled.img`
 	margin-left: 3px;
 `;
-const CommentInput = styled.input`
+const S_CommentInput = styled.input`
 	padding-left: 15px;
 	padding-right: 40px;
 	display: inline-block;
@@ -58,11 +58,11 @@ const CommentInput = styled.input`
 	border-radius: 18.5px;
 	background-color: ${palette.bottomBar[1]};
 `;
-const CommentUploadButtonImg = styled.img`
+const S_CommentUploadButtonImg = styled.img`
 	width: 24px;
 	height: 24px;
 `;
-const CommentUploadButton = styled.div`
+const S_CommentUploadButton = styled.div`
 	position: relative;
 	bottom: 31px;
 	left: 330px;
@@ -73,7 +73,7 @@ const CommentUploadButton = styled.div`
 	cursor: pointer;
 	/* background-image: url(${commentbtn}); */
 `;
-const CommentContainer = styled.div`
+const S_CommentBox = styled.div`
 	padding: 12px;
 	width: 390px;
 	height: 61px;
