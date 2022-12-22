@@ -1,7 +1,6 @@
 import React from 'react';
 import GlobalStyle from './lib/styles/GlobalStyle';
 import styled from 'styled-components';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Splash from './pages/Home/Splash';
 import HomePage from './pages/Home/HomePage.js';
@@ -38,13 +37,28 @@ export default function App() {
               <Route path="/login/email" element={<LoginByEmail />}></Route>
               <Route path="/register" element={<Register />}></Route>
               <Route path="/profile" element={<ProfilePage />}></Route>
-              <Route path="/profile/:accountname" element={<ProfilePage />}></Route>
-              <Route path="/profile/edit" element={<ProfileEditPage />}></Route>
+              <Route
+                path="/profile/:accountname"
+                element={<ProfilePage />}
+              ></Route>
+              <Route
+                path="/profile/edit"
+                element={<ProfileEditPage />}
+              ></Route>
               <Route path="/product" element={<ProductUploadPage />}></Route>
-              <Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
+              <Route
+                path="/product/:id/edit"
+                element={<ProductEditPage />}
+              ></Route>
               <Route path="/postUpload" element={<PostUploadPage />}></Route>
-              <Route path="/postUpload/:id" element={<PostUploadPage />}></Route>
-              <Route path="/postdetail/:id" element={<PostDetailPage />}></Route>
+              <Route
+                path="/postUpload/:id"
+                element={<PostUploadPage />}
+              ></Route>
+              <Route
+                path="/postdetail/:id"
+                element={<PostDetailPage />}
+              ></Route>
               <Route
                 path="/profile/:accountname/follower"
                 element={<FollowerPage />}
@@ -68,12 +82,12 @@ export default function App() {
 }
 
 const FrameContainer = styled.div`
-  max-width: 390px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0 auto;
-  background-color: #F3F1E8;
-  box-shadow: 0px 0px 10px #adadad;
-`
+	max-width: 390px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	background-color: #f3f1e8;
+	box-shadow: 0px 0px 10px #adadad;
+`;

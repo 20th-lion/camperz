@@ -80,7 +80,7 @@ export const ProfileBtnIcon = styled.button`
   align-items: center;
   width: 34px;
   height: 34px;
-  border: 1px solid ${palette.ProfileBtnIcon[0]};
+  border: 1px solid ${palette.profileBtnIcon[0]};
   border-radius: 50%;
   background-color: ${palette.background[0]};
   margin-right: 10px;

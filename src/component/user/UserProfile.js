@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import ButtonBig from '../common/ButtonBig';
 import { getUserInfo } from '../../lib/apis/profileApis';
 import FollowButton from '../follow/FollowButton';
@@ -8,7 +7,7 @@ import { followUser, unfollowUser } from '../../lib/apis/followApis';
 import * as s from '../common/ProfileInfo';
 import chatIcon from '../../assets/icons/yourProfile_chat.png';
 import shareIcon from '../../assets/icons/yourProfile_share.png';
-
+import styled from 'styled-components';
 
 export default function UserProfile({ type, user }) {
 	const navigate = useNavigate();
@@ -79,15 +78,14 @@ export default function UserProfile({ type, user }) {
 						<ButtonBig text="프로필 수정" onClick={() => navigate('/profile/edit')} />
 						<ButtonBig text="상품 등록" onClick={() => navigate('/product')} />
 					</s.ProfileBtnWrap>
-
 				) : (
 					<s.ProfileBtnWrap>
 						<s.ProfileBtnIcon>
-							<chatIcon />
+							<ChatIcon src={chatIcon} />
 						</s.ProfileBtnIcon>
 						<FollowButton isfollow={isfollow} onClick={handleFollow} />
 						<s.ProfileBtnIcon>
-							<shareIcon />
+							<ShareIcon src={shareIcon} />
 						</s.ProfileBtnIcon>
 					</s.ProfileBtnWrap>
 				)}
@@ -95,3 +93,12 @@ export default function UserProfile({ type, user }) {
 		</s.ProfileBackground>
 	);
 }
+
+const ChatIcon = styled.img`
+width: 34px;
+  height: 34px;
+`
+const ShareIcon = styled.img`
+width: 34px;
+  height: 34px;
+`

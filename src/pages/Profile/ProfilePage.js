@@ -16,6 +16,7 @@ export default function ProfilePage() {
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
 	const type = user === myAccountname ? 'mine' : 'other';
+
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 
@@ -23,8 +24,14 @@ export default function ProfilePage() {
 		openModal(modals.profileModal, {
 			onSetting: () => { },
 			onLogout: () => {
-				logout();
-				navigate('/');
+				openModal(modals.confirmModal, {
+					onConfirm: () => {
+						logout();
+						navigate('/');
+					},
+					message: '로그아웃 하시겠어요?',
+					btnText: '로그아웃',
+				});
 			},
 		});
 	};
@@ -36,7 +43,6 @@ export default function ProfilePage() {
 				<UserProfile user={user} type={type} />
 				<div>상품목록</div>
 				<ProductList user={user} type={type} />
-
 				<div>포스트목록</div>
 				<PostList user={user} type={type} />
 			</Main>
