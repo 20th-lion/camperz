@@ -15,20 +15,20 @@ export default function Splash() {
   return (
     <>
       <main>
-        <H1>
-          <Img src={CAMPERZLogoLight} alt='CAMPERZ' />
-        </H1>
+        <S_H1>
+          <img src={CAMPERZLogoLight} alt='CAMPERZ' />
+        </S_H1>
       </main>
     </>
   )
 }
 
-const H1 = styled.h1`
+const S_H1 = styled.h1`
   position: relative;
   width: 192px;
   height: 100px;
-`
-const Img = styled.img`
-  position: absolute;
-  bottom: 60px;
+  img {
+    position: absolute;
+    bottom: 60px;
+  }
 `

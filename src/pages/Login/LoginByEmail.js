@@ -26,18 +26,18 @@ export default function LoginByEmail() {
 
   return (
     <>
-      <Main>
+      <S_Main>
         <AuthForm
           formType='login'
           errorMsg={loginErrMsg}
           onSubmit={handleLogin} />
         <Link to="/register">이메일로 회원가입</Link>
-      </Main>
+      </S_Main>
     </>
   )
 }
 
-const Main = styled.main`
+const S_Main = styled.main`
   justify-content: flex-start;
   color:#767676;
   font-size: 12px;

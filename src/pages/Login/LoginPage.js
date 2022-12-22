@@ -6,42 +6,42 @@ import CAMPERZLogoDark from '../../assets/logo/CAMPERZ_dark.png';
 export default function LoginPage() {
   return (
     <>
-      <Main>
-        <BackGround>
-          <H2>
-            <Img src={CAMPERZLogoDark} alt='CAMPERZ' />
-          </H2>
-        </BackGround>
-        <LoginFadeIn>
-          <Ul>
+      <S_Main>
+        <S_BackGround>
+          <S_H2>
+            <S_Img src={CAMPERZLogoDark} alt='CAMPERZ' />
+          </S_H2>
+        </S_BackGround>
+        <S_LoginFadeIn>
+          <S_Ul>
             <SocialLoginBtn sns='카카오톡' />
             <SocialLoginBtn sns='구글' />
             <SocialLoginBtn sns='페이스북' />
-          </Ul>
-          <LinkBox>
+          </S_Ul>
+          <S_LinkBox>
             <Link to={'/login/email'}>이메일로 로그인</Link>
-            <Span></Span>
+            <S_Span></S_Span>
             <Link to={'/register'}>회원가입</Link>
-          </LinkBox>
-        </LoginFadeIn>
-      </Main>
+          </S_LinkBox>
+        </S_LoginFadeIn>
+      </S_Main>
     </>
   )
 }
 
-const Main = styled.main`
+const S_Main = styled.main`
   height: 100vh;
   background-color: #5C6145;
 `
-const BackGround = styled.div`
+const S_BackGround = styled.div`
     position: absolute;
 `
-const H2 = styled.h2`
+const S_H2 = styled.h2`
   position: relative;
   width: 192px;
   height: 100px;
 `
-const Img = styled.img`
+const S_Img = styled.img`
   position: absolute;
   bottom: 60px;
 `
@@ -53,7 +53,7 @@ const fadeIn = keyframes`
     bottom: 0;
   }
 `
-const LoginFadeIn = styled.section`
+const S_LoginFadeIn = styled.section`
   z-index: 10;
   width: 390px;
   height: 319px;
@@ -67,21 +67,21 @@ const LoginFadeIn = styled.section`
   color: #767676;
   text-align: center;
 `
-const Ul = styled.ul`
+const S_Ul = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 10px;
   font-size: 14px;
 
 `
-const LinkBox = styled.div`
+const S_LinkBox = styled.div`
   width: 154px;
   margin: 20px auto 0; 
   display: flex;
   gap: 12px;
   font-size: 12px;
 `
-const Span = styled.span`
+const S_Span = styled.span`
   position: relative;
   top: 1px;
   width: 1px;

@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { addHeart } from '../../lib/apis/HeartApis';
-import { deleteHeart } from '../../lib/apis/HeartApis';
+import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
 import { postDelete } from '../../lib/apis/postApis';
 import { useModals } from './../../lib/hooks/useModals';
 import Button from './../common/Button';
-import HeartButton from './HeartBtton';
+import HeartButton from './HeartButton';
 import { modals } from '../modal/Modals';
 import { getPostList } from './../../lib/apis/postApis';
 
@@ -15,6 +14,7 @@ import morePostIcon from '../../assets/icons/more_post.png';
 import heart from '../../assets/icons/heart.png';
 import heartFill from '../../assets/icons/heart_fill.png';
 import message from '../../assets/icons/message.png';
+
 export default function PostItem({
 	id,
 	content,

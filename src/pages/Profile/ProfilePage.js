@@ -22,7 +22,7 @@ export default function ProfilePage() {
 
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => {},
+			onSetting: () => { },
 			onLogout: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
@@ -38,6 +38,7 @@ export default function ProfilePage() {
 
 	return (
 		<>
+
 			<ProfilePageBlock>
 				<h1 className="ir">프로필 페이지</h1>
 				<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />

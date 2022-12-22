@@ -4,15 +4,16 @@ import palette from './../../lib/styles/palette';
 export default function Button({ onClick, text, active }) {
 	return (
 		<>
-			<StyledButton onClick={onClick} active={active}>
+			<S_Button onClick={onClick} active={active}>
 				{text}
-			</StyledButton>
+			</S_Button>
 		</>
 	);
 }
 
-const StyledButton = styled.button`
-	background-color: ${palette.khaki[0]};
+
+const S_Button = styled.button`
+  background-color: ${palette.khaki[0]};
   width: 56px;
   height: 28px;
   border-radius: 26px;
