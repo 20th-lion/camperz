@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalStyle from './lib/styles/GlobalStyle';
+import GlobalStyle from './lib/styles/globalStyle';
 import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Splash from './pages/Home/Splash';

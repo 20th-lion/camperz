@@ -95,10 +95,11 @@ export default function UserProfile({ type, user }) {
 }
 
 const ChatIcon = styled.img`
-width: 34px;
-  height: 34px;
-`
+	width: 34px;
+	height: 34px;
+`;
 const ShareIcon = styled.img`
+<<<<<<< HEAD
 width: 34px;
   height: 34px;
 `
@@ -187,3 +188,4 @@ const ProfileBtnIcon = styled.button`
   margin-right: 10px;
   margin-left: 10px;
 `;
+

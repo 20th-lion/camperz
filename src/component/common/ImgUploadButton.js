@@ -2,16 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import iconSrc from '../../assets/icons/img_upload_post.png';
 
-const ButtonContainer = styled.button`
-	width: 50px;
-	height: 50px;
-	background-image: url(${iconSrc});
-	border: 0;
-	padding: 0;
-	border-radius: 50px;
-	cursor: pointer;
-`;
-
 export default function ImgUploadButton({ setFileImage, handleImgChange }) {
 	const fileInput = React.useRef(null);
 
@@ -29,7 +19,16 @@ export default function ImgUploadButton({ setFileImage, handleImgChange }) {
 				onChange={handleImgChange}
 				//handleImgChange에 함수를 전달하면 이미지 업로드 했을 때의 값을 가져올 수 있습니다.
 			/>
-			<ButtonContainer onClick={handleButtonClick} />
+			<S_ButtonBox onClick={handleButtonClick} />
 		</>
 	);
 }
+const S_ButtonBox = styled.button`
+	width: 50px;
+	height: 50px;
+	background-image: url(${iconSrc});
+	border: 0;
+	padding: 0;
+	border-radius: 50px;
+	cursor: pointer;
+`;

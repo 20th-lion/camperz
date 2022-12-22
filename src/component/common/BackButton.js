@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import icon_arrow_left from '../../assets/icons/icon_arrow_left.png';
 import styled from 'styled-components';

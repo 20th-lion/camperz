@@ -25,7 +25,9 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 			onEdit: () => {
 				navigate(`/product/${id}/edit`);
 			},
-			onMove: () => {},
+			onMove: () => {
+				window.open(link);
+			},
 			type,
 		});
 	};
@@ -33,28 +35,35 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 	return (
 		<>
 			<StyledItemBlock onClick={handleModalClick}>
-				<div>상품명{itemName}</div>
-				<div>가격{price}</div>
-				<div
-					style={{
-						width: '100px',
-						height: '100px',
-					}}
-				>
-					이미지
-					<Simg src={itemImage} alt="" />
-				</div>
-				<div>링크{link}</div>
+				<ProductImg src={itemImage} alt="" />
+				<ProductSpan>{itemName}</ProductSpan>
+				<ProductSpan>{price.toLocaleString('ko-KR')}원</ProductSpan>
 			</StyledItemBlock>
 		</>
 	);
 }
 
 const StyledItemBlock = styled.div`
-	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	width: 140px;
+	height: 132px;
+	margin-right: 10px;
 `;
 
-const Simg = styled.img`
-	width: 100%;
-	height: 100%;
+const ProductImg = styled.img`
+	width: 140px;
+	height: 90px;
+	border: 0.5px solid #dbdbdb;
+	border-radius: 8px;
+`;
+
+const ProductSpan = styled.span`
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+
+	:last-child {
+		color: #f26e22;
+	}
 `;
