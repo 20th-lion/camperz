@@ -1,4 +1,6 @@
 import ReactModal from 'react-modal';
+import styled from 'styled-components';
+import './modal.css';
 
 export default function ProductModal({ onRemove, onEdit, onMove, onClose, type }) {
 	const handleClickRemove = () => {
@@ -20,18 +22,44 @@ export default function ProductModal({ onRemove, onEdit, onMove, onClose, type }
 		onClose();
 	};
 	return (
-		<ReactModal isOpen ariaHideApp={false} onRequestClose={handleClose}>
+		<ReactModal
+			isOpen
+			ariaHideApp={false}
+			onRequestClose={handleClose}
+			className="Modal"
+			overlayClassName="Overlay"
+		>
 			<div>
+				<Rectangle></Rectangle>
 				{type === 'mine' ? (
 					<>
-						<button onClick={handleClickRemove}>삭제하기</button>
-						<button onClick={handleClickEdit}>상품 수정하기</button>
+						<ModalContent onClick={handleClickRemove}>삭제</ModalContent>
+						<ModalContent onClick={handleClickEdit}>수정</ModalContent>
 					</>
 				) : (
 					<></>
 				)}
-				<button onClick={handleClickMove}>상품 페이지로 이동</button>
+				<ModalContent onClick={handleClickMove}>웹사이트에서 상품 보기</ModalContent>
 			</div>
 		</ReactModal>
 	);
 }
+const Rectangle = styled.div`
+	width: 50px;
+	height: 4px;
+	background: #dbdbdb;
+	border-radius: 5px;
+	margin: 16px auto;
+`;
+
+const ModalContent = styled.div`
+	display: flex;
+	align-items: center;
+	width: 390px;
+	height: 46px;
+	padding: 26px;
+	font-size: 14px;
+	line-height: 16px;
+	font-weight: 400;
+	cursor: pointer;
+`;

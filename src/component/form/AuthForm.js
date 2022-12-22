@@ -1,22 +1,21 @@
-import { React, useState, useRef } from 'react';
+import { React, useState } from 'react';
 import Button from '../common/Button';
 
-const headingMap = {
-  login: '로그인',
-  register: '이메일로 회원가입',
-};
-
 export default function AuthForm({ className, formType, errorMsg, handleValidate, onSubmit }) {
+  // 폼 타입 지정
+  const headingMap = {
+    login: '로그인',
+    register: '이메일로 회원가입',
+  };
   const heading = headingMap[formType];
 
+  // 인풋 입력값 얻기
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
   })
   
-  const [btnActive, setBtnActive] = useState(false);
-  const newErrorMsg = [...errorMsg];
-
+  // 인풋 밸리데이션에 따라 에러메시지가 등장하거나 버튼 활성화됨
   const handleInputEntered = (e) => {
     setInputs({
       ...inputs,
@@ -24,9 +23,10 @@ export default function AuthForm({ className, formType, errorMsg, handleValidate
     });
   }
 
-  const emailValidation = /[-0-9A-Z!#$%^&*()_=+\\|`,.;:''[\]{}?~]+@[0-9A-Z]+[-0-9A-Z_.]*.[a-z]/i;
-    // 
+  const newErrorMsg = [...errorMsg];
+  const [btnActive, setBtnActive] = useState(false);
 
+  const emailValidation = /[-0-9A-Z!#$%^&*()_=+\\|`,.;:''[\]{}?~]+@[0-9A-Z]+[-0-9A-Z_.]*.[a-z]/i;
   const showingActive = () => {
     if (emailValidation.test(inputs.email) && inputs.password.length >= 6 && !newErrorMsg[0]) {
       setBtnActive(true);

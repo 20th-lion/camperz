@@ -17,7 +17,7 @@ export default function PostDetailComment({ post_id }) {
 			{commentList.map((comment, idx) => (
 				<CommentItem key={idx} {...comment} post_id={post_id} />
 			))}
-			<CommentBox post_id={post_id} boxIcon={boxIcon} />
+			{/* <CommentBox post_id={post_id} boxIcon={boxIcon} /> */}
 		</>
 	);
 }

@@ -4,7 +4,7 @@ import { getPostList } from '../../lib/apis/postApis';
 import PostItem from './PostItem';
 import PostPicture from './PostPicture';
 
-export default function PostList({ user }) {
+export default function PostList({ user, type }) {
 	const [postList, setPostList] = useState([]);
 	const [toggle, setToggle] = useState(true);
 
@@ -12,7 +12,7 @@ export default function PostList({ user }) {
 		getPostList(user).then((res) => {
 			setPostList([...res.data.post]);
 		});
-	}, []);
+	}, [user]);
 
 	return (
 		<>
@@ -29,6 +29,7 @@ export default function PostList({ user }) {
 									{...post}
 									setPostList={setPostList}
 									user={user}
+									type={type}
 								/>
 						  ))
 						: postList.map((post, idx) => <PostPicture key={idx} {...post} />)}

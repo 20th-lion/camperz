@@ -17,20 +17,32 @@ export default function FollowButton({ isfollow, onClick }) {
 }
 
 const StyledFollowButton = styled.button`
-border: 1px solid black;
+  width: 120px;
+  height: 34px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #F3F1E8;
+  line-height: 17px;
 ::after {
     ${(props) =>
         props.isfollow
             ? css`
-            content: '취소';
+            content: '언팔로우';
             color: ${palette.khaki[0]};
-            border: 1px solid black;
-            background-color: white
           `
             : css`
             content: '팔로우';
-            color: ${palette.khaki[1]};
-            border: 1px solid black;
-            background-color: white
+            color: ${palette.khaki[3]};
           `};
-  }`
+  }
+  ${(props) =>
+        props.isfollow
+            ? css`
+            background-color: ${palette.khaki[3]};
+            border: 1px solid ${palette.khaki[0]};
+        `
+            : css`
+            background-color: ${palette.khaki[0]};
+        `};
+  `
