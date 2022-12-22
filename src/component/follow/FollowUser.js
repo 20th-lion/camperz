@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
 import FollowButton from '../follow/FollowButton';
+import palette from './../../lib/styles/palette';
 
 export default function FollowUser({
     username,
@@ -30,52 +31,57 @@ export default function FollowUser({
     };
 
     return (
-        <StyledUserContainer id={accountname}>
-            <StyledUserInfoContent onClick={() => {
+        <UserContainer id={accountname}>
+            <UserInfoContent onClick={() => {
                 const id = accountname;
                 navigate(`/profile/${id}`);
             }}>
-                <StyledProfileImg src={image} alt="프로필이미지" />
-                <StyledUserInfo>
-                    <StyledUserName>{username}</StyledUserName>
-                    <StyledUserIntro>{userIntro}</StyledUserIntro>
-                </StyledUserInfo>
-            </StyledUserInfoContent>
+                <ProfileImg src={image} alt="프로필이미지" />
+                <UserInfo>
+                    <UserName>{username}</UserName>
+                    <UserIntro>{userIntro}</UserIntro>
+                </UserInfo>
+            </UserInfoContent>
 
-            <FollowButton isfollow={is_Follow} onClick={handleFollow} />
+            <FollowButton size="small" isfollow={is_Follow} onClick={handleFollow} />
 
-        </StyledUserContainer>
+        </UserContainer>
     )
 }
 
-const StyledUserContainer = styled.div`
+const UserContainer = styled.div`
 display: flex;
-border: 1px solid black;
-width: 100%;
-height: 100%;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 16px;
 `
 
-const StyledUserInfoContent = styled.div`
+const UserInfoContent = styled.div`
+cursor: pointer;
 display: flex;
 `
 
-const StyledProfileImg = styled.img`
-width: 300px;
-height: 100px;
+const ProfileImg = styled.img`
+width: 50px;
+height: 50px;
+border-radius: 50%;
 `
 
-const StyledUserInfo = styled.div`
-width: 200px;
+const UserInfo = styled.div`
+width: 139px;
+margin: 5px 101px 6px 12px ;
 `
 
-const StyledUserName = styled.strong`
-border: 1px solid black;
+const UserName = styled.strong`
 display: block;
-width: 100px;
+font-size: 14px;
+font-weight: 400;
+margin-bottom: 6px;
 `
 
-const StyledUserIntro = styled.strong`
-border: 1px solid black;
+const UserIntro = styled.strong`
 display: block;
-width: 100px;
+font-size: 12px;
+font-weight: 400;
+color: ${palette.accountname[0]};
 `

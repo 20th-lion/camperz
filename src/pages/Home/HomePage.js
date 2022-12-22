@@ -19,7 +19,7 @@ export default function HomePage() {
       <main>
         <Feed></Feed>
       </main>
-      <NavBar page='home'/>
+      <NavBar page='home' />
     </>
   );
 }
