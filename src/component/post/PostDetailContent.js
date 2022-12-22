@@ -5,6 +5,10 @@ import morePostIcon from '../../assets/icons/more_post.png';
 import heart from '../../assets/icons/heart.png';
 import heartFill from '../../assets/icons/heart_fill.png';
 import message from '../../assets/icons/message.png';
+import { useModals } from '../../lib/hooks/useModals';
+import { modals } from './../modal/Modals';
+import { useEffect } from 'react';
+
 export default function PostDetailContent({ id }) {
 	const [userName, setUserName] = useState('');
 	const [accountName, setAccountName] = useState('');
@@ -14,6 +18,8 @@ export default function PostDetailContent({ id }) {
 	const [heartCount, setheartCount] = useState('');
 	const [conmentCount, setconmentCount] = useState('');
 	const [authorImg, setAuthorImg] = useState('');
+
+	const { openModal } = useModals();
 
 	postDetailLoader(id).then((res) => {
 		setUserName(res.data.post.author.username);
@@ -26,6 +32,22 @@ export default function PostDetailContent({ id }) {
 		setAccountName(res.data.post.author.accountname);
 	});
 
+	const handleClickModal = () => {
+		const type = localStorage.getItem('accountname') === accountName ? 'mine' : 'other';
+		console.log(localStorage.getItem('accountname'), userName);
+		openModal(modals.postItemModal, {
+			onRemove: async () => {
+				openModal(modals.confirmModal, {
+					onConfirm: async () => {},
+					message: '삭제하시겠어요?',
+					btnText: '삭제',
+				});
+			},
+			onReport: () => {},
+			type: type,
+		});
+	};
+
 	const updatedAtPost = updated.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
 	return (
@@ -36,7 +58,7 @@ export default function PostDetailContent({ id }) {
 					<Name>
 						<UserName>{userName}</UserName>@{accountName}
 					</Name>
-					<ModalIconImg src={morePostIcon} />
+					<ModalIconImg src={morePostIcon} onClick={handleClickModal} />
 				</PostItemHeader>
 				<ContentBox>{content}</ContentBox>
 

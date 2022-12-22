@@ -15,18 +15,21 @@ export default function CommentItem({ author, content, createdAt, id, post_id })
 		let type;
 		commenterAccountName === myAccountname ? (type = 'mine') : (type = 'other');
 		openModal(modals.commentModal, {
-			type: type,
 			onReport: () => {
 				reportComment(post_id, id, type).then((res) => {});
 				// console.log('신고시 실행되는 함수');
 			},
-			onClose: () => {
-				navigate(`/postdetail/${post_id}`);
-			},
 			onRemove: () => {
-				deleteComment(post_id, id, type).then((res) => {});
+				openModal(modals.confirmModal, {
+					onConfirm: () => {
+						deleteComment(post_id, id, type).then((res) => {});
+					},
+					message: '댓글을 삭제하시겠어요?',
+					btnText: '삭제',
+				});
 				// console.log('댓글 삭제시 실행되는 함수');
 			},
+			type: type,
 		});
 	};
 

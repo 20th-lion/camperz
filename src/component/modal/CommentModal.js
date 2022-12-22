@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
+import styled from 'styled-components';
+import './modal.css';
 
 export default function CommentModal({ onReport, onClose, onRemove, type }) {
 	const handleClickReport = () => {
@@ -15,18 +17,44 @@ export default function CommentModal({ onReport, onClose, onRemove, type }) {
 		onClose();
 	};
 	return (
-		<ReactModal isOpen ariaHideApp={false} onRequestClose={handleClose}>
+		<ReactModal
+			isOpen
+			ariaHideApp={false}
+			onRequestClose={handleClose}
+			className="Modal"
+			overlayClassName="Overlay"
+		>
 			<div>
+				<Rectangle></Rectangle>
 				{type === 'mine' ? (
 					<>
-						<button onClick={handleClickRemove}>댓글 삭제하기</button>
+						<ModalContent onClick={handleClickRemove}>삭제</ModalContent>
 					</>
 				) : (
 					<>
-						<button onClick={handleClickReport}>댓글 신고하기</button>
+						<ModalContent onClick={handleClickReport}>신고</ModalContent>
 					</>
 				)}
 			</div>
 		</ReactModal>
 	);
 }
+
+const Rectangle = styled.div`
+	width: 50px;
+	height: 4px;
+	background: #dbdbdb;
+	border-radius: 5px;
+	margin: 16px auto;
+`;
+
+const ModalContent = styled.div`
+	display: flex;
+	align-items: center;
+	width: 390px;
+	height: 46px;
+	padding: 26px;
+	font-size: 14px;
+	line-height: 16px;
+	cursor: pointer;
+`;
