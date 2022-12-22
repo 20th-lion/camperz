@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { postComment } from '../../lib/apis/commentApis';
+import commentbtn from '../../assets/icons/chat_send.png';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
-import commentbtn from '../../assets/icons/chat_send.png';
-
-import { postComment } from '../../lib/apis/commentApis';
 
 export default function CommentBox({ post_id, boxIcon }) {
 	const [btnHandler, setBtnHandler] = useState(false);
 	const [commentContent, setCommentContent] = useState('');
 
-	const commentInputValidator = (e) => {
+	const CommentInputValidator = (e) => {
 		setCommentContent(e.target.value);
 		if (e.target.value.length === 0) {
 			setBtnHandler(false);
@@ -29,7 +28,7 @@ export default function CommentBox({ post_id, boxIcon }) {
 				<UserIcon src={boxIcon} />
 				<CommentInput
 					onChange={(e) => {
-						commentInputValidator(e);
+						CommentInputValidator(e);
 					}}
 				/>
 				{btnHandler === true ? (
@@ -47,7 +46,6 @@ export default function CommentBox({ post_id, boxIcon }) {
 const UserIcon = styled.img`
 	margin-left: 3px;
 `;
-
 const CommentInput = styled.input`
 	padding-left: 15px;
 	padding-right: 40px;
@@ -60,12 +58,10 @@ const CommentInput = styled.input`
 	border-radius: 18.5px;
 	background-color: ${palette.bottomBar[1]};
 `;
-
 const CommentUploadButtonImg = styled.img`
 	width: 24px;
 	height: 24px;
 `;
-
 const CommentUploadButton = styled.div`
 	position: relative;
 	bottom: 31px;
@@ -77,12 +73,11 @@ const CommentUploadButton = styled.div`
 	cursor: pointer;
 	/* background-image: url(${commentbtn}); */
 `;
-
 const CommentContainer = styled.div`
-	/* gap: 10px; */
 	padding: 12px;
-	/* display: flex; */
 	width: 390px;
 	height: 61px;
 	background-color: ${palette.bottomBar[1]};
+	/* display: flex; */
+	/* gap: 10px; */
 `;

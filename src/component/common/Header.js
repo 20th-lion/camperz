@@ -3,17 +3,16 @@ import styled from 'styled-components';
 
 export default function Header({ leftChild, rightChild }) {
 	return (
-		<CommonHeader>
+		<S_Header>
 			{leftChild} {rightChild}
-		</CommonHeader>
+		</S_Header>
 	);
 }
-
 Header.defaultProps = {
 	leftChild: <BackButton />,
 };
 
-const CommonHeader = styled.header`
+const S_Header = styled.header`
 	height: 48px;
 	padding-left: 16px;
 	padding-right: 16px;
