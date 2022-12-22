@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { addHeart } from '../../lib/apis/HeartApis';
-import { deleteHeart } from '../../lib/apis/HeartApis';
+import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
 import { postDelete } from '../../lib/apis/postApis';
 import { useModals } from './../../lib/hooks/useModals';
 import Button from './../common/Button';
