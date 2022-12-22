@@ -75,7 +75,10 @@ export default function UserProfile({ type, user }) {
 
 				{type === 'mine' ? (
 					<s.ProfileBtnWrap>
-						<ButtonBig text="프로필 수정" onClick={() => navigate('/profile/edit')} />
+						<ButtonBig
+							text="프로필 수정"
+							onClick={() => navigate('/profile/edit')}
+						/>
 						<ButtonBig text="상품 등록" onClick={() => navigate('/product')} />
 					</s.ProfileBtnWrap>
 				) : (
@@ -95,10 +98,10 @@ export default function UserProfile({ type, user }) {
 }
 
 const ChatIcon = styled.img`
-width: 34px;
-  height: 34px;
-`
+	width: 34px;
+	height: 34px;
+`;
 const ShareIcon = styled.img`
-width: 34px;
-  height: 34px;
-`
+	width: 34px;
+	height: 34px;
+`;

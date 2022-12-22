@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import styled from 'styled-components';
 import { registProduct } from '../../lib/apis/productApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
 
@@ -28,14 +28,25 @@ export default function ProductUploadPage() {
 
 	return (
 		<>
+			<h1 className="ir">상품 등록 페이지</h1>
 			<Header rightChild={<Button onClick={handleSaveBtn} text={'저장'} active={btnActive} />} />
-			<div>
+			<Main>
 				<ProductForm
 					setProductInfo={setProductInfo}
 					productInfo={productInfo}
 					setBtnActive={setBtnActive}
 				/>
-			</div>
+			</Main>
 		</>
 	);
 }
+
+const Main = styled.main`
+	padding: 34px;
+	justify-content: flex-start;
+	height: calc(100vh - 54px);
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 14px;
+	color: #767676;
+`;

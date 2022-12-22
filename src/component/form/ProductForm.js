@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import iconSrc from '../../assets/icons/img_upload_post.png';
+import iconSrc from '../../assets/icons/img-button.png';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
 import { productValidation } from '../../lib/utils/productValidation';
 
@@ -45,33 +45,33 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 
 	return (
 		<>
-			<div
-				style={{
-					width: '200px',
-					height: '200px',
-					backgroundColor: 'gray',
-				}}
-				onClick={() => {
-					photoInput.current.click();
-				}}
-			>
-				<ButtonImg />
-				<input
-					name="image"
-					id="image"
-					style={{ display: 'none' }}
-					ref={photoInput}
-					type="file"
-					accept="image/*"
-					onChange={handleImgChange}
-				/>
-				<PictureArea
-					src={currentImg || productInfo.itemImage || defaultProfileImg}
-					alt="상품 이미지"
-				/>
-			</div>
+			<h2 className="ir">상품 등록 폼</h2>
+			<ImgBox>
+				이미지 등록
+				<InputImgBox
+					onClick={() => {
+						photoInput.current.click();
+					}}
+				>
+					<ButtonImg />
+					<input
+						name="image"
+						id="image"
+						style={{ display: 'none' }}
+						ref={photoInput}
+						type="file"
+						accept="image/*"
+						onChange={handleImgChange}
+					/>
+					<PictureArea
+						src={currentImg || productInfo.itemImage}
+						alt="상품 이미지"
+						onError={(e) => (e.target.style.display = 'none')}
+					/>
+				</InputImgBox>
+			</ImgBox>
 			<div>
-				이름
+				상품명
 				<input type="text" value={productInfo.itemName} name="itemName" onChange={onChange} />
 			</div>
 			<div>
@@ -79,25 +79,41 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 				<input type="number" name="price" value={productInfo.price} onChange={onChange} />
 			</div>
 			<div>
-				링크
+				판매 링크
 				<input type="text" name="link" value={productInfo.link} onChange={onChange} />
 			</div>
 		</>
 	);
 }
 
+const ImgBox = styled.div`
+	margin-bottom: 30px;
+`;
+const InputImgBox = styled.div`
+	position: relative;
+	width: 322px;
+	height: 204px;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: #dbdbdb;
+	cursor: pointer;
+	margin-top: 18px;
+`;
 const PictureArea = styled.img`
-	width: 200px;
-	height: 150px;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
 `;
 
 const ButtonImg = styled.img`
-	width: 50px;
-	height: 50px;
+	position: absolute;
+	right: 12px;
+	bottom: 12px;
+	width: 35px;
+	height: 35px;
 	background-image: url(${iconSrc});
-	border: 0;
-	padding: 0;
-	border-radius: 50px;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 50%;
 	pointer-events: 'none';
 `;
