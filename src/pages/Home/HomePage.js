@@ -14,7 +14,7 @@ export default function HomePage() {
     <>
       <Header
         leftChild={<h2>CAMPERZ 피드</h2>}
-        rightChild={<SearchBtnSmall src={iconSearch} onClick={handleSearching} />}
+        rightChild={<S_SearchBtnSmall src={iconSearch} onClick={handleSearching} />}
       />
       <main>
         <Feed></Feed>
@@ -23,7 +23,7 @@ export default function HomePage() {
     </>
   );
 }
-const SearchBtnSmall = styled.img`
+const S_SearchBtnSmall = styled.img`
 	width: 24px;
 	height: 24px;
 	cursor: pointer;

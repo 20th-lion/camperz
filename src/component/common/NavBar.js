@@ -19,12 +19,12 @@ export default function NavBar({ page }) {
               {page === 'home'
                 ?
                 <>
-                  <HomeIcon src={homeFill} />
-                  <IconText>홈</IconText>
+                  <S_HomeIcon src={homeFill} />
+                  <S_IconText>홈</S_IconText>
                 </>
                 :
                 <>
-                  <HomeIcon src={home} />
+                  <S_HomeIcon src={home} />
                   <p>홈</p>
                 </>
               }
@@ -35,12 +35,12 @@ export default function NavBar({ page }) {
               {page === 'message'
                 ?
                 <>
-                  <MsgIcon src={messageFill} />
-                  <IconText>채팅</IconText>
+                  <S_MsgIcon src={messageFill} />
+                  <S_IconText>채팅</S_IconText>
                 </>
                 :
                 <>
-                  <MsgIcon src={message} />
+                  <S_MsgIcon src={message} />
                   <p>채팅</p>
                 </>
               }
@@ -51,12 +51,12 @@ export default function NavBar({ page }) {
               {page === 'post'
                 ?
                 <>
-                  <PostIcon src={postFill} />
-                  <IconText>게시물 작성</IconText>
+                  <S_PostIcon src={postFill} />
+                  <S_IconText>게시물 작성</S_IconText>
                 </>
                 :
                 <>
-                  <PostIcon src={post} />
+                  <S_PostIcon src={post} />
                   <p>게시물 작성</p>
                 </>
               }
@@ -67,12 +67,12 @@ export default function NavBar({ page }) {
               {page === 'user'
                 ?
                 <>
-                  <UserIcon src={userFill} />
-                  <IconText>프로필</IconText>
+                  <S_UserIcon src={userFill} />
+                  <S_IconText>프로필</S_IconText>
                 </>
                 :
                 <>
-                  <UserIcon src={user} />
+                  <S_UserIcon src={user} />
                   <p>프로필</p>
                 </>
               }
@@ -104,30 +104,30 @@ const S_Li = styled.li`
   text-align: center;
   padding: 11.5px 0 6px;
 `
-const HomeIcon = styled.img`
+const S_HomeIcon = styled.img`
   width: 24px;
   height: 24px;
   display: block;
   margin: 0 auto 4px;
 `
-const MsgIcon = styled.img`
+const S_MsgIcon = styled.img`
   width: 24px;
   height: 24px;
   display: block;
   margin: 0 auto 4px;
 `
-const PostIcon = styled.img`
+const S_PostIcon = styled.img`
   width: 24px;
   height: 24px;
   display: block;
   margin: 0 auto 4px;
 `
-const UserIcon = styled.img`
+const S_UserIcon = styled.img`
   width: 24px;
   height: 24px;
   display: block;
   margin: 0 auto 4px;
 `
-const IconText = styled.p`
+const S_IconText = styled.p`
   color: #546500;
 `
