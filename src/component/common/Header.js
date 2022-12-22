@@ -8,7 +8,6 @@ export default function Header({ leftChild, rightChild }) {
 		</CommonHeader>
 	);
 }
-
 Header.defaultProps = {
 	leftChild: <BackButton />,
 };

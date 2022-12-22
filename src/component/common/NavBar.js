@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import home from '../../assets/icons/home.png';
 import homeFill from '../../assets/icons/home_fill.png';
 import message from '../../assets/icons/message.png';
@@ -9,13 +9,12 @@ import postFill from '../../assets/icons/post_fill.png';
 import user from '../../assets/icons/user.png';
 import userFill from '../../assets/icons/user_fill.png';
 
-
 export default function NavBar({ page }) {
   return (
     <>
-      <Nav>
-        <Ul>
-          <Li>
+      <S_Nav>
+        <S_Ul>
+          <S_Li>
             <Link to='/home'>
               {page === 'home'
                 ?
@@ -30,8 +29,8 @@ export default function NavBar({ page }) {
                 </>
               }
             </Link>
-          </Li>
-          <Li>
+          </S_Li>
+          <S_Li>
             <Link to='/chatlist'>
               {page === 'message'
                 ?
@@ -46,8 +45,8 @@ export default function NavBar({ page }) {
                 </>
               }
             </Link>
-          </Li>
-          <Li>
+          </S_Li>
+          <S_Li>
             <Link to='/postUpload'>
               {page === 'post'
                 ?
@@ -62,8 +61,8 @@ export default function NavBar({ page }) {
                 </>
               }
             </Link>
-          </Li>
-          <Li>
+          </S_Li>
+          <S_Li>
             <Link to='/profile'>
               {page === 'user'
                 ?
@@ -78,14 +77,14 @@ export default function NavBar({ page }) {
                 </>
               }
             </Link>
-          </Li>
-        </Ul>
-      </Nav>
+          </S_Li>
+        </S_Ul>
+      </S_Nav>
     </>
   );
 }
 
-const Nav = styled.nav`
+const S_Nav = styled.nav`
   bottom: 0px;
   height: 60px;
   background-color: #E3E3D3;
@@ -93,14 +92,14 @@ const Nav = styled.nav`
   font-weight: 400;
   border-top: 1px solid #DBDBDB;
 `
-const Ul = styled.ul`
+const S_Ul = styled.ul`
 	display: flex;
 	justify-content: space-around;
   color: #767676;
   height: 100%;
   margin: auto 0;
 `
-const Li = styled.li`
+const S_Li = styled.li`
   width: 84px;
   text-align: center;
   padding: 11.5px 0 6px;

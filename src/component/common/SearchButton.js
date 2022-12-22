@@ -1,6 +1,5 @@
-import React from 'react';
-import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
+import styled from "styled-components";
 
 export default function SearchButton() {
   const navigate = useNavigate();
@@ -9,14 +8,14 @@ export default function SearchButton() {
   }
 	return (
 		<>
-      <StyledButton onClick={handleSearching}>
+      <S_Button onClick={handleSearching}>
 				검색하기
-      </StyledButton>
+      </S_Button>
 		</>
 	);
 }
 
-const StyledButton = styled.button`
+const S_Button = styled.button`
 	display: inline-block;
 	width: 181px;
 	height: 44px;
