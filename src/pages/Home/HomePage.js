@@ -1,9 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../component/common/Header';
 import NavBar from '../../component/common/NavBar';
 import Feed from '../../component/feed/Feed';
+import styled from 'styled-components';
 import iconSearch from '../../assets/icons/icon_search.png';
 
 export default function HomePage() {

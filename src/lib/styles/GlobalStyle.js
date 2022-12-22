@@ -72,9 +72,16 @@ const GlobalStyle = createGlobalStyle`
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit; 
+    color: #000000;
   }
 
   input:focus {
     outline: none;
+  }
+
+  input::placeholder {
+    color: #92918A;
+  }
+`;
 
 export default GlobalStyle;
