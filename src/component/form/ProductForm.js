@@ -3,17 +3,37 @@ import styled from 'styled-components';
 
 import iconSrc from '../../assets/icons/img_upload_post.png';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
+import { productValidation } from '../../lib/utils/productValidation';
 
-export default function ProductForm({ setProductInfo, productInfo }) {
+export default function ProductForm({ setProductInfo, productInfo, setBtnActive }) {
 	const photoInput = useRef();
 	const [currentImg, setCurrentImg] = useState('');
+	const [validation, setValidation] = useState({
+		price: '',
+		link: '',
+	});
+
 	const onChange = (e) => {
 		const { name, value } = e.target;
 		setProductInfo({
 			...productInfo,
 			[name]: value,
 		});
+		setValidation({ ...validation, [name]: productValidation(name, value) });
 	};
+
+	if (
+		productInfo.itemName !== '' &&
+		productInfo.price > 0 &&
+		productInfo.link !== '' &&
+		productInfo.itemImage !== '' &&
+		validation.price &&
+		validation.link
+	) {
+		setBtnActive(true);
+	} else {
+		setBtnActive(false);
+	}
 
 	const handleImgChange = (e) => {
 		setProductInfo({
@@ -22,6 +42,7 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 		});
 		setCurrentImg(URL.createObjectURL(e.target.files[0]));
 	};
+
 	return (
 		<>
 			<div
@@ -34,7 +55,7 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 					photoInput.current.click();
 				}}
 			>
-				<LabelImg />
+				<ButtonImg />
 				<input
 					name="image"
 					id="image"
@@ -51,25 +72,15 @@ export default function ProductForm({ setProductInfo, productInfo }) {
 			</div>
 			<div>
 				이름
-				<input
-					type="text"
-					value={productInfo.itemName}
-					name="itemName"
-					onChange={(e) => onChange(e)}
-				/>
+				<input type="text" value={productInfo.itemName} name="itemName" onChange={onChange} />
 			</div>
 			<div>
 				가격
-				<input
-					type="number"
-					value={productInfo.price}
-					name="price"
-					onChange={(e) => onChange(e)}
-				/>
+				<input type="number" name="price" value={productInfo.price} onChange={onChange} />
 			</div>
 			<div>
 				링크
-				<input type="text" name="link" value={productInfo.link} onChange={(e) => onChange(e)} />
+				<input type="text" name="link" value={productInfo.link} onChange={onChange} />
 			</div>
 		</>
 	);
@@ -81,7 +92,7 @@ const PictureArea = styled.img`
 	object-fit: cover;
 `;
 
-const LabelImg = styled.img`
+const ButtonImg = styled.img`
 	width: 50px;
 	height: 50px;
 	background-image: url(${iconSrc});
