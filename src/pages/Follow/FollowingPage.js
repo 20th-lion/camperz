@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { followingList } from '../../lib/apis/followApis';
 import FollowContents from '../../component/follow/FollowContents';
 import Header from '../../component/common/Header';
+import styled from 'styled-components';
+import NavBar from '../../component/common/NavBar';
+import BackButton from '../../component/common/BackButton';
 
 export default function FollowingPage() {
 	const { accountname } = useParams();
@@ -29,9 +31,22 @@ export default function FollowingPage() {
 
 	return (
 		<>
-			<p>팔로잉창</p>
-			<Header></Header>
-			<FollowContents followData={followingData} followMessage={followingMessage} />
+			<Header leftChild={<S_div><BackButton />  Followings</S_div>}></Header>
+			<S_Main>
+				<FollowContents followData={followingData} followMessage={followingMessage} />
+			</S_Main>
+			<NavBar page='user' />
 		</>
 	);
 }
+
+const S_Main = styled.main`
+  justify-content: flex-start;
+  height: calc(100vh - 54px);
+`
+const S_div = styled.div`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  align-items: center;
+`

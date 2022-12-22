@@ -46,7 +46,7 @@ export default function ProfilePage() {
 				<div>포스트목록</div>
 				<PostList user={user} type={type} />
 			</Main>
-			<NavBar />
+			<NavBar page='user' />
 		</>
 	);
 }

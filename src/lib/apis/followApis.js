@@ -18,7 +18,7 @@ export const unfollowUser = async (accountname) => {
 
 export const followerList = async (accountname) => {
 
-    const reqPath = `/profile/${accountname}/follower`;
+    const reqPath = `/profile/${accountname}/follower?limit=20&skip=0`;
 
     const res = await axiosPrivate.get(reqPath)
     return res
@@ -26,7 +26,7 @@ export const followerList = async (accountname) => {
 
 export const followingList = async (accountname) => {
 
-    const reqPath = `/profile/${accountname}/following`;
+    const reqPath = `/profile/${accountname}/following?limit=20&skip=0`;
 
     const res = await axiosPrivate.get(reqPath)
     return res

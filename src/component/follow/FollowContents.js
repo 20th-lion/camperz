@@ -9,13 +9,13 @@ export default function FollowContents({ followData, followMessage }) {
         setUserData(followData);
     }, [followData]);
     return (
-        <StyledFollowBlock>
+        <FollowWrap>
             {userData && userData.length === 0 ? (
-                <StyledMessageBlock>{followMessage}</StyledMessageBlock>
+                <Message>{followMessage}</Message>
             ) : (
                 userData && userData.map((item) => {
                     return (
-                        <StyledFollowBlock key={item._id}>
+                        <FollowUserWrap key={item._id}>
                             <FollowUser
                                 username={item.username}
                                 accountname={item.accountname}
@@ -23,22 +23,26 @@ export default function FollowContents({ followData, followMessage }) {
                                 image={item.image}
                                 isfollow={item.isfollow}
                             />
-                        </StyledFollowBlock>
+                        </FollowUserWrap>
 
                     )
                 })
             )}
-        </StyledFollowBlock>
+        </FollowWrap>
     );
 }
 
-const StyledFollowBlock = styled.div`
-border: 1px solid black;
-width: 100%;
-	height: 100%;
-`
+const FollowWrap = styled.div`
+margin: 0 auto;
+padding: 24px 16px 16px 16px;
+height: calc(100vh - 108px);
+`;
 
-const StyledMessageBlock = styled.div`
-text-align: center;
-font-size: 10px;
+const FollowUserWrap = styled.div`
+margin-bottom: 16px;
+`;
+
+const Message = styled.div`
+text-align: center; 
+font-size: 14px;
 `;
