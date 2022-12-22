@@ -51,7 +51,7 @@ export default function ProfilePage() {
 
 					<PostList user={user} type={type} />
 				</Main>
-				<NavBar page={type === 'mine' ? 'profile' : 'home'} />
+				<NavBar page={type === 'mine' ? 'user' : 'home'} />
 			</ProfilePageBlock>
 		</>
 	);
