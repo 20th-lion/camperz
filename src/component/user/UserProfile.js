@@ -99,7 +99,6 @@ const ChatIcon = styled.img`
 	height: 34px;
 `;
 const ShareIcon = styled.img`
-<<<<<<< HEAD
 width: 34px;
   height: 34px;
 `
