@@ -65,6 +65,23 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     background-color: inherit;
   }
+
+  input {
+    background-color: inherit;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit; 
+    color: #000000;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input::placeholder {
+    color: #92918A;
+  }
 `;
 
 export default GlobalStyle;

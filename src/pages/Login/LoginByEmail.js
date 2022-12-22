@@ -39,7 +39,6 @@ export default function LoginByEmail() {
 
 const Main = styled.main`
   justify-content: flex-start;
-  gap: 26px;
   color:#767676;
   font-size: 12px;
 `
