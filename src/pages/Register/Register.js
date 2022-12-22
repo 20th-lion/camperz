@@ -58,33 +58,47 @@ export default function Register() {
 
   return (
     <>
-      <S_Main>
-        {form === 'AuthForm' ? (
+      {form === 'AuthForm' ? (
+        <S_Main>
           <AuthForm
             formType="register"
             errorMsg={registerErrMsg}
             handleValidate={handleVerifyEmail}
             onSubmit={handleChangingForm}
           />
-        ) : (
-          <section>
-            <h2>프로필 설정</h2>
+        </S_Main>
+      ) : (
+        <S_Main>
+          <H2>프로필 설정
             <p>나중에 언제든지 변경할 수 있습니다.</p>
-            <ProfileForm
-              userInfo={userInfo}
-              setUserInfo={setUserInfo}
-              setErrorMsg={setErrorMsg}
-              setBtnActive={setBtnActive}
-              errorMsg={errorMsg}
-            />
-            <ButtonRectangle text="CAMPERZ 시작하기" onClick={handleRegister} active={btnActive} />
-          </section>
-        )}
-      </S_Main>
+          </H2>
+          <ProfileForm
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+            setErrorMsg={setErrorMsg}
+            setBtnActive={setBtnActive}
+            errorMsg={errorMsg}
+          />
+          <ButtonRectangle text="CAMPERZ 시작하기" onClick={handleRegister} active={btnActive} />
+        </S_Main>
+      )}
     </>
   );
 }
 
 const S_Main = styled.main`
   justify-content: flex-start;
+`
+const H2 = styled.h2`
+  color: #000000;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 40px;
+  p {
+    margin-top: 12px;
+    color: #767676;
+    font-size: 14px;
+    font-weight: 300;
+  }
 `
