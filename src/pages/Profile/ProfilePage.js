@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
 import Header from '../../component/common/Header';
@@ -23,7 +22,7 @@ export default function ProfilePage() {
 
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => {},
+			onSetting: () => { },
 			onLogout: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
@@ -87,3 +86,4 @@ const PostSection = styled.section`
 	border-bottom: 0.5px solid #dbdbdb;
 	margin-top: 6px;
 `;
+
