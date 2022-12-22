@@ -14,13 +14,14 @@ const handleBorderColor = (sns) => {
   }
 };
 const handleIconImg = (sns) => {
+  console.log(sns)
   switch (sns) {
     case '카카오톡':
-      return {KakaoLogo};
+      return KakaoLogo;
     case '구글':
-      return {GoogleLogo};
+      return GoogleLogo;
     case '페이스북':
-      return {FacebookLogo};
+      return FacebookLogo;
   }
 };
 
@@ -28,7 +29,7 @@ export default function SocialLoginBtn({ sns }) {
   return (
     <>
       <Li sns={sns}>
-        <Button type='button'>
+        <Button sns={sns} type='button'>
           {sns} 계정으로 로그인
         </Button>
       </Li>
