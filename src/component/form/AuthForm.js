@@ -120,6 +120,7 @@ const S_Input = styled.input`
   border-bottom: 1px solid #DBDBDB;
   ::placeholder {
     font-weight: 100;
+    font-size: 12px;
   }
   :focus {
     border-bottom: 1px solid #EB5757;
@@ -130,7 +131,7 @@ const S_Strong = styled.strong`
   height: 50px;
   font-size: 12px;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 21px;
   color: #EB5757;
   padding-bottom: 15px;
 `
