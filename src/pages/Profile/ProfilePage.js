@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../../component/common/Button';
 import NavBar from '../../component/common/NavBar';
@@ -37,19 +37,53 @@ export default function ProfilePage() {
 	};
 
 	return (
-		<>
+		<ProfilePageBlock>
 			<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
-			<Main>
-				<UserProfile user={user} type={type} />
-				<div>상품목록</div>
-				<ProductList user={user} type={type} />
-				<div>포스트목록</div>
-				<PostList user={user} type={type} />
-			</Main>
+			<main>
+				<UserSection>
+					<UserProfile user={user} type={type} />
+				</UserSection>
+				<ProductSection>
+					<h2>판매 중인 상품</h2>
+					<ProductList user={user} type={type} />
+				</ProductSection>
+				<PostSection>
+					<PostList user={user} type={type} />
+				</PostSection>
+			</main>
 			<NavBar />
-		</>
+		</ProfilePageBlock>
 	);
 }
-const Main = styled.main`
-  justify-content: flex-start;
-`
+
+const ProfilePageBlock = styled.div`
+	background-color: #f2f2f2;
+`;
+
+const UserSection = styled.section`
+	width: 100%;
+	background-color: #f3f1e8;
+	border-bottom: 0.5px solid #dbdbdb;
+`;
+
+const ProductSection = styled.section`
+	width: 100%;
+	height: 208px;
+	background-color: #f3f1e8;
+	padding: 20px 16px;
+	border-top: 0.5px solid #dbdbdb;
+	border-bottom: 0.5px solid #dbdbdb;
+	margin-top: 6px;
+	h2 {
+		font-weight: 400;
+	}
+`;
+
+const PostSection = styled.section`
+	width: 100%;
+	background-color: #f3f1e8;
+	border-top: 0.5px solid #dbdbdb;
+	border-bottom: 0.5px solid #dbdbdb;
+	margin-top: 6px;
+`;
+

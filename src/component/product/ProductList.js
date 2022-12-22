@@ -33,10 +33,10 @@ export default React.memo(function ProductList({ user, type }) {
 	);
 });
 
-const StyledProductList = styled.div`
-width: 80%;
-padding: 100px;
-border: 1px solid black;
-	display: flex;
+const StyledProductList = styled.ul`
+display: flex;
 	overflow-x: scroll;
+	padding: 0;
+	margin-top: 16px;
+
 `;
