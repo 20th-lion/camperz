@@ -158,6 +158,7 @@ const S_ImgInput = styled.input`
 const S_ProfileImg = styled.img`
   width: 114px;
   height: 112px;
+  border-radius: 50%;
 	object-fit: cover;
   cursor: pointer;
 `;
