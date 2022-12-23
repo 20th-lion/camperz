@@ -1,4 +1,5 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import getSearchApiResponse from '../../lib/apis/searchApis.js'
 import Header from '../../component/common/Header';
 import NavBar from '../../component/common/NavBar';
 import BackButton from '../../component/common/BackButton';
@@ -6,11 +7,14 @@ import SearchingResult from '../../component/search/SearchResult';
 import styled from 'styled-components';
 
 export default function SearchPage() {
-  const searchRef = useRef();
-  // const [account, setAccount] = useState();
-  const handleInputText = () => {
-
+  const [account, setAccount] = useState();
+  const handleInputText = (e) => {
+    setAccount(e.target.value);
+    
   }
+  useEffect(() => {
+    console.log(account)
+  }, [account])
 
   return (
     <>
@@ -18,8 +22,8 @@ export default function SearchPage() {
         leftChild={
           <><BackButton /><h2 className='ir'>검색페이지</h2></>}
         rightChild={
-          <S_SearchingInput 
-            ref={searchRef} 
+          <S_SearchingInput
+            value={account}
             onChange={handleInputText}
             placeholder='계정 검색' />}
       />
@@ -34,6 +38,7 @@ export default function SearchPage() {
     </>
   );
 }
+
 const S_SearchingInput = styled.input`
   width: 316px;
   height: 32px;
