@@ -71,17 +71,17 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 				</InputImgBox>
 			</S_ImgBox>
 			<S_InputBox>
-				상품명
+				<S_Label htmlFor="itemName">상품명</S_Label>
 				<S_Input
+					name="itemName"
 					type="text"
 					value={productInfo.itemName}
-					name="itemName"
 					onChange={onChange}
 					placeholder="상품 명을 입력해 주세요"
 				/>
 			</S_InputBox>
 			<S_InputBox>
-				가격
+				<S_Label htmlFor="price">가격</S_Label>
 				<S_Input
 					type="text"
 					name="price"
@@ -91,7 +91,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 				/>
 			</S_InputBox>
 			<S_InputBox>
-				판매 링크
+				<S_Label htmlFor="link">판매 링크</S_Label>
 				<S_Input
 					type="text"
 					name="link"
@@ -151,4 +151,21 @@ const S_Input = styled.input`
 	font-size: 14px;
 	line-height: 14px;
 	border-bottom: 0.5px solid #dbdbdb;
+	::placeholder {
+		font-weight: 100;
+		font-size: 12px;
+	}
+	:focus {
+		border-bottom: 1px solid #eb5757;
+	}
+`;
+const S_Label = styled.label`
+	display: block;
+	font-size: 12px;
+	color: #767676;
+	span {
+		margin-left: 2px;
+		font-weight: 400;
+		color: #eb5757;
+	}
 `;
