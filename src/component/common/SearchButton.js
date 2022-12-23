@@ -16,11 +16,10 @@ export default function SearchButton() {
 }
 
 const S_Button = styled.button`
-	display: inline-block;
 	width: 181px;
 	height: 44px;
 	background-color: #5C6145;
-	color: #FFFFFF;
+  color: #F3F1E8;
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 400;
 `

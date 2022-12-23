@@ -8,7 +8,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
   // userInfo에 인풋 입력값 얻기
   const { image, username, accountname, intro } = userInfo;
   const [currentImg, setCurrentImg] = useState(image);
-  
+
   // 인풋 밸리데이션에 따라 에러메시지가 등장하거나 버튼 활성화됨
   const [errorMsg, setErrorMsg] = useState({
     usernameErr: '',
@@ -75,15 +75,13 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 
   return (
     <>
-      <form onSubmit={handlePreventSubmit}>
-        <ImgContainer
-          htmlFor='image'
+      <S_Form onSubmit={handlePreventSubmit}>
+        <S_ImgUploadBox
           onClick={() => {
             photoInput.current.click();
-          }}
-        >
-          <LabelImg />
-          <ImgInput
+          }}>
+          <label htmlFor='image'></label>
+          <S_ImgInput
             name='image'
             ref={photoInput}
             accept='image/*'
@@ -91,14 +89,15 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
             type='file'
             id='image'
           />
-          <PictureArea
+          <S_ProfileImg
             src={currentImg || userInfo.image || defaultProfileImg}
             alt='기본프로필사진'
           />
-        </ImgContainer>
-        <inputWrapper>
-          <label htmlFor='username'>사용자 이름</label>
-          <input
+          <S_UploadIcon src={iconSrc}/>
+        </S_ImgUploadBox>
+        <S_InputBox>
+          <S_Label htmlFor='username'>사용자 이름<span>*</span></S_Label>
+          <S_Input
             name='username'
             value={username}
             onChange={handleInputEntered}
@@ -107,11 +106,11 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
             id='username'
             placeholder='2~10자 이내여야 합니다.'
           />
-          <strong>{errorMsg.usernameErr}</strong>
-        </inputWrapper>
-        <inputWrapper>
-          <label htmlFor='accountname'>계정 ID</label>
-          <input
+          <S_Strong>{errorMsg.usernameErr}</S_Strong>
+        </S_InputBox>
+        <S_InputBox>
+          <S_Label htmlFor='accountname'>계정 ID<span>*</span></S_Label>
+          <S_Input
             name='accountname'
             value={accountname}
             onChange={handleInputEntered}
@@ -120,11 +119,11 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
             id='accountname'
             placeholder='영문, 숫자, 마침표(.), 언더바(_)만 사용 가능합니다.'
           />
-          <strong>{errorMsg.accountnameErr}</strong>
-        </inputWrapper>
-        <inputWrapper>
-          <label htmlFor='intro'>소개</label>
-          <input
+          <S_Strong>{errorMsg.accountnameErr}</S_Strong>
+        </S_InputBox>
+        <S_InputBox>
+          <S_Label htmlFor='intro'>소개</S_Label>
+          <S_Input
             name='intro'
             value={intro}
             onChange={handleInputEntered}
@@ -132,35 +131,81 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
             id='intro'
             placeholder='자신과 판매할 상품에 대해 소개해주세요.'
           />
-        </inputWrapper>
-      </form>
+        </S_InputBox>
+      </S_Form>
     </>
   );
 }
 
-const ImgContainer = styled.label`
-  display: block;
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
+const S_Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 32px 15px;
 `
-const LabelImg = styled.img`
-	width: 50px;
-	height: 50px;
-	background-image: url(${iconSrc});
-	border: 0;
-	padding: 0;
-	border-radius: 50px;
-	cursor: pointer;
-`;
-const ImgInput = styled.img`
+const S_ImgUploadBox = styled.div`
+  width: 114px;
+  height: 112px;
+  margin: 30px;
+  position: relative;
+  label {
+    display: none;
+  }
+`
+const S_ImgInput = styled.input`
   display: none;
 `
-const PictureArea = styled.img`
-	width: 200px;
-	height: 150px;
+const S_ProfileImg = styled.img`
+  width: 114px;
+  height: 112px;
 	object-fit: cover;
+  cursor: pointer;
 `;
-const inputWrapper = styled.div`
-  width: auto;
+const S_UploadIcon = styled.img`
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 10;
+  cursor: pointer;
+ `;
+const S_InputBox = styled.div`
+  width: 322px;
+  height: 48px;
+  border-bottom: 1px solid #DBDBDB;
+  margin-bottom: 25px;
+`
+const S_Label = styled.label`
+  display: block;
+  font-size: 12px;
+  color: #767676;
+  span {
+    margin-left: 2px;
+    font-weight: 400;
+    color: #EB5757;
+  }
+`
+const S_Input = styled.input`
+  width: 322px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 32px;
+  border-bottom: 1px solid #DBDBDB;
+  ::placeholder {
+    font-weight: 100;
+    font-size: 12px;
+  }
+  :focus {
+    border-bottom: 1px solid #EB5757;
+  }
+`
+const S_Strong = styled.strong`
+  display: block;
+  height: 50px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #EB5757;
+  padding-bottom: 15px;
 `

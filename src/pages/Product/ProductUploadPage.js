@@ -12,7 +12,7 @@ export default function ProductUploadPage() {
 	const navigate = useNavigate();
 	const [productInfo, setProductInfo] = useState({
 		itemName: '',
-		price: 0,
+		price: '',
 		link: '',
 		itemImage: '',
 	});
@@ -30,18 +30,18 @@ export default function ProductUploadPage() {
 		<>
 			<h1 className="ir">상품 등록 페이지</h1>
 			<Header rightChild={<Button onClick={handleSaveBtn} text={'저장'} active={btnActive} />} />
-			<Main>
+			<S_Main>
 				<ProductForm
 					setProductInfo={setProductInfo}
 					productInfo={productInfo}
 					setBtnActive={setBtnActive}
 				/>
-			</Main>
+			</S_Main>
 		</>
 	);
 }
 
-const Main = styled.main`
+const S_Main = styled.main`
 	padding: 34px;
 	justify-content: flex-start;
 	height: calc(100vh - 54px);
