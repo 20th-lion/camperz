@@ -48,7 +48,6 @@ export default function ProfilePage() {
 						<UserProfile user={user} type={type} />
 					</ProfileSection>
 					<ProductList user={user} type={type} />
-
 					<PostList user={user} type={type} />
 				</Main>
 				<NavBar page={type === 'mine' ? 'user' : 'home'} />

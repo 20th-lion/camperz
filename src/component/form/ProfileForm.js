@@ -146,7 +146,7 @@ const S_Form = styled.form`
 const S_ImgUploadBox = styled.div`
   width: 114px;
   height: 112px;
-  margin: 30px;
+  margin: 35px;
   position: relative;
   label {
     display: none;
@@ -173,7 +173,6 @@ const S_UploadIcon = styled.img`
 const S_InputBox = styled.div`
   width: 322px;
   height: 48px;
-  border-bottom: 1px solid #DBDBDB;
   margin-bottom: 25px;
 `
 const S_Label = styled.label`
