@@ -13,8 +13,8 @@ export default function Button({ onClick, text, active }) {
 
 const S_Button = styled.button`
   background-color: ${palette.khaki[0]};
-  width: 120px;
   height: 34px;
+  padding: 0 20px;
   border-radius: 30px;
   font-size: 14px;
   font-weight: 400;

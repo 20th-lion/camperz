@@ -94,7 +94,7 @@ const H2 = styled.h2`
   font-size: 24px;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   p {
     margin-top: 12px;
     color: #767676;
