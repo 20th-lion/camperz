@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../../component/common/Button';
+
 import NavBar from '../../component/common/NavBar';
 import Header from '../../component/common/Header';
 import UserProfile from '../../component/user/UserProfile';
@@ -10,6 +10,7 @@ import PostList from './../../component/post/PostList';
 import { logout } from '../../lib/utils/logout';
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
+import moreIcon from '../../assets/icons/more_header.png';
 
 export default function ProfilePage() {
 	const myAccountname = localStorage.getItem('accountname');
@@ -22,7 +23,7 @@ export default function ProfilePage() {
 
 	const handleModalClick = () => {
 		openModal(modals.profileModal, {
-			onSetting: () => { },
+			onSetting: () => {},
 			onLogout: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
@@ -38,10 +39,9 @@ export default function ProfilePage() {
 
 	return (
 		<>
-
 			<ProfilePageBlock>
 				<h1 className="ir">프로필 페이지</h1>
-				<Header rightChild={<Button onClick={handleModalClick} text={'모달'} active />} />
+				<Header rightChild={<S_IconImg onClick={handleModalClick} src={moreIcon} />} />
 				<Main>
 					<ProfileSection>
 						<h2 className="ir">유저 프로필</h2>
@@ -71,4 +71,10 @@ const ProfileSection = styled.section`
 	border-bottom: 0.5px solid #dbdbdb;
 	box-sizing: border-box;
 	margin-bottom: 6px;
+`;
+
+const S_IconImg = styled.img`
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
 `;

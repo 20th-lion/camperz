@@ -18,11 +18,11 @@ export default React.memo(function ProductList({ user, type }) {
 
 	return (
 		<>
-			<S_ProductSection>
-				<h2>판매 중인 상품</h2>
-				<S_ProductList>
-					{productList &&
-						productList.map((item) => (
+			{!!productList.length && (
+				<S_ProductSection>
+					<h2>판매 중인 상품</h2>
+					<S_ProductList>
+						{productList.map((item) => (
 							<ProductItem
 								key={item.id}
 								{...item}
@@ -30,8 +30,9 @@ export default React.memo(function ProductList({ user, type }) {
 								type={type}
 							/>
 						))}
-				</S_ProductList>
-			</S_ProductSection>
+					</S_ProductList>
+				</S_ProductSection>
+			)}
 		</>
 	);
 });
@@ -55,4 +56,7 @@ const S_ProductList = styled.ul`
 	overflow-x: scroll;
 	padding: 0;
 	margin-top: 16px;
+	/* ::-webkit-scrollbar {
+		display: none; 
+	} */
 `;
