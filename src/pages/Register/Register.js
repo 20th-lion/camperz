@@ -19,13 +19,14 @@ export default function Register() {
 
   const handleVerifyEmail = async (newErrorMsg, inputs) => {
     const newRegisterErrMsg = [...newErrorMsg];
-    await getEmailValidApiResponse(inputs.email).then((res) => {
-      if (res.data.message === '이미 가입된 이메일 주소 입니다.') {
-        newRegisterErrMsg[0] = '*이미 가입된 이메일 주소입니다.';
-      } else {
-        newRegisterErrMsg[0] = null;
-      }
-    });
+    await getEmailValidApiResponse(inputs.email)
+      .then((res) => {
+        if (res.data.message === '이미 가입된 이메일 주소 입니다.') {
+          newRegisterErrMsg[0] = '*이미 가입된 이메일 주소입니다.';
+        } else {
+          newRegisterErrMsg[0] = null;
+        }
+      });
     setRegisterErrMsg(newRegisterErrMsg);
   };
 
@@ -45,15 +46,17 @@ export default function Register() {
   };
 
   const handleRegister = async () => {
-    await imageUpload(userInfo.image).then((res) => {
-      const fileName = res.data.filename || '1671513886026.png';
-      const imageUrl = 'https://mandarin.api.weniv.co.kr/' + fileName;
-      getRegisterApiResponse({ ...userInfo, image: imageUrl }).then((res) => {
-        if (res.data.message === '회원가입 성공') {
-          navigate('/login');
-        }
+    await imageUpload(userInfo.image)
+      .then((res) => {
+        const fileName = res.data.filename || '1671513886026.png';
+        const imageUrl = 'https://mandarin.api.weniv.co.kr/' + fileName;
+        getRegisterApiResponse({ ...userInfo, image: imageUrl })
+          .then((res) => {
+            if (res.data.message === '회원가입 성공') {
+              navigate('/login');
+            }
+          });
       });
-    });
   };
 
   return (
