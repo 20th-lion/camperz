@@ -5,11 +5,8 @@ export const getSearchApiResponse = async (inputs) => {
 	const loginData = {
 		user: inputs,
 	};
-	const headers = {
-		'Content-type': 'application/json',
-	};
 	try {
-		const res = await axiosPublic.post(reqPath, loginData, { headers });
+		const res = await axiosPublic.post(reqPath, loginData);
 		return res;
 	} catch (error) {
 		return error;
