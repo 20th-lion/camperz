@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { postUploader, postEditer } from '../../lib/apis/postApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
-
 export default function UploadButton({ fileImage, text, preConvertedImg, mode, postId }) {
 	let uploadValidation = false;
 	const navigate = useNavigate();
@@ -12,7 +11,7 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 	}
 
 	const handlePostUpload = () => {
-		if (preConvertedImg === undefined) {
+		if (fileImage === undefined) {
 			if (mode === 'edit') {
 				const postContent = {
 					post: {
@@ -21,7 +20,6 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 					},
 				};
 				postEditer(postId, postContent).then((res) => {
-					console.log(res);
 					navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 				});
 			}
@@ -34,13 +32,12 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 					};
 
 					postUploader(postContent).then((res) => {
-						console.log(res);
 						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 					});
 				}
 			}
 		}
-		if (preConvertedImg !== undefined) {
+		if (fileImage !== undefined) {
 			imageUpload(preConvertedImg).then((res) => {
 				console.log(res);
 				if (mode === 'edit') {
@@ -50,11 +47,10 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 							image: fileImage,
 						},
 					};
-					// if (res.data.filename === undefined) {
-					// 	delete postContent.post.image;
-					// }
+					if (res.data.filename === undefined) {
+						delete postContent.post.image;
+					}
 					postEditer(postId, postContent).then((res) => {
-						console.log(res);
 						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 					});
 				}
@@ -66,9 +62,6 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 							image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
 						},
 					};
-					// if (res.data.filename === undefined) {
-					// 	delete postContent.post.image;
-					// }
 					postUploader(postContent).then((res) => {
 						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 					});

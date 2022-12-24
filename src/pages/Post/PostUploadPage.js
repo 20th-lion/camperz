@@ -4,7 +4,6 @@ import { postDetailLoader } from '../../lib/apis/postApis';
 import { useParams, useNavigate } from 'react-router-dom';
 import ImgUploadButton from '../../component/common/ImgUploadButton';
 import UploadButton from '../../component/post/UploadButton';
-import NavBar from '../../component/common/NavBar';
 import Header from '../../component/common/Header';
 import moreHeader from '../../assets/icons/more_header.png';
 import leftArrow from '../../assets/icons/icon_arrow_left.png';
@@ -13,7 +12,7 @@ import leftArrow from '../../assets/icons/icon_arrow_left.png';
 
 export default function PostUploadPage() {
 	const [text, setText] = useState('');
-	const [fileImage, setFileImage] = useState('');
+	const [fileImage, setFileImage] = useState(undefined);
 	const [preConvertedImg, setPreConvertedImg] = useState(undefined);
 	// const navigate = useNavigate();
 	const { id } = useParams();
@@ -43,7 +42,8 @@ export default function PostUploadPage() {
 		if (e.target.files[0] === undefined) {
 			console.log('사진없음');
 		} else {
-			setPreConvertedImg(e.target.files[0]);
+			// console.log(e.target.files[0].name);
+			setPreConvertedImg(e.target.files[0].name);
 			setFileImage(URL.createObjectURL(e.target.files[0]));
 		}
 		// console.log(e.target.files[0]);
@@ -75,7 +75,11 @@ export default function PostUploadPage() {
 					value={text}
 					placeholder="게시물을 입력하세요..."
 				/>
-				{fileImage === '' ? <></> : <PictureArea src={fileImage} style={{ margin: 'auto' }} />}
+				{fileImage === undefined ? (
+					<></>
+				) : (
+					<PictureArea src={fileImage} style={{ margin: 'auto' }} />
+				)}
 				<ImgButtonContainer>
 					<ImgUploadButton
 						setFileImage={setFileImage}
