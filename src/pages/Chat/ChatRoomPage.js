@@ -16,12 +16,12 @@ export default function ChatRoomPage() {
 			<Header rightChild={<S_ModalBtn src={moreHeader} />} />
 			<S_main>
 				<S_OtherPersonWrapper>
-					<OtherPersonImg src={userImg} />
-					<OtherPersonContent>{otherData}</OtherPersonContent>
+					<S_OtherPersonImg src={userImg} />
+					<S_OtherPersonContent>{otherData}</S_OtherPersonContent>
 				</S_OtherPersonWrapper>
 				<S_MyWrapper>
-					<MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</MyTextContent>
-					<MyImg src={placeImg} />
+					<S_MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</S_MyTextContent>
+					<S_MyImg src={placeImg} />
 				</S_MyWrapper>
 			</S_main>
 			<CommentBox boxIcon={boxIcon} />
@@ -34,6 +34,7 @@ const S_ModalBtn = styled.img`
 `;
 
 const S_main = styled.main`
+	background-color: #fefcf3;
 	justify-content: center;
 	align-items: flex-start;
 	font-size: 14px;
@@ -45,12 +46,12 @@ const S_main = styled.main`
 const S_OtherPersonWrapper = styled.div`
 	display: flex;
 `;
-const OtherPersonImg = styled.img`
+const S_OtherPersonImg = styled.img`
 	width: 45px;
 	height: 45px;
 `;
 
-const OtherPersonContent = styled.p`
+const S_OtherPersonContent = styled.p`
 	font-weight: 400;
 	border: 1px solid #c4c4c4;
 	border-radius: 10px;
@@ -64,7 +65,7 @@ const OtherPersonContent = styled.p`
 const S_MyWrapper = styled.div`
 	text-align: right;
 `;
-const MyTextContent = styled.p`
+const S_MyTextContent = styled.p`
 	display: inline-block;
 	padding: 15px 10px;
 	color: white;
@@ -76,6 +77,6 @@ const MyTextContent = styled.p`
 	margin-bottom: 10px;
 `;
 
-const MyImg = styled.img`
+const S_MyImg = styled.img`
 	width: 273px;
 `;
