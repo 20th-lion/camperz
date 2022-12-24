@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ProfileImg from '../../assets/icons/basic_profile_chat.png'
 
-export default function SearchResult() {
+export default function SearchingItem() {
   return (
     <>
       <li>

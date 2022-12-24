@@ -1,17 +1,15 @@
-import { axiosPublic } from './customAxios';
+import { axiosPrivate } from './customAxios';
 
-export const getSearchApiResponse = async (inputs) => {
-	const reqPath = '/user/searchuser/?keyword=keyword';
-	const loginData = {
-		user: inputs,
-	};
-	const headers = {
-		'Content-type': 'application/json',
+export const getSearchApiResponse = async (keyword) => {
+	const reqPath = `/user/searchuser/?keyword=${keyword}`;
+	const searchData = {
+		user: keyword,
 	};
 	try {
-		const res = await axiosPublic.post(reqPath, loginData, { headers });
+		let res = await axiosPrivate.post(reqPath, searchData);
 		return res;
-	} catch (error) {
-		return error;
+	} 
+  catch (error) {
+		console.log(error);
 	}
 };
