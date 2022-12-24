@@ -5,11 +5,8 @@ export const getEmailValidApiResponse = async (email) => {
 	const registerData = {
 		user: { email },
 	};
-	const headers = {
-		'Content-type': 'application/json',
-	};
 	try {
-		const res = await axiosPublic.post(reqPath, registerData, { headers });
+		const res = await axiosPublic.post(reqPath, registerData);
 		return res;
 	} catch (error) {
 		return error;

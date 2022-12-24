@@ -41,4 +41,4 @@ const S_Username = styled.p`
 const S_AccountID = styled.p`
   font-size: 12px;
   color: #767676;
-`
+` 

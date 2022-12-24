@@ -1,7 +1,7 @@
 import { axiosPublic } from './customAxios';
 
-export const getLoginApiResponse = async (inputs) => {
-	const reqPath = '/user/login';
+export const getSearchApiResponse = async (inputs) => {
+	const reqPath = '/user/searchuser/?keyword=keyword';
 	const loginData = {
 		user: inputs,
 	};
