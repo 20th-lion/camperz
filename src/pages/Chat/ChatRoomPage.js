@@ -4,6 +4,8 @@ import CommentBox from '../../component/common/CommentBox';
 import userImg from '../../assets/icons/basic_profile_chat.png';
 import plusBtn from '../../assets/icons/chat_upload.png';
 import placeImg from '../../assets/image/camp.jpg';
+import Header from '../../component/common/Header';
+import moreHeader from '../../assets/icons/more_header.png';
 export default function ChatRoomPage() {
 	const otherData =
 		'주열님 저번에 친구분들이랑 가셨다던 캠핑장 어디였죠? 사진 좀 볼 수 있을가요? 저 다음 달에 휴간데 그 때 가려고해서요 ㄱ- ';
@@ -11,30 +13,67 @@ export default function ChatRoomPage() {
 	const boxIcon = plusBtn;
 	return (
 		<>
-			<OtherPersonImg src={userImg} />
-			<OtherPersonContent>{otherData}</OtherPersonContent>
-			<MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</MyTextContent>
-			<MyImg src={placeImg} />
+			<Header rightChild={<S_ModalBtn src={moreHeader} />} />
+			<S_main>
+				<S_OtherPersonWrapper>
+					<OtherPersonImg src={userImg} />
+					<OtherPersonContent>{otherData}</OtherPersonContent>
+				</S_OtherPersonWrapper>
+				<S_MyWrapper>
+					<MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</MyTextContent>
+					<MyImg src={placeImg} />
+				</S_MyWrapper>
+			</S_main>
 			<CommentBox boxIcon={boxIcon} />
 		</>
 	);
 }
 
-const OtherPersonImg = styled.img``;
-
-const OtherPersonContent = styled.p`
-	border: 1px solid #c4c4c4;
-	border-radius: 5px;
-	width: 240px;
-	padding: 10px;
+const S_ModalBtn = styled.img`
+	cursor: pointer;
 `;
 
-const MyTextContent = styled.p`
-	padding: 10px;
-	color: white;
-	border-radius: 5px;
+const S_main = styled.main`
+	justify-content: center;
+	align-items: flex-start;
+	font-size: 14px;
+
+	padding: 15px;
+	line-height: 19px;
+`;
+
+const S_OtherPersonWrapper = styled.div`
+	display: flex;
+`;
+const OtherPersonImg = styled.img`
+	width: 45px;
+	height: 45px;
+`;
+
+const OtherPersonContent = styled.p`
+	font-weight: 400;
+	border: 1px solid #c4c4c4;
+	border-radius: 10px;
+	border-top-left-radius: 0;
 	width: 240px;
+	padding: 15px 10px;
+	background-color: #ffffff;
+	margin-left: 10px;
+`;
+
+const S_MyWrapper = styled.div`
+	text-align: right;
+`;
+const MyTextContent = styled.p`
+	display: inline-block;
+	padding: 15px 10px;
+	color: white;
+	border-radius: 10px;
+	border-top-right-radius: 0;
+	/* width: 240px; */
 	background-color: #5c6145;
+	margin-top: 10px;
+	margin-bottom: 10px;
 `;
 
 const MyImg = styled.img`
