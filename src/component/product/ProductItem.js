@@ -49,6 +49,7 @@ const S_ItemBlock = styled.div`
 	width: 140px;
 	height: 132px;
 	margin-right: 10px;
+	cursor: pointer;
 `;
 
 const S_ProductImg = styled.img`
