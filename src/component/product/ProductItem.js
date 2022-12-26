@@ -34,16 +34,16 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 
 	return (
 		<>
-			<StyledItemBlock onClick={handleModalClick}>
-				<ProductImg src={itemImage} alt="" />
-				<ProductSpan>{itemName}</ProductSpan>
-				<ProductSpan>{price.toLocaleString('ko-KR')}원</ProductSpan>
-			</StyledItemBlock>
+			<S_ItemBlock onClick={handleModalClick}>
+				<S_ProductImg src={itemImage} alt="상품이미지" />
+				<S_Span>{itemName}</S_Span>
+				<S_Span>{price.toLocaleString('ko-KR')}원</S_Span>
+			</S_ItemBlock>
 		</>
 	);
 }
 
-const StyledItemBlock = styled.div`
+const S_ItemBlock = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 140px;
@@ -51,19 +51,24 @@ const StyledItemBlock = styled.div`
 	margin-right: 10px;
 `;
 
-const ProductImg = styled.img`
+const S_ProductImg = styled.img`
 	width: 140px;
 	height: 90px;
 	border: 0.5px solid #dbdbdb;
 	border-radius: 8px;
+	box-sizing: border-box;
+	margin-bottom: 6px;
 `;
 
-const ProductSpan = styled.span`
+const S_Span = styled.span`
 	font-weight: 400;
 	font-size: 14px;
-	line-height: 18px;
+	line-height: 17px;
 
 	:last-child {
+		margin-top: 4px;
+		font-size: 12px;
+		line-height: 15px;
 		color: #f26e22;
 	}
 `;

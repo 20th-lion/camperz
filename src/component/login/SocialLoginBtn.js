@@ -14,7 +14,6 @@ const handleBorderColor = (sns) => {
   }
 };
 const handleIconImg = (sns) => {
-  console.log(sns)
   switch (sns) {
     case '카카오톡':
       return KakaoLogo;
@@ -43,9 +42,11 @@ const S_Li = styled.li`
   border: 1px solid ${({ sns }) => handleBorderColor(sns)};
   font-size: 14px;
 `
-const S_Button = styled.li`
-  color: inherit;
+const S_Button = styled.button`
+  width: 100%;
+  font: inherit;
   line-height: 44px;
+  color: inherit;
   position: relative;
 
   &::before {

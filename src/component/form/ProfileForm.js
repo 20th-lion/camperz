@@ -149,20 +149,21 @@ const S_Form = styled.form`
 	margin: 0 32px 15px;
 `;
 const S_ImgUploadBox = styled.div`
-	width: 114px;
-	height: 112px;
-	margin: 30px;
-	position: relative;
-	label {
-		display: none;
-	}
-`;
+  width: 114px;
+  height: 112px;
+  margin: 35px;
+  position: relative;
+  label {
+    display: none;
+  }
+`
 const S_ImgInput = styled.input`
 	display: none;
 `;
 const S_ProfileImg = styled.img`
-	width: 114px;
-	height: 112px;
+  width: 114px;
+  height: 112px;
+  border-radius: 50%;
 	object-fit: cover;
 	cursor: pointer;
 `;
@@ -176,11 +177,10 @@ const S_UploadIcon = styled.img`
 	cursor: pointer;
 `;
 const S_InputBox = styled.div`
-	width: 322px;
-	height: 48px;
-	border-bottom: 1px solid #dbdbdb;
-	margin-bottom: 25px;
-`;
+  width: 322px;
+  height: 48px;
+  margin-bottom: 25px;
+`
 const S_Label = styled.label`
 	display: block;
 	font-size: 12px;

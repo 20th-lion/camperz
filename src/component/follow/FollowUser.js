@@ -3,8 +3,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
-import FollowButton from '../follow/FollowButton';
 import palette from './../../lib/styles/palette';
+import ButtonSmall from '../common/ButtonSmall';
 
 export default function FollowUser({
     username,
@@ -43,7 +43,7 @@ export default function FollowUser({
                 </UserInfo>
             </UserInfoContent>
 
-            <FollowButton size="small" isfollow={is_Follow} onClick={handleFollow} />
+            <ButtonSmall isfollow={is_Follow} onClick={handleFollow} />
 
         </UserContainer>
     )

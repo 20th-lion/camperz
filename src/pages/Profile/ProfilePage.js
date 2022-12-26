@@ -48,7 +48,6 @@ export default function ProfilePage() {
 						<UserProfile user={user} type={type} />
 					</ProfileSection>
 					<ProductList user={user} type={type} />
-
 					<PostList user={user} type={type} />
 				</Main>
 				<NavBar page={type === 'mine' ? 'user' : 'home'} />
@@ -70,7 +69,6 @@ const ProfileSection = styled.section`
 	background-color: #f3f1e8;
 	border-bottom: 0.5px solid #dbdbdb;
 	box-sizing: border-box;
-	margin-bottom: 6px;
 `;
 
 const S_IconImg = styled.img`
