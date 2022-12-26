@@ -4,14 +4,15 @@ import styled from 'styled-components';
 
 import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
 import { postDelete } from '../../lib/apis/postApis';
-import { useModals } from './../../lib/hooks/useModals';
-import HeartButton from './HeartButton';
-import { modals } from '../modal/Modals';
 import { getPostList } from './../../lib/apis/postApis';
+import { useModals } from './../../lib/hooks/useModals';
+import { modals } from '../modal/Modals';
+import HeartButton from './HeartButton';
 
 import morePostIcon from '../../assets/icons/more_post.png';
 import heart from '../../assets/icons/heart.png';
 import message from '../../assets/icons/message.png';
+import defaultProfileImg from '../../assets/icons/basic_profile_chat.png';
 
 export default function PostItem({
 	id,

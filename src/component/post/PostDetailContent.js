@@ -8,6 +8,7 @@ import message from '../../assets/icons/message.png';
 import { useModals } from '../../lib/hooks/useModals';
 import { modals } from './../modal/Modals';
 import { useEffect } from 'react';
+import defaultProfileImg from '../../assets/icons/basic_profile_chat.png';
 
 export default function PostDetailContent({ id }) {
 	const [userName, setUserName] = useState('');
@@ -48,13 +49,17 @@ export default function PostDetailContent({ id }) {
 		});
 	};
 
+	const handleImgError = (e) => {
+		e.target.src = defaultProfileImg;
+	};
+
 	const updatedAtPost = updated.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
 	return (
 		<>
 			<PostContentContainer>
 				<PostItemHeader>
-					<AuthorImg src={authorImg} />
+					<AuthorImg src={authorImg} onError={handleImgError} />
 					<Name>
 						<UserName>{userName}</UserName>@{accountName}
 					</Name>

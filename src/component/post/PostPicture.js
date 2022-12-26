@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import defaultProfileImg from '../../assets/icons/basic_profile_chat.png';
 
 export default function PostPicture({ id, image }) {
 	const navigate = useNavigate();
