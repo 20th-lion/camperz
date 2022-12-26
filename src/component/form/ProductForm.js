@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import iconSrc from '../../assets/icons/img-button.png';
-import defaultProfileImg from '../../assets/icons/basic_profile.png';
 import { productValidation } from '../../lib/utils/productValidation';
+import emptyImg from '../../assets/image/product_empty_img.png';
 
 export default function ProductForm({ setProductInfo, productInfo, setBtnActive }) {
 	const photoInput = useRef();
@@ -36,6 +36,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 	}
 
 	const handleImgChange = (e) => {
+		console.log(productInfo);
 		setProductInfo({
 			...productInfo,
 			itemImage: e.target.files[0],
@@ -46,7 +47,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 	return (
 		<>
 			<h2 className="ir">상품 등록 폼</h2>
-			<ImgBox>
+			<S_ImgBox>
 				이미지 등록
 				<InputImgBox
 					onClick={() => {
@@ -63,30 +64,47 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 						accept="image/*"
 						onChange={handleImgChange}
 					/>
-					<PictureArea
-						src={currentImg || productInfo.itemImage}
+					<S_Img
+						src={currentImg || productInfo.itemImage || emptyImg}
 						alt="상품 이미지"
-						onError={(e) => (e.target.style.display = 'none')}
 					/>
 				</InputImgBox>
-			</ImgBox>
-			<div>
-				상품명
-				<input type="text" value={productInfo.itemName} name="itemName" onChange={onChange} />
-			</div>
-			<div>
-				가격
-				<input type="number" name="price" value={productInfo.price} onChange={onChange} />
-			</div>
-			<div>
-				판매 링크
-				<input type="text" name="link" value={productInfo.link} onChange={onChange} />
-			</div>
+			</S_ImgBox>
+			<S_InputBox>
+				<S_Label htmlFor="itemName">상품명</S_Label>
+				<S_Input
+					name="itemName"
+					type="text"
+					value={productInfo.itemName}
+					onChange={onChange}
+					placeholder="상품 명을 입력해 주세요"
+				/>
+			</S_InputBox>
+			<S_InputBox>
+				<S_Label htmlFor="price">가격</S_Label>
+				<S_Input
+					type="text"
+					name="price"
+					value={productInfo.price}
+					onChange={onChange}
+					placeholder="숫자만 입력 가능합니다"
+				/>
+			</S_InputBox>
+			<S_InputBox>
+				<S_Label htmlFor="link">판매 링크</S_Label>
+				<S_Input
+					type="text"
+					name="link"
+					value={productInfo.link}
+					onChange={onChange}
+					placeholder="URL을 입력해 주세요"
+				/>
+			</S_InputBox>
 		</>
 	);
 }
 
-const ImgBox = styled.div`
+const S_ImgBox = styled.div`
 	margin-bottom: 30px;
 `;
 const InputImgBox = styled.div`
@@ -99,10 +117,11 @@ const InputImgBox = styled.div`
 	cursor: pointer;
 	margin-top: 18px;
 `;
-const PictureArea = styled.img`
+const S_Img = styled.img`
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	z-index: 99;
 `;
 
 const ButtonImg = styled.img`
@@ -116,4 +135,37 @@ const ButtonImg = styled.img`
 	background-position: center;
 	border-radius: 50%;
 	pointer-events: 'none';
+`;
+
+const S_InputBox = styled.div`
+	width: 322px;
+	height: 48px;
+	margin-bottom: 16px;
+	color: #767676;
+`;
+const S_Input = styled.input`
+	display: block;
+	width: 100%;
+	height: 33px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 14px;
+	border-bottom: 0.5px solid #dbdbdb;
+	::placeholder {
+		font-weight: 100;
+		font-size: 12px;
+	}
+	:focus {
+		border-bottom: 1px solid #eb5757;
+	}
+`;
+const S_Label = styled.label`
+	display: block;
+	font-size: 12px;
+	color: #767676;
+	span {
+		margin-left: 2px;
+		font-weight: 400;
+		color: #eb5757;
+	}
 `;

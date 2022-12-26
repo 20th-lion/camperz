@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
 import palette from './../../lib/styles/palette';
+import React from 'react';
 
-export default function Button({ onClick, text, active }) {
+export default function Button({ onClick, text, active, isfollow, type }) {
 	return (
 		<>
-			<S_Button onClick={onClick} active={active}>
-				{text}
+			<S_Button onClick={onClick} active={active}
+				isfollow={isfollow} text={text}>
+				{type === 'mine' ? (text === 'userprofile' ? "프로필 수정" : "상품 등록") :
+					(isfollow ? "언팔로우" : "팔로우")}
 			</S_Button>
 		</>
 	);
@@ -13,12 +16,13 @@ export default function Button({ onClick, text, active }) {
 
 const S_Button = styled.button`
   background-color: ${palette.khaki[0]};
-  width: 120px;
   height: 34px;
+  padding: 0 20px;
   border-radius: 30px;
   font-size: 14px;
   font-weight: 400;
-  color: #F3F1E8;
+  color: ${(props) =>
+		props.isfollow ? palette.khaki[0] : palette.khaki[2]};
   margin-left: 12px;
   line-height: 17px;
 	:hover {
@@ -32,4 +36,13 @@ const S_Button = styled.button`
 			}
 			pointer-events: none;
 		`}
+		${(props) =>
+		props.isfollow
+			? css`
+					  background-color: ${palette.khaki[2]};
+					  border: 1px solid ${palette.khaki[0]};
+			`
+			: css`
+					  background-color: ${palette.khaki[0]};
+			`};  
 `;

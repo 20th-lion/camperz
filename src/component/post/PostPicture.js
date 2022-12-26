@@ -9,14 +9,7 @@ export default function PostPicture({ id, image }) {
 		<>
 			{image && (
 				<div onClick={handleImgClick}>
-					<img
-						style={{
-							width: '100px',
-							height: '100px',
-						}}
-						src={image}
-						alt=""
-					/>
+					<img src={image} alt="포스트 이미지" />
 				</div>
 			)}
 		</>
