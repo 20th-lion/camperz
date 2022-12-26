@@ -42,7 +42,7 @@ export default function ProfileEditPage() {
 			editProfile({ ...userInfo, image });
 		});
 		localStorage.setItem('accountname', userInfo.accountname);
-		navigate(`/profile/${savedAccountname}`);
+		navigate(`/profile`);
 	};
 
 	return (
