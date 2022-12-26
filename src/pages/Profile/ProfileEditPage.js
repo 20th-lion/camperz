@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Header from '../../component/common/Header';
 import Button from '../../component/common/Button';
+import BackButton from '../../component/common/BackButton';
 import ProfileForm from '../../component/form/ProfileForm';
 import { getUserInfo } from '../../lib/apis/profileApis';
 import { editProfile } from './../../lib/apis/profileApis';
@@ -41,13 +42,13 @@ export default function ProfileEditPage() {
 			editProfile({ ...userInfo, image });
 		});
 		localStorage.setItem('accountname', userInfo.accountname);
-		navigate(`/profile/${savedAccountname}`);
+		navigate(`/profile`);
 	};
 
 	return (
 		<div>
 			<Header
-				leftChild={null}
+				leftChild={<BackButton />}
 				rightChild={<Button text={'저장'} onClick={handleSaveBtn} active={btnActive} />}
 			/>
 			<ProfileForm

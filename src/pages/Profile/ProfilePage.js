@@ -61,7 +61,7 @@ const Main = styled.main`
 	justify-content: flex-start;
 `;
 const ProfilePageBlock = styled.div`
-	background-color: #f2f2f2;
+	background-color: #f3f1e8;
 `;
 
 const ProfileSection = styled.section`
