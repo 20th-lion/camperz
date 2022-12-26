@@ -21,9 +21,10 @@ const S_Button = styled.button`
   border-radius: 30px;
   font-size: 14px;
   font-weight: 400;
+  margin-left:8px;
+  margin-right:8px;
   color: ${(props) =>
 		props.isfollow ? palette.khaki[0] : palette.khaki[2]};
-  margin-left: 12px;
   line-height: 17px;
 	:hover {
 		cursor: pointer;
@@ -41,8 +42,10 @@ const S_Button = styled.button`
 			? css`
 					  background-color: ${palette.khaki[2]};
 					  border: 1px solid ${palette.khaki[0]};
+					 
 			`
 			: css`
 					  background-color: ${palette.khaki[0]};
-			`};  
+					  
+			`}; 
 `;

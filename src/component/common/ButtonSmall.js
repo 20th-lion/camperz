@@ -33,7 +33,7 @@ const S_Button = styled.button`
 			}
 			pointer-events: none;
 		`}
-
+			
 	::after {
 		${(props) =>
 		props.isfollow
