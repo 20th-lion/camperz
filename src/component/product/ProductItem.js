@@ -52,23 +52,23 @@ const S_ItemBlock = styled.div`
 `;
 
 const S_ProductImg = styled.img`
+	border: 1px solid #dbdbdb;
+	border-radius: 8px;
+	margin-bottom: 6px;
 	width: 140px;
 	height: 90px;
-	border: 0.5px solid #dbdbdb;
-	border-radius: 8px;
-	box-sizing: border-box;
-	margin-bottom: 6px;
 `;
 
 const S_Span = styled.span`
+	height: 18px;
 	font-weight: 400;
 	font-size: 14px;
-	line-height: 17px;
-
+	line-height: 18px;
+	margin-left: 2px;
 	:last-child {
-		margin-top: 4px;
+		height: 14px;
 		font-size: 12px;
-		line-height: 15px;
+		line-height: 14px;
 		color: #f26e22;
 	}
 `;
