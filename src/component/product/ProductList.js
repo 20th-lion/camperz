@@ -20,6 +20,7 @@ export default React.memo(function ProductList({ user, type }) {
 		<>
 			{!!productList.length && (
 				<>
+					<S_DivBox />
 					<S_ProductSection>
 						<h2>판매 중인 상품</h2>
 						<S_ProductList>
@@ -34,6 +35,12 @@ export default React.memo(function ProductList({ user, type }) {
 	);
 });
 
+const S_DivBox = styled.div`
+	height: 10px;
+	width: 100%;
+	background-color: #f2f2f2;
+`;
+
 const S_ProductSection = styled.section`
 	width: 100%;
 	height: 208px;
@@ -42,7 +49,6 @@ const S_ProductSection = styled.section`
 	border-bottom: 1px solid #dbdbdb;
 	box-sizing: border-box;
 	padding: 20px 0 0 16px;
-	margin-bottom: 6px;
 	h2 {
 		font-size: 16px;
 		line-height: 20px;
