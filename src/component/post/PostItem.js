@@ -197,6 +197,6 @@ const S_CommentButtonImg = styled.img`
 	height: 20px;
 `;
 const S_Date = styled.div`
-	margin-top: 4px;
+	margin-top: 7px;
   font-size: 12px;
 `;
