@@ -27,7 +27,7 @@ export default function AuthForm({ formType, errorMsg, handleValidate, onSubmit 
   const newErrorMsg = [...errorMsg];
   const [btnActive, setBtnActive] = useState(false);
 
-  const emailValidation = /[-0-9A-Z!#$%^&*()_=+\\|`,.;:''[\]{}?~]+@[0-9A-Z]+[-0-9A-Z_.]*.[a-z]/i;
+  const emailValidation = /^[-0-9A-Z!#$%^&*()_=+\\|`,.;:''[\]{}?~]+@[0-9A-Z]+[-0-9A-Z_.]*.[a-z]$/i;
   const showingActive = () => {
     if (emailValidation.test(inputs.email) && inputs.password.length >= 6 && !newErrorMsg[0]) {
       setBtnActive(true);

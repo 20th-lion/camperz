@@ -26,8 +26,8 @@ export default function Register() {
         } else {
           newRegisterErrMsg[0] = null;
         }
-      });
-    setRegisterErrMsg(newRegisterErrMsg);
+      })
+      .then(setRegisterErrMsg(newRegisterErrMsg));
   };
 
   const [userInfo, setUserInfo] = useState({
@@ -72,9 +72,9 @@ export default function Register() {
         </S_Main>
       ) : (
         <S_Main>
-          <H2>프로필 설정
+          <S_H2>프로필 설정
             <p>나중에 언제든지 변경할 수 있습니다.</p>
-          </H2>
+          </S_H2>
           <ProfileForm
             userInfo={userInfo}
             setUserInfo={setUserInfo}
@@ -92,7 +92,7 @@ export default function Register() {
 const S_Main = styled.main`
   justify-content: flex-start;
 `
-const H2 = styled.h2`
+const S_H2 = styled.h2`
   color: #000000;
   font-size: 24px;
   font-weight: 400;
