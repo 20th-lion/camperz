@@ -15,7 +15,6 @@ export default function FollowingPage() {
 	const getFollowingData = async () => {
 		await followingList(accountname)
 			.then((res) => {
-				console.log(res);
 				if (res.data.length > 0) {
 					setFollowingData(res.data);
 				} else {
@@ -26,27 +25,32 @@ export default function FollowingPage() {
 	};
 	useEffect(() => {
 		getFollowingData();
-		console.log(followingData);
 	}, []);
 
 	return (
 		<>
-			<Header leftChild={<S_div><BackButton />  Followings</S_div>}></Header>
+			<Header
+				leftChild={
+					<S_div>
+						<BackButton /> Followings
+					</S_div>
+				}
+			></Header>
 			<S_Main>
 				<FollowContents followData={followingData} followMessage={followingMessage} />
 			</S_Main>
-			<NavBar page='user' />
+			<NavBar page="user" />
 		</>
 	);
 }
 
 const S_Main = styled.main`
-  justify-content: flex-start;
-  height: calc(100vh - 54px);
-`
+	justify-content: flex-start;
+	height: calc(100vh - 54px);
+`;
 const S_div = styled.div`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  align-items: center;
-`
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 21px;
+	align-items: center;
+`;

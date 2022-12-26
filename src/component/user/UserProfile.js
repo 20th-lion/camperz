@@ -7,6 +7,7 @@ import ButtonBig from '../common/ButtonBig';
 import chatIcon from '../../assets/icons/yourProfile_chat.png';
 import shareIcon from '../../assets/icons/yourProfile_share.png';
 import palette from '../../lib/styles/palette';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
 export default function UserProfile({ type, user }) {
 	const navigate = useNavigate();
@@ -54,13 +55,15 @@ export default function UserProfile({ type, user }) {
 			});
 		}
 	};
-
+	const handleImgError = (e) => {
+		e.target.src = defaultProfileImg;
+	};
 	return (
 		<S_ProfileSection>
 			<h2 className="ir">유저 프로필</h2>
 			<ProfileBackground>
 				<ProfileInfoContainer>
-					<ProfileImg src={image} alt="프로필 이미지"></ProfileImg>
+					<ProfileImg src={image} onError={handleImgError} alt="프로필 이미지"></ProfileImg>
 					<UserName>{username}</UserName>
 					<AccountName>@ {accountname}</AccountName>
 					<Intro>{intro}</Intro>

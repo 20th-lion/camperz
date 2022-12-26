@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { modals } from '../modal/Modals';
 import { removeProduct } from '../../lib/apis/productApis';
 import { useModals } from './../../lib/hooks/useModals';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
 export default function ProductItem({ itemName, price, itemImage, link, id, onload, type }) {
 	const navigate = useNavigate();
@@ -32,10 +33,13 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 		});
 	};
 
+	const handleImgError = (e) => {
+		e.target.src = defaultProfileImg;
+	};
 	return (
 		<>
 			<S_ItemBlock onClick={handleModalClick}>
-				<S_ProductImg src={itemImage} alt="상품이미지" />
+				<S_ProductImg src={itemImage} onError={handleImgError} alt="상품이미지" />
 				<S_Span>{itemName}</S_Span>
 				<S_Span>{price.toLocaleString('ko-KR')}원</S_Span>
 			</S_ItemBlock>
@@ -58,6 +62,7 @@ const S_ProductImg = styled.img`
 	margin-bottom: 6px;
 	width: 140px;
 	height: 90px;
+	object-fit: cover;
 `;
 
 const S_Span = styled.span`
