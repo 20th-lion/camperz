@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import SearchingItem from './SearchingItem';
 
 export default function SearchingResultList(props) {
-  console.log(props.userList[3])
   return (
     <>
       <S_Ul>
