@@ -67,7 +67,7 @@ const ProfileSection = styled.section`
 	width: 100%;
 	height: 314px;
 	background-color: #f3f1e8;
-	border-bottom: 0.5px solid #dbdbdb;
+	border-bottom: 1px solid #dbdbdb;
 	box-sizing: border-box;
 `;
 
