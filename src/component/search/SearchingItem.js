@@ -1,26 +1,29 @@
 import styled from 'styled-components';
-import ProfileImg from '../../assets/icons/basic_profile_chat.png'
+import defaultProfileImg from '../../assets/icons/basic_profile_chat.png'
 
-export default function SearchingItem() {
+export default function SearchingItem({ image, username, accountname }) {
   return (
     <>
       <li>
         <S_A>
-          <S_ProfileImg src={ProfileImg} />
+          <S_ProfileImg src={image !=='https://mandarin.api.weniv.co.kr/undefined' ? image : defaultProfileImg} />
           <S_TextBox>
-            <S_Username>애월읍 위니브 감귤농장</S_Username>
-            <S_AccountID>@ weniv_Mandarin</S_AccountID>
+            <S_Username>{username}</S_Username>
+            <S_AccountID>@ {accountname}</S_AccountID>
           </S_TextBox>
         </S_A>
       </li>
     </>
-  )   
+  )
 }
 
 const S_A = styled.a`
   width: 358px;
-  height: 50px;
+  height: 58px;
   display: flex;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background: #FEFCF3;
   cursor: pointer;
 `
 const S_ProfileImg = styled.img`

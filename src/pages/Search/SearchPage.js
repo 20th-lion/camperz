@@ -1,23 +1,29 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getSearchApiResponse } from '../../lib/apis/searchApis.js'
 import Header from '../../component/common/Header';
 import NavBar from '../../component/common/NavBar';
 import BackButton from '../../component/common/BackButton';
-// import SearchingResult from '../../component/search/SearchingResult';
+import SearchingResult from '../../component/search/SearchingResult';
 import styled from 'styled-components';
 
 export default function SearchPage() {
-  const [keyword, setKeyword] = useState();
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState('');
+  const [userList, setUserList] = useState([]);
   const handleInputText = (e) => {
     setKeyword(e.target.value);
-    const res = getSearchApiResponse(keyword)
-    .then((res)=> {console.log(res);})
-  }
-  // useEffect(() => {
-    //
-    // const { username, accountname } = res.stringify();
-  // }, [keyword])
-
+  };
+  useEffect(() => {
+    getSearchApiResponse(keyword)
+      .then((res) => {
+        const userInfo = res.data.map(i => {
+          const { _id, image, username, accountname } = i;
+          return { _id, image, username, accountname }
+        });
+      setUserList(userInfo);
+      })
+  }, [keyword]);
 
   return (
     <>
@@ -31,10 +37,7 @@ export default function SearchPage() {
             placeholder='계정 검색' />}
       />
       <S_Main>
-        {/* <SearchingResult
-          username={username}
-          accountname={accountname}
-        /> */}
+        <SearchingResult userList={userList} />
       </S_Main>
       <NavBar page='home' />
     </>
