@@ -43,10 +43,7 @@ export default function ProfilePage() {
 				<h1 className="ir">프로필 페이지</h1>
 				<Header rightChild={<S_IconImg onClick={handleModalClick} src={moreIcon} />} />
 				<Main>
-					<ProfileSection>
-						<h2 className="ir">유저 프로필</h2>
-						<UserProfile user={user} type={type} />
-					</ProfileSection>
+					<UserProfile user={user} type={type} />
 					<ProductList user={user} type={type} />
 					<PostList user={user} type={type} />
 				</Main>
@@ -61,14 +58,6 @@ const Main = styled.main`
 `;
 const ProfilePageBlock = styled.div`
 	background-color: #f3f1e8;
-`;
-
-const ProfileSection = styled.section`
-	width: 100%;
-	height: 314px;
-	background-color: #f3f1e8;
-	border-bottom: 1px solid #dbdbdb;
-	box-sizing: border-box;
 `;
 
 const S_IconImg = styled.img`
