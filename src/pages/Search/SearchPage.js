@@ -1,20 +1,29 @@
 import { useState, useEffect } from 'react';
-import getSearchApiResponse from '../../lib/apis/searchApis.js'
+import { useNavigate } from 'react-router-dom';
+import { getSearchApiResponse } from '../../lib/apis/searchApis.js'
 import Header from '../../component/common/Header';
 import NavBar from '../../component/common/NavBar';
 import BackButton from '../../component/common/BackButton';
-import SearchingResult from '../../component/search/SearchResult';
+import SearchingResult from '../../component/search/SearchingResult';
 import styled from 'styled-components';
 
 export default function SearchPage() {
-  const [account, setAccount] = useState();
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState('');
+  const [userList, setUserList] = useState([]);
   const handleInputText = (e) => {
-    setAccount(e.target.value);
-    
-  }
+    setKeyword(e.target.value);
+  };
   useEffect(() => {
-    console.log(account)
-  }, [account])
+    getSearchApiResponse(keyword)
+      .then((res) => {
+        const userInfo = res.data.map(i => {
+          const { _id, image, username, accountname } = i;
+          return { _id, image, username, accountname }
+        });
+      setUserList(userInfo);
+      })
+  }, [keyword]);
 
   return (
     <>
@@ -23,16 +32,12 @@ export default function SearchPage() {
           <><BackButton /><h2 className='ir'>검색페이지</h2></>}
         rightChild={
           <S_SearchingInput
-            value={account}
+            value={keyword}
             onChange={handleInputText}
             placeholder='계정 검색' />}
       />
       <S_Main>
-        <ul>
-          <SearchingResult />
-          <SearchingResult />
-          <SearchingResult />
-        </ul>
+        <SearchingResult userList={userList} />
       </S_Main>
       <NavBar page='home' />
     </>
@@ -53,10 +58,4 @@ const S_SearchingInput = styled.input`
 `
 const S_Main = styled.main`
   justify-content: flex-start;
-  ul {
-    margin: 20px 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
 `
