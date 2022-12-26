@@ -32,6 +32,7 @@ const S_A = styled.a`
 const S_ProfileImg = styled.img`
   width: 50px;
   height: 50px;
+  border-radius: 50%;
 `
 const S_TextBox = styled.div`
   padding: 15px;

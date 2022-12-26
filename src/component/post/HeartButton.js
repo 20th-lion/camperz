@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import palette from '../../lib/styles/palette';
 import heart from '../../assets/icons/heart.png';
 export default function HeartButton({ onClick, pushHeart }) {
 	return (
 		<>
-			<StyledButton src={heart} onClick={onClick} pushHeart={pushHeart}></StyledButton>
+			<S_Button src={heart} onClick={onClick} pushHeart={pushHeart}></S_Button>
 		</>
 	);
 }
 
-const StyledButton = styled.img`
+const S_Button = styled.img`
 	cursor: pointer;
 	width: 20px;
 	height: 20px;
