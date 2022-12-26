@@ -27,5 +27,5 @@ const S_Ul = styled.ul`
   margin: 20px 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 `

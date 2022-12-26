@@ -1,17 +1,24 @@
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import defaultProfileImg from '../../assets/icons/basic_profile_chat.png'
 
 export default function SearchingItem({ image, username, accountname }) {
+  const handleGoingtoUser = () => {
+
+  }
+
   return (
     <>
       <li>
-        <S_A>
-          <S_ProfileImg src={image !=='https://mandarin.api.weniv.co.kr/undefined' ? image : defaultProfileImg} />
-          <S_TextBox>
-            <S_Username>{username}</S_Username>
-            <S_AccountID>@ {accountname}</S_AccountID>
-          </S_TextBox>
-        </S_A>
+        <Link to={'/profile/'+accountname}>
+          <S_A>
+            <S_ProfileImg src={image !== 'https://mandarin.api.weniv.co.kr/undefined' ? image : defaultProfileImg} />
+            <S_TextBox>
+              <S_Username>{username}</S_Username>
+              <S_AccountID>@ {accountname}</S_AccountID>
+            </S_TextBox>
+          </S_A>
+        </Link>
       </li>
     </>
   )
