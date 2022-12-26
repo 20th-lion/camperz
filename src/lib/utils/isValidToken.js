@@ -1,9 +1,8 @@
 import { axiosPublic } from '../apis/customAxios';
 
-const reqPath = '/user/checktoken';
-let isValid = false;
-
 export const isValidToken = async () => {
+	let isValid = false;
+	const reqPath = '/user/checktoken';
 	await axiosPublic.get(reqPath).then((res) => {
 		isValid = res.data.isValid;
 	});

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import GlobalStyle from './lib/styles/globalStyle';
 import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -21,64 +21,58 @@ import FollowerPage from './pages/Follow/FollowerPage';
 import FollowingPage from './pages/Follow/FollowingPage';
 import ChatListPage from './pages/Chat/ChatListPage';
 import ChatRoomPage from './pages/Chat/ChatRoomPage';
+import { LoginStateContext } from './component/context/LoginContext';
+
+function Main() {
+	const isLogedIn = useContext(LoginStateContext);
+	return (
+		<>
+			<GlobalStyle />
+			<FrameContainer>
+				<BrowserRouter>
+					<Routes>
+						{isLogedIn ? (
+							<>
+								<Route path="/home" element={<HomePage />}></Route>
+								<Route path="/search" element={<SearchPage />}></Route>
+								<Route path="/profile" element={<ProfilePage />}></Route>
+								<Route path="/profile/:accountname" element={<ProfilePage />}></Route>
+								<Route path="/profile/edit" element={<ProfileEditPage />}></Route>
+								<Route path="/product" element={<ProductUploadPage />}></Route>
+								<Route path="/product/:id/edit" element={<ProductEditPage />}></Route>
+								<Route path="/postUpload" element={<PostUploadPage />}></Route>
+								<Route path="/postUpload/:id" element={<PostUploadPage />}></Route>
+								<Route path="/postdetail/:id" element={<PostDetailPage />}></Route>
+								<Route path="/profile/:accountname/follower" element={<FollowerPage />}></Route>
+								<Route path="/profile/:accountname/following" element={<FollowingPage />}></Route>
+								<Route path="/chatlist" element={<ChatListPage />}></Route>
+								<Route path="/chatlist/:id" element={<ChatRoomPage />}></Route>
+								<Route path="/*" element={<Page404 />}></Route>
+								<Route path="/" element={<Splash />}></Route>
+							</>
+						) : (
+							<>
+								<Route path="/" element={<Splash />}></Route>
+								<Route path="/login" element={<LoginPage />}></Route>
+								<Route path="/login/email" element={<LoginByEmail />}></Route>
+								<Route path="/register" element={<Register />}></Route>
+								<Route path="/*" element={<Page404 />}></Route>
+							</>
+						)}
+					</Routes>
+					<Modals />
+				</BrowserRouter>
+			</FrameContainer>
+		</>
+	);
+}
 
 export default function App() {
-  return (
-    <>
-      <GlobalStyle />
-      <FrameContainer>
-        <Provider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Splash />}></Route>
-              <Route path="/home" element={<HomePage />}></Route>
-              <Route path="/search" element={<SearchPage />}></Route>
-              <Route path="/login" element={<LoginPage />}></Route>
-              <Route path="/login/email" element={<LoginByEmail />}></Route>
-              <Route path="/register" element={<Register />}></Route>
-              <Route path="/profile" element={<ProfilePage />}></Route>
-              <Route
-                path="/profile/:accountname"
-                element={<ProfilePage />}
-              ></Route>
-              <Route
-                path="/profile/edit"
-                element={<ProfileEditPage />}
-              ></Route>
-              <Route path="/product" element={<ProductUploadPage />}></Route>
-              <Route
-                path="/product/:id/edit"
-                element={<ProductEditPage />}
-              ></Route>
-              <Route path="/postUpload" element={<PostUploadPage />}></Route>
-              <Route
-                path="/postUpload/:id"
-                element={<PostUploadPage />}
-              ></Route>
-              <Route
-                path="/postdetail/:id"
-                element={<PostDetailPage />}
-              ></Route>
-              <Route
-                path="/profile/:accountname/follower"
-                element={<FollowerPage />}
-              ></Route>
-              <Route
-                path="/profile/:accountname/following"
-                element={<FollowingPage />}
-              ></Route>
-              <Route path="/login" element={<LoginPage />}></Route>
-              <Route path="/login/email" element={<LoginByEmail />}></Route>
-              <Route path="/chatlist" element={<ChatListPage />}></Route>
-              <Route path="/chatlist/:id" element={<ChatRoomPage />}></Route>
-              <Route path="/*" element={<Page404 />}></Route>
-            </Routes>
-            <Modals />
-          </BrowserRouter>
-        </Provider>
-      </FrameContainer>
-    </>
-  );
+	return (
+		<Provider>
+			<Main />
+		</Provider>
+	);
 }
 
 const FrameContainer = styled.div`
