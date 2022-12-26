@@ -19,44 +19,63 @@ export default React.memo(function ProductList({ user, type }) {
 	return (
 		<>
 			{!!productList.length && (
-				<S_ProductSection>
-					<h2>판매 중인 상품</h2>
-					<S_ProductList>
-						{productList.map((item) => (
-							<ProductItem
-								key={item.id}
-								{...item}
-								onload={loadproductList}
-								type={type}
-							/>
-						))}
-					</S_ProductList>
-				</S_ProductSection>
+				<>
+					<S_DivBox />
+					<S_ProductSection>
+						<h2>판매 중인 상품</h2>
+						<S_ProductList>
+							{productList.map((item) => (
+								<ProductItem
+									key={item.id}
+									{...item}
+									onload={loadproductList}
+									type={type}
+								/>
+							))}
+						</S_ProductList>
+					</S_ProductSection>
+				</>
 			)}
 		</>
 	);
 });
 
+const S_DivBox = styled.div`
+	height: 6px;
+	background-color: #f2f2f2;
+`;
+
 const S_ProductSection = styled.section`
 	width: 100%;
 	height: 208px;
 	background-color: #f3f1e8;
-	padding: 20px 16px;
+	padding: 20px 0 0 16px;
 	border-top: 0.5px solid #dbdbdb;
 	border-bottom: 0.5px solid #dbdbdb;
-	margin-bottom: 6px;
 	box-sizing: border-box;
+	overflow-x: scroll;
+
 	h2 {
-		font-weight: 400;
+		font-weight: 600;
+		margin-bottom: 16px;
+	}
+
+	&::-webkit-scrollbar {
+		height: 14px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 8px;
+		background: #d9d9d9;
+		background-clip: padding-box;
+		border: 4px solid transparent;
+	}
+	&::-webkit-scrollbar-track {
+		margin: 16px;
 	}
 `;
 
 const S_ProductList = styled.ul`
 	display: flex;
-	overflow-x: scroll;
 	padding: 0;
 	margin-top: 16px;
-	/* ::-webkit-scrollbar {
-		display: none; 
-	} */
 `;

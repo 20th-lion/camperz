@@ -69,7 +69,6 @@ const ProfileSection = styled.section`
 	background-color: #f3f1e8;
 	border-bottom: 0.5px solid #dbdbdb;
 	box-sizing: border-box;
-	margin-bottom: 6px;
 `;
 
 const S_IconImg = styled.img`
