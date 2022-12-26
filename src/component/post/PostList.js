@@ -76,6 +76,7 @@ const S_Header = styled.header`
 		width: 26px;
 		height: 26px;
 		margin-left: 16px;
+		cursor: pointer;
 	}
 `;
 
