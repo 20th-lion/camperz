@@ -25,12 +25,7 @@ export default React.memo(function ProductList({ user, type }) {
 						<h2>판매 중인 상품</h2>
 						<S_ProductList>
 							{productList.map((item) => (
-								<ProductItem
-									key={item.id}
-									{...item}
-									onload={loadproductList}
-									type={type}
-								/>
+								<ProductItem key={item.id} {...item} onload={loadproductList} type={type} />
 							))}
 						</S_ProductList>
 					</S_ProductSection>
@@ -41,7 +36,8 @@ export default React.memo(function ProductList({ user, type }) {
 });
 
 const S_DivBox = styled.div`
-	height: 6px;
+	padding: 3px;
+	width: 100%;
 	background-color: #f2f2f2;
 `;
 
@@ -49,17 +45,23 @@ const S_ProductSection = styled.section`
 	width: 100%;
 	height: 208px;
 	background-color: #f3f1e8;
-	padding: 20px 0 0 16px;
-	border-top: 0.5px solid #dbdbdb;
-	border-bottom: 0.5px solid #dbdbdb;
+	border-top: 1px solid #dbdbdb;
+	border-bottom: 1px solid #dbdbdb;
 	box-sizing: border-box;
-	overflow-x: scroll;
-
+	padding: 20px 0 0 16px;
 	h2 {
+		font-size: 16px;
+		line-height: 20px;
 		font-weight: 600;
 		margin-bottom: 16px;
 	}
+`;
 
+const S_ProductList = styled.ul`
+	display: flex;
+	height: 150px;
+	overflow-x: scroll;
+	overflow-y: visible;
 	&::-webkit-scrollbar {
 		height: 14px;
 	}
@@ -69,13 +71,4 @@ const S_ProductSection = styled.section`
 		background-clip: padding-box;
 		border: 4px solid transparent;
 	}
-	&::-webkit-scrollbar-track {
-		margin: 16px;
-	}
-`;
-
-const S_ProductList = styled.ul`
-	display: flex;
-	padding: 0;
-	margin-top: 16px;
 `;

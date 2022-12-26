@@ -1,153 +1,169 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { postDetailLoader } from '../../lib/apis/postApis';
 import styled from 'styled-components';
 import morePostIcon from '../../assets/icons/more_post.png';
 import heart from '../../assets/icons/heart.png';
-import heartFill from '../../assets/icons/heart_fill.png';
 import message from '../../assets/icons/message.png';
 import { useModals } from '../../lib/hooks/useModals';
 import { modals } from './../modal/Modals';
-import { useEffect } from 'react';
 
 export default function PostDetailContent({ id }) {
-	const [userName, setUserName] = useState('');
-	const [accountName, setAccountName] = useState('');
-	const [content, setcontent] = useState('');
-	const [image, setimage] = useState('');
-	const [updated, setUpdated] = useState('');
-	const [heartCount, setheartCount] = useState('');
-	const [conmentCount, setconmentCount] = useState('');
+  const [userName, setUserName] = useState('');
+  const [accountName, setAccountName] = useState('');
+  const [content, setcontent] = useState('');
+  const [image, setimage] = useState('');
+  const [updated, setUpdated] = useState('');
+  const [heartCount, setHeartCount] = useState('');
+  const [commentCount, setCommentCount] = useState('');
 	const [authorImg, setAuthorImg] = useState('');
 
-	const { openModal } = useModals();
+  const { openModal } = useModals();
 
-	postDetailLoader(id).then((res) => {
-		setUserName(res.data.post.author.username);
-		setcontent(res.data.post.content);
-		setimage(res.data.post.image);
-		setUpdated(res.data.post.updatedAt);
-		setheartCount(res.data.post.heartCount);
-		setconmentCount(res.data.post.commentCount);
+  postDetailLoader(id).then((res) => {
+    setUserName(res.data.post.author.username);
+    setcontent(res.data.post.content);
+    setimage(res.data.post.image);
+    setUpdated(res.data.post.updatedAt);
+    setHeartCount(res.data.post.heartCount);
+		setCommentCount(res.data.post.commentCount);
 		setAuthorImg(res.data.post.author.image);
-		setAccountName(res.data.post.author.accountname);
-	});
+    setAccountName(res.data.post.author.accountname);
+  });
 
-	const handleClickModal = () => {
-		const type = localStorage.getItem('accountname') === accountName ? 'mine' : 'other';
-		console.log(localStorage.getItem('accountname'), userName);
-		openModal(modals.postItemModal, {
-			onRemove: async () => {
-				openModal(modals.confirmModal, {
-					onConfirm: async () => {},
-					message: '삭제하시겠어요?',
-					btnText: '삭제',
-				});
-			},
-			onReport: () => {},
-			type: type,
-		});
-	};
+  const handleClickModal = () => {
+    const type = localStorage.getItem('accountname') === accountName ? 'mine' : 'other';
+    openModal(modals.postItemModal, {
+      onRemove: async () => {
+        openModal(modals.confirmModal, {
+          onConfirm: async () => { },
+          message: '삭제하시겠어요?',
+          btnText: '삭제',
+        });
+      },
+      onReport: () => { },
+      type: type,
+    });
+  };
 
-	const updatedAtPost = updated.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
+  const updatedAtPost = updated.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
-	return (
-		<>
-			<PostContentContainer>
-				<PostItemHeader>
-					<AuthorImg src={authorImg} />
-					<Name>
-						<UserName>{userName}</UserName>@{accountName}
-					</Name>
-					<ModalIconImg src={morePostIcon} onClick={handleClickModal} />
-				</PostItemHeader>
-				<ContentBox>{content}</ContentBox>
-
-				{image === undefined ? <></> : <ImgContainer src={image} />}
-
-				<SocialBtn>
-					<HeartBtnImg src={heart} />
-					{heartCount}
-					<CommentBtnImg src={message} />
-					{conmentCount}
-				</SocialBtn>
-				<DateContainer>{updatedAtPost}</DateContainer>
-			</PostContentContainer>
-		</>
-	);
+  return (
+    <>
+      <S_ItemWrapper>
+        <S_PostItemHeader>
+          <S_ProfileImg src={authorImg} />
+          <S_NameBox>
+            <S_Username>{userName}</S_Username>
+            <S_AccountID>@ {accountName}</S_AccountID>
+          </S_NameBox>
+          <S_ModalIconImg src={morePostIcon} onClick={handleClickModal} />
+        </S_PostItemHeader>
+        <S_ContentBox>
+          <S_Text>{content}</S_Text>
+          <S_ImgBox>
+            {image === undefined
+              ? <></>
+              : <S_Img src={image} />}
+          </S_ImgBox>
+          <S_SnsDate>
+            <S_Sns>
+              <S_HeartBtnImg src={heart} />
+              <span>{heartCount}</span>
+              <S_CommentButtonImg src={message} />
+              <span>{commentCount}</span>
+            </S_Sns>
+            <S_Date>{updatedAtPost}</S_Date>
+          </S_SnsDate>
+        </S_ContentBox>
+      </S_ItemWrapper>
+    </>
+  );
 }
 
-const PostContentContainer = styled.section`
-	/* border-bottom: 1px solid #dbdbdb; */
+const S_ItemWrapper = styled.section`
+	width: 358px;
+  padding-bottom: 25px;
+  /* border-bottom: 1px solid #dbdbdb;  */
 `;
-const PostItemHeader = styled.div`
-	width: 400px;
-	padding: 15px;
-	height: 80px;
+const S_PostItemHeader = styled.div`
+  height: 50px;
+  display: flex;
+	position: relative;
 `;
-
-const AuthorImg = styled.img`
-	border-radius: 50%;
-	width: 44px;
-	height: 44px;
+const S_ProfileImg = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 `;
-
-const ModalIconImg = styled.img`
-	margin-left: 228px;
-	cursor: pointer;
-	margin-top: 5px;
-`;
-
-const Name = styled.div`
-	color: #767676;
-	margin-left: 15px;
-	margin-top: 8px;
-	font-size: 12px;
-	display: inline-block;
-`;
-
-const UserName = styled.div`
-	color: black;
-	font-size: 14px;
-	margin-bottom: 2px;
-`;
-
-const AccountName = styled.div``;
-
-const ContentBox = styled.p`
-	text-align: left;
-	/* border: 2px solid blue; */
-	width: 303px;
-	margin: 0px 0px 0px 75px;
-`;
-
-const ImgContainer = styled.img`
-	width: 304px;
-	height: 228px;
-	margin: 16px 0px 0px 75px;
-	object-fit: cover;
-`;
-
-const SocialBtn = styled.div`
-	margin-top: 10px;
-	margin-left: 75px;
-	display: flex;
-	gap: 5px;
-	color: #767676;
-	font-weight: 400;
-`;
-
-const DateContainer = styled.div`
-	font-size: 12px;
-	color: #767676;
-	margin-top: 10px;
-	margin-left: 75px;
-	margin-bottom: 47px;
-`;
-
-const HeartBtnImg = styled.img`
+const S_NameBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  width: 276px;
+  gap: 7px;
+`
+const S_Username = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+`
+const S_AccountID = styled.p`
+  font-size: 12px;
+  color: #767676;
+`
+const S_ModalIconImg = styled.img`
+	position: absolute;
+  right: 0px;
+  width: 18px;
+  height: 18px;
+	margin-top: 6px;
 	cursor: pointer;
 `;
-const CommentBtnImg = styled.img`
+const S_ContentBox = styled.p`
+  margin-left: 61px;
+`;
+const S_Text = styled.div`
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 400;
+`
+const S_ImgBox = styled.div`
+  margin: 14px 0;
+`;
+const S_Img = styled.img`
+  width: 293px;
+  height: 226px;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+const S_SnsDate = styled.div`
+  color: #767676;
+  font-size: 12px;
+  span {
+    margin-left: 4px;
+	  height: 20px;
+    text-align: center;
+    position: relative;
+    top: 3px;
+  }
+  span:nth-child(2) {
+    margin-right: 10px;
+  }
+`;
+const S_Sns = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+`
+const S_HeartBtnImg = styled.img`
+	cursor: pointer;
+`;
+const S_CommentButtonImg = styled.img`
 	cursor: pointer;
 	width: 20px;
+`;
+const S_Date = styled.div`
+	margin-top: 7px;
+  font-size: 12px;
 `;

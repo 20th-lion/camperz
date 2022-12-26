@@ -77,3 +77,4 @@ const S_CommentUploadButton = styled.img`
   right: 29px;
   cursor: pointer;
 `;
+

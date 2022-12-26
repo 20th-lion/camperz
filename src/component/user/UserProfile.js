@@ -23,8 +23,7 @@ export default function UserProfile({ type, user }) {
 
 	useEffect(() => {
 		getUserInfo(user).then((res) => {
-			const { accountname, username, followingCount, followerCount, image, isfollow, intro } =
-				res.data.profile;
+			const { accountname, username, followingCount, followerCount, image, isfollow, intro } = res.data.profile;
 			setUserInfo({
 				accountname,
 				username,
@@ -57,44 +56,52 @@ export default function UserProfile({ type, user }) {
 	};
 
 	return (
-		<ProfileBackground>
-			<ProfileInfoContainer>
-				<ProfileImg src={image} alt="프로필 이미지"></ProfileImg>
-				<UserName>{username}</UserName>
-				<AccountName>@ {accountname}</AccountName>
-				<Intro>{intro}</Intro>
-				<Follow onClick={goToFllowerPage} position={'left'}>
-					<FollowCount>{followerCount}</FollowCount>
-					<FollowSpan>followers</FollowSpan>
-				</Follow>
-				<Follow onClick={goToFllowingPage} position={'right'}>
-					<FollowCount>{followingCount}</FollowCount>
-					<FollowSpan>followings</FollowSpan>
-				</Follow>
+		<S_ProfileSection>
+			<h2 className="ir">유저 프로필</h2>
+			<ProfileBackground>
+				<ProfileInfoContainer>
+					<ProfileImg src={image} alt="프로필 이미지"></ProfileImg>
+					<UserName>{username}</UserName>
+					<AccountName>@ {accountname}</AccountName>
+					<Intro>{intro}</Intro>
+					<Follow onClick={goToFllowerPage} position={'left'}>
+						<FollowCount>{followerCount}</FollowCount>
+						<FollowSpan>followers</FollowSpan>
+					</Follow>
+					<Follow onClick={goToFllowingPage} position={'right'}>
+						<FollowCount>{followingCount}</FollowCount>
+						<FollowSpan>followings</FollowSpan>
+					</Follow>
 
-				{type === 'mine' ? (
-					<ProfileBtnWrap>
-						<ButtonBig
-							text="userprofile"
-							onClick={() => navigate('/profile/edit')} type={type}
-						/>
-						<ButtonBig text="상품 등록" onClick={() => navigate('/product')} type={type} />
-					</ProfileBtnWrap>
-				) : (
-					<ProfileBtnWrap>
-						<ProfileBtnIcon>
-							<ChatIcon src={chatIcon} />
-						</ProfileBtnIcon>
-						<ButtonBig text="follow" isfollow={isfollow} onClick={handleFollow} />
-						<ProfileBtnIcon>
-							<ShareIcon src={shareIcon} />
-						</ProfileBtnIcon>
-					</ProfileBtnWrap>
-				)}
-			</ProfileInfoContainer>
-		</ProfileBackground>
+					{type === 'mine' ? (
+						<ProfileBtnWrap>
+							<ButtonBig text="userprofile" onClick={() => navigate('/profile/edit')} type={type} />
+							<ButtonBig text="상품 등록" onClick={() => navigate('/product')} type={type} />
+						</ProfileBtnWrap>
+					) : (
+						<ProfileBtnWrap>
+							<ProfileBtnIcon>
+								<ChatIcon src={chatIcon} />
+							</ProfileBtnIcon>
+							<ButtonBig text="follow" isfollow={isfollow} onClick={handleFollow} />
+							<ProfileBtnIcon>
+								<ShareIcon src={shareIcon} />
+							</ProfileBtnIcon>
+						</ProfileBtnWrap>
+					)}
+				</ProfileInfoContainer>
+			</ProfileBackground>
+		</S_ProfileSection>
 	);
 }
+
+const S_ProfileSection = styled.section`
+	width: 100%;
+	height: 314px;
+	background-color: #f3f1e8;
+	border-bottom: 1px solid #dbdbdb;
+	box-sizing: border-box;
+`;
 
 const ChatIcon = styled.img`
 	width: 34px;
@@ -106,7 +113,6 @@ const ShareIcon = styled.img`
 `;
 const ProfileBackground = styled.div`
 	display: block;
-	margin-bottom: 6px;
 	width: 390px;
 `;
 

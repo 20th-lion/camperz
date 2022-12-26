@@ -27,25 +27,13 @@ export default function PostList({ user, type }) {
 					<S_PostSection>
 						<h2 className="ir">게시글 목록</h2>
 						<S_Header>
-							<img
-								onClick={() => setToggle(true)}
-								src={toggle ? postListFill : postListOff}
-							/>
-							<img
-								onClick={() => setToggle(false)}
-								src={toggle ? postAlbum : postAlbumFill}
-							/>
+							<img onClick={() => setToggle(true)} src={toggle ? postListFill : postListOff} />
+							<img onClick={() => setToggle(false)} src={toggle ? postAlbum : postAlbumFill} />
 						</S_Header>
 						{toggle ? (
 							<S_PostListBox>
 								{postList.map((post, idx) => (
-									<PostItem
-										key={idx}
-										{...post}
-										setPostList={setPostList}
-										user={user}
-										type={type}
-									/>
+									<PostItem key={idx} {...post} setPostList={setPostList} user={user} type={type} />
 								))}
 							</S_PostListBox>
 						) : (
@@ -63,7 +51,8 @@ export default function PostList({ user, type }) {
 }
 
 const S_DivBox = styled.div`
-	height: 6px;
+	padding: 3px;
+	width: 100%;
 	background-color: #f2f2f2;
 `;
 
@@ -87,6 +76,7 @@ const S_Header = styled.header`
 		width: 26px;
 		height: 26px;
 		margin-left: 16px;
+		cursor: pointer;
 	}
 `;
 
