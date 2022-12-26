@@ -8,7 +8,5 @@
 		"react/no-direct-mutation-state": "warn", // state 직접 수정 금지
 		"react/jsx-key": "warn", // 반복문으로 생성하는 요소에 key 강제
 		"react/self-closing-comp": "warn", // 셀프 클로징 태그 가능하면 적용
-		"indent": ["error", 2],
-		"prettier/prettier": ["error", { "tabWidth": 2 }]
 	}
 }
