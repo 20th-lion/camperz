@@ -15,14 +15,16 @@ export default function SearchPage() {
     setKeyword(e.target.value);
   };
   useEffect(() => {
-    getSearchApiResponse(keyword)
-      .then((res) => {
-        const userInfo = res.data.map(i => {
-          const { _id, image, username, accountname } = i;
-          return { _id, image, username, accountname }
-        });
-      setUserList(userInfo);
-      })
+    if (keyword !== '') {
+      getSearchApiResponse(keyword)
+        .then((res) => {
+          const userInfo = res.data.map(i => {
+            const { _id, image, username, accountname } = i;
+            return { _id, image, username, accountname }
+          });
+          setUserList(userInfo);
+        })
+    }
   }, [keyword]);
 
   return (

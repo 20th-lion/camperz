@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import defaultProfileImg from '../../assets/icons/basic_profile_chat.png'
 
 export default function SearchingItem({ image, username, accountname }) {
-  const handleGoingtoUser = () => {
-
-  }
-
   return (
     <>
       <li>
