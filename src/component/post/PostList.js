@@ -51,7 +51,7 @@ export default function PostList({ user, type }) {
 }
 
 const S_DivBox = styled.div`
-	height: 10px;
+	padding: 3px;
 	width: 100%;
 	background-color: #f2f2f2;
 `;
@@ -76,6 +76,7 @@ const S_Header = styled.header`
 		width: 26px;
 		height: 26px;
 		margin-left: 16px;
+		cursor: pointer;
 	}
 `;
 

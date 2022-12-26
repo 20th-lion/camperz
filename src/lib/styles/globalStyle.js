@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     height: calc(100vh - 108px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     overflow-y: scroll;
     -ms-overflow-style: none;

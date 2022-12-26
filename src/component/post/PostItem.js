@@ -1,196 +1,202 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
 import { postDelete } from '../../lib/apis/postApis';
 import { useModals } from './../../lib/hooks/useModals';
-import Button from './../common/Button';
 import HeartButton from './HeartButton';
 import { modals } from '../modal/Modals';
 import { getPostList } from './../../lib/apis/postApis';
 
 import morePostIcon from '../../assets/icons/more_post.png';
 import heart from '../../assets/icons/heart.png';
-import heartFill from '../../assets/icons/heart_fill.png';
 import message from '../../assets/icons/message.png';
 
 export default function PostItem({
-	id,
-	content,
-	image,
-	createdAt,
-	heartCount,
-	commentCount,
-	author,
-	setPostList,
-	user,
-	type,
+  id,
+  content,
+  image,
+  createdAt,
+  heartCount,
+  commentCount,
+  author,
+  setPostList,
+  user,
+  type,
 }) {
-	const [pushHeart, setPushHeart] = useState(false);
-	const [count, setCount] = useState(heartCount);
-	const { openModal } = useModals();
-	const navigate = useNavigate();
+  const [pushHeart, setPushHeart] = useState(false);
+  const [count, setCount] = useState(heartCount);
+  const { openModal } = useModals();
+  const navigate = useNavigate();
 
-	const pushHeartButton = async () => {
-		await addHeart(id)
-			.then((res) => {
-				setPushHeart(res.data.post.hearted);
-				setCount(res.data.post.heartCount);
-			})
-			.catch((err) => console.log(err));
-	};
+  const pushHeartButton = async () => {
+    await addHeart(id)
+      .then((res) => {
+        setPushHeart(res.data.post.hearted);
+        setCount(res.data.post.heartCount);
+      })
+      .catch((err) => console.log(err));
+  };
 
-	const cancelHeartButton = async () => {
-		await deleteHeart(id)
-			.then((res) => {
-				setPushHeart(res.data.post.hearted);
-				setCount(res.data.post.heartCount);
-			})
-			.catch((err) => console.log(err));
-	};
+  const cancelHeartButton = async () => {
+    await deleteHeart(id)
+      .then((res) => {
+        setPushHeart(res.data.post.hearted);
+        setCount(res.data.post.heartCount);
+      })
+      .catch((err) => console.log(err));
+  };
 
-	const handleHeartClick = () => {
-		pushHeart ? cancelHeartButton() : pushHeartButton();
-	};
+  const handleHeartClick = () => {
+    pushHeart ? cancelHeartButton() : pushHeartButton();
+  };
 
-	const handleAuthorClick = () => {
-		navigate(`/profile/${author.accountname}`);
-	};
-	const handleClickModal = () => {
-		openModal(modals.postItemModal, {
-			onEdit: () => {
-				navigate(`/postUpload/${id}`);
-			},
-			onRemove: async () => {
-				openModal(modals.confirmModal, {
-					onConfirm: async () => {
-						await postDelete(id);
-						getPostList(user).then((res) => {
-							setPostList([...res.data.post]);
-						});
-					},
-					message: '삭제하시겠어요?',
-					btnText: '삭제',
-				});
-			},
-			onReport: () => { },
-			type: type,
-		});
-	};
+  const handleAuthorClick = () => {
+    navigate(`/profile/${author.accountname}`);
+  };
+  const handleClickModal = () => {
+    openModal(modals.postItemModal, {
+      onEdit: () => {
+        navigate(`/postUpload/${id}`);
+      },
+      onRemove: async () => {
+        openModal(modals.confirmModal, {
+          onConfirm: async () => {
+            await postDelete(id);
+            getPostList(user).then((res) => {
+              setPostList([...res.data.post]);
+            });
+          },
+          message: '삭제하시겠어요?',
+          btnText: '삭제',
+        });
+      },
+      onReport: () => { },
+      type: type,
+    });
+  };
 
-	const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
+  const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
-	return (
-		<>
-			<StyledItemBlock>
-				<PostItemHeader>
-					<img
-						onClick={handleAuthorClick}
-						style={{ width: '50px', height: '50px', borderRadius: '50%' }}
-						src={author.image}
-						alt="프로필 사진"
-					/>
-					<Name onClick={handleAuthorClick}>
-						<UserName>{author.username}</UserName>
-						<div>@ {author.accountname}</div>
-					</Name>
-
-					<ModalIconImg src={morePostIcon} onClick={handleClickModal} />
-				</PostItemHeader>
-				<ContentBox>{content}</ContentBox>
-				<ImgContainer>{image && <Simg src={image} alt="" />}</ImgContainer>
-
-				<SocialBtn>
-					<HeartButton
-						onClick={handleHeartClick}
-						pushHeart={pushHeart}
-					/>
-					{count}
-
-					<Link to={`/postdetail/${id}`}>
-						<CommentButtonImg src={message} />
-						{commentCount}
-					</Link>
-				</SocialBtn>
-				<DateContainer>{createdAtPost}</DateContainer>
-			</StyledItemBlock>
-		</>
-	);
+  return (
+    <>
+      <S_ItemWrapper>
+        <S_PostItemHeader>
+          <S_ProfileImg
+            onClick={handleAuthorClick}
+            src={author.image}
+            alt='프로필 사진'
+          />
+          <S_NameBox onClick={handleAuthorClick}>
+            <S_Username>{author.username}</S_Username>
+            <S_AccountID>@ {author.accountname}</S_AccountID>
+          </S_NameBox>
+          <S_ModalIconImg src={morePostIcon} onClick={handleClickModal} />
+        </S_PostItemHeader>
+        <S_ContentBox>
+          <S_Text>{content}</S_Text>
+          <S_ImgBox>{image && <S_Img src={image} alt='' />}</S_ImgBox>
+          <S_SnsDate>
+            <S_Sns>
+              <HeartButton
+                style={{ backgroundImage: heart }}
+                onClick={handleHeartClick}
+                pushHeart={pushHeart}
+              />
+              <span>{count}</span>
+              <Link to={`/postdetail/${id}`}>
+                <S_CommentButtonImg src={message} />
+              </Link>
+              <span>{commentCount}</span>
+            </S_Sns>
+            <S_Date>{createdAtPost}</S_Date>
+          </S_SnsDate>
+        </S_ContentBox>
+      </S_ItemWrapper>
+    </>
+  );
 }
 
-const StyledItemBlock = styled.div`
-	/* border: 1px solid black; */
-	width: 390px;
-	font-size: 14px;
+const S_ItemWrapper = styled.div`
+	width: 358px;
 `;
-
-const Simg = styled.img`
-	width: 100%;
-	height: 100%;
-`;
-
-const ModalIconImg = styled.img`
+const S_PostItemHeader = styled.div`
+  height: 50px;
+  display: flex;
 	position: relative;
-	left: 220px;
+`;
+const S_ProfileImg = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+`
+const S_NameBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  width: 276px;
+  gap: 7px;
+`
+const S_Username = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+`
+const S_AccountID = styled.p`
+  font-size: 12px;
+  color: #767676;
+`
+const S_ModalIconImg = styled.img`
+	position: absolute;
+  right: 0px;
+  width: 18px;
+  height: 18px;
+	margin-top: 6px;
 	cursor: pointer;
-	margin-top: 5px;
 `;
-
-const PostItemHeader = styled.div`
-	padding: 15px;
-	height: 80px;
-	/* border: 1px solid tomato; */
+const S_ContentBox = styled.p`
+  margin-left: 61px;
 `;
-
-const Name = styled.div`
-	color: #767676;
-	margin-left: 10px;
-	margin-top: 8px;
-	font-size: 12px;
-	display: inline-block;
+const S_Text = styled.div`
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 400;
+`
+const S_ImgBox = styled.div`
+  margin: 14px 0;
 `;
-
-const UserName = styled.div`
-	color: black;
-	font-size: 14px;
-	margin-bottom: 2px;
+const S_Img = styled.img`
+  width: 293px;
+  height: 226px;
+  object-fit: cover;
+  border-radius: 10px;
 `;
-
-// const AccountName = styled.div``;
-
-const ContentBox = styled.p`
-	text-align: left;
-	/* border: 2px solid blue; */
-	width: 303px;
-	margin: 0px 0px 0px 75px;
+const S_SnsDate = styled.div`
+  color: #767676;
+  font-size: 12px;
+  span {
+    margin-left: 4px;
+	  height: 20px;
+    text-align: center;
+    position: relative;
+    top: 3px;
+  }
+  span:nth-child(2) {
+    margin-right: 10px;
+  }
 `;
-
-const ImgContainer = styled.div`
-	width: 303px;
-	height: 100%;
-	margin: 16px 0px 0px 75px;
-`;
-
-const SocialBtn = styled.div`
-	margin-top: 10px;
-	margin-left: 75px;
-	/* border: 1px solid green; */
-	display: flex;
-	gap: 5px;
-	color: #767676;
-	font-weight: 400;
-`;
-
-const HeartButtonImg = styled.img``;
-
-const CommentButtonImg = styled.img`
+const S_Sns = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+`
+const S_CommentButtonImg = styled.img`
 	width: 20px;
+	height: 20px;
 `;
-
-const DateContainer = styled.div`
-	font-size: 12px;
-	color: #767676;
-	margin-top: 10px;
-	margin-left: 75px;
+const S_Date = styled.div`
+	margin-top: 4px;
+  font-size: 12px;
 `;

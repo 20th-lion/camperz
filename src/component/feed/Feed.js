@@ -6,35 +6,44 @@ import styled from 'styled-components';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
 export default function Feed() {
-	const [feedList, setFeedList] = useState([]);
+  const [feedList, setFeedList] = useState([]);
 
-	useEffect(() => {
-		getFeed().then((res) => {
-			setFeedList([...res.data.posts]);
-		});
-	}, []);
+  useEffect(() => {
+    getFeed().then((res) => {
+      setFeedList([...res.data.posts]);
+    });
+  }, []);
 
-	return (
-		<>
-			{feedList.length ? (
-				feedList.map((item, idx) => <PostItem key={idx} {...item} />)
-			) : (
-				<>
-					<S_NoFeed>
-						<img src={defaultProfileImg} alt='기본프로필사진' />
-						<p>유저를 검색해 팔로우 해보세요!</p>
-						<SearchButton />
-					</S_NoFeed>
-				</>
-			)}
-		</>
-	);
+  return (
+    <>
+      {feedList.length
+        ? (
+          <S_Feed>
+          {feedList.map((item, idx) => <PostItem key={idx} {...item} />)}
+          </S_Feed>
+        ) : (
+          <S_NoFeed>
+            <img src={defaultProfileImg} alt='기본프로필사진' />
+            <p>유저를 검색해 팔로우 해보세요!</p>
+            <SearchButton />
+          </S_NoFeed>
+        )}
+    </>
+  );
 }
 
+const S_Feed = styled.div`
+  display: flex;
+	flex-direction: column;
+  margin: 20px auto;
+  gap: 25px;
+`
 const S_NoFeed = styled.div`
 	display: flex;
 	flex-direction: column;
+  justify-content: center;
 	align-items: center;
+  height: calc(100vh - 108px);
   margin-bottom: 36px;
   img {
     width: 110px;
