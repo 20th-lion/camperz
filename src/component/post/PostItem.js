@@ -74,7 +74,7 @@ export default function PostItem({
 					btnText: '삭제',
 				});
 			},
-			onReport: () => {},
+			onReport: () => { },
 			type: type,
 		});
 	};
@@ -103,7 +103,6 @@ export default function PostItem({
 
 				<SocialBtn>
 					<HeartButton
-						style={{ backgroundImage: heart }}
 						onClick={handleHeartClick}
 						pushHeart={pushHeart}
 					/>
