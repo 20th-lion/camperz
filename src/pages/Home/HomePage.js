@@ -23,6 +23,7 @@ export default function HomePage() {
     </>
   );
 }
+
 const S_SearchBtnSmall = styled.img`
 	width: 24px;
 	height: 24px;
