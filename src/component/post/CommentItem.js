@@ -17,7 +17,6 @@ export default function CommentItem({ author, content, createdAt, id, post_id })
     openModal(modals.commentModal, {
       onReport: () => {
         reportComment(post_id, id, type).then((res) => { });
-        // console.log('신고시 실행되는 함수');
       },
       onRemove: () => {
         openModal(modals.confirmModal, {
@@ -27,7 +26,6 @@ export default function CommentItem({ author, content, createdAt, id, post_id })
           message: '댓글을 삭제하시겠어요?',
           btnText: '삭제',
         });
-        // console.log('댓글 삭제시 실행되는 함수');
       },
       type: type,
     });

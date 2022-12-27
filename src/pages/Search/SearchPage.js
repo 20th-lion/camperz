@@ -37,9 +37,9 @@ export default function SearchPage() {
 				}
 				rightChild={<S_SearchingInput value={keyword} onChange={handleInputText} placeholder="계정 검색" />}
 			/>
-			<S_Main>
+			<main>
 				<SearchingResult userList={userList} keyword={keyword} />
-			</S_Main>
+			</main>
 			<NavBar page="home" />
 		</>
 	);
@@ -56,7 +56,4 @@ const S_SearchingInput = styled.input`
 	::placeholder {
 		font-weight: 300;
 	}
-`;
-const S_Main = styled.main`
-	justify-content: flex-start;
 `;
