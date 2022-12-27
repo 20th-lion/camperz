@@ -35,7 +35,7 @@ export default React.memo(function ProductList({ user, type }) {
 });
 
 const S_ProductSection = styled.section`
-  margin: 6px;
+  margin-top: 6px;
 	width: 100%;
 	height: 230px;
 	background-color: #F3F1E8;
