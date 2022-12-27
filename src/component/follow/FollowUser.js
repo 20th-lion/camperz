@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -31,55 +30,50 @@ export default function FollowUser({
     };
 
     return (
-        <UserContainer id={accountname}>
-            <UserInfoContent onClick={() => {
+        <S_UserContainer id={accountname}>
+            <S_UserInfoContent onClick={() => {
                 const id = accountname;
                 navigate(`/profile/${id}`);
             }}>
-                <ProfileImg src={image} alt="프로필이미지" />
-                <UserInfo>
-                    <UserName>{username}</UserName>
-                    <UserIntro>{userIntro}</UserIntro>
-                </UserInfo>
-            </UserInfoContent>
+                <S_ProfileImg src={image} alt="프로필이미지" />
+                <S_UserInfo>
+                    <S_UserName>{username}</S_UserName>
+                    <S_UserIntro>{userIntro}</S_UserIntro>
+                </S_UserInfo>
+            </S_UserInfoContent>
 
             <ButtonSmall isfollow={is_Follow} onClick={handleFollow} />
 
-        </UserContainer>
+        </S_UserContainer>
     )
 }
 
-const UserContainer = styled.div`
+const S_UserContainer = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
 margin-bottom: 16px;
 `
-
-const UserInfoContent = styled.div`
+const S_UserInfoContent = styled.div`
 cursor: pointer;
 display: flex;
 `
-
-const ProfileImg = styled.img`
+const S_ProfileImg = styled.img`
 width: 50px;
 height: 50px;
 border-radius: 50%;
 `
-
-const UserInfo = styled.div`
+const S_UserInfo = styled.div`
 width: 139px;
 margin: 5px 101px 6px 12px ;
 `
-
-const UserName = styled.strong`
+const S_UserName = styled.strong`
 display: block;
 font-size: 14px;
 font-weight: 400;
 margin-bottom: 6px;
 `
-
-const UserIntro = styled.strong`
+const S_UserIntro = styled.strong`
 display: block;
 font-size: 12px;
 font-weight: 400;

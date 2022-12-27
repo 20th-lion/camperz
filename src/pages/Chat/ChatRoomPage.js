@@ -30,6 +30,8 @@ export default function ChatRoomPage() {
 }
 
 const S_ModalBtn = styled.img`
+	width: 22px;
+	height: 22px;
 	cursor: pointer;
 `;
 const S_main = styled.main`

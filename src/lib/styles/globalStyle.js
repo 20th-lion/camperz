@@ -66,7 +66,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: inherit;
   }
 
-  input {
+  input, 
+  textarea {
     background-color: inherit;
     border: none;
     font-size: inherit;
@@ -75,11 +76,13 @@ const GlobalStyle = createGlobalStyle`
     color: #000000;
   }
 
-  input:focus {
+  input:focus,
+  textarea:focus {
     outline: none;
   }
 
-  input::placeholder {
+  input::placeholder,
+  textarea::placeholder {
     color: #92918A;
   }
 `;

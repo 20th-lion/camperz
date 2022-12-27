@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import iconSrc from '../../assets/icons/404_logo.png';
 import SearchButton from '../../component/common/SearchButton';
 

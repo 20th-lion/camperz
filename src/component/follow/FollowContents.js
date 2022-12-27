@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import FollowUser from "../follow/FollowUser";
 
@@ -9,13 +9,13 @@ export default function FollowContents({ followData, followMessage }) {
         setUserData(followData);
     }, [followData]);
     return (
-        <FollowWrap>
+        <S_FollowWrap>
             {userData && userData.length === 0 ? (
-                <Message>{followMessage}</Message>
+                <S_Message>{followMessage}</S_Message>
             ) : (
                 userData && userData.map((item) => {
                     return (
-                        <FollowUserWrap key={item._id}>
+                        <S_FollowUserWrap key={item._id}>
                             <FollowUser
                                 username={item.username}
                                 accountname={item.accountname}
@@ -23,26 +23,26 @@ export default function FollowContents({ followData, followMessage }) {
                                 image={item.image}
                                 isfollow={item.isfollow}
                             />
-                        </FollowUserWrap>
+                        </S_FollowUserWrap>
 
                     )
                 })
             )}
-        </FollowWrap>
+        </S_FollowWrap>
     );
 }
 
-const FollowWrap = styled.div`
+const S_FollowWrap = styled.div`
 margin: 0 auto;
 padding: 24px 16px 16px 16px;
 height: calc(100vh - 108px);
 `;
 
-const FollowUserWrap = styled.div`
+const S_FollowUserWrap = styled.div`
 margin-bottom: 16px;
 `;
 
-const Message = styled.div`
+const S_Message = styled.div`
 text-align: center; 
 font-size: 14px;
 `;
