@@ -23,22 +23,20 @@ export default function CommentBox({ post_id, boxIcon }) {
 		postComment(post_id, commentContent);
 		setCommentContent('');
 	};
-	// const MyInfoData = {
-	// 	userName: '',
-	// 	myProfileImg: '',
-	// };
-	// useEffect(
-	// 	getMyInfo().then((res) => {
-	// 		MyInfoData.userName = res.data.user.username;
-	// 		MyInfoData.myProfileImg = res.data.user.image;
-	// 	}),
-	// 	[],
-	// );
-	// console.log(MyInfoData.myProfileImg);
+
+	const [userImg, setUserImg] = useState(null);
+
+	useEffect(() => {
+		getMyInfo().then((res) => {
+			// MyInfoData.userName = res.data.user.username;
+			setUserImg(res.data.user.image);
+		});
+	}, []);
+
 	return (
 		<>
 			<S_CommentBox>
-				<S_UserIcon src={boxIcon} />
+				<S_UserIcon src={userImg} />
 				<S_CommentInput
 					onChange={(e) => {
 						CommentInputValidator(e);
