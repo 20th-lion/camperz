@@ -54,12 +54,14 @@ export default function PostUploadPage() {
 		navigate(-1);
 	};
 
+	const [userImg, setUserImg] = useState(null);
+
 	useEffect(() => {
 		getMyInfo().then((res) => {
-			console.log(res);
+			// MyInfoData.userName = res.data.user.username;
+			setUserImg(res.data.user.image);
 		});
 	}, []);
-
 	return (
 		<>
 			<Header
@@ -69,7 +71,7 @@ export default function PostUploadPage() {
 				}
 			/>
 			<Main>
-				<UserImg src={moreHeader} />
+				<UserImg src={userImg} />
 				<PostTextArea onChange={(e) => handleChange(e)} value={text} placeholder="게시물을 입력하세요..." />
 				{fileImage === undefined ? <></> : <PictureArea src={fileImage} style={{ margin: 'auto' }} />}
 				<ImgButtonContainer>
@@ -119,7 +121,6 @@ const Main = styled.main`
 
 const UserImg = styled.img`
 	margin-right: 5px;
-	border: 2px solid tomato;
 	width: 45px;
 	height: 45px;
 	border-radius: 50%;
