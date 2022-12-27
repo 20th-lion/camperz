@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
 import { deleteComment, reportComment } from '../../lib/apis/commentApis';
 import moreHeader from '../../assets/icons/more_header.png';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
-export default function CommentItem({ author, content, createdAt, id, post_id }) {
+export default function CommentItem({ author, content, createdAt, id, post_id, onload }) {
 	const { openModal } = useModals();
-	const navigate = useNavigate();
 
 	const handleModalClick = () => {
 		const myAccountname = localStorage.getItem('accountname');
@@ -16,12 +16,13 @@ export default function CommentItem({ author, content, createdAt, id, post_id })
 		commenterAccountName === myAccountname ? (type = 'mine') : (type = 'other');
 		openModal(modals.commentModal, {
 			onReport: () => {
-				reportComment(post_id, id, type).then((res) => {});
+				reportComment(post_id, id, type);
 			},
 			onRemove: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
-						deleteComment(post_id, id, type).then((res) => {});
+						deleteComment(post_id, id, type);
+						onload(post_id);
 					},
 					message: '댓글을 삭제하시겠어요?',
 					btnText: '삭제',
@@ -33,10 +34,13 @@ export default function CommentItem({ author, content, createdAt, id, post_id })
 
 	const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
+	const handleErrorImg = (e) => {
+		e.target.src = defaultProfileImg;
+	};
 	return (
 		<>
 			<S_CommentBox>
-				<S_UserIcon src={author.image} alt="댓글 이용자 프로필 사진" />
+				<S_UserIcon src={author.image} alt="댓글 이용자 프로필 사진" onError={handleErrorImg} />
 				<S_Comment>
 					<S_UserDate>
 						{author.username}

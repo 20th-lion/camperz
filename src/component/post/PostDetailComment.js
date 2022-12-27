@@ -3,20 +3,24 @@ import { getCommentList } from '../../lib/apis/commentApis';
 import CommentItem from './CommentItem';
 import styled from 'styled-components';
 
-export default function PostDetailComment({ post_id }) {
+export default function PostDetailComment({ post_id, addComment }) {
 	const [commentList, setCommentList] = useState([]);
 
-	useEffect(() => {
-		getCommentList(post_id).then((res) => {
+	const loadCommentList = async (post_id) => {
+		await getCommentList(post_id).then((res) => {
 			setCommentList([...res.data.comments]);
 		});
-	}, [commentList]);
+	};
+
+	useEffect(() => {
+		loadCommentList(post_id);
+	}, [addComment]);
 
 	return (
 		<>
 			<S_CommentList>
 				{commentList.map((comment, idx) => (
-					<CommentItem key={idx} {...comment} post_id={post_id} />
+					<CommentItem key={idx} {...comment} post_id={post_id} onload={loadCommentList} />
 				))}
 			</S_CommentList>
 		</>

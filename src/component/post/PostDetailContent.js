@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { postDetailLoader } from '../../lib/apis/postApis';
 import styled from 'styled-components';
-import morePostIcon from '../../assets/icons/more_post.png';
-import heart from '../../assets/icons/heart.png';
-import message from '../../assets/icons/message.png';
+
 import { useModals } from '../../lib/hooks/useModals';
 import { modals } from './../modal/Modals';
 import HeartButton from '../post/HeartButton';
+import { postDetailLoader } from '../../lib/apis/postApis';
 import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
+import morePostIcon from '../../assets/icons/more_post.png';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
+import heart from '../../assets/icons/heart.png';
+import message from '../../assets/icons/message.png';
 
 export default function PostDetailContent({ id }) {
 	const [userName, setUserName] = useState('');
@@ -51,7 +53,6 @@ export default function PostDetailContent({ id }) {
 	const pushHeartButton = async () => {
 		await addHeart(id)
 			.then((res) => {
-				console.log(res.data.post.hearted);
 				setPushHeart(res.data.post.hearted);
 				setHeartCount(res.data.post.heartCount);
 			})
@@ -61,7 +62,6 @@ export default function PostDetailContent({ id }) {
 	const cancelHeartButton = async () => {
 		await deleteHeart(id)
 			.then((res) => {
-				console.log(res.data.post.hearted);
 				setPushHeart(res.data.post.hearted);
 				setHeartCount(res.data.post.heartCount);
 			})
@@ -74,6 +74,9 @@ export default function PostDetailContent({ id }) {
 
 	const updatedAtPost = updated.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
+	const handleErrorImg = (e) => {
+		e.target.src = defaultProfileImg;
+	};
 	return (
 		<>
 			<S_ItemWrapper>
@@ -87,7 +90,7 @@ export default function PostDetailContent({ id }) {
 				</S_PostItemHeader>
 				<S_ContentBox>
 					<S_Text>{content}</S_Text>
-					<S_ImgBox>{image === undefined ? <></> : <S_Img src={image} />}</S_ImgBox>
+					<S_ImgBox>{image === undefined ? <></> : <S_Img src={image} onError={handleErrorImg} />}</S_ImgBox>
 					<S_SnsDate>
 						<S_Sns>
 							<HeartButton

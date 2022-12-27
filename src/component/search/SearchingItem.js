@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import defaultProfileImg from '../../assets/icons/basic_profile_chat.png';
+import defaultProfileImg from '../../assets/icons/basic_profile_post.png';
 
 export default function SearchingItem({ image, username, accountname, keyword }) {
 	const ColoredItem = ({ item, query }) => {
@@ -14,12 +14,17 @@ export default function SearchingItem({ image, username, accountname, keyword })
 			<>{item}</>
 		);
 	};
+
+	const handleErrorImg = (e) => {
+		e.target.src = defaultProfileImg;
+	};
+
 	return (
 		<>
 			<li>
 				<Link to={'/profile/' + accountname}>
 					<S_A>
-						<S_ProfileImg src={image !== 'https://mandarin.api.weniv.co.kr/undefined' ? image : defaultProfileImg} />
+						<S_ProfileImg src={image} onError={handleErrorImg} />
 						<S_TextBox>
 							<S_Username>
 								<ColoredItem item={username} query={keyword} />
@@ -47,10 +52,10 @@ const S_A = styled.a`
 	cursor: pointer;
 `;
 const S_ProfileImg = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-`
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+`;
 const S_TextBox = styled.div`
 	padding: 15px;
 	display: flex;
