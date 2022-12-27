@@ -3,15 +3,21 @@ import { useNavigate } from 'react-router-dom/dist';
 import styled from 'styled-components';
 import CAMPERZLogoLight from '../../assets/logo/CAMPERZ_light.png';
 import { LoginStateContext, LoginDispatchContext } from '../../component/context/LoginContext';
+import { isValidToken } from './../../lib/utils/isValidToken';
 
 export default function Splash() {
 	const isLogedIn = useContext(LoginStateContext);
+	const { logout } = useContext(LoginDispatchContext);
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		console.log(isLogedIn);
-		setTimeout(() => {
-			isLogedIn ? navigate('/home') : navigate('/login');
+		setTimeout(async () => {
+			if (isLogedIn && (await isValidToken())) {
+				navigate('/home');
+			} else {
+				logout();
+				navigate('/login');
+			}
 		}, 1500);
 	}, []);
 

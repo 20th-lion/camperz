@@ -6,7 +6,7 @@ export default function Provider({ children }) {
 	const [openedModals, setOpenedModals] = useState([]);
 	const [isLogedIn, setIsLogedIn] = useState(!!localStorage.getItem('token'));
 
-	const login = (token, accountname) => {
+	const login = async (token, accountname) => {
 		localStorage.setItem('token', token);
 		localStorage.setItem('accountname', accountname);
 		setIsLogedIn(true);

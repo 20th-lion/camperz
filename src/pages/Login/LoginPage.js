@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
@@ -8,9 +8,6 @@ import CAMPERZLogoDark from '../../assets/logo/CAMPERZ_dark.png';
 
 export default function LoginPage() {
 	const log = useContext(LoginStateContext);
-	useEffect(() => {
-		console.log(log);
-	});
 	return (
 		<>
 			<S_Main>
