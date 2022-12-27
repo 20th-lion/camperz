@@ -151,18 +151,11 @@ const S_ContentBox = styled.p`
 	margin-left: 61px;
 `;
 const S_Text = styled.div`
-<<<<<<< HEAD
   margin-top: 8px;
   font-size: 14px;
   font-weight: 300;
   line-height: 18px;
-`
-=======
-	margin-top: 8px;
-	font-size: 14px;
-	font-weight: 400;
 `;
->>>>>>> main
 const S_ImgBox = styled.div`
 	margin: 14px 0;
 `;
