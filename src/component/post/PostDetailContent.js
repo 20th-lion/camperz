@@ -82,8 +82,6 @@ export default function PostDetailContent({ id }) {
 
 const S_ItemWrapper = styled.section`
 	width: 358px;
-  padding-bottom: 25px;
-  /* border-bottom: 1px solid #dbdbdb;  */
 `;
 const S_PostItemHeader = styled.div`
   height: 50px;

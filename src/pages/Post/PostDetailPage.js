@@ -31,5 +31,5 @@ const S_ModalBtn = styled.img`
 	cursor: pointer;
 `;
 const S_Main = styled.main`
-  margin: 20px auto;
+  margin: 20px auto 0;
 `;
