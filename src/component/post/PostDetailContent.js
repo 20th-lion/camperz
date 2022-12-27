@@ -19,7 +19,6 @@ export default function PostDetailContent({ id }) {
 	const [commentCount, setCommentCount] = useState('');
 	const [authorImg, setAuthorImg] = useState('');
 	const [pushHeart, setPushHeart] = useState(false);
-
 	const { openModal } = useModals();
 
 	postDetailLoader(id).then((res) => {
@@ -31,6 +30,7 @@ export default function PostDetailContent({ id }) {
 		setCommentCount(res.data.post.commentCount);
 		setAuthorImg(res.data.post.author.image);
 		setAccountName(res.data.post.author.accountname);
+		setPushHeart(res.data.post.hearted);
 	});
 
 	const handleClickModal = () => {
@@ -150,10 +150,10 @@ const S_ContentBox = styled.div`
 	margin-left: 61px;
 `;
 const S_Text = styled.div`
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 18px;
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 18px;
 `;
 const S_ImgBox = styled.div`
 	margin: 14px 0;
@@ -179,14 +179,14 @@ const S_SnsDate = styled.div`
 	}
 `;
 const S_Sns = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-`
+	display: flex;
+	align-items: center;
+	font-weight: 400;
+`;
 const S_CommentButtonImg = styled.img`
 	width: 20px;
-  height: 20px;
-	cursor: pointer;  
+	height: 20px;
+	cursor: pointer;
 `;
 const S_Date = styled.div`
 	margin-top: 7px;
