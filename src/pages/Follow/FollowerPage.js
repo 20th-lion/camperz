@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import NavBar from '../../component/common/NavBar';
 import { followerList } from '../../lib/apis/followApis';
 import FollowContents from '../../component/follow/FollowContents';
 import Header from '../../component/common/Header';
 import styled from 'styled-components';
 import BackButton from '../../component/common/BackButton';
-
 
 export default function FollowerPage() {
 	const { accountname } = useParams();
@@ -16,7 +14,6 @@ export default function FollowerPage() {
 	const getFollowerData = async () => {
 		await followerList(accountname)
 			.then((res) => {
-				console.log(res);
 				if (res.data.length > 0) {
 					setFollowerData(res.data);
 				} else {
@@ -27,12 +24,11 @@ export default function FollowerPage() {
 	};
 	useEffect(() => {
 		getFollowerData();
-		console.log(followerData);
 	}, []);
 
 	return (
 		<>
-			<Header leftChild={<S_div><BackButton />  Followers</S_div>}></Header>
+			<Header leftChild={<S_H2><BackButton />  Followers</S_H2>}></Header>
 			<S_Main>
 				<FollowContents followData={followerData} followMessage={followerMessage} />
 			</S_Main>
@@ -40,13 +36,11 @@ export default function FollowerPage() {
 	);
 }
 
-const S_Main = styled.main`
-  justify-content: flex-start;
-  height: calc(100vh - 54px);
-`
-const S_div = styled.div`
+const S_H2 = styled.h2`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 21px;
-  align-items: center;
+`
+const S_Main = styled.main`
+  height: calc(100vh - 44px);
 `

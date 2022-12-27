@@ -74,7 +74,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 					type="text"
 					value={productInfo.itemName}
 					onChange={onChange}
-					placeholder="상품 명을 입력해 주세요"
+					placeholder="상품명을 입력해 주세요"
 				/>
 			</S_InputBox>
 			<S_InputBox>

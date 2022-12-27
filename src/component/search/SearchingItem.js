@@ -50,6 +50,7 @@ const S_ProfileImg = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
 `
 const S_TextBox = styled.div`
 	padding: 15px;
