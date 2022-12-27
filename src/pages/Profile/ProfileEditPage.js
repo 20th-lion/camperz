@@ -34,11 +34,10 @@ export default function ProfileEditPage() {
 			});
 		});
 	};
+
 	const handleSaveBtn = async () => {
 		await imageUpload(userInfo.image).then((res) => {
-			const image = res.data.filename
-				? 'https://mandarin.api.weniv.co.kr/' + res.data.filename
-				: userInfo.image;
+			const image = res.data.filename ? 'https://mandarin.api.weniv.co.kr/' + res.data.filename : userInfo.image;
 			editProfile({ ...userInfo, image });
 		});
 		localStorage.setItem('accountname', userInfo.accountname);
@@ -48,24 +47,29 @@ export default function ProfileEditPage() {
 	return (
 		<>
 			<Header
-				leftChild={<><BackButton /><h2 className='ir'>프로필 수정</h2></>}
+				leftChild={
+					<>
+						<BackButton />
+						<h2 className="ir">프로필 수정</h2>
+					</>
+				}
 				rightChild={<Button text={'저장'} onClick={handleSaveBtn} active={btnActive} />}
 			/>
 			<Main>
-			  <ProfileForm
-  				setUserInfo={setUserInfo}
-  				userInfo={userInfo}
-  				setBtnActive={setBtnActive}
-  				setErrorMsg={setErrorMsg}
-  				errorMsg={errorMsg}
-  			/>
+				<ProfileForm
+					setUserInfo={setUserInfo}
+					userInfo={userInfo}
+					setBtnActive={setBtnActive}
+					setErrorMsg={setErrorMsg}
+					errorMsg={errorMsg}
+				/>
 			</Main>
 		</>
 	);
 }
 
 const Main = styled.main`
-  justify-content: flex-start;
-  height: calc(100vh - 48px);
-  padding-top: 66px;
-`
+	justify-content: flex-start;
+	height: calc(100vh - 48px);
+	padding-top: 66px;
+`;
