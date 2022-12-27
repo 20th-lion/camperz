@@ -8,7 +8,7 @@ export default function Page404() {
 	return (
 		<>
 			<S_Page404Wrapper>
-				<S_NotFoundImg src={iconSrc} />
+				<S_NotFoundImg src={iconSrc} onClick={postImageUploader} />
 				<S_ErrorMsg>페이지를 찾을 수 없습니다. :(</S_ErrorMsg>
 				<SearchButton />
 			</S_Page404Wrapper>

@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { postComment } from '../../lib/apis/commentApis';
 import commentbtn from '../../assets/icons/chat_send.png';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
+import { getMyInfo } from '../../lib/apis/profileApis';
 
 export default function CommentBox({ post_id, boxIcon }) {
 	const [btnHandler, setBtnHandler] = useState(false);
@@ -23,10 +24,19 @@ export default function CommentBox({ post_id, boxIcon }) {
 		setCommentContent('');
 	};
 
+	const [userImg, setUserImg] = useState(null);
+
+	useEffect(() => {
+		getMyInfo().then((res) => {
+			// MyInfoData.userName = res.data.user.username;
+			setUserImg(res.data.user.image);
+		});
+	}, []);
+
 	return (
 		<>
 			<S_CommentBox>
-				<S_UserIcon src={boxIcon} />
+				<S_UserIcon src={userImg} />
 				<S_CommentInput
 					onChange={(e) => {
 						CommentInputValidator(e);

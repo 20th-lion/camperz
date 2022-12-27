@@ -5,7 +5,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ImgUploadButton from '../../component/common/ImgUploadButton';
 import UploadButton from '../../component/post/UploadButton';
 import Header from '../../component/common/Header';
+
+import moreHeader from '../../assets/icons/more_header.png';
+import leftArrow from '../../assets/icons/icon_arrow_left.png';
+import { getMyInfo } from '../../lib/apis/profileApis';
+// import { postUploader } from '../../lib/apis/postApis';
 import defaultProfile from '../../assets/icons/basic_profile_chat.png';
+
 
 export default function PostUploadPage() {
   const [text, setText] = useState('');
@@ -30,19 +36,32 @@ export default function PostUploadPage() {
     }
   }, []);
 
+
+	const handleImgChange = (e) => {
+		if (e.target.files[0] === undefined) {
+			console.log('사진없음');
+		} else {
+			// console.log(e.target.files[0]);
+			setPreConvertedImg(e.target.files[0]);
+			setFileImage(URL.createObjectURL(e.target.files[0]));
+		}
+		// console.log(e.target.files[0]);
+		//e.target.files[0]는 0번째 이미지 값입니다.
+	};
+
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
-  const handleImgChange = (e) => {
-    if (e.target.files[0] === undefined) {
-      console.log('사진없음');
-    } else {
-      setPreConvertedImg(e.target.files[0].name);
-      setFileImage(URL.createObjectURL(e.target.files[0]));
-    }
-    //e.target.files[0]는 0번째 이미지 값입니다.
-  };
+
+	const [userImg, setUserImg] = useState(null);
+	useEffect(() => {
+		getMyInfo().then((res) => {
+			// MyInfoData.userName = res.data.user.username;
+			setUserImg(res.data.user.image);
+		});
+	}, []);
+
 
   return (
     <>
@@ -79,6 +98,7 @@ export default function PostUploadPage() {
       </S_Main>
     </>
   );
+
 }
 
 const S_Main = styled.main`
@@ -89,6 +109,7 @@ const S_Main = styled.main`
   gap: 10px;
   position: relative;
 `;
+
 const S_UserImg = styled.img`
 	width: 45px;
 	height: 45px;

@@ -2,20 +2,22 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { postUploader, postEditer } from '../../lib/apis/postApis';
-import { imageUpload } from '../../lib/apis/imageUploadApi';
+import { postImageUploader } from '../../lib/apis/imageUploadApi';
 export default function UploadButton({ fileImage, text, preConvertedImg, mode, postId }) {
 	let uploadValidation = false;
 	const navigate = useNavigate();
-	if (!(fileImage === '' && text === '')) {
+	if (!(fileImage === undefined && text === '')) {
 		uploadValidation = true;
 	}
 
-	const handlePostUpload = () => {
+	const handlePostUpload = async () => {
+		//이미지가 없는 경우
 		if (fileImage === undefined) {
 			if (mode === 'edit') {
 				const postContent = {
 					post: {
 						content: text,
+						image: undefined,
 						//"imageurl1, imageurl2" 형식으로
 					},
 				};
@@ -28,6 +30,7 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 					const postContent = {
 						post: {
 							content: text,
+							image: undefined,
 						},
 					};
 
@@ -37,19 +40,17 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 				}
 			}
 		}
+		// 이미지가 있는 경우
 		if (fileImage !== undefined) {
-			imageUpload(preConvertedImg).then((res) => {
-				console.log(res);
+			await postImageUploader(preConvertedImg).then((res) => {
 				if (mode === 'edit') {
 					const postContent = {
 						post: {
 							content: text,
-							image: fileImage,
+							image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`,
 						},
 					};
-					if (res.data.filename === undefined) {
-						delete postContent.post.image;
-					}
+
 					postEditer(postId, postContent).then((res) => {
 						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 					});
@@ -62,6 +63,7 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 							image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
 						},
 					};
+
 					postUploader(postContent).then((res) => {
 						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
 					});
