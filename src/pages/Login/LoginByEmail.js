@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { getLoginApiResponse } from '../../lib/apis/loginApis';
 import AuthForm from '../../component/form/AuthForm';
 import styled from 'styled-components';
-import { LoginDispatchContext, LoginStateContext } from '../../component/context/LoginContext';
+import { LoginDispatchContext } from '../../component/context/LoginContext';
 
 export default function LoginByEmail() {
 	const { login } = useContext(LoginDispatchContext);
@@ -19,7 +19,6 @@ export default function LoginByEmail() {
 				const loginErrMsg = res.data.message;
 				setLoginErrMsg([, <span>*{loginErrMsg}</span>]);
 			}
-
 			const { accountname, token } = res.data.user;
 			login(token, accountname);
 			navigate('/home');
