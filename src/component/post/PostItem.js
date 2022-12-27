@@ -17,6 +17,7 @@ export default function PostItem({
 	content,
 	image,
 	createdAt,
+	hearted,
 	heartCount,
 	commentCount,
 	author,
@@ -24,7 +25,7 @@ export default function PostItem({
 	user,
 	type,
 }) {
-	const [pushHeart, setPushHeart] = useState(false);
+	const [pushHeart, setPushHeart] = useState(hearted);
 	const [count, setCount] = useState(heartCount);
 	const { openModal } = useModals();
 	const navigate = useNavigate();
@@ -78,42 +79,35 @@ export default function PostItem({
 
 	const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
-  return (
-    <>
-      <S_ItemWrapper>
-        <S_PostItemHeader>
-          <S_ProfileImg
-            onClick={handleAuthorClick}
-            src={author.image}
-            alt='프로필 사진'
-          />
-          <S_NameBox onClick={handleAuthorClick}>
-            <S_Username>{author.username}</S_Username>
-            <S_AccountID>@ {author.accountname}</S_AccountID>
-          </S_NameBox>
-          <S_ModalIconImg src={morePostIcon} onClick={handleClickModal} />
-        </S_PostItemHeader>
-        <S_ContentBox>
-          <S_Text>{content}</S_Text>
-          <S_ImgBox>{image && <S_Img src={image} alt='' />}</S_ImgBox>
-          <S_SnsDate>
-            <S_Sns>
-              <HeartButton
-                onClick={handleHeartClick}
-                pushHeart={pushHeart}
-              />
-              <span>{count}</span>
-              <Link to={`/postdetail/${id}`}>
-                <S_CommentButtonImg src={message} />
-              </Link>
-              <span>{commentCount}</span>
-            </S_Sns>
-            <S_Date>{createdAtPost}</S_Date>
-          </S_SnsDate>
-        </S_ContentBox>
-      </S_ItemWrapper>
-    </>
-  );
+	return (
+		<>
+			<S_ItemWrapper>
+				<S_PostItemHeader>
+					<S_ProfileImg onClick={handleAuthorClick} src={author.image} alt="프로필 사진" />
+					<S_NameBox onClick={handleAuthorClick}>
+						<S_Username>{author.username}</S_Username>
+						<S_AccountID>@ {author.accountname}</S_AccountID>
+					</S_NameBox>
+					<S_ModalIconImg src={morePostIcon} onClick={handleClickModal} />
+				</S_PostItemHeader>
+				<S_ContentBox>
+					<S_Text>{content}</S_Text>
+					<S_ImgBox>{image && <S_Img src={image} alt="" />}</S_ImgBox>
+					<S_SnsDate>
+						<S_Sns>
+							<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
+							<span>{count}</span>
+							<Link to={`/postdetail/${id}`}>
+								<S_CommentButtonImg src={message} />
+							</Link>
+							<span>{commentCount}</span>
+						</S_Sns>
+						<S_Date>{createdAtPost}</S_Date>
+					</S_SnsDate>
+				</S_ContentBox>
+			</S_ItemWrapper>
+		</>
+	);
 }
 
 const S_ItemWrapper = styled.div`
@@ -158,10 +152,10 @@ const S_ContentBox = styled.p`
 	margin-left: 61px;
 `;
 const S_Text = styled.div`
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 18px;
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 18px;
 `;
 const S_ImgBox = styled.div`
 	margin: 14px 0;
