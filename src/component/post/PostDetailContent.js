@@ -47,7 +47,9 @@ export default function PostDetailContent({ id }) {
 					btnText: '삭제',
 				});
 			},
-			onReport: () => {},
+			onEdit: () => {
+				navigate(`/postUpload/${id}`);
+			},
 			type: type,
 		});
 	};
