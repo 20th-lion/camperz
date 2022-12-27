@@ -42,8 +42,8 @@ export default function PostUploadPage() {
 		if (e.target.files[0] === undefined) {
 			console.log('사진없음');
 		} else {
-			// console.log(e.target.files[0].name);
-			setPreConvertedImg(e.target.files[0].name);
+			// console.log(e.target.files[0]);
+			setPreConvertedImg(e.target.files[0]);
 			setFileImage(URL.createObjectURL(e.target.files[0]));
 		}
 		// console.log(e.target.files[0]);
@@ -62,6 +62,7 @@ export default function PostUploadPage() {
 			setUserImg(res.data.user.image);
 		});
 	}, []);
+
 	return (
 		<>
 			<Header
