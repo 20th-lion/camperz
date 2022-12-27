@@ -14,15 +14,15 @@ export default function PostDetailPage() {
 	const sayHi = () => {
 		navigate(-1);
 	};
-
+	const [commentList, setCommentList] = useState([]);
 	return (
 		<>
 			<Header />
 			<S_Main>
 				<PostDetailContent id={id} />
-				<PostDetailComment post_id={id} />
+				<PostDetailComment post_id={id} commentList={commentList} setCommentList={setCommentList} />
 			</S_Main>
-			<CommentBox post_id={id} boxIcon={boxIcon} />
+			<CommentBox post_id={id} boxIcon={boxIcon} setCommentList={setCommentList} />
 		</>
 	);
 }
