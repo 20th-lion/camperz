@@ -21,8 +21,6 @@ const S_Button = styled.button`
   border-radius: 30px;
   font-size: 14px;
   font-weight: 400;
-  margin-left:8px;
-  margin-right:8px;
   color: ${(props) =>
 		props.isfollow ? palette.khaki[0] : palette.khaki[2]};
   line-height: 17px;
@@ -40,12 +38,12 @@ const S_Button = styled.button`
 		${(props) =>
 		props.isfollow
 			? css`
-					  background-color: ${palette.khaki[2]};
-					  border: 1px solid ${palette.khaki[0]};
-					 
+					  /* background-color: ${palette.khaki[2]};
+					  border: 1px solid ${palette.khaki[0]}; */
+            background-color: ${palette.khaki[1]};
+            color: ${palette.khaki[2]};
 			`
 			: css`
 					  background-color: ${palette.khaki[0]};
-					  
 			`}; 
 `;
