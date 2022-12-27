@@ -10,7 +10,6 @@ import { modals } from '../modal/Modals';
 import { getPostList } from './../../lib/apis/postApis';
 
 import morePostIcon from '../../assets/icons/more_post.png';
-import heart from '../../assets/icons/heart.png';
 import message from '../../assets/icons/message.png';
 
 export default function PostItem({
@@ -100,7 +99,6 @@ export default function PostItem({
           <S_SnsDate>
             <S_Sns>
               <HeartButton
-                style={{ backgroundImage: heart }}
                 onClick={handleHeartClick}
                 pushHeart={pushHeart}
               />
@@ -162,7 +160,8 @@ const S_ContentBox = styled.p`
 const S_Text = styled.div`
   margin-top: 8px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
+  line-height: 18px;
 `
 const S_ImgBox = styled.div`
   margin: 14px 0;

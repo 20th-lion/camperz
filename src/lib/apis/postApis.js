@@ -24,7 +24,6 @@ export const postDetailLoader = async (postId) => {
 };
 
 export const postEditer = async (postId, postContent) => {
-	// console.log(postId);
 	const reqPath = `/post/${postId}`;
 	const userData = {
 		...postContent,

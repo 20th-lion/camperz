@@ -124,7 +124,8 @@ const S_ContentBox = styled.p`
 const S_Text = styled.div`
   margin-top: 8px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
+  line-height: 18px;
 `
 const S_ImgBox = styled.div`
   margin: 14px 0;
@@ -155,11 +156,14 @@ const S_Sns = styled.div`
   font-weight: 400;
 `
 const S_HeartBtnImg = styled.img`
+	width: 20px;
+height: 20px;
 	cursor: pointer;
 `;
 const S_CommentButtonImg = styled.img`
-	cursor: pointer;
 	width: 20px;
+  height: 20px;
+	cursor: pointer;  
 `;
 const S_Date = styled.div`
 	margin-top: 7px;

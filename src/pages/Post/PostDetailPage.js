@@ -15,9 +15,7 @@ export default function PostDetailPage() {
 	};
 	return (
 		<>
-			<Header
-				leftChild={<S_ModalBtn src={leftArrow} onClick={sayHi} />}
-			/>
+			<Header />
 			<S_Main>
 				<PostDetailContent id={id} />
 				<PostDetailComment post_id={id} />
@@ -27,9 +25,6 @@ export default function PostDetailPage() {
 	);
 }
 
-const S_ModalBtn = styled.img`
-	cursor: pointer;
-`;
 const S_Main = styled.main`
   margin: 20px auto 0;
 `;

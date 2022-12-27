@@ -40,7 +40,6 @@ const S_DivBox = styled.div`
 	width: 100%;
 	background-color: #f2f2f2;
 `;
-
 const S_ProductSection = styled.section`
 	width: 100%;
 	height: 208px;
@@ -56,7 +55,6 @@ const S_ProductSection = styled.section`
 		margin-bottom: 16px;
 	}
 `;
-
 const S_ProductList = styled.ul`
 	display: flex;
 	height: 150px;
