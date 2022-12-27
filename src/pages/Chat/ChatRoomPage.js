@@ -52,7 +52,6 @@ const S_OtherPersonImg = styled.img`
   object-fit: cover;
 `;
 const S_OtherPersonContent = styled.p`
-	font-weight: 400;
 	border: 1px solid #c4c4c4;
 	border-radius: 10px;
 	border-top-left-radius: 0;

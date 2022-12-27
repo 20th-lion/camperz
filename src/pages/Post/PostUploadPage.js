@@ -107,14 +107,17 @@ const S_PostTextArea = styled.textarea`
 	resize: none;
 	width: 100%;
 	min-height: calc(50vh - 40px);
-	word-break: keep-all;
-	font-size: 14px;
-	line-height: 18px;
-	font-weight: 400;
-	::placeholder {
-		font-size: 12px;
-		font-weight: 100;
-	}
+
+  word-break: keep-all;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  word-break: break-all;
+  ::placeholder {
+    font-size: 12px;
+    font-weight: 100;
+  }
+
 `;
 const S_PictureArea = styled.img`
 	width: 293px;

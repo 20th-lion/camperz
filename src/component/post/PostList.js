@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getPostList } from '../../lib/apis/postApis';
 import PostItem from './PostItem';
@@ -22,72 +22,70 @@ export default function PostList({ user, type }) {
 	return (
 		<>
 			{!!postList.length && (
-				<>
-					<S_DivBox />
-					<S_PostSection>
+				<S_PostSection>
+					<S_Header>
 						<h2 className="ir">게시글 목록</h2>
-						<S_Header>
-							<img onClick={() => setToggle(true)} src={toggle ? postListFill : postListOff} />
-							<img onClick={() => setToggle(false)} src={toggle ? postAlbum : postAlbumFill} />
-						</S_Header>
-						{toggle ? (
-							<S_PostListBox>
-								{postList.map((post, idx) => (
-									<PostItem key={idx} {...post} setPostList={setPostList} user={user} type={type} />
-								))}
-							</S_PostListBox>
-						) : (
-							<S_PostAlbumBox>
-								{postList.map((post, idx) => (
-									<PostPicture key={idx} {...post} />
-								))}
-							</S_PostAlbumBox>
-						)}
-					</S_PostSection>
-				</>
+						<img onClick={() => setToggle(true)} src={toggle ? postListFill : postListOff} />
+						<img onClick={() => setToggle(false)} src={toggle ? postAlbum : postAlbumFill} />
+					</S_Header>
+					{toggle ? (
+						<S_PostListBox>
+							{postList.map((post, idx) => (
+								<PostItem key={idx} {...post} setPostList={setPostList} user={user} type={type} />
+							))}
+						</S_PostListBox>
+					) : (
+						<S_PostAlbumBox>
+							{postList.map((post, idx) => (
+								<PostPicture key={idx} {...post} />
+							))}
+						</S_PostAlbumBox>
+					)}
+				</S_PostSection>
 			)}
 		</>
 	);
 }
 
-const S_DivBox = styled.div`
-	padding: 3px;
-	width: 100%;
-	background-color: #f2f2f2;
-`;
-
 const S_PostSection = styled.section`
+	display: flex;
+	flex-direction: column;
 	width: 100%;
+	margin-top: 6px;
+	padding-bottom: 10px;
 	background-color: #f3f1e8;
-	box-sizing: border-box;
 	border-top: 1px solid #dbdbdb;
 `;
-
 const S_Header = styled.header`
-	display: flex;
-	align-items: center;
-	justify-content: end;
-	width: 100%;
 	height: 44px;
-	box-sizing: border-box;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	padding-right: 20px;
 	border-bottom: 1px solid #dbdbdb;
-	padding: 0 16px;
+	gap: 16px;
 	img {
 		width: 26px;
 		height: 26px;
-		margin-left: 16px;
 		cursor: pointer;
 	}
 `;
-
-const S_PostListBox = styled.div``;
-
+const S_PostListBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin: 20px auto;
+	gap: 25px;
+`;
 const S_PostAlbumBox = styled.div`
 	display: flex;
-	padding: 12px;
+	padding: 20px;
+	justify-content: space-around;
 	img {
-		width: 114px;
-		height: 114px;
-		margin: 4px;
+		width: 110px;
+		height: 110px;
+		object-fit: cover;
+		border: 1px solid #dbdbdb;
+		border-radius: 8px;
+		background-color: #fff;
 	}
 `;

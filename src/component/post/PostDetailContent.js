@@ -20,7 +20,9 @@ export default function PostDetailContent({ id }) {
 	const [commentCount, setCommentCount] = useState('');
 	const [authorImg, setAuthorImg] = useState('');
 	const [pushHeart, setPushHeart] = useState(false);
+
 	const navigate = useNavigate();
+
 	const { openModal } = useModals();
 
 	postDetailLoader(id).then((res) => {
@@ -32,6 +34,7 @@ export default function PostDetailContent({ id }) {
 		setCommentCount(res.data.post.commentCount);
 		setAuthorImg(res.data.post.author.image);
 		setAccountName(res.data.post.author.accountname);
+		setPushHeart(res.data.post.hearted);
 	});
 
 	const handleClickModal = () => {
@@ -102,7 +105,6 @@ export default function PostDetailContent({ id }) {
 								onClick={handleHeartClick}
 								pushHeart={pushHeart}
 							/>
-							{/* <S_HeartBtnImg /> */}
 							<span>{heartCount}</span>
 							<S_CommentButtonImg src={message} />
 							<span>{commentCount}</span>
@@ -186,14 +188,6 @@ const S_SnsDate = styled.div`
 	}
 `;
 const S_Sns = styled.div`
-	display: flex;
-	align-items: center;
-	font-weight: 400;
-`;
-const S_HeartBtnImg = styled.img`
-	width: 20px;
-	height: 20px;
-	cursor: pointer;
 	display: flex;
 	align-items: center;
 	font-weight: 400;

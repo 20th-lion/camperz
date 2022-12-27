@@ -27,7 +27,6 @@ export const getAccountNameValidApiResponse = async (accountname) => {
 };
 
 export const getRegisterApiResponse = async (userInfo) => {
-	console.log(userInfo);
 	const reqPath = '/user';
 	const registerData = {
 		user: { ...userInfo },
