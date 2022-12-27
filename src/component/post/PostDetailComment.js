@@ -10,7 +10,7 @@ export default function PostDetailComment({ post_id }) {
 		getCommentList(post_id).then((res) => {
 			setCommentList([...res.data.comments]);
 		});
-	}, [commentList]);
+	}, []);
 
 	return (
 		<>

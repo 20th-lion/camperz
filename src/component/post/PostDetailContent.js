@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { postDetailLoader } from '../../lib/apis/postApis';
 import styled from 'styled-components';
 import morePostIcon from '../../assets/icons/more_post.png';
@@ -8,7 +9,7 @@ import { useModals } from '../../lib/hooks/useModals';
 import { modals } from './../modal/Modals';
 import HeartButton from '../post/HeartButton';
 import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
-
+import { postDelete } from '../../lib/apis/postApis';
 export default function PostDetailContent({ id }) {
 	const [userName, setUserName] = useState('');
 	const [accountName, setAccountName] = useState('');
@@ -19,7 +20,7 @@ export default function PostDetailContent({ id }) {
 	const [commentCount, setCommentCount] = useState('');
 	const [authorImg, setAuthorImg] = useState('');
 	const [pushHeart, setPushHeart] = useState(false);
-
+	const navigate = useNavigate();
 	const { openModal } = useModals();
 
 	postDetailLoader(id).then((res) => {
@@ -38,7 +39,10 @@ export default function PostDetailContent({ id }) {
 		openModal(modals.postItemModal, {
 			onRemove: async () => {
 				openModal(modals.confirmModal, {
-					onConfirm: async () => {},
+					onConfirm: async () => {
+						await postDelete(id);
+						navigate(`/profile`);
+					},
 					message: '삭제하시겠어요?',
 					btnText: '삭제',
 				});
@@ -151,10 +155,10 @@ const S_ContentBox = styled.div`
 	margin-left: 61px;
 `;
 const S_Text = styled.div`
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 18px;
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 18px;
 `;
 const S_ImgBox = styled.div`
 	margin: 14px 0;
@@ -180,28 +184,23 @@ const S_SnsDate = styled.div`
 	}
 `;
 const S_Sns = styled.div`
-<<<<<<< HEAD
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-`
-const S_HeartBtnImg = styled.img`
-	width: 20px;
-height: 20px;
-	cursor: pointer;
-=======
 	display: flex;
 	align-items: center;
 	font-weight: 400;
->>>>>>> main
 `;
-// const S_HeartBtnImg = styled.img`
-// 	cursor: pointer;
-// `;
+const S_HeartBtnImg = styled.img`
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	font-weight: 400;
+`;
+
 const S_CommentButtonImg = styled.img`
 	width: 20px;
-  height: 20px;
-	cursor: pointer;  
+	height: 20px;
+	cursor: pointer;
 `;
 const S_Date = styled.div`
 	margin-top: 7px;
