@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import iconSrc from '../../assets/icons/img-button.png';
@@ -49,12 +49,12 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 			<h2 className="ir">상품 등록 폼</h2>
 			<S_ImgBox>
 				이미지 등록
-				<InputImgBox
+				<S_InputImgBox
 					onClick={() => {
 						photoInput.current.click();
 					}}
 				>
-					<ButtonImg />
+					<S_ButtonImg />
 					<input
 						name="image"
 						id="image"
@@ -68,7 +68,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 						src={currentImg || productInfo.itemImage || emptyImg}
 						alt="상품 이미지"
 					/>
-				</InputImgBox>
+				</S_InputImgBox>
 			</S_ImgBox>
 			<S_InputBox>
 				<S_Label htmlFor="itemName">상품명</S_Label>
@@ -107,7 +107,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 const S_ImgBox = styled.div`
 	margin-bottom: 30px;
 `;
-const InputImgBox = styled.div`
+const S_InputImgBox = styled.div`
 	position: relative;
 	width: 322px;
 	height: 204px;
@@ -123,8 +123,7 @@ const S_Img = styled.img`
 	object-fit: cover;
 	z-index: 99;
 `;
-
-const ButtonImg = styled.img`
+const S_ButtonImg = styled.img`
 	position: absolute;
 	right: 12px;
 	bottom: 12px;
@@ -136,7 +135,6 @@ const ButtonImg = styled.img`
 	border-radius: 50%;
 	pointer-events: 'none';
 `;
-
 const S_InputBox = styled.div`
 	width: 322px;
 	height: 48px;
