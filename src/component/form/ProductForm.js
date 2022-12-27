@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import uploadBtnImg from '../../assets/icons/img-button.png';
+import iconSrc from '../../assets/icons/img_upload_post.png';
 import { productValidation } from '../../lib/utils/productValidation';
 import emptyImg from '../../assets/image/product_empty_img.png';
 
@@ -54,7 +54,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 						photoInput.current.click();
 					}}
 				>
-					<S_ButtonImg src={uploadBtnImg} />
+					<S_ButtonImg src={iconSrc}/>
 					<input
 						name="image"
 						id="image"
@@ -126,7 +126,6 @@ const S_ButtonImg = styled.img`
 	bottom: 12px;
 	width: 35px;
 	height: 35px;
-	background-position: center;
 	border-radius: 50%;
 	pointer-events: 'none';
 `;

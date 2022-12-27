@@ -130,6 +130,7 @@ const S_PostTextArea = styled.textarea`
   font-size: 14px;
   line-height: 18px;
   font-weight: 400;
+  word-break: break-all;
   ::placeholder {
     font-size: 12px;
     font-weight: 100;

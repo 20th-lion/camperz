@@ -96,7 +96,6 @@ export default function PostDetailContent({ id }) {
 								onClick={handleHeartClick}
 								pushHeart={pushHeart}
 							/>
-							{/* <S_HeartBtnImg /> */}
 							<span>{heartCount}</span>
 							<S_CommentButtonImg src={message} />
 							<span>{commentCount}</span>
@@ -180,24 +179,10 @@ const S_SnsDate = styled.div`
 	}
 `;
 const S_Sns = styled.div`
-<<<<<<< HEAD
   display: flex;
   align-items: center;
   font-weight: 400;
 `
-const S_HeartBtnImg = styled.img`
-	width: 20px;
-height: 20px;
-	cursor: pointer;
-=======
-	display: flex;
-	align-items: center;
-	font-weight: 400;
->>>>>>> main
-`;
-// const S_HeartBtnImg = styled.img`
-// 	cursor: pointer;
-// `;
 const S_CommentButtonImg = styled.img`
 	width: 20px;
   height: 20px;
