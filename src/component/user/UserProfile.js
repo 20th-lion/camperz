@@ -99,6 +99,7 @@ export default function UserProfile({ type, user }) {
 const S_ProfileSection = styled.section`
 	height: 314px;
 	border-bottom: 1px solid #dbdbdb;
+  background-color: #F3F1E8;
 `;
 const S_ProfileWrapper = styled.div`
 	display: block;
@@ -159,17 +160,17 @@ const S_ProfileBtnWrap = styled.div`
 const S_ProfileBtnIcon = styled.button`
 	display: flex;
 	align-items: center;
-	width: 34px;
-	height: 34px;
+	width: 32px;
+	height: 32px;
 	border: 1px solid ${palette.profileBtnIcon[0]};
 	border-radius: 50%;
 	background-color: ${palette.background[0]};
 `;
 const S_ChatIcon = styled.img`
-	width: 34px;
-	height: 34px;
+	width: 32px;
+	height: 32px;
 `;
 const S_ShareIcon = styled.img`
-	width: 34px;
-	height: 34px;
+	width: 32px;
+	height: 32px;
 `;

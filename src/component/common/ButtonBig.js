@@ -16,7 +16,7 @@ export default function Button({ onClick, text, active, isfollow, type }) {
 
 const S_Button = styled.button`
   background-color: ${palette.khaki[0]};
-  height: 34px;
+  height: 32px;
   padding: 0 20px;
   border-radius: 30px;
   font-size: 14px;

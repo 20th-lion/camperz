@@ -20,7 +20,6 @@ export default React.memo(function ProductList({ user, type }) {
 		<>
 			{!!productList.length && (
 				<>
-					<S_DivBox />
 					<S_ProductSection>
 						<h2>판매 중인 상품</h2>
 						<S_ProductList>
@@ -35,29 +34,24 @@ export default React.memo(function ProductList({ user, type }) {
 	);
 });
 
-const S_DivBox = styled.div`
-	padding: 3px;
-	width: 100%;
-	background-color: #f2f2f2;
-`;
 const S_ProductSection = styled.section`
+  margin: 6px;
 	width: 100%;
-	height: 208px;
-	background-color: #f3f1e8;
+	height: 230px;
+	background-color: #F3F1E8;
 	border-top: 1px solid #dbdbdb;
 	border-bottom: 1px solid #dbdbdb;
-	box-sizing: border-box;
-	padding: 20px 0 0 16px;
 	h2 {
-		font-size: 16px;
-		line-height: 20px;
-		font-weight: 600;
-		margin-bottom: 16px;
+		font-size: 15px;
+		font-weight: 400;
+	  padding: 20px;
 	}
 `;
 const S_ProductList = styled.ul`
 	display: flex;
 	height: 150px;
+  gap: 10px;
+  padding: 0 20px 0 20px;
 	overflow-x: scroll;
 	overflow-y: visible;
 	&::-webkit-scrollbar {

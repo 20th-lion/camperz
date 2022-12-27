@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { registProduct } from '../../lib/apis/productApis';
@@ -28,8 +28,8 @@ export default function ProductUploadPage() {
 
 	return (
 		<>
-			<h1 className="ir">상품 등록 페이지</h1>
 			<Header rightChild={<Button onClick={handleSaveBtn} text={'저장'} active={btnActive} />} />
+			<h2 className="ir">상품 등록 페이지</h2>
 			<S_Main>
 				<ProductForm
 					setProductInfo={setProductInfo}
@@ -43,7 +43,6 @@ export default function ProductUploadPage() {
 
 const S_Main = styled.main`
 	padding: 34px;
-	justify-content: flex-start;
 	height: calc(100vh - 54px);
 	font-weight: 400;
 	font-size: 12px;

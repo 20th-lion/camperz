@@ -43,17 +43,20 @@ export default function ProfilePage() {
       <Header rightChild={<S_IconImg onClick={handleModalClick} src={moreIcon} />} />
       <h2 className="ir">프로필 페이지</h2>
       {/* <ProfilePageBlock> */}
-      <main>
+      <S_Main>
         <UserProfile user={user} type={type} />
         <ProductList user={user} type={type} />
         <PostList user={user} type={type} />
-      </main>
+      </S_Main>
       {/* </ProfilePageBlock> */}
       <NavBar page={type === 'mine' ? 'user' : 'home'} />
     </>
   );
 }
 
+const S_Main = styled.main`
+  background-color: #f2f2f2;
+`
 const S_IconImg = styled.img`
 	width: 24px;
 	height: 24px;
