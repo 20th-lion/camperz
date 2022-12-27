@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { postComment } from '../../lib/apis/commentApis';
 import commentbtn from '../../assets/icons/chat_send.png';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
+import { getMyInfo } from '../../lib/apis/profileApis';
 
 export default function CommentBox({ post_id, boxIcon }) {
 	const [btnHandler, setBtnHandler] = useState(false);
@@ -22,7 +23,18 @@ export default function CommentBox({ post_id, boxIcon }) {
 		postComment(post_id, commentContent);
 		setCommentContent('');
 	};
-
+	// const MyInfoData = {
+	// 	userName: '',
+	// 	myProfileImg: '',
+	// };
+	// useEffect(
+	// 	getMyInfo().then((res) => {
+	// 		MyInfoData.userName = res.data.user.username;
+	// 		MyInfoData.myProfileImg = res.data.user.image;
+	// 	}),
+	// 	[],
+	// );
+	// console.log(MyInfoData.myProfileImg);
 	return (
 		<>
 			<S_CommentBox>

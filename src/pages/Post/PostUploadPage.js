@@ -7,7 +7,7 @@ import UploadButton from '../../component/post/UploadButton';
 import Header from '../../component/common/Header';
 import moreHeader from '../../assets/icons/more_header.png';
 import leftArrow from '../../assets/icons/icon_arrow_left.png';
-
+import { getMyInfo } from '../../lib/apis/profileApis';
 // import { postUploader } from '../../lib/apis/postApis';
 
 export default function PostUploadPage() {
@@ -54,37 +54,26 @@ export default function PostUploadPage() {
 		navigate(-1);
 	};
 
+	useEffect(() => {
+		getMyInfo().then((res) => {
+			console.log(res);
+		});
+	}, []);
+
 	return (
 		<>
 			<Header
 				leftChild={<ModalBtn src={leftArrow} onClick={moveBack} />}
 				rightChild={
-					<UploadButton
-						text={text}
-						fileImage={fileImage}
-						preConvertedImg={preConvertedImg}
-						mode={mode}
-						postId={id}
-					/>
+					<UploadButton text={text} fileImage={fileImage} preConvertedImg={preConvertedImg} mode={mode} postId={id} />
 				}
 			/>
 			<Main>
 				<UserImg src={moreHeader} />
-				<PostTextArea
-					onChange={(e) => handleChange(e)}
-					value={text}
-					placeholder="게시물을 입력하세요..."
-				/>
-				{fileImage === undefined ? (
-					<></>
-				) : (
-					<PictureArea src={fileImage} style={{ margin: 'auto' }} />
-				)}
+				<PostTextArea onChange={(e) => handleChange(e)} value={text} placeholder="게시물을 입력하세요..." />
+				{fileImage === undefined ? <></> : <PictureArea src={fileImage} style={{ margin: 'auto' }} />}
 				<ImgButtonContainer>
-					<ImgUploadButton
-						setFileImage={setFileImage}
-						handleImgChange={handleImgChange}
-					/>
+					<ImgUploadButton setFileImage={setFileImage} handleImgChange={handleImgChange} />
 				</ImgButtonContainer>
 			</Main>
 		</>
