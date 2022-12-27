@@ -20,7 +20,7 @@ export default function ProductUploadPage() {
 
 	const handleSaveBtn = async () => {
 		await imageUpload(productInfo.itemImage).then((res) => {
-			const itemImage = process.env.REACT_APP_BASE_URL + '/' + res.data.filename;
+			const itemImage = 'https://mandarin.api.weniv.co.kr/' + res.data.filename;
 			registProduct({ ...productInfo, itemImage });
 		});
 		navigate('/profile');
@@ -31,11 +31,7 @@ export default function ProductUploadPage() {
 			<Header rightChild={<Button onClick={handleSaveBtn} text={'저장'} active={btnActive} />} />
 			<h2 className="ir">상품 등록 페이지</h2>
 			<S_Main>
-				<ProductForm
-					setProductInfo={setProductInfo}
-					productInfo={productInfo}
-					setBtnActive={setBtnActive}
-				/>
+				<ProductForm setProductInfo={setProductInfo} productInfo={productInfo} setBtnActive={setBtnActive} />
 			</S_Main>
 		</>
 	);

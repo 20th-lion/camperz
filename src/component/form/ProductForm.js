@@ -64,10 +64,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 						accept="image/*"
 						onChange={handleImgChange}
 					/>
-					<S_Img
-						src={currentImg || productInfo.itemImage || emptyImg}
-						alt="상품 이미지"
-					/>
+					<S_Img src={currentImg || productInfo.itemImage || emptyImg} alt="상품 이미지" />
 				</S_InputImgBox>
 			</S_ImgBox>
 			<S_InputBox>
