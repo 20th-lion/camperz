@@ -20,6 +20,7 @@ export default function CommentBox({ post_id, boxIcon }) {
 
 	const btnClickEvent = () => {
 		postComment(post_id, commentContent);
+		setCommentContent('');
 	};
 
 	return (
@@ -30,11 +31,12 @@ export default function CommentBox({ post_id, boxIcon }) {
 					onChange={(e) => {
 						CommentInputValidator(e);
 					}}
+					value={commentContent}
 				/>
 				{btnHandler === true ? (
-					<S_CommentUploadButton onClick={btnClickEvent}>
-						<S_CommentUploadButtonImg src={commentbtn} />
-					</S_CommentUploadButton>
+					<>
+						<S_CommentUploadButton onClick={btnClickEvent} src={commentbtn} />
+					</>
 				) : (
 					<></>
 				)}
@@ -43,41 +45,37 @@ export default function CommentBox({ post_id, boxIcon }) {
 	);
 }
 
+const S_CommentBox = styled.div`
+	display: flex;
+	height: 60px;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid #dbdbdb;
+	background-color: ${palette.bottomBar[1]};
+	gap: 18px;
+	position: relative;
+`;
 const S_UserIcon = styled.img`
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
 	margin-left: 3px;
+	object-fit: cover;
 `;
 const S_CommentInput = styled.input`
-	padding-left: 15px;
-	padding-right: 40px;
-	display: inline-block;
-	width: 306px;
+	width: 293px;
 	height: 36px;
-	margin: 0 auto;
-	margin-left: 15px;
+	border-radius: 18px;
 	border: 1px solid ${palette.bottomBar[2]};
-	border-radius: 18.5px;
 	background-color: ${palette.bottomBar[1]};
+	padding: 0 13px;
+	font-size: 14px;
+	font-weight: 400;
 `;
-const S_CommentUploadButtonImg = styled.img`
+const S_CommentUploadButton = styled.img`
 	width: 24px;
 	height: 24px;
-`;
-const S_CommentUploadButton = styled.div`
-	position: relative;
-	bottom: 31px;
-	left: 330px;
-	width: 24px;
-	height: 24px;
-	background-color: ${palette.bottomBar[0]};
-	border-radius: 50%;
+	position: absolute;
+	right: 29px;
 	cursor: pointer;
-	/* background-image: url(${commentbtn}); */
-`;
-const S_CommentBox = styled.div`
-	padding: 12px;
-	width: 390px;
-	height: 61px;
-	background-color: ${palette.bottomBar[1]};
-	/* display: flex; */
-	/* gap: 10px; */
 `;

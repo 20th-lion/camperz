@@ -32,6 +32,9 @@ export default function Splash() {
 	);
 }
 
+const S_Main = styled.main`
+  justify-content: center;
+`
 const S_H1 = styled.h1`
 	position: relative;
 	width: 192px;

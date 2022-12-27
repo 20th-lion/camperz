@@ -34,9 +34,10 @@ export default function LoginPage() {
 }
 
 const S_Main = styled.main`
-	height: 100vh;
-	background-color: #5c6145;
-`;
+  height: 100vh;
+  background-color: #5C6145;
+  justify-content: center;
+`
 const S_BackGround = styled.div`
 	position: absolute;
 `;
