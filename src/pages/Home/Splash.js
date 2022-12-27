@@ -23,18 +23,18 @@ export default function Splash() {
 
 	return (
 		<>
-			<main>
+			<S_Main>
 				<S_H1>
 					<img src={CAMPERZLogoLight} alt="CAMPERZ" />
 				</S_H1>
-			</main>
+			</S_Main>
 		</>
 	);
 }
 
 const S_Main = styled.main`
-  justify-content: center;
-`
+	justify-content: center;
+`;
 const S_H1 = styled.h1`
 	position: relative;
 	width: 192px;
