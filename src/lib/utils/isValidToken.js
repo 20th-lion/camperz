@@ -1,11 +1,12 @@
-import { axiosPublic } from '../apis/customAxios';
-
-const reqPath = '/user/checktoken';
-let isValid = false;
+import { axiosPrivate } from '../apis/customAxios';
 
 export const isValidToken = async () => {
-	await axiosPublic.get(reqPath).then((res) => {
+	let isValid = false;
+	const reqPath = '/user/checktoken';
+	await axiosPrivate.get(reqPath).then((res) => {
+		console.log(res);
 		isValid = res.data.isValid;
 	});
+	console.log(isValid);
 	return isValid;
 };

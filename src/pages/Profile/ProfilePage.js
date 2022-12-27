@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -7,12 +7,13 @@ import Header from '../../component/common/Header';
 import UserProfile from '../../component/user/UserProfile';
 import ProductList from '../../component/product/ProductList';
 import PostList from './../../component/post/PostList';
-import { logout } from '../../lib/utils/logout';
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
 import moreIcon from '../../assets/icons/more_header.png';
+import { LoginDispatchContext } from '../../component/context/LoginContext';
 
 export default function ProfilePage() {
+	const { logout } = useContext(LoginDispatchContext);
 	const myAccountname = localStorage.getItem('accountname');
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
