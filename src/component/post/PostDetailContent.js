@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { postDetailLoader } from '../../lib/apis/postApis';
 import styled from 'styled-components';
 import morePostIcon from '../../assets/icons/more_post.png';
@@ -8,7 +9,7 @@ import { useModals } from '../../lib/hooks/useModals';
 import { modals } from './../modal/Modals';
 import HeartButton from '../post/HeartButton';
 import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
-
+import { postDelete } from '../../lib/apis/postApis';
 export default function PostDetailContent({ id }) {
 	const [userName, setUserName] = useState('');
 	const [accountName, setAccountName] = useState('');
@@ -19,6 +20,9 @@ export default function PostDetailContent({ id }) {
 	const [commentCount, setCommentCount] = useState('');
 	const [authorImg, setAuthorImg] = useState('');
 	const [pushHeart, setPushHeart] = useState(false);
+
+	const navigate = useNavigate();
+
 	const { openModal } = useModals();
 
 	postDetailLoader(id).then((res) => {
@@ -38,12 +42,17 @@ export default function PostDetailContent({ id }) {
 		openModal(modals.postItemModal, {
 			onRemove: async () => {
 				openModal(modals.confirmModal, {
-					onConfirm: async () => {},
+					onConfirm: async () => {
+						await postDelete(id);
+						navigate(`/profile`);
+					},
 					message: '삭제하시겠어요?',
 					btnText: '삭제',
 				});
 			},
-			onReport: () => {},
+			onEdit: () => {
+				navigate(`/postUpload/${id}`);
+			},
 			type: type,
 		});
 	};
@@ -183,6 +192,7 @@ const S_Sns = styled.div`
 	align-items: center;
 	font-weight: 400;
 `;
+
 const S_CommentButtonImg = styled.img`
 	width: 20px;
 	height: 20px;

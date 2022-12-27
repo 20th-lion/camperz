@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { getMyInfo } from '../../lib/apis/profileApis';
 
-export default function CommentBox({ post_id, boxIcon }) {
+export default function CommentBox({ post_id }) {
 	const [btnHandler, setBtnHandler] = useState(false);
 	const [commentContent, setCommentContent] = useState('');
 

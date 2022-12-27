@@ -6,36 +6,31 @@ import ImgUploadButton from '../../component/common/ImgUploadButton';
 import UploadButton from '../../component/post/UploadButton';
 import Header from '../../component/common/Header';
 
-import moreHeader from '../../assets/icons/more_header.png';
-import leftArrow from '../../assets/icons/icon_arrow_left.png';
 import { getMyInfo } from '../../lib/apis/profileApis';
 // import { postUploader } from '../../lib/apis/postApis';
-import defaultProfile from '../../assets/icons/basic_profile_chat.png';
-
 
 export default function PostUploadPage() {
-  const [text, setText] = useState('');
-  const [fileImage, setFileImage] = useState(undefined);
-  const [preConvertedImg, setPreConvertedImg] = useState(undefined);
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const [mode, setMode] = useState('');
+	const [text, setText] = useState('');
+	const [fileImage, setFileImage] = useState(undefined);
+	const [preConvertedImg, setPreConvertedImg] = useState(undefined);
+	const { id } = useParams();
+	const navigate = useNavigate();
+	const [mode, setMode] = useState('');
 
-  useEffect(() => {
-    if (id !== undefined) {
-      postDetailLoader(id).then((res) => {
-        setText(res.data.post.content);
-        setFileImage(res.data.post.image);
-      });
-    }
-    if (id !== undefined) {
-      setMode('edit');
-    }
-    if (id === undefined) {
-      setMode('new');
-    }
-  }, []);
-
+	useEffect(() => {
+		if (id !== undefined) {
+			postDetailLoader(id).then((res) => {
+				setText(res.data.post.content);
+				setFileImage(res.data.post.image);
+			});
+		}
+		if (id !== undefined) {
+			setMode('edit');
+		}
+		if (id === undefined) {
+			setMode('new');
+		}
+	}, []);
 
 	const handleImgChange = (e) => {
 		if (e.target.files[0] === undefined) {
@@ -49,10 +44,9 @@ export default function PostUploadPage() {
 		//e.target.files[0]는 0번째 이미지 값입니다.
 	};
 
-  const handleChange = (e) => {
-    setText(e.target.value);
-  };
-
+	const handleChange = (e) => {
+		setText(e.target.value);
+	};
 
 	const [userImg, setUserImg] = useState(null);
 	useEffect(() => {
@@ -62,70 +56,58 @@ export default function PostUploadPage() {
 		});
 	}, []);
 
-
-  return (
-    <>
-      <Header rightChild={
-        <UploadButton
-          text={text}
-          fileImage={fileImage}
-          preConvertedImg={preConvertedImg}
-          mode={mode}
-          postId={id}
-        />}
-      />
-      <S_Main>
-        <S_UserImg src={defaultProfile} />
-        <S_PostBox>
-          <S_PostTextArea
-            onChange={(e) => handleChange(e)}
-            value={text}
-            placeholder='게시물을 입력하세요...'
-            maxLength='1000'
-          />
-          {fileImage === undefined ? (
-            <></>
-          ) : (
-            <S_PictureArea src={fileImage} style={{ margin: 'auto' }} />
-          )}
-        </S_PostBox>
-        <S_ImgButtonBox>
-          <ImgUploadButton
-            setFileImage={setFileImage}
-            handleImgChange={handleImgChange}
-          />
-        </S_ImgButtonBox>
-      </S_Main>
-    </>
-  );
-
+	return (
+		<>
+			<Header
+				rightChild={
+					<UploadButton text={text} fileImage={fileImage} preConvertedImg={preConvertedImg} mode={mode} postId={id} />
+				}
+			/>
+			<S_Main>
+				<S_UserImg src={userImg} />
+				<S_PostBox>
+					<S_PostTextArea
+						onChange={(e) => handleChange(e)}
+						value={text}
+						placeholder="게시물을 입력하세요..."
+						maxLength="1000"
+					/>
+					{fileImage === undefined ? <></> : <S_PictureArea src={fileImage} style={{ margin: 'auto' }} />}
+				</S_PostBox>
+				<S_ImgButtonBox>
+					<ImgUploadButton setFileImage={setFileImage} handleImgChange={handleImgChange} />
+				</S_ImgButtonBox>
+			</S_Main>
+		</>
+	);
 }
 
 const S_Main = styled.main`
 	height: calc(100vh - 48px);
 	padding: 20px;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 10px;
-  position: relative;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 10px;
+	position: relative;
 `;
 
 const S_UserImg = styled.img`
 	width: 45px;
 	height: 45px;
 	border-radius: 50%;
-  object-fit: cover;
+	object-fit: cover;
 `;
 const S_PostBox = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+`;
 const S_PostTextArea = styled.textarea`
 	resize: none;
-  width: 100%;
+	width: 100%;
 	min-height: calc(50vh - 40px);
+
   word-break: keep-all;
   font-size: 14px;
   line-height: 18px;
@@ -135,15 +117,16 @@ const S_PostTextArea = styled.textarea`
     font-size: 12px;
     font-weight: 100;
   }
+
 `;
 const S_PictureArea = styled.img`
-  width: 293px;
-  height: 226px;
-  object-fit: cover;
-  border-radius: 10px;
+	width: 293px;
+	height: 226px;
+	object-fit: cover;
+	border-radius: 10px;
 `;
 const S_ImgButtonBox = styled.div`
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
 `;

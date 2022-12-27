@@ -5,7 +5,7 @@ import { useModals } from './../../lib/hooks/useModals';
 import { deleteComment, reportComment } from '../../lib/apis/commentApis';
 import moreHeader from '../../assets/icons/more_header.png';
 
-export default function CommentItem({ author, content, createdAt, id, post_id }) {
+export default function CommentItem({ author, content, createdAt, id, post_id, setCommentRerender }) {
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 

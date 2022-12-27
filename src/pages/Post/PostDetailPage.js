@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from '../../component/common/Header';
@@ -13,6 +14,7 @@ export default function PostDetailPage() {
 	const sayHi = () => {
 		navigate(-1);
 	};
+
 	return (
 		<>
 			<Header />
@@ -26,5 +28,5 @@ export default function PostDetailPage() {
 }
 
 const S_Main = styled.main`
-  margin: 20px auto 0;
+	margin: 20px auto 0;
 `;
