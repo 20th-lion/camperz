@@ -1,7 +1,10 @@
 import React, { useContext } from 'react';
 import GlobalStyle from './lib/styles/globalStyle';
-import styled from 'styled-components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import styled from 'styled-components';
+
+import { LoginStateContext } from './component/context/LoginContext';
+import Modals from './component/modal/Modals';
 import Splash from './pages/Home/Splash';
 import HomePage from './pages/Home/HomePage.js';
 import SearchPage from './pages/Search/SearchPage.js';
@@ -16,12 +19,10 @@ import Page404 from './pages/ErrorPage/Page404';
 import PostDetailPage from './pages/Post/PostDetailPage';
 import PostUploadPage from './pages/Post/PostUploadPage';
 import Provider from './component/context/Provider';
-import Modals from './component/modal/Modals';
 import FollowerPage from './pages/Follow/FollowerPage';
 import FollowingPage from './pages/Follow/FollowingPage';
 import ChatListPage from './pages/Chat/ChatListPage';
 import ChatRoomPage from './pages/Chat/ChatRoomPage';
-import { LoginStateContext } from './component/context/LoginContext';
 
 function Main() {
 	const isLogedIn = useContext(LoginStateContext);

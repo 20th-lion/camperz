@@ -1,15 +1,17 @@
 import { useEffect, useContext } from 'react';
-import { isLogin } from '../../lib/utils/isLogin';
 import { useNavigate } from 'react-router-dom/dist';
 import styled from 'styled-components';
 import CAMPERZLogoLight from '../../assets/logo/CAMPERZ_light.png';
-import { LoginStateContext } from '../../component/context/LoginContext';
+import { LoginStateContext, LoginDispatchContext } from '../../component/context/LoginContext';
+
 export default function Splash() {
-	const isLogedin = useContext(LoginStateContext);
+	const isLogedIn = useContext(LoginStateContext);
 	const navigate = useNavigate();
+
 	useEffect(() => {
+		console.log(isLogedIn);
 		setTimeout(() => {
-			isLogedin ? navigate('/home') : navigate('/login');
+			isLogedIn ? navigate('/home') : navigate('/login');
 		}, 1500);
 	}, []);
 

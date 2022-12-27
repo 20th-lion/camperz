@@ -13,7 +13,7 @@ import moreIcon from '../../assets/icons/more_header.png';
 import { LoginDispatchContext } from '../../component/context/LoginContext';
 
 export default function ProfilePage() {
-	const setIsLogedin = useContext(LoginDispatchContext);
+	const { logout } = useContext(LoginDispatchContext);
 	const myAccountname = localStorage.getItem('accountname');
 	const { accountname } = useParams();
 	const user = accountname || myAccountname;
@@ -28,7 +28,7 @@ export default function ProfilePage() {
 			onLogout: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
-						setIsLogedin(false);
+						logout();
 						navigate('/');
 					},
 					message: '로그아웃 하시겠어요?',

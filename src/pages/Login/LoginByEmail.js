@@ -4,13 +4,14 @@ import { getLoginApiResponse } from '../../lib/apis/loginApis';
 import AuthForm from '../../component/form/AuthForm';
 import styled from 'styled-components';
 import { LoginDispatchContext } from '../../component/context/LoginContext';
+
 export default function LoginByEmail() {
-	const setIsLogin = useContext(LoginDispatchContext);
+	const { login } = useContext(LoginDispatchContext);
 	const navigate = useNavigate();
 	const [loginErrMsg, setLoginErrMsg] = useState([]);
 
-	const handleLogin = (inputs) => {
-		getLoginApiResponse(inputs).then((res) => {
+	const handleLogin = async (inputs) => {
+		await getLoginApiResponse(inputs).then((res) => {
 			if (res.name === 'AxiosError') {
 				const errorMsg = res.response.data;
 				console.log(errorMsg);
@@ -19,9 +20,7 @@ export default function LoginByEmail() {
 				setLoginErrMsg([, <span>*{loginErrMsg}</span>]);
 			}
 			const { accountname, token } = res.data.user;
-			localStorage.setItem('token', token);
-			localStorage.setItem('accountname', accountname);
-			setIsLogin(true);
+			login(token, accountname);
 			navigate('/home');
 		});
 	};
