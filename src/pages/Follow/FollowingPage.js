@@ -24,6 +24,7 @@ export default function FollowingPage() {
 			})
 			.catch((err) => console.log(err));
 	};
+
 	useEffect(() => {
 		getFollowingData();
 		console.log(followingData);
@@ -31,20 +32,26 @@ export default function FollowingPage() {
 
 	return (
 		<>
-      <Header leftChild={<S_H2><BackButton />  Followings</S_H2>}></Header>
+			<Header
+				leftChild={
+					<S_H2>
+						<BackButton /> Followings
+					</S_H2>
+				}
+			></Header>
 			<S_Main>
 				<FollowContents followData={followingData} followMessage={followingMessage} />
 			</S_Main>
-			<NavBar page='user' />
+			<NavBar page="user" />
 		</>
 	);
 }
 
 const S_H2 = styled.h2`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 21px;
-`
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 21px;
+`;
 const S_Main = styled.main`
-  height: calc(100vh - 44px);
-`
+	height: calc(100vh - 44px);
+`;
