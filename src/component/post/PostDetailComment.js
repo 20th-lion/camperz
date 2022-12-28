@@ -6,8 +6,8 @@ import styled from 'styled-components';
 export default function PostDetailComment({ post_id, setCommentList, commentList }) {
 	// const [commentList, setCommentList] = useState([]);
 
-	const loadCommentList = async (post_id) => {
-		await getCommentList(post_id).then((res) => {
+	useEffect(() => {
+		getCommentList(post_id).then((res) => {
 			setCommentList([...res.data.comments]);
 		});
 	}, []);
