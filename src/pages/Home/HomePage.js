@@ -11,9 +11,6 @@ export default function HomePage() {
 	const handleSearching = () => {
 		navigate('/search');
 	};
-	useEffect(() => {
-		console.log('111');
-	}, []);
 	return (
 		<>
 			<Header
