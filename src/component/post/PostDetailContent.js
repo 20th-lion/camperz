@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { postDetailLoader } from '../../lib/apis/postApis';
 import styled from 'styled-components';
 
 import { useModals } from '../../lib/hooks/useModals';
@@ -8,11 +7,12 @@ import { modals } from './../modal/Modals';
 import HeartButton from '../post/HeartButton';
 import { postDetailLoader } from '../../lib/apis/postApis';
 import { addHeart, deleteHeart } from '../../lib/apis/heartApis';
+import { postDelete } from '../../lib/apis/postApis';
+
 import morePostIcon from '../../assets/icons/more_post.png';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
 import heart from '../../assets/icons/heart.png';
 import message from '../../assets/icons/message.png';
-import { postDelete } from '../../lib/apis/postApis';
 
 export default function PostDetailContent({ id }) {
 	const [userName, setUserName] = useState('');
