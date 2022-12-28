@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { postComment } from '../../lib/apis/commentApis';
+import { getCommentList } from '../../lib/apis/commentApis';
 import commentbtn from '../../assets/icons/chat_send.png';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { getMyInfo } from '../../lib/apis/profileApis';
 
-export default function CommentBox({ post_id, onAdd }) {
+export default function CommentBox({ post_id, setCommentList }) {
 	const [btnHandler, setBtnHandler] = useState(false);
 	const [commentContent, setCommentContent] = useState('');
 
@@ -20,7 +21,10 @@ export default function CommentBox({ post_id, onAdd }) {
 	};
 
 	const btnClickEvent = () => {
-		postComment(post_id, commentContent);
+		postComment(post_id, commentContent).then();
+		getCommentList(post_id).then((res) => {
+			setCommentList([...res.data.comments]);
+		});
 		setCommentContent('');
 		onAdd((prev) => prev + 1);
 	};

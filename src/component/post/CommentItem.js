@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
 import { deleteComment, reportComment } from '../../lib/apis/commentApis';
+import { getCommentList } from '../../lib/apis/commentApis';
 import moreHeader from '../../assets/icons/more_header.png';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
-export default function CommentItem({ author, content, createdAt, id, post_id, onload }) {
+export default function CommentItem({ author, content, createdAt, id, post_id, setCommentList }) {
 	const { openModal } = useModals();
 
 	const handleModalClick = () => {
@@ -21,8 +22,11 @@ export default function CommentItem({ author, content, createdAt, id, post_id, o
 			onRemove: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
-						deleteComment(post_id, id, type);
-						onload(post_id);
+						deleteComment(post_id, id, type).then((res) => {
+							getCommentList(post_id).then((res) => {
+								setCommentList([...res.data.comments]);
+							});
+						});
 					},
 					message: '댓글을 삭제하시겠어요?',
 					btnText: '삭제',

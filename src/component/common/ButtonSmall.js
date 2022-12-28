@@ -40,17 +40,20 @@ const S_Button = styled.button`
 			? css`
 				  content: '취소';
 				  color: #F3F1E8;
+          font-size: 14px;
+          font-weight: 400;
 				`
 			: css`
 			  	  content: '팔로우';
 			  	  color: #F3F1E8;
+            font-size: 14px;
+            font-weight: 400;
 				`};
 		}
 		${(props) =>
 		props.isfollow
 			? css`
 				  background-color: #8f9475;
-				  border: 1px solid #dbdbdb;
 			  	`
 			: css`
 				  background-color: #5C6145;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { followingList } from '../../lib/apis/followApis';
 import FollowContents from '../../component/follow/FollowContents';
@@ -31,7 +31,7 @@ export default function FollowingPage() {
 
 	return (
 		<>
-			<Header leftChild={<S_div><BackButton />  Followings</S_div>}></Header>
+      <Header leftChild={<S_H2><BackButton />  Followings</S_H2>}></Header>
 			<S_Main>
 				<FollowContents followData={followingData} followMessage={followingMessage} />
 			</S_Main>
@@ -40,13 +40,11 @@ export default function FollowingPage() {
 	);
 }
 
-const S_Main = styled.main`
-  justify-content: flex-start;
-  height: calc(100vh - 54px);
-`
-const S_div = styled.div`
+const S_H2 = styled.h2`
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 21px;
-  align-items: center;
+`
+const S_Main = styled.main`
+  height: calc(100vh - 44px);
 `
