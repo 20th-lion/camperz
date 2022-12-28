@@ -82,7 +82,7 @@ export default function AuthForm({ formType, errorMsg, handleValidate, onSubmit 
           <S_Input 
             name='password' 
             value={inputs.password} 
-            type='text'
+            type='password'
             onChange={handleInputEntered}
             onBlur={handleValidatePassword}
             id='password' 

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import GlobalStyle from './lib/styles/globalStyle';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LoginStateContext } from './component/context/LoginContext';
 import Modals from './component/modal/Modals';
 import Splash from './pages/Home/Splash';

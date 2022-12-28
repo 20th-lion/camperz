@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 
   *, *::before, *::after {
     box-sizing: border-box;
- }
+  }
 
   .ir {
     position: absolute;
@@ -31,7 +31,6 @@ const GlobalStyle = createGlobalStyle`
     height: calc(100vh - 108px);
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     overflow-y: scroll;
     -ms-overflow-style: none;
