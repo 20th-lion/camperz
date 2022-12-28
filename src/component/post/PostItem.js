@@ -96,9 +96,7 @@ export default function PostItem({
 				</S_PostItemHeader>
 				<S_ContentBox>
 					<S_Text>{content}</S_Text>
-					<S_ImgBox>
-						<S_Img src={image} alt="포스트 이미지" onError={handleErrorImg} />
-					</S_ImgBox>
+					<S_ImgBox>{image && <S_Img src={image} alt="포스트 이미지" onError={handleErrorImg} />}</S_ImgBox>
 					<S_SnsDate>
 						<S_Sns>
 							<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
@@ -123,7 +121,7 @@ const S_PostItemHeader = styled.div`
 	height: 50px;
 	display: flex;
 	position: relative;
-  cursor: pointer;
+	cursor: pointer;
 `;
 const S_ProfileImg = styled.img`
 	width: 50px;
