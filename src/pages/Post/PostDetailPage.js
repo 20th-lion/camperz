@@ -18,7 +18,7 @@ export default function PostDetailPage() {
 				<PostDetailContent id={id} />
 				<PostDetailComment post_id={id} commentList={commentList} setCommentList={setCommentList} />
 			</S_Main>
-			<CommentBox post_id={id} boxIcon={boxIcon} setCommentList={setCommentList} />
+			<CommentBox post_id={id} boxIcon={boxIcon} setCommentList={setCommentList} commentList={commentList} />
 		</>
 	);
 }

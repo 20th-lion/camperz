@@ -8,13 +8,19 @@ export default function PostDetailComment({ post_id, setCommentList, commentList
 		getCommentList(post_id).then((res) => {
 			setCommentList([...res.data.comments]);
 		});
-	}, [commentList]);
+	}, []);
 
 	return (
 		<>
 			<S_CommentList>
 				{commentList.map((comment, idx) => (
-					<CommentItem key={idx} {...comment} post_id={post_id} setCommentList={setCommentList} />
+					<CommentItem
+						key={idx}
+						{...comment}
+						post_id={post_id}
+						commentList={commentList}
+						setCommentList={setCommentList}
+					/>
 				))}
 			</S_CommentList>
 		</>
