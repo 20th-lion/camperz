@@ -22,13 +22,20 @@ export default function FollowerPage() {
 			})
 			.catch((err) => console.log(err));
 	};
+
 	useEffect(() => {
 		getFollowerData();
 	}, []);
 
 	return (
 		<>
-			<Header leftChild={<S_H2><BackButton />  Followers</S_H2>}></Header>
+			<Header
+				leftChild={
+					<S_H2>
+						<BackButton /> Followers
+					</S_H2>
+				}
+			></Header>
 			<S_Main>
 				<FollowContents followData={followerData} followMessage={followerMessage} />
 			</S_Main>
@@ -37,10 +44,10 @@ export default function FollowerPage() {
 }
 
 const S_H2 = styled.h2`
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 21px;
-`
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 21px;
+`;
 const S_Main = styled.main`
-  height: calc(100vh - 44px);
-`
+	height: calc(100vh - 44px);
+`;
