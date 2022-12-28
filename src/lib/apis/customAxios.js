@@ -17,3 +17,14 @@ export const axiosPrivate = axios.create({
 		'Content-type': 'application/json',
 	},
 });
+
+axiosPrivate.interceptors.request.use(
+	(config) => {
+		if (!TOKEN) {
+			config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+		}
+
+		return config;
+	},
+	(error) => Promise.reject(error),
+);
