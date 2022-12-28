@@ -7,7 +7,6 @@ import PostDetailContent from '../../component/post/PostDetailContent';
 import PostDetailComment from '../../component/post/PostDetailComment';
 import CommentBox from '../../component/common/CommentBox';
 import boxIcon from '../../assets/icons/basic_profile_chat.png';
-import { useEffect } from 'react';
 //post 상세 페이지를 보려면 해당 페이지의 id가 필요하다.
 export default function PostDetailPage() {
 	const { id } = useParams();
