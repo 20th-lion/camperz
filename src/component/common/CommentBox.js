@@ -1,29 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { postComment } from '../../lib/apis/commentApis';
-import { getCommentList } from '../../lib/apis/commentApis';
 import commentbtn from '../../assets/icons/chat_send.png';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { getMyInfo } from '../../lib/apis/profileApis';
 
-export default function CommentBox({ post_id, setCommentList }) {
-	const [btnHandler, setBtnHandler] = useState(false);
+export default function CommentBox({ post_id, setCommentList, commentList }) {
+	const inputRef = useRef();
 	const [commentContent, setCommentContent] = useState('');
 
 	const CommentInputValidator = (e) => {
 		setCommentContent(e.target.value);
-		if (e.target.value.length === 0) {
-			setBtnHandler(false);
-		}
-		if (e.target.value.length > 0) {
-			setBtnHandler(true);
-		}
 	};
 
 	const btnClickEvent = () => {
-		postComment(post_id, commentContent).then();
-		getCommentList(post_id).then((res) => {
-			setCommentList([...res.data.comments]);
+		postComment(post_id, commentContent).then((res) => {
+			setCommentList([...commentList, res.data.comment]);
 		});
 		setCommentContent('');
 	};
@@ -32,7 +24,6 @@ export default function CommentBox({ post_id, setCommentList }) {
 
 	useEffect(() => {
 		getMyInfo().then((res) => {
-			// MyInfoData.userName = res.data.user.username;
 			setUserImg(res.data.user.image);
 		});
 	}, []);
@@ -42,13 +33,12 @@ export default function CommentBox({ post_id, setCommentList }) {
 			<S_CommentBox>
 				<S_UserIcon src={userImg} />
 				<S_CommentInput
-					onChange={(e) => {
-						CommentInputValidator(e);
-					}}
+					ref={inputRef}
+					onChange={CommentInputValidator}
 					value={commentContent}
 					placeholder="댓글 입력하기..."
 				/>
-				{btnHandler === true ? (
+				{!!commentContent ? (
 					<>
 						<S_CommentUploadButton onClick={btnClickEvent} src={commentbtn} />
 					</>

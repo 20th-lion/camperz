@@ -10,6 +10,7 @@ import defaultProfileImg from '../../assets/icons/basic_profile.png';
 export default function CommentItem({ author, content, createdAt, id, post_id, setCommentList }) {
 	const { openModal } = useModals();
 	const navigate = useNavigate();
+
 	const handleModalClick = () => {
 		const myAccountname = localStorage.getItem('accountname');
 		const commenterAccountName = author.accountname;
