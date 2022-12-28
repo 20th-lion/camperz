@@ -123,6 +123,7 @@ const S_PostItemHeader = styled.div`
 	height: 50px;
 	display: flex;
 	position: relative;
+  cursor: pointer;
 `;
 const S_ProfileImg = styled.img`
 	width: 50px;

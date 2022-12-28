@@ -129,6 +129,7 @@ const S_PostItemHeader = styled.div`
 	height: 50px;
 	display: flex;
 	position: relative;
+  cursor: pointer;
 `;
 const S_ProfileImg = styled.img`
 	width: 50px;
@@ -174,7 +175,6 @@ const S_ImgBox = styled.div`
 `;
 const S_Img = styled.img`
 	width: 293px;
-	height: 226px;
 	object-fit: cover;
 	border-radius: 10px;
 `;

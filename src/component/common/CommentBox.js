@@ -47,6 +47,7 @@ export default function CommentBox({ post_id, setCommentList }) {
 						CommentInputValidator(e);
 					}}
 					value={commentContent}
+          placeholder='댓글 입력하기...'
 				/>
 				{btnHandler === true ? (
 					<>
@@ -83,9 +84,14 @@ const S_CommentInput = styled.input`
 	border-radius: 18px;
 	border: 1px solid ${palette.bottomBar[2]};
 	background-color: ${palette.bottomBar[1]};
-	padding: 0 13px;
+	padding: 0 13px 1px;
 	font-size: 14px;
-	font-weight: 400;
+  font-weight: 400;
+  ::placeholder {
+    padding-bottom: 3px;
+    font-size: 12px;
+    font-weight: 300;
+  }
 `;
 const S_CommentUploadButton = styled.img`
 	width: 24px;

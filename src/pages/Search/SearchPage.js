@@ -53,6 +53,7 @@ const S_SearchingInput = styled.input`
 	padding-left: 16px;
 	font-size: 14px;
 	font-weight: 400;
+  padding-bottom: 2px;
 	::placeholder {
 		font-weight: 300;
 	}
