@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
 import { deleteComment, reportComment } from '../../lib/apis/commentApis';
+import { getCommentList } from '../../lib/apis/commentApis';
 import moreHeader from '../../assets/icons/more_header.png';
 
-export default function CommentItem({ author, content, createdAt, id, post_id, setCommentRerender }) {
+export default function CommentItem({ author, content, createdAt, id, post_id, setCommentList }) {
 	const { openModal } = useModals();
 	const navigate = useNavigate();
 
@@ -21,7 +22,11 @@ export default function CommentItem({ author, content, createdAt, id, post_id, s
 			onRemove: () => {
 				openModal(modals.confirmModal, {
 					onConfirm: () => {
-						deleteComment(post_id, id, type).then((res) => {});
+						deleteComment(post_id, id, type).then((res) => {
+							getCommentList(post_id).then((res) => {
+								setCommentList([...res.data.comments]);
+							});
+						});
 					},
 					message: '댓글을 삭제하시겠어요?',
 					btnText: '삭제',
