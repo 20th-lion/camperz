@@ -24,7 +24,7 @@ export default function PostDetailComment({ post_id, setCommentList, commentList
 }
 
 const S_CommentList = styled.ul`
-	padding: 8px 0;
+	padding: 8px auto;
 	margin: 20px 0;
 	background: #fefcf3;
 	border-radius: 8px;
