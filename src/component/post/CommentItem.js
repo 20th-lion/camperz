@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
 import { deleteComment, reportComment } from '../../lib/apis/commentApis';
@@ -9,7 +9,7 @@ import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
 export default function CommentItem({ author, content, createdAt, id, post_id, setCommentList }) {
 	const { openModal } = useModals();
-
+	const navigate = useNavigate();
 	const handleModalClick = () => {
 		const myAccountname = localStorage.getItem('accountname');
 		const commenterAccountName = author.accountname;
@@ -41,13 +41,22 @@ export default function CommentItem({ author, content, createdAt, id, post_id, s
 	const handleErrorImg = (e) => {
 		e.target.src = defaultProfileImg;
 	};
+
+	const moveProfilePage = () => {
+		navigate(`/profile/${author.accountname}`);
+	};
 	return (
 		<>
 			<S_CommentBox>
-				<S_UserIcon src={author.image} alt="댓글 이용자 프로필 사진" onError={handleErrorImg} />
+				<S_UserIcon
+					src={author.image}
+					alt="댓글 이용자 프로필 사진"
+					onError={handleErrorImg}
+					onClick={moveProfilePage}
+				/>
 				<S_Comment>
 					<S_UserDate>
-						{author.username}
+						<S_CommenterName onClick={moveProfilePage}>{author.username}</S_CommenterName>
 						<span>{createdAtPost}</span>
 					</S_UserDate>
 					<S_CommentModalButton src={moreHeader} onClick={handleModalClick} />
@@ -72,6 +81,7 @@ const S_UserIcon = styled.img`
 	border-radius: 50%;
 	margin-left: 3px;
 	object-fit: cover;
+	cursor: pointer;
 `;
 const S_Comment = styled.div`
 	display: flex;
@@ -95,5 +105,10 @@ const S_CommentModalButton = styled.img`
 	height: 20px;
 	position: absolute;
 	right: 3px;
+	cursor: pointer;
+`;
+
+const S_CommenterName = styled.div`
+	display: inline-block;
 	cursor: pointer;
 `;

@@ -88,14 +88,18 @@ export default function PostDetailContent({ id }) {
 	const handleErrorImg = (e) => {
 		e.target.src = defaultProfileImg;
 	};
+
+	const moveProfilePage = () => {
+		navigate(`/profile/${accountName}`);
+	};
 	return (
 		<>
 			<S_ItemWrapper>
 				<S_PostItemHeader>
-					<S_ProfileImg src={authorImg} />
+					<S_ProfileImg src={authorImg} onClick={moveProfilePage} />
 					<S_NameBox>
-						<S_Username>{userName}</S_Username>
-						<S_AccountID>@ {accountName}</S_AccountID>
+						<S_Username onClick={moveProfilePage}>{userName}</S_Username>
+						<S_AccountID onClick={moveProfilePage}>@ {accountName}</S_AccountID>
 					</S_NameBox>
 					<S_ModalIconImg src={morePostIcon} onClick={handleClickModal} />
 				</S_PostItemHeader>
@@ -129,7 +133,7 @@ const S_PostItemHeader = styled.div`
 	height: 50px;
 	display: flex;
 	position: relative;
-  cursor: pointer;
+	cursor: pointer;
 `;
 const S_ProfileImg = styled.img`
 	width: 50px;

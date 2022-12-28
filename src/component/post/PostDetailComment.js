@@ -9,6 +9,7 @@ export default function PostDetailComment({ post_id, setCommentList, commentList
 	useEffect(() => {
 		getCommentList(post_id).then((res) => {
 			setCommentList([...res.data.comments]);
+			// console.log(res);
 		});
 	}, []);
 
