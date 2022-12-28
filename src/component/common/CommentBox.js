@@ -26,6 +26,7 @@ export default function CommentBox({ post_id, setCommentList }) {
 			setCommentList([...res.data.comments]);
 		});
 		setCommentContent('');
+		onAdd((prev) => prev + 1);
 	};
 
 	const [userImg, setUserImg] = useState(null);

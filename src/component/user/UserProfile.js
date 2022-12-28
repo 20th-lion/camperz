@@ -1,105 +1,111 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
 import { getUserInfo } from '../../lib/apis/profileApis';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
 import ButtonBig from '../common/ButtonBig';
+import palette from '../../lib/styles/palette';
 import chatIcon from '../../assets/icons/yourProfile_chat.png';
 import shareIcon from '../../assets/icons/yourProfile_share.png';
-import palette from '../../lib/styles/palette';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
 export default function UserProfile({ type, user }) {
-  const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState({
-    image: '',
-    accountname: '',
-    username: '',
-    followerCount: '',
-    followingCount: '',
-    isfollow: '',
-    intro: '',
-  });
-  const { image, accountname, username, followerCount, followingCount, isfollow, intro } = userInfo;
+	const navigate = useNavigate();
+	const [userInfo, setUserInfo] = useState({
+		image: '',
+		accountname: '',
+		username: '',
+		followerCount: '',
+		followingCount: '',
+		isfollow: '',
+		intro: '',
+	});
+	const { image, accountname, username, followerCount, followingCount, isfollow, intro } = userInfo;
 
-  useEffect(() => {
-    getUserInfo(user).then((res) => {
-      const { accountname, username, followingCount, followerCount, image, isfollow, intro } = res.data.profile;
-      setUserInfo({
-        accountname,
-        username,
-        followingCount,
-        followerCount,
-        image,
-        isfollow,
-        intro,
-      });
-    });
-  }, [isfollow, user]);
+	useEffect(() => {
+		getUserInfo(user).then((res) => {
+			const { accountname, username, followingCount, followerCount, image, isfollow, intro } = res.data.profile;
+			setUserInfo({
+				accountname,
+				username,
+				followingCount,
+				followerCount,
+				image,
+				isfollow,
+				intro,
+			});
+		});
+	}, [isfollow, user]);
 
-  const goToFllowerPage = () => {
-    navigate(`/profile/${user}/follower`);
-  };
-  const goToFllowingPage = () => {
-    navigate(`/profile/${user}/following`);
-  };
+	const goToFllowerPage = () => {
+		navigate(`/profile/${user}/follower`);
+	};
+	const goToFllowingPage = () => {
+		navigate(`/profile/${user}/following`);
+	};
 
-  const handleFollow = async () => {
-    if (isfollow) {
-      await unfollowUser(accountname).then((res) => {
-        setUserInfo({ ...userInfo, isfollow: false });
-      });
-    } else {
-      await followUser(accountname).then((res) => {
-        setUserInfo({ ...userInfo, isfollow: true });
-      });
-    }
-  };
+	const handleFollow = async () => {
+		if (isfollow) {
+			await unfollowUser(accountname).then((res) => {
+				setUserInfo({ ...userInfo, isfollow: false });
+			});
+		} else {
+			await followUser(accountname).then((res) => {
+				setUserInfo({ ...userInfo, isfollow: true });
+			});
+		}
+	};
 
+	const handleErrorImg = (e) => {
+		e.target.src = defaultProfileImg;
+	};
 
-  return (
-    <S_ProfileSection>
-      <h2 className="ir">유저 프로필</h2>
-      <S_ProfileWrapper>
-        <S_ProfileInfoBox>
-          <S_ProfileImg src={image} alt="프로필 이미지" />
-          <S_UserName>{username}</S_UserName>
-          <S_AccountName>@ {accountname}</S_AccountName>
-          <S_Intro>{intro}</S_Intro>
-          <S_Follow onClick={goToFllowerPage} position={'left'}>            <S_FollowCount>{followerCount}</S_FollowCount>
-            <S_FollowSpan>followers</S_FollowSpan>
-          </S_Follow>
-          <S_Follow onClick={goToFllowingPage} position={'right'}>
-            <S_FollowCount>{followingCount}</S_FollowCount>
-            <S_FollowSpan>followings</S_FollowSpan>
-          </S_Follow>
+	return (
+		<S_ProfileSection>
+			<h2 className="ir">유저 프로필</h2>
+			<S_ProfileWrapper>
+				<S_ProfileInfoBox>
+					<S_ProfileImg src={image} alt="프로필 이미지" onError={handleErrorImg} />
+					<S_UserName>{username}</S_UserName>
+					<S_AccountName>@ {accountname}</S_AccountName>
+					<S_Intro>{intro}</S_Intro>
+					<S_Follow onClick={goToFllowerPage} position={'left'}>
+						{' '}
+						<S_FollowCount>{followerCount}</S_FollowCount>
+						<S_FollowSpan>followers</S_FollowSpan>
+					</S_Follow>
+					<S_Follow onClick={goToFllowingPage} position={'right'}>
+						<S_FollowCount>{followingCount}</S_FollowCount>
+						<S_FollowSpan>followings</S_FollowSpan>
+					</S_Follow>
 
-          {type === 'mine'
-            ? (
-              <S_ProfileBtnWrap>
-                <ButtonBig text="userprofile" onClick={() => navigate('/profile/edit')} type={type} />
-                <ButtonBig text="상품 등록" onClick={() => navigate('/product')} type={type} />
-              </S_ProfileBtnWrap>
-            ) : (
-              <S_ProfileBtnWrap>
-                <S_ProfileBtnIcon>
-                  <S_ChatIcon src={chatIcon} />
-                </S_ProfileBtnIcon>
-                <ButtonBig text="follow" isfollow={isfollow} onClick={handleFollow} />
-                <S_ProfileBtnIcon>
-                  <S_ShareIcon src={shareIcon} />
-                </S_ProfileBtnIcon>
-              </S_ProfileBtnWrap>
-            )}
-        </S_ProfileInfoBox>
-      </S_ProfileWrapper>
-    </S_ProfileSection>
-  );
+					{type === 'mine' ? (
+						<S_ProfileBtnWrap>
+							<ButtonBig text="userprofile" onClick={() => navigate('/profile/edit')} type={type} />
+							<ButtonBig text="상품 등록" onClick={() => navigate('/product')} type={type} />
+						</S_ProfileBtnWrap>
+					) : (
+						<S_ProfileBtnWrap>
+							<S_ProfileBtnIcon>
+								<S_ChatIcon src={chatIcon} />
+							</S_ProfileBtnIcon>
+							<ButtonBig text="follow" isfollow={isfollow} onClick={handleFollow} />
+							<S_ProfileBtnIcon>
+								<S_ShareIcon src={shareIcon} />
+							</S_ProfileBtnIcon>
+						</S_ProfileBtnWrap>
+					)}
+				</S_ProfileInfoBox>
+			</S_ProfileWrapper>
+		</S_ProfileSection>
+	);
 }
 
 const S_ProfileSection = styled.section`
 	height: 314px;
 	border-bottom: 1px solid #dbdbdb;
-  background-color: #F3F1E8;
+	background-color: #f3f1e8;
 `;
 const S_ProfileWrapper = styled.div`
 	display: block;
@@ -155,7 +161,7 @@ const S_FollowSpan = styled.span`
 `;
 const S_ProfileBtnWrap = styled.div`
 	display: flex;
-  gap: 15px;
+	gap: 15px;
 `;
 const S_ProfileBtnIcon = styled.button`
 	display: flex;

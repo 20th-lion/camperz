@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
 import Header from '../../component/common/Header';
 import PostDetailContent from '../../component/post/PostDetailContent';
 import PostDetailComment from '../../component/post/PostDetailComment';
 import CommentBox from '../../component/common/CommentBox';
 import boxIcon from '../../assets/icons/basic_profile_chat.png';
-import leftArrow from '../../assets/icons/icon_arrow_left.png';
+import { useEffect } from 'react';
 //post 상세 페이지를 보려면 해당 페이지의 id가 필요하다.
 export default function PostDetailPage() {
 	const { id } = useParams();
-	const navigate = useNavigate();
-	const sayHi = () => {
-		navigate(-1);
-	};
 	const [commentList, setCommentList] = useState([]);
 	return (
 		<>

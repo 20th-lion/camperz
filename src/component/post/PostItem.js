@@ -11,6 +11,7 @@ import { getPostList } from './../../lib/apis/postApis';
 
 import morePostIcon from '../../assets/icons/more_post.png';
 import message from '../../assets/icons/message.png';
+import defaultProfileImg from '../../assets/icons/basic_profile.png';
 
 export default function PostItem({
 	id,
@@ -77,13 +78,16 @@ export default function PostItem({
 		});
 	};
 
+	const handleErrorImg = (e) => {
+		e.target.src = defaultProfileImg;
+	};
 	const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
 	return (
 		<>
 			<S_ItemWrapper>
 				<S_PostItemHeader>
-					<S_ProfileImg onClick={handleAuthorClick} src={author.image} alt="프로필 사진" />
+					<S_ProfileImg onClick={handleAuthorClick} src={author.image} alt="프로필 사진" onError={handleErrorImg} />
 					<S_NameBox onClick={handleAuthorClick}>
 						<S_Username>{author.username}</S_Username>
 						<S_AccountID>@ {author.accountname}</S_AccountID>
@@ -92,7 +96,9 @@ export default function PostItem({
 				</S_PostItemHeader>
 				<S_ContentBox>
 					<S_Text>{content}</S_Text>
-					<S_ImgBox>{image && <S_Img src={image} alt="" />}</S_ImgBox>
+					<S_ImgBox>
+						<S_Img src={image} alt="포스트 이미지" onError={handleErrorImg} />
+					</S_ImgBox>
 					<S_SnsDate>
 						<S_Sns>
 							<HeartButton onClick={handleHeartClick} pushHeart={pushHeart} />
