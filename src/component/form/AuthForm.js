@@ -31,14 +31,13 @@ export default function AuthForm({ formType, errorMsg, onSubmit, onVerifyEmail, 
 	// 인풋 밸리데이션에 따라 버튼 활성화됨
 	const showingActive = () => {
 		if (formType === 'login') {
-			if (inputs.password.length > 5 && !inputs.email) {
+			if (inputs.password.length > 5 && !!inputs.email) {
 				setBtnActive(true);
 			} else {
 				setBtnActive(false);
 			}
 		} else {
 			//errorMsg가 모두 null이고 input값이 비어있지 않으면 버튼 활성화
-			console.log(errorMsg, !inputs.email);
 			if (Object.values(errorMsg).every((v) => !v) && !!inputs.email && !!inputs.password) {
 				setBtnActive(true);
 			} else {

@@ -14,10 +14,6 @@ export default function Register() {
 		firstLineErr: null,
 		secondLineErr: null,
 	});
-	const [profileErrorMsg, setProfileErrorMsg] = useState({
-		usernameErr: null,
-		accountnameErr: null,
-	});
 
 	const handleVerifyEmail = async (e) => {
 		const inputEmail = e.target.value;
@@ -95,13 +91,7 @@ export default function Register() {
 						프로필 설정
 						<p>나중에 언제든지 변경할 수 있습니다.</p>
 					</S_H2>
-					<ProfileForm
-						userInfo={userInfo}
-						setUserInfo={setUserInfo}
-						setErrorMsg={setProfileErrorMsg}
-						setBtnActive={setBtnActive}
-						errorMsg={profileErrorMsg}
-					/>
+					<ProfileForm userInfo={userInfo} setUserInfo={setUserInfo} setBtnActive={setBtnActive} />
 					<ButtonRectangle text="CAMPERZ 시작하기" onClick={handleRegister} active={btnActive} />
 				</S_Main>
 			)}
