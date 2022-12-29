@@ -11,7 +11,7 @@ import { getPostList } from './../../lib/apis/postApis';
 
 import morePostIcon from '../../assets/icons/more_post.png';
 import message from '../../assets/icons/message.png';
-import defaultProfileImg from '../../assets/icons/basic_profile.png';
+import postAltImg from '../../assets/image/post_alt_img.png';
 
 export default function PostItem({
 	id,
@@ -79,7 +79,7 @@ export default function PostItem({
 	};
 
 	const handleErrorImg = (e) => {
-		e.target.src = defaultProfileImg;
+		e.target.src = postAltImg;
 	};
 	const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
 
