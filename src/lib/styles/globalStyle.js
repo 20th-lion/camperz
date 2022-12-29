@@ -28,9 +28,9 @@ const GlobalStyle = createGlobalStyle`
   }
   
   main {
-    /* height: calc(100vh - 206px);
+    height: calc(100vh - 108px);
     display: flex;
-    flex-direction: column; */
+    flex-direction: column;
     /* justify-content: center; */
     align-items: center;
     overflow-y: scroll;
