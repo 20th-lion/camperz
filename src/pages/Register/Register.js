@@ -6,7 +6,8 @@ import AuthForm from '../../component/form/AuthForm';
 import ProfileForm from '../../component/form/ProfileForm';
 import ButtonRectangle from '../../component/common/ButtonRectangle';
 import { imageUpload } from './../../lib/apis/imageUploadApi';
-import { getEmailValidApiResponse, getRegisterApiResponse } from '../../lib/apis/registerApis';
+import { getRegisterApiResponse } from '../../lib/apis/registerApis';
+import { validateEmail, validatePassword } from '../../lib/utils/registerValidation';
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -17,33 +18,16 @@ export default function Register() {
 
 	const handleVerifyEmail = async (e) => {
 		const inputEmail = e.target.value;
-
-		const emailValidation = (email) => {
-			const regEx = /^[-0-9A-Z!#$%^&*()_=+\\|`,.;:''[\]{}?~]+@[0-9A-Z]+[-0-9A-Z_.]*.[a-z]$/i;
-			return regEx.test(email);
-		};
-
-		if (!emailValidation(inputEmail) && inputEmail) {
-			setAuthFormErrMsg({ ...authFormErrMsg, firstLineErr: '올바르지 않은 이메일 형식입니다' });
-			return;
-		}
-
-		await getEmailValidApiResponse(inputEmail).then((res) => {
-			if (res.data.message === '이미 가입된 이메일 주소 입니다.') {
-				setAuthFormErrMsg((prev) => ({ ...prev, firstLineErr: '* ' + res.data.message }));
-			} else {
-				setAuthFormErrMsg((prev) => ({ ...prev, firstLineErr: null }));
-			}
-		});
+		const validationMsg = await validateEmail(inputEmail);
+		setAuthFormErrMsg({ ...authFormErrMsg, ...validationMsg });
 	};
 
 	const handleValidatePassword = (e) => {
-		if (e.target.value.length < 6) {
-			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '*비밀번호는 6자 이상이어야 합니다.' });
-		} else {
-			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: null });
-		}
+		const inputPassword = e.target.value;
+		const validationMsg = validatePassword(inputPassword);
+		setAuthFormErrMsg({ ...authFormErrMsg, ...validationMsg });
 	};
+
 	const [btnActive, setBtnActive] = useState(false);
 
 	const [userInfo, setUserInfo] = useState({
