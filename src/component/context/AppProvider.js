@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { ModalsStateContext, ModalsDispatchContext } from './ModalsContext';
 import { LoginDispatchContext, LoginStateContext } from './LoginContext';
 
-export default function Provider({ children }) {
+export default function AppProvider({ children }) {
 	const [openedModals, setOpenedModals] = useState([]);
 	const [isLogedIn, setIsLogedIn] = useState(!!localStorage.getItem('token'));
 
@@ -18,13 +18,13 @@ export default function Provider({ children }) {
 		setIsLogedIn(false);
 	};
 
+	const logdispatch = useMemo(() => ({ login, logout }), []);
+
 	const open = (Component, props) => {
 		setOpenedModals((modals) => {
 			return [...modals, { Component, props }];
 		});
 	};
-
-	const logdispatch = useMemo(() => ({ login, logout }), []);
 
 	const close = (Component) => {
 		setOpenedModals((modals) => {
@@ -33,6 +33,7 @@ export default function Provider({ children }) {
 			});
 		});
 	};
+
 	const dispatch = useMemo(() => ({ open, close }), []);
 	return (
 		<LoginStateContext.Provider value={isLogedIn}>
