@@ -36,7 +36,7 @@ const S_Main = styled.main`
 
 const S_Wapper = styled.div`
 	word-break: break-all;
-	min-height: calc(100vh - 108px);
+	height: calc(100vh - 108px);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
