@@ -85,14 +85,14 @@ export default function NavBar({ page }) {
 }
 
 const S_Nav = styled.nav`
-  position: fixed;
+  /* position: fixed;
   width: 390px;
   height: 60px;
   bottom: 0px;
-  /* 이 경우 모든 메인의 하단 마진을 60px씩 더 줘야 함 */
+  이 경우 모든 메인의 하단 마진을 60px씩 더 줘야 함 */
   /* 기존 코드 */
-  /* height: 60px;
-  bottom: 0px; */
+  height: 60px;
+  bottom: 0px;
   background-color: #E3E3D3;
   font-size: 10px;
   font-weight: 400;
