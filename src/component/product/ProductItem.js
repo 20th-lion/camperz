@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { modals } from '../modal/Modals';
 import { removeProduct } from '../../lib/apis/productApis';
 import { useModals } from './../../lib/hooks/useModals';
-import defaultProfileImg from '../../assets/icons/basic_profile.png';
+import productAltImg from '../../assets/image/product_alt_img.png';
 
 export default function ProductItem({ itemName, price, itemImage, link, id, onload, type }) {
 	const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 	};
 
 	const handleErrorImg = (e) => {
-		e.target.src = defaultProfileImg;
+		e.target.src = productAltImg;
 	};
 	return (
 		<>
