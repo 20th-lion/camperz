@@ -75,11 +75,13 @@ const S_PostListBox = styled.div`
 	flex-direction: column;
 	margin: 20px auto;
 	gap: 25px;
+  min-height: calc(100vh - 392px);
 `;
 const S_PostAlbumBox = styled.div`
 	display: flex;
+  flex-flow: row wrap;
 	padding: 20px;
-	justify-content: space-around;
+  gap: 10px;
 	img {
 		width: 110px;
 		height: 110px;

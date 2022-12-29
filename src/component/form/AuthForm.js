@@ -75,7 +75,7 @@ export default function AuthForm({ formType, errorMsg, onSubmit, onVerifyEmail, 
 					<S_Input
 						name="password"
 						value={inputs.password}
-						type="text"
+						type="password"
 						onChange={handleInputEntered}
 						onBlur={onValidatePassword}
 						id="password"
