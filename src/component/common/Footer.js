@@ -6,7 +6,7 @@ import { useModals } from './../../lib/hooks/useModals';
 import { LoginDispatchContext } from '../../component/context/LoginContext';
 import logoImg from '../../assets/logo/CAMPERZ.png';
 import githubImg from '../../assets/logo/github.png';
-import { hover } from '@testing-library/user-event/dist/hover';
+
 export default function Footer() {
 	const navigate = useNavigate();
 	const { openModal } = useModals();
