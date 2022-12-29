@@ -6,7 +6,7 @@ import { deleteComment, reportComment } from '../../lib/apis/commentApis';
 import { getCommentList } from '../../lib/apis/commentApis';
 import moreHeader from '../../assets/icons/more_header.png';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
-
+import { timeConverter } from '../../lib/utils/timeConverter';
 export default function CommentItem({ author, content, createdAt, id, post_id, setCommentList }) {
 	const { openModal } = useModals();
 	const navigate = useNavigate();
@@ -37,7 +37,9 @@ export default function CommentItem({ author, content, createdAt, id, post_id, s
 		});
 	};
 
-	const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
+	// const createdAtPost = createdAt.substr(0, 11).replace('-', '년 ').replace('-', '월 ').replace('T', '일');
+
+	const convertedTime = timeConverter(createdAt);
 
 	const handleErrorImg = (e) => {
 		e.target.src = defaultProfileImg;
@@ -58,7 +60,7 @@ export default function CommentItem({ author, content, createdAt, id, post_id, s
 				<S_Comment>
 					<S_UserDate>
 						<S_CommenterName onClick={moveProfilePage}>{author.username}</S_CommenterName>
-						<span>{createdAtPost}</span>
+						<span>{convertedTime}</span>
 					</S_UserDate>
 					<S_CommentModalButton src={moreHeader} onClick={handleModalClick} />
 					<p>{content}</p>
