@@ -56,6 +56,10 @@ export default function Footer() {
 							alt="GitHub 로고 이미지 입니다. 누르면 캠퍼즈 깃허브 페이지로 이동합니다."
 							title=" 사이트 GitHub 페이지로 이동하기"
 						/>
+						{/* 밑에 태그는 저작권 관련 태그입니다. 삭제하지 마세요. */}
+						<a class="ir" href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">
+							Github 아이콘 제작자: Pixel perfect - Flaticon
+						</a>
 					</a>
 				</S_ContactWrapper>
 				<S_CopyrightWrapper>© 2022 CAMPERZ from LikeLion 3th All right reserved.</S_CopyrightWrapper>

@@ -29,7 +29,7 @@ export default function PostDetailPage() {
 
 const S_Main = styled.main`
 	height: fit-content;
-	/* min-height: calc(100vh - 108px); */
+	min-height: calc(100vh - 108px);
 	margin: 20px auto 0;
 	overflow-y: visible;
 `;
