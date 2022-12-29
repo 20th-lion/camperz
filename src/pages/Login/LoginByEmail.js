@@ -15,19 +15,6 @@ export default function LoginByEmail() {
 	});
 
 	const handleLogin = async (inputs) => {
-		if (!inputs.email && !inputs.password) {
-			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '*이메일 또는 비밀번호를 입력해주세요.' });
-			return;
-		}
-		if (!inputs.email) {
-			setAuthFormErrMsg({ ...authFormErrMsg, firstLineErr: '*이메일을 입력해주세요.' });
-			return;
-		}
-		if (!inputs.password) {
-			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '*비밀번호를 입력해주세요.' });
-			return;
-		}
-
 		await getLoginApiResponse(inputs).then((res) => {
 			if (res.data.message) {
 				const ErrorMsg = res.data.message;
