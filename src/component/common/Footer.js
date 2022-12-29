@@ -70,11 +70,10 @@ export default function Footer() {
 
 const S_Footer = styled.footer`
 	margin: 0 auto;
-	margin-top: 100px;
+	/* margin-top: 100px; */
 	margin-bottom: 60px;
 	padding: 10px;
 	width: 317px;
-
 	border-top: 1px solid #b1b1b1;
 	/* background-color: tomato; */
 	color: #767676;
