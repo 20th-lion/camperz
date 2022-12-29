@@ -28,32 +28,27 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 	};
 
 	const showingActive = () => {
-		!errorMsg.usernameErr && !errorMsg.accountnameErr
-			? username && accountname
-				? setBtnActive(true)
-				: setBtnActive(false)
+		!errorMsg.usernameErr && !errorMsg.accountnameErr && username && accountname
+			? setBtnActive(true)
 			: setBtnActive(false);
 	};
 
-	const handleUsernameBlur = (e) => {
+	const handleUsernameValidate = (e) => {
 		setErrorMsg({
 			...errorMsg,
-			usernameErr: validateUsername(e.target.value) || '',
+			usernameErr: validateUsername(e.target.value) || null,
 		});
 	};
 
-	const handleAccountnameBlur = async (e) => {
+	const handleAccountnameValidate = async (e) => {
 		const savedAccountname = localStorage.getItem('accountname');
+		const inputEmail = e.target.value;
 
 		if (savedAccountname !== accountname) {
-			let validationMsg = validateAccountname(e.target.value);
-			let accountnameErr = await validationMsg;
-
-			if (accountnameErr === '*이미 가입된 계정ID 입니다.') {
-				setErrorMsg({ ...errorMsg, accountnameErr });
-			} else if (accountnameErr === '*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.') {
-				setErrorMsg({ ...errorMsg, accountnameErr });
-			} else setErrorMsg({ ...errorMsg, accountnameErr: null });
+			const validationMsg = await validateAccountname(inputEmail);
+			if (validationMsg === '*사용 가능한 계정ID 입니다.') {
+				setErrorMsg({ ...errorMsg, accountnameErr: null });
+			} else setErrorMsg({ ...errorMsg, accountnameErr: validationMsg });
 		}
 	};
 
@@ -101,7 +96,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 						name="username"
 						value={username}
 						onChange={handleInputEntered}
-						onBlur={handleUsernameBlur}
+						onBlur={handleUsernameValidate}
 						type="text"
 						id="username"
 						placeholder="2~10자 이내여야 합니다."
@@ -116,7 +111,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 						name="accountname"
 						value={accountname}
 						onChange={handleInputEntered}
-						onBlur={handleAccountnameBlur}
+						onBlur={handleAccountnameValidate}
 						type="text"
 						id="accountname"
 						placeholder="영문, 숫자, 마침표(.), 언더바(_)만 사용 가능합니다."

@@ -7,8 +7,8 @@ import { getLoginApiResponse } from '../../lib/apis/loginApis';
 import { LoginDispatchContext } from '../../component/context/LoginContext';
 
 export default function LoginByEmail() {
-	const { login } = useContext(LoginDispatchContext);
 	const navigate = useNavigate();
+	const { login } = useContext(LoginDispatchContext);
 	const [authFormErrMsg, setAuthFormErrMsg] = useState({
 		firstLineErr: null,
 		secondLineErr: null,
@@ -16,23 +16,22 @@ export default function LoginByEmail() {
 
 	const handleLogin = async (inputs) => {
 		if (!inputs.email && !inputs.password) {
-			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '* 이메일 또는 비밀번호를 입력해주세요.' });
+			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '*이메일 또는 비밀번호를 입력해주세요.' });
 			return;
 		}
 		if (!inputs.email) {
-			setAuthFormErrMsg({ ...authFormErrMsg, firstLineErr: '* 이메일을 입력해주세요.' });
+			setAuthFormErrMsg({ ...authFormErrMsg, firstLineErr: '*이메일을 입력해주세요.' });
 			return;
 		}
 		if (!inputs.password) {
-			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '* 비밀번호를 입력해주세요.' });
+			setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '*비밀번호를 입력해주세요.' });
 			return;
 		}
 
 		await getLoginApiResponse(inputs).then((res) => {
-			console.log(res);
 			if (res.data.message) {
 				const ErrorMsg = res.data.message;
-				setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '* ' + ErrorMsg });
+				setAuthFormErrMsg({ ...authFormErrMsg, secondLineErr: '*' + ErrorMsg });
 				return;
 			}
 			const { token, accountname } = res.data.user;
