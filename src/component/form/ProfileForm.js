@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { validateUsername, validateAccountname } from '../../lib/utils/profileValidation';
+import { validateUsername, validateAccountname } from '../../lib/utils/registerValidation';
 import styled from 'styled-components';
 import iconSrc from '../../assets/icons/img_upload_post.png';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
