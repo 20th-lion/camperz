@@ -11,6 +11,7 @@ import { modals } from './../../component/modal/Modals';
 import { useModals } from './../../lib/hooks/useModals';
 import moreIcon from '../../assets/icons/more_header.png';
 import { LoginDispatchContext } from '../../component/context/LoginContext';
+import Footer from '../../component/common/Footer';
 
 export default function ProfilePage() {
 	const { logout } = useContext(LoginDispatchContext);
@@ -42,11 +43,14 @@ export default function ProfilePage() {
 		<>
 			<Header rightChild={<S_IconImg onClick={handleModalClick} src={moreIcon} />} />
 			<h2 className="ir">프로필 페이지</h2>
-			<S_Main>
-				<UserProfile user={user} type={type} />
-				<ProductList user={user} type={type} />
-				<PostList user={user} type={type} />
-			</S_Main>
+			<S_Wapper>
+				<S_Main>
+					<UserProfile user={user} type={type} />
+					<ProductList user={user} type={type} />
+					<PostList user={user} type={type} />
+				</S_Main>
+				<Footer />
+			</S_Wapper>
 			<NavBar page={type === 'mine' ? 'user' : 'home'} />
 		</>
 	);
@@ -54,9 +58,30 @@ export default function ProfilePage() {
 
 const S_Main = styled.main`
 	background-color: #f2f2f2;
+	height: fit-content;
+	/* min-height: calc(100vh - 108px); */
+	margin: 20px auto 0;
+	overflow-y: visible;
 `;
 const S_IconImg = styled.img`
 	width: 24px;
 	height: 24px;
 	cursor: pointer;
+`;
+
+const S_Wapper = styled.div`
+	word-break: break-all;
+	height: calc(100vh - 108px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* align-items: center; */
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;

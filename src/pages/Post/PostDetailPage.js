@@ -9,9 +9,12 @@ import CommentBox from '../../component/common/CommentBox';
 import boxIcon from '../../assets/icons/basic_profile_chat.png';
 import Footer from '../../component/common/Footer';
 //post 상세 페이지를 보려면 해당 페이지의 id가 필요하다.
+let listLength;
 export default function PostDetailPage() {
 	const { id } = useParams();
 	const [commentList, setCommentList] = useState([]);
+
+	listLength = commentList.length;
 	return (
 		<>
 			<Header />
@@ -30,6 +33,7 @@ export default function PostDetailPage() {
 const S_Main = styled.main`
 	height: fit-content;
 	/* min-height: calc(100vh - 108px); */
+	min-height: calc(100vh - 108px);
 	margin: 20px auto 0;
 	overflow-y: visible;
 `;
@@ -38,10 +42,10 @@ const S_Wapper = styled.div`
 	word-break: break-all;
 	height: calc(100vh - 108px);
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: space-between;
 	/* align-items: center; */
-
+	flex-wrap: wrap;
 	overflow-x: hidden;
 	overflow-y: scroll;
 	-ms-overflow-style: none;
