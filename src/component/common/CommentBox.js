@@ -36,27 +36,33 @@ export default function CommentBox({ post_id, setCommentList, commentList }) {
 
 	return (
 		<>
-			<S_CommentBox>
-				<S_UserIcon src={userImg} />
-				<S_CommentInput
-					ref={inputRef}
-					onChange={CommentInputValidator}
-					value={commentContent}
-					placeholder="댓글 입력하기..."
-					onKeyDown={enterEventHandler}
-				/>
-				{!!commentContent ? (
-					<>
-						<S_CommentUploadButton onClick={btnClickEvent} src={commentbtn} />
-					</>
-				) : (
-					<></>
-				)}
-			</S_CommentBox>
+			<S_StickyBox>
+			  <S_CommentBox>
+  				<S_UserIcon src={userImg} />
+  				<S_CommentInput
+  					ref={inputRef}
+  					onChange={CommentInputValidator}
+  					value={commentContent}
+  					placeholder="댓글 입력하기..."
+  					onKeyDown={enterEventHandler}
+  				/>
+  				{!!commentContent ? (
+  					<>
+  						<S_CommentUploadButton onClick={btnClickEvent} src={commentbtn} />
+  					</>
+  				) : (
+  					<></>
+  				)}
+  			</S_CommentBox>
+			</S_StickyBox>
 		</>
 	);
 }
 
+const S_StickyBox = styled.div`
+  position: sticky;
+  bottom: 0;
+`
 const S_CommentBox = styled.div`
 	display: flex;
 	height: 60px;

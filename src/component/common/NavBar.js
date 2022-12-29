@@ -85,6 +85,7 @@ export default function NavBar({ page }) {
 }
 
 const S_Nav = styled.nav`
+  position: sticky;
   bottom: 0px;
   height: 60px;
   background-color: #E3E3D3;
