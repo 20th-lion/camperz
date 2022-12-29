@@ -20,6 +20,12 @@ export default function CommentBox({ post_id, setCommentList, commentList }) {
 		setCommentContent('');
 	};
 
+	const enterEventHandler = (e) => {
+		if (commentContent !== '' && e.key === 'Enter') {
+			btnClickEvent();
+		}
+	};
+
 	const [userImg, setUserImg] = useState(null);
 
 	useEffect(() => {
@@ -37,6 +43,7 @@ export default function CommentBox({ post_id, setCommentList, commentList }) {
 					onChange={CommentInputValidator}
 					value={commentContent}
 					placeholder="댓글 입력하기..."
+					onKeyDown={enterEventHandler}
 				/>
 				{!!commentContent ? (
 					<>
