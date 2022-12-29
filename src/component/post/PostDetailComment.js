@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getCommentList } from '../../lib/apis/commentApis';
 import CommentItem from './CommentItem';
 import styled from 'styled-components';

@@ -7,6 +7,7 @@ import PostDetailContent from '../../component/post/PostDetailContent';
 import PostDetailComment from '../../component/post/PostDetailComment';
 import CommentBox from '../../component/common/CommentBox';
 import boxIcon from '../../assets/icons/basic_profile_chat.png';
+import Footer from '../../component/common/Footer';
 //post 상세 페이지를 보려면 해당 페이지의 id가 필요하다.
 export default function PostDetailPage() {
 	const { id } = useParams();
@@ -14,10 +15,13 @@ export default function PostDetailPage() {
 	return (
 		<>
 			<Header />
-			<S_Main>
-				<PostDetailContent id={id} />
-				<PostDetailComment post_id={id} commentList={commentList} setCommentList={setCommentList} />
-			</S_Main>
+			<S_Wapper>
+				<S_Main>
+					<PostDetailContent id={id} />
+					<PostDetailComment post_id={id} commentList={commentList} setCommentList={setCommentList} />
+				</S_Main>
+				<Footer />
+			</S_Wapper>
 			<CommentBox post_id={id} boxIcon={boxIcon} setCommentList={setCommentList} commentList={commentList} />
 		</>
 	);
@@ -25,4 +29,20 @@ export default function PostDetailPage() {
 
 const S_Main = styled.main`
 	margin: 20px auto 0;
+`;
+
+const S_Wapper = styled.div`
+	word-break: break-all;
+	height: calc(100vh - 108px);
+	/* display: flex;
+	flex-direction: column; */
+	/* justify-content: center; */
+	/* align-items: center; */
+	overflow-x: hidden;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
