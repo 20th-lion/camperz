@@ -11,8 +11,8 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 
 	// 인풋 밸리데이션에 따라 에러메시지가 등장하거나 버튼 활성화됨
 	const [errorMsg, setErrorMsg] = useState({
-		usernameErr: '',
-		accountnameErr: '',
+		usernameErr: null,
+		accountnameErr: null,
 	});
 
 	useEffect(() => {
@@ -28,32 +28,27 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 	};
 
 	const showingActive = () => {
-		errorMsg.usernameErr === '' && errorMsg.accountnameErr === ''
-			? username && accountname
-				? setBtnActive(true)
-				: setBtnActive(false)
+		!errorMsg.usernameErr && !errorMsg.accountnameErr && username && accountname
+			? setBtnActive(true)
 			: setBtnActive(false);
 	};
 
-	const handleUsernameBlur = (e) => {
+	const handleUsernameValidate = (e) => {
 		setErrorMsg({
 			...errorMsg,
-			usernameErr: validateUsername(e.target.value) || '',
+			usernameErr: validateUsername(e.target.value) || null,
 		});
 	};
 
-	const handleAccountnameBlur = async (e) => {
+	const handleAccountnameValidate = async (e) => {
 		const savedAccountname = localStorage.getItem('accountname');
+		const inputEmail = e.target.value;
 
 		if (savedAccountname !== accountname) {
-			let validationMsg = validateAccountname(e.target.value);
-			let accountnameErr = await validationMsg;
-			console.log(accountnameErr);
-			if (accountnameErr === '*이미 가입된 계정ID 입니다.') {
-				setErrorMsg({ ...errorMsg, accountnameErr });
-			} else if (accountnameErr === '*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다.') {
-				setErrorMsg({ ...errorMsg, accountnameErr });
-			} else setErrorMsg({ ...errorMsg, accountnameErr: '' });
+			const validationMsg = await validateAccountname(inputEmail);
+			if (validationMsg === '*사용 가능한 계정ID 입니다.') {
+				setErrorMsg({ ...errorMsg, accountnameErr: null });
+			} else setErrorMsg({ ...errorMsg, accountnameErr: validationMsg });
 		}
 	};
 
@@ -90,10 +85,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 						type="file"
 						id="image"
 					/>
-					<S_ProfileImg
-						src={currentImg || userInfo.image || defaultProfileImg}
-						alt="기본프로필사진"
-					/>
+					<S_ProfileImg src={currentImg || userInfo.image || defaultProfileImg} alt="기본프로필사진" />
 					<S_UploadIcon src={iconSrc} />
 				</S_ImgUploadBox>
 				<S_InputBox>
@@ -104,7 +96,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 						name="username"
 						value={username}
 						onChange={handleInputEntered}
-						onBlur={handleUsernameBlur}
+						onBlur={handleUsernameValidate}
 						type="text"
 						id="username"
 						placeholder="2~10자 이내여야 합니다."
@@ -119,7 +111,7 @@ export default function ProfileForm({ setUserInfo, userInfo, setBtnActive }) {
 						name="accountname"
 						value={accountname}
 						onChange={handleInputEntered}
-						onBlur={handleAccountnameBlur}
+						onBlur={handleAccountnameValidate}
 						type="text"
 						id="accountname"
 						placeholder="영문, 숫자, 마침표(.), 언더바(_)만 사용 가능합니다."
@@ -149,21 +141,21 @@ const S_Form = styled.form`
 	margin: 0 32px 15px;
 `;
 const S_ImgUploadBox = styled.div`
-  width: 114px;
-  height: 112px;
-  margin: 35px;
-  position: relative;
-  label {
-    display: none;
-  }
-`
+	width: 114px;
+	height: 112px;
+	margin: 35px;
+	position: relative;
+	label {
+		display: none;
+	}
+`;
 const S_ImgInput = styled.input`
 	display: none;
 `;
 const S_ProfileImg = styled.img`
-  width: 114px;
-  height: 112px;
-  border-radius: 50%;
+	width: 114px;
+	height: 112px;
+	border-radius: 50%;
 	object-fit: cover;
 	cursor: pointer;
 `;
@@ -177,10 +169,10 @@ const S_UploadIcon = styled.img`
 	cursor: pointer;
 `;
 const S_InputBox = styled.div`
-  width: 322px;
-  height: 48px;
-  margin-bottom: 25px;
-`
+	width: 322px;
+	height: 48px;
+	margin-bottom: 25px;
+`;
 const S_Label = styled.label`
 	display: block;
 	font-size: 12px;

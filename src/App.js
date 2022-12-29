@@ -18,7 +18,7 @@ import ProductEditPage from './pages/Product/ProductEditPage';
 import Page404 from './pages/ErrorPage/Page404';
 import PostDetailPage from './pages/Post/PostDetailPage';
 import PostUploadPage from './pages/Post/PostUploadPage';
-import Provider from './component/context/Provider';
+import AppProvider from './component/context/AppProvider';
 import FollowerPage from './pages/Follow/FollowerPage';
 import FollowingPage from './pages/Follow/FollowingPage';
 import ChatListPage from './pages/Chat/ChatListPage';
@@ -70,9 +70,9 @@ function Main() {
 
 export default function App() {
 	return (
-		<Provider>
+		<AppProvider>
 			<Main />
-		</Provider>
+		</AppProvider>
 	);
 }
 
