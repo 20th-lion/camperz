@@ -1,7 +1,7 @@
 export const productValidation = (name, value) => {
-	const regex = /^(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}$/gi;
+	const regex = /^(http(s)?:\/\/)?([a-z0-9\w]+\.*)+[a-z0-9]{2,4}$/gi;
 	if (name === 'price') {
-		return Number.isInteger(+value);
+		return Number.isInteger(+value) && +value > 0;
 	} else if (name === 'link') {
 		return regex.test(value);
 	}

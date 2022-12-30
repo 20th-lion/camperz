@@ -26,6 +26,7 @@ export default function ProductItem({ itemName, price, itemImage, link, id, onlo
 				navigate(`/product/${id}/edit`);
 			},
 			onMove: () => {
+				console.log(link);
 				window.open(link);
 			},
 			type,

@@ -55,7 +55,7 @@ export default function ProfileEditPage() {
 				}
 				rightChild={<Button text={'저장'} onClick={handleSaveBtn} active={btnActive} />}
 			/>
-			<Main>
+			<S_Main>
 				<ProfileForm
 					setUserInfo={setUserInfo}
 					userInfo={userInfo}
@@ -63,12 +63,12 @@ export default function ProfileEditPage() {
 					setErrorMsg={setErrorMsg}
 					errorMsg={errorMsg}
 				/>
-			</Main>
+			</S_Main>
 		</>
 	);
 }
 
-const Main = styled.main`
+const S_Main = styled.main`
 	justify-content: flex-start;
 	height: calc(100vh - 48px);
 	padding-top: 66px;
