@@ -3,16 +3,19 @@ import ChatList from '../../component/chat/ChatList';
 import NavBar from '../../component/common/NavBar';
 import Footer from '../../component/common/Footer';
 import styled from 'styled-components';
+import WeatherContents from '../../component/chat/WeatherContents';
+
 export default function ChatListPage() {
 	return (
 		<>
 			<Header />
 			<S_Wapper>
 				<S_Main>
+					<WeatherContents />
 					<ChatList />
 				</S_Main>
 			</S_Wapper>
-				<Footer />
+			<Footer />
 			<NavBar page="message" />
 		</>
 	);
