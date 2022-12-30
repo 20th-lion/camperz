@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { getMyInfo } from '../../lib/apis/profileApis';
 
-export default function CommentBox({ post_id, setCommentList, commentList, placeholder }) {
+export default function CommentBox({ post_id, setCommentList, commentList }) {
 	const inputRef = useRef();
 	const [commentContent, setCommentContent] = useState('');
 
@@ -43,7 +43,7 @@ export default function CommentBox({ post_id, setCommentList, commentList, place
   					ref={inputRef}
   					onChange={CommentInputValidator}
   					value={commentContent}
-  					placeholder={placeholder}
+  					placeholder="댓글 입력하기..."
   					onKeyDown={enterEventHandler}
   				/>
   				{!!commentContent ? (
@@ -86,13 +86,14 @@ const S_CommentInput = styled.input`
 	border-radius: 18px;
 	border: 1px solid ${palette.bottomBar[2]};
 	background-color: ${palette.bottomBar[1]};
-	padding: 0 13px 1px;
+	padding: 0 38px 0 13px;
 	font-size: 14px;
+  line-height: 15px;
 	font-weight: 400;
 	::placeholder {
-		padding-bottom: 3px;
-		font-size: 12px;
-		font-weight: 300;
+    line-height: 20px;
+		font-size: 13px;
+		font-weight: 100;
 	}
 `;
 const S_CommentUploadButton = styled.img`
