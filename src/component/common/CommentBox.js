@@ -61,7 +61,7 @@ export default function CommentBox({ post_id, setCommentList, commentList }) {
 
 const S_StickyBox = styled.div`
   position: sticky;
-  bottom: 0;
+  bottom: 0px;
 `
 const S_CommentBox = styled.div`
 	display: flex;

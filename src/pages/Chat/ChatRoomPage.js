@@ -14,18 +14,16 @@ export default function ChatRoomPage() {
 	return (
 		<>
 			<Header rightChild={<S_ModalBtn src={moreHeader} />} />
-			<main>
-			  <S_main>
-  				<S_OtherPersonWrapper>
-  					<S_OtherPersonImg src={userImg} />
-  					<S_OtherPersonContent>{otherData}</S_OtherPersonContent>
-  				</S_OtherPersonWrapper>
-  				<S_MyWrapper>
-  					<S_MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</S_MyTextContent>
-  					<S_MyImg src={placeImg} />
-  				</S_MyWrapper>
-  			</S_main>
-			</main>
+			<S_Main>
+				<S_OtherPersonWrapper>
+					<S_OtherPersonImg src={userImg} />
+					<S_OtherPersonContent>{otherData}</S_OtherPersonContent>
+				</S_OtherPersonWrapper>
+				<S_MyWrapper>
+					<S_MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</S_MyTextContent>
+					<S_MyImg src={placeImg} />
+				</S_MyWrapper>
+			</S_Main>
 			<CommentBox boxIcon={boxIcon} placeholder='메시지 보내기'/>
 		</>
 	);
@@ -36,17 +34,16 @@ const S_ModalBtn = styled.img`
 	height: 22px;
 	cursor: pointer;
 `;
-const S_main = styled.main`
+const S_Main = styled.main`
 	justify-content: flex-end;
 	align-items: flex-start;
-	background-color: #fefcf3;
-  /* position: relative; */
-  position: sticky;
-  bottom: 60px;
+	background-color: #FEFCF3;
 	padding: 20px;
 	font-size: 14px;
 	line-height: 19px;
-  /* height: calc(100vh - 168px); */
+  position: relative;
+  height: calc(100vh - 48px);
+  overflow-y: scroll;
 `;
 const S_OtherPersonWrapper = styled.div`
 	display: flex;
@@ -68,6 +65,7 @@ const S_OtherPersonContent = styled.p`
 `;
 const S_MyWrapper = styled.div`
 	text-align: right;
+  padding-bottom: 40px;
 `;
 const S_MyTextContent = styled.p`
 	display: inline-block;
