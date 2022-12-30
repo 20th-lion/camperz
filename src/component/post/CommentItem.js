@@ -95,7 +95,7 @@ const S_Comment = styled.div`
 	font-size: 14px;
 	font-weight: 400;
 `;
-const S_UserDate = styled.p`
+const S_UserDate = styled.div`
 	span {
 		color: #767676;
 		font-size: 12px;
