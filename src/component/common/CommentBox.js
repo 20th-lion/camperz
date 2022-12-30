@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { getMyInfo } from '../../lib/apis/profileApis';
 
-export default function CommentBox({ post_id, setCommentList, commentList }) {
+export default function CommentBox({ post_id, setCommentList, commentList, placeholder }) {
 	const inputRef = useRef();
 	const [commentContent, setCommentContent] = useState('');
 
@@ -43,7 +43,7 @@ export default function CommentBox({ post_id, setCommentList, commentList }) {
   					ref={inputRef}
   					onChange={CommentInputValidator}
   					value={commentContent}
-  					placeholder="댓글 입력하기..."
+  					placeholder={placeholder}
   					onKeyDown={enterEventHandler}
   				/>
   				{!!commentContent ? (

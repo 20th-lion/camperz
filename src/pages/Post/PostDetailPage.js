@@ -25,7 +25,7 @@ export default function PostDetailPage() {
 				</S_Main>
 				<Footer />
 			</S_Wapper>
-			<CommentBox post_id={id} boxIcon={boxIcon} setCommentList={setCommentList} commentList={commentList} />
+			<CommentBox post_id={id} boxIcon={boxIcon} setCommentList={setCommentList} commentList={commentList} placeholder='댓글 입력하기...' />
 		</>
 	);
 }

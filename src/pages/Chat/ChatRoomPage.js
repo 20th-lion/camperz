@@ -14,17 +14,19 @@ export default function ChatRoomPage() {
 	return (
 		<>
 			<Header rightChild={<S_ModalBtn src={moreHeader} />} />
-			<S_main>
-				<S_OtherPersonWrapper>
-					<S_OtherPersonImg src={userImg} />
-					<S_OtherPersonContent>{otherData}</S_OtherPersonContent>
-				</S_OtherPersonWrapper>
-				<S_MyWrapper>
-					<S_MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</S_MyTextContent>
-					<S_MyImg src={placeImg} />
-				</S_MyWrapper>
-			</S_main>
-			<CommentBox boxIcon={boxIcon} />
+			<main>
+			  <S_main>
+  				<S_OtherPersonWrapper>
+  					<S_OtherPersonImg src={userImg} />
+  					<S_OtherPersonContent>{otherData}</S_OtherPersonContent>
+  				</S_OtherPersonWrapper>
+  				<S_MyWrapper>
+  					<S_MyTextContent>아 거기 좋죠!!! 사진 여깄습니다!</S_MyTextContent>
+  					<S_MyImg src={placeImg} />
+  				</S_MyWrapper>
+  			</S_main>
+			</main>
+			<CommentBox boxIcon={boxIcon} placeholder='메시지 보내기'/>
 		</>
 	);
 }
@@ -38,9 +40,13 @@ const S_main = styled.main`
 	justify-content: flex-end;
 	align-items: flex-start;
 	background-color: #fefcf3;
+  /* position: relative; */
+  position: sticky;
+  bottom: 60px;
 	padding: 20px;
 	font-size: 14px;
 	line-height: 19px;
+  /* height: calc(100vh - 168px); */
 `;
 const S_OtherPersonWrapper = styled.div`
 	display: flex;
