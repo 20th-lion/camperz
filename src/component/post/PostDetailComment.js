@@ -9,7 +9,7 @@ export default function PostDetailComment({ post_id, setCommentList, commentList
 			setCommentList([...res.data.comments]);
 		});
 	}, []);
-
+	console.log(commentList);
 	return (
 		<>
 			<S_CommentList>
