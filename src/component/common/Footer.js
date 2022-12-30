@@ -57,9 +57,9 @@ export default function Footer() {
 							title=" 사이트 GitHub 페이지로 이동하기"
 						/>
 						{/* 밑에 태그는 저작권 관련 태그입니다. 삭제하지 마세요. */}
-						<a class="ir" href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">
-							Github 아이콘 제작자: Pixel perfect - Flaticon
-						</a>
+					</a>
+					<a className="ir" href="https://www.flaticon.com/kr/free-icons/github" title="github 아이콘">
+						Github 아이콘 제작자: Pixel perfect - Flaticon
 					</a>
 				</S_ContactWrapper>
 				<S_CopyrightWrapper>© 2022 CAMPERZ from LikeLion 3th All right reserved.</S_CopyrightWrapper>
@@ -118,7 +118,7 @@ const S_ContactBox = styled.div`
 	color: #a8a8a8;
 `;
 
-const S_ContactInfo = styled.p`
+const S_ContactInfo = styled.span`
 	display: inline-block;
 	margin-bottom: 5px;
 	margin-left: 7px;

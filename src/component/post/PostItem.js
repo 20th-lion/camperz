@@ -153,7 +153,7 @@ const S_ModalIconImg = styled.img`
 	margin-top: 6px;
 	cursor: pointer;
 `;
-const S_ContentBox = styled.p`
+const S_ContentBox = styled.div`
 	margin-left: 61px;
 `;
 const S_Text = styled.div`

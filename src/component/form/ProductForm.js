@@ -1,17 +1,13 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import iconSrc from '../../assets/icons/img_upload_post.png';
 import { productValidation } from '../../lib/utils/productValidation';
+import iconSrc from '../../assets/icons/img_upload_post.png';
 import emptyImg from '../../assets/image/product_empty_img.png';
 
 export default function ProductForm({ setProductInfo, productInfo, setBtnActive }) {
 	const photoInput = useRef();
 	const [currentImg, setCurrentImg] = useState('');
-	const [validation, setValidation] = useState({
-		price: '',
-		link: '',
-	});
 
 	const onChange = (e) => {
 		const { name, value } = e.target;
@@ -19,24 +15,22 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 			...productInfo,
 			[name]: value,
 		});
-		setValidation({ ...validation, [name]: productValidation(name, value) });
 	};
 
-	if (
-		productInfo.itemName !== '' &&
-		productInfo.price > 0 &&
-		productInfo.link !== '' &&
-		productInfo.itemImage !== '' &&
-		validation.price &&
-		validation.link
-	) {
-		setBtnActive(true);
-	} else {
-		setBtnActive(false);
-	}
+	useEffect(() => {
+		if (
+			!!productInfo.itemName &&
+			!!productInfo.itemImage &&
+			productValidation('price', productInfo.price) &&
+			productValidation('link', productInfo.link)
+		) {
+			setBtnActive(true);
+		} else {
+			setBtnActive(false);
+		}
+	}, [productInfo]);
 
 	const handleImgChange = (e) => {
-		console.log(productInfo);
 		setProductInfo({
 			...productInfo,
 			itemImage: e.target.files[0],
@@ -54,7 +48,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 						photoInput.current.click();
 					}}
 				>
-					<S_ButtonImg src={iconSrc}/>
+					<S_ButtonImg src={iconSrc} />
 					<input
 						name="image"
 						id="image"
@@ -94,7 +88,7 @@ export default function ProductForm({ setProductInfo, productInfo, setBtnActive 
 					name="link"
 					value={productInfo.link}
 					onChange={onChange}
-					placeholder="URL을 입력해 주세요"
+					placeholder="http(s):// 형식으로 입력해 주세요"
 				/>
 			</S_InputBox>
 		</>
