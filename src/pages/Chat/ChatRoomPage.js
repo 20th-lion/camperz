@@ -24,7 +24,7 @@ export default function ChatRoomPage() {
 					<S_MyImg src={placeImg} />
 				</S_MyWrapper>
 			</S_Main>
-			<CommentBox boxIcon={boxIcon} />
+			<CommentBox boxIcon={boxIcon} placeholder='메시지 보내기'/>
 		</>
 	);
 }

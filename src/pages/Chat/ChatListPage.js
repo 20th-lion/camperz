@@ -11,8 +11,8 @@ export default function ChatListPage() {
 				<S_Main>
 					<ChatList />
 				</S_Main>
-				<Footer />
 			</S_Wapper>
+				<Footer />
 			<NavBar page="message" />
 		</>
 	);
