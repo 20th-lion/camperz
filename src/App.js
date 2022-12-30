@@ -30,7 +30,7 @@ function Main() {
 	return (
 		<>
 			<GlobalStyle />
-      <Background />
+			<Background />
 			<FrameContainer>
 				<BrowserRouter>
 					<Routes>
@@ -87,6 +87,5 @@ const FrameContainer = styled.div`
 	margin: 0 auto;
 	background-color: #f3f1e8;
 	box-shadow: 0px 0px 10px #adadad;
-  position: relative;
-  z-index: 10;
+	position: relative;
 `;
