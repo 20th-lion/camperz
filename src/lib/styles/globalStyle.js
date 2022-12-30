@@ -20,8 +20,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: rgb(217,205,124);
-    background: linear-gradient(115deg, rgba(217,205,124,1) 0%, rgba(234,241,231,1) 66%, rgba(194,218,181,1) 91%);
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300; /* 100 = 얇게, 300 = 보통, 400 = 두껍게 */
     overflow-y: hidden;
