@@ -15,23 +15,38 @@ export default function Background() {
 
   return (
     <>
-      <S_Wrapper onMouseMove={handleMoving}>
-
-        <S_Mold>CAMPERZ</S_Mold>
-        <S_FillingBox className='fillingBox'>
-          <S_Filling className='filling'>CAMPERZ</S_Filling>
-        </S_FillingBox>
-        <S_A 
-          href='https://github.com/20th-lion/camperz'>
-          캠퍼즈 깃헙 바로가기
-          <S_Img src={arrow}/>
-        </S_A>
-      </S_Wrapper>
+      <S_BG onMouseMove={handleMoving}>
+        <S_Wrapper>
+          <S_Mold>
+            <li>CAMPERZ</li>
+            <li>-</li>
+            <li>by</li>
+            <li>20th</li>
+            <li>century</li>
+            <li>lions</li>
+          </S_Mold>
+          <S_FillingBox className='fillingBox'>
+            <S_Filling className='filling'>
+              <li>CAMPERZ</li>
+              <li>-</li>
+              <li>by</li>
+              <li>20th</li>
+              <li>century</li>
+              <li>lions</li>
+            </S_Filling>
+          </S_FillingBox>
+          <S_A 
+            href='https://github.com/20th-lion/camperz'>
+            캠퍼즈 깃헙 바로가기
+            <S_Img src={arrow}/>
+          </S_A>
+        </S_Wrapper>
+      </S_BG>
     </>
   );
 }
 
-const S_Wrapper = styled.div`
+const S_BG = styled.div`
   width: 100vw;
   height: 100vh;
   background: #F7F7F7;
@@ -40,10 +55,14 @@ const S_Wrapper = styled.div`
   line-height: 70px;
   font-family: 'Racing Sans One';
 `
-const S_Mold = styled.div`
+const S_Wrapper = styled.div`
+  margin-left: 5%;
+  height: 100%;
+  position: relative;
+`
+const S_Mold = styled.ul`
   position: absolute;
-  top: 50px;
-  left: 80px;
+  top: 7%;
   color: transparent;
   -webkit-text-stroke: 1px black;
 `
@@ -52,15 +71,14 @@ const S_FillingBox = styled.div`
   height: 70px;
   overflow: hidden;
 `
-const S_Filling = styled.div`
+const S_Filling = styled.ul`
   position: absolute;
-  top: 50px;
-  left: 80px;
+  top: 74%;
 `
 const S_A = styled.a`
-  position: relative;
-  left: 235px;
-  top: 10px;
+  position: absolute;
+  left: 155px;
+  top: 14%;
   font-size: 18px;
   color: #000;
   ::before {
@@ -69,13 +87,13 @@ const S_A = styled.a`
     width: 200px;
     height: 1px;
     position: absolute;
-    bottom: -1px;
+    bottom: 20px;
     background-color: #DBDBDB;
   }
 `
 const S_Img = styled.img`
 position: absolute;
-bottom: 6px;
-right: -30px;
+bottom: 31px;
+right: -29px;
 height: 8px;
 `
