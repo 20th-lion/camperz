@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import GlobalStyle from './lib/styles/globalStyle';
 import Background from './component/background/Background';
+import GlobalStyle from './lib/styles/globalStyle';
 import styled from 'styled-components';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
