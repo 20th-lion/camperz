@@ -9,7 +9,6 @@ import Cloud from '../../assets/icons/cloud.png';
 import Cloud_thunder from '../../assets/icons/cloud_thunder.png';
 import Doublecloud from '../../assets/icons/doublecloud.png';
 import Hazzy from '../../assets/icons/hazzy.png';
-
 import Rainy from '../../assets/icons/rainy.png';
 import Rainy_day from '../../assets/icons/rainy_day.png';
 import Snow from '../../assets/icons/snow.png';
@@ -23,40 +22,55 @@ const api = {
 };
 
 export default function WeatherContents() {
-	const city = "Seoul";
-	const url = `${api.base}weather?q=${city}&appid=${api.key}`;
+
+
 	const [weather, setWeather] = useState("");
-	useEffect(() => {
-		axios.get(url).then((responseData) => {
-			const data = responseData.data;
-			console.log(data);
-			setWeather({
-				id: data.weather[0].id, //날씨 조건
-				main: data.weather[0].main, //날씨
-				temp_max: data.main.temp_max, // 최고기온
-				temp_min: data.main.temp_min, // 최저기온
-				temp: data.main.temp, // 현재기온
-				sunrise: data.sys.sunrise, //일출시간
-				sunset: data.sys.sunset, //일몰시간
-				name: data.name, //도시이름
-				dt: data.dt, //예보시간
-				icon: data.weather[0].icon,
-				loading: false,
+
+	const getCurrentLocation = () => {
+		navigator.geolocation.getCurrentPosition((position) => {
+			//현재위치
+			let lat = position.coords.latitude;
+			let lon = position.coords.longitude;
+			console.log("현재 위치", lat, lon);
+			const url = `${api.base}weather?lat=${lat}&lon=${lon}&appid=${api.key}&units=metric`;
+			axios.get(url).then((responseData) => {
+				const data = responseData.data;
+				console.log(data);
+				setWeather({
+					id: data.weather[0].id, //날씨 조건
+					main: data.weather[0].main, //날씨
+					temp_max: data.main.temp_max, // 최고기온
+					temp_min: data.main.temp_min, // 최저기온
+					temp: data.main.temp, // 현재기온
+					sunrise: data.sys.sunrise, //일출시간
+					sunset: data.sys.sunset, //일몰시간
+					name: data.name, //도시이름
+					dt: data.dt, //예보시간
+					icon: data.weather[0].icon,
+					loading: false,
+				});
 			});
 		});
+	};
+
+	useEffect(() => {
+		getCurrentLocation();
 	}, []);
+
+
+
 	const timestamp = weather.dt
 	let myDate = new Date(timestamp * 1000);
-	let timedate = (myDate.getMonth() + 1) + "월" + myDate.getDate() + "일" +
-		" " + myDate.getHours() + "시" + myDate.getMinutes() + "분";
+	let timedate = (myDate.getMonth() + 1).toString().padStart(2, '0') + "월" + myDate.getDate().toString().padStart(2, '0') + "일" +
+		" " + myDate.getHours().toString().padStart(2, '0') + "시" + myDate.getMinutes().toString().padStart(2, '0') + "분";
 
 	const sunrisetime = weather.sunrise
 	let myDate2 = new Date(sunrisetime * 1000);
-	let sunrisedate = myDate2.getHours() + "시" + myDate2.getMinutes() + "분";
+	let sunrisedate = myDate2.getHours().toString().padStart(2, '0') + "시" + myDate2.getMinutes().toString().padStart(2, '0') + "분";
 
 	const sunsettime = weather.sunset
 	let myDate3 = new Date(sunsettime * 1000);
-	let sunsetdate = myDate3.getHours() + "시" + myDate3.getMinutes() + "분";
+	let sunsetdate = myDate3.getHours().toString().padStart(2, '0') + "시" + myDate3.getMinutes().toString().padStart(2, '0') + "분";
 
 	const selectIcon = () => {
 
@@ -96,17 +110,17 @@ export default function WeatherContents() {
 						<S_Temp>
 							<li>
 								<S_HighestTemp>최고기온</S_HighestTemp>
-								<S_HighestCount>{(weather.temp_max - 273.15).toFixed(2)}<S_Celsius src={Ellipse} /></S_HighestCount>
+								<S_HighestCount>{weather.temp_max}<S_Celsius src={Ellipse} /></S_HighestCount>
 
 							</li>
 							<li>
 								<S_MinimumTemp>최저기온</S_MinimumTemp>
-								<S_MinimumCount>{(weather.temp_min - 273.15).toFixed(2)}<S_Celsius src={Ellipse} /></S_MinimumCount>
+								<S_MinimumCount>{weather.temp_min}<S_Celsius src={Ellipse} /></S_MinimumCount>
 
 							</li>
 							<li>
 								<S_TempCurrent>현재기온</S_TempCurrent>
-								<S_TempCurrentCount>{(weather.temp - 273.15).toFixed(2)}<S_Celsius src={Ellipse} /></S_TempCurrentCount>
+								<S_TempCurrentCount>{weather.temp}<S_Celsius src={Ellipse} /></S_TempCurrentCount>
 
 							</li>
 						</S_Temp>
