@@ -170,6 +170,7 @@ const S_ContentBox = styled.div`
 `;
 const S_Text = styled.div`
 	margin-top: 8px;
+  margin-right: 14px;
 	font-size: 14px;
 	font-weight: 300;
 	line-height: 18px;
