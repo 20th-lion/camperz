@@ -21,7 +21,7 @@ export default function AuthForm({ formType, errorMsg, onSubmit, onVerifyEmail, 
 	}, [errorMsg, inputs]);
 
 	// 인풋 입력값 얻기
-	const handleInputEntered = (e) => {
+	const handleInputChange = (e) => {
 		setInputs({
 			...inputs,
 			[e.target.name]: e.target.value,
@@ -38,7 +38,7 @@ export default function AuthForm({ formType, errorMsg, onSubmit, onVerifyEmail, 
 			}
 		} else {
 			//errorMsg가 모두 null이고 input값이 비어있지 않으면 버튼 활성화
-			if (Object.values(errorMsg).every((v) => !v) && !!inputs.email && !!inputs.password) {
+			if (Object.values(errorMsg).every((v) => v !== null) && !!inputs.email && !!inputs.password) {
 				setBtnActive(true);
 			} else {
 				setBtnActive(false);
@@ -63,7 +63,7 @@ export default function AuthForm({ formType, errorMsg, onSubmit, onVerifyEmail, 
 						name="email"
 						value={inputs.email}
 						type="text"
-						onChange={handleInputEntered}
+						onChange={handleInputChange}
 						onBlur={onVerifyEmail}
 						id="email"
 						placeholder="이메일을 입력해주세요"
@@ -76,7 +76,7 @@ export default function AuthForm({ formType, errorMsg, onSubmit, onVerifyEmail, 
 						name="password"
 						value={inputs.password}
 						type="password"
-						onChange={handleInputEntered}
+						onChange={handleInputChange}
 						onBlur={onValidatePassword}
 						id="password"
 						placeholder="비밀번호를 입력해주세요"
