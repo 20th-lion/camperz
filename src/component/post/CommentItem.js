@@ -99,6 +99,7 @@ const S_Comment = styled.div`
 	font-size: 14px;
 	font-weight: 400;
 	min-width: 240px;
+	word-wrap: break-word;
 `;
 const S_UserDate = styled.div`
 	span {
@@ -113,10 +114,10 @@ const S_CommenterName = styled.div`
 	cursor: pointer;
 `;
 const S_content = styled.p`
-  margin-right: 14px;
-  font-weight: 300;
-  line-height: 18px;
-`
+	margin-right: 14px;
+	font-weight: 300;
+	line-height: 18px;
+`;
 const S_CommentModalButton = styled.img`
 	width: 20px;
 	height: 20px;
