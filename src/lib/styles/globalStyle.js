@@ -85,7 +85,7 @@ const GlobalStyle = createGlobalStyle`
 
   .loading-indicator:before {
     content: '';
-    background: rgba(243, 241, 232, 1);
+    background: rgba(243, 241, 232, 0);
     position: fixed;
     width: 390px;
     height: 100%;
