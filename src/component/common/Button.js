@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import palette from './../../lib/styles/palette';
 
 export default function Button({ onClick, text, active }) {
 	return (
@@ -12,7 +11,7 @@ export default function Button({ onClick, text, active }) {
 }
 
 const S_Button = styled.button`
-	background-color: ${palette.khaki[0]};
+	background-color: '#5C6145';
 	width: 85px;
 	height: 32px;
 	border-radius: 32px;
@@ -25,7 +24,7 @@ const S_Button = styled.button`
 	${(props) =>
 		!props.active &&
 		css`
-			background-color: ${palette.khaki[1]};
+			background-color: '#8F9475';
 			:hover {
 			}
 			pointer-events: none;
