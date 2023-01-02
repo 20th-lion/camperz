@@ -21,6 +21,7 @@ export default function UserProfile({ type, user }) {
 		isfollow: '',
 		intro: '',
 	});
+
 	const { image, accountname, username, followerCount, followingCount, isfollow, intro } = userInfo;
 
 	useEffect(() => {

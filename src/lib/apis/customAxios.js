@@ -20,6 +20,8 @@ export const axiosPrivate = axios.create({
 
 axiosPrivate.interceptors.request.use(
 	(config) => {
+		document.body.classList.add('loading-indicator');
+
 		if (!TOKEN) {
 			config.headers['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 		}
@@ -27,4 +29,15 @@ axiosPrivate.interceptors.request.use(
 		return config;
 	},
 	(error) => Promise.reject(error),
+);
+
+axiosPrivate.interceptors.response.use(
+	function (response) {
+		document.body.classList.remove('loading-indicator');
+
+		return response;
+	},
+	function (error) {
+		return Promise.reject(error);
+	},
 );

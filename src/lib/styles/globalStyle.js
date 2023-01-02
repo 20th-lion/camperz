@@ -82,6 +82,29 @@ const GlobalStyle = createGlobalStyle`
   textarea::placeholder {
     color: #92918A;
   }
+
+  .loading-indicator:before {
+    content: '';
+    background: rgba(243, 241, 232, 1);
+    position: fixed;
+    width: 390px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.loading-indicator::after {
+    content: url("https://mandarin.api.weniv.co.kr/1672628195069.gif");
+    position: fixed;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    z-index: 1001;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+}
 `;
 
 export default GlobalStyle;

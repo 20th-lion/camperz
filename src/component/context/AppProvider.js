@@ -5,7 +5,6 @@ import { LoginDispatchContext, LoginStateContext } from './LoginContext';
 export default function AppProvider({ children }) {
 	const [openedModals, setOpenedModals] = useState([]);
 	const [isLogedIn, setIsLogedIn] = useState(!!localStorage.getItem('token'));
-
 	const login = async (token, accountname) => {
 		localStorage.setItem('token', token);
 		localStorage.setItem('accountname', accountname);
