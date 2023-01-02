@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { getUserInfo } from '../../lib/apis/profileApis';
 import { followUser, unfollowUser } from '../../lib/apis/followApis';
 import ButtonBig from '../common/ButtonBig';
-import palette from '../../lib/styles/palette';
 import chatIcon from '../../assets/icons/yourProfile_chat.png';
 import shareIcon from '../../assets/icons/yourProfile_share.png';
 import defaultProfileImg from '../../assets/icons/basic_profile.png';
@@ -153,12 +152,12 @@ const S_FollowCount = styled.strong`
 	display: block;
 	font-weight: 400;
 	font-size: 21px;
-	color: ${palette.followcount[0]};
+	color: '#000000';
 `;
 const S_FollowSpan = styled.span`
 	font-weight: 400;
 	font-size: 10px;
-	color: ${palette.accountname[0]};
+	color: '#767676';
 `;
 const S_ProfileBtnWrap = styled.div`
 	display: flex;
@@ -169,9 +168,9 @@ const S_ProfileBtnIcon = styled.button`
 	align-items: center;
 	width: 32px;
 	height: 32px;
-	border: 1px solid ${palette.profileBtnIcon[0]};
+	border: 1px solid '#dbdbdb';
 	border-radius: 50%;
-	background-color: ${palette.background[0]};
+	background-color: '#F3F1E8';
 `;
 const S_ChatIcon = styled.img`
 	width: 32px;
