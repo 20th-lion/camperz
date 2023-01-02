@@ -13,6 +13,7 @@ import Rainy from '../../assets/icons/rainy.png';
 import Rainy_day from '../../assets/icons/rainy_day.png';
 import Snow from '../../assets/icons/snow.png';
 import Sunny from '../../assets/icons/sunny.png';
+import ErrImg from '../../assets/icons/ErrLocation.png';
 
 const api = {
 	key: 'de96b0d5b41ea37dba4fadd2f9b11170',
@@ -21,6 +22,7 @@ const api = {
 
 export default function WeatherContents() {
 	const [weather, setWeather] = useState('');
+	const [locationErr, setlocationErr] = useState('');
 
 	const getCurrentLocation = () => {
 		navigator.geolocation.getCurrentPosition((position) => {
@@ -31,7 +33,7 @@ export default function WeatherContents() {
 			const url = `${api.base}weather?lat=${lat}&lon=${lon}&appid=${api.key}&units=metric`;
 			axios.get(url).then((responseData) => {
 				const data = responseData.data;
-				// console.log(data);
+				console.log(data);
 				setWeather({
 					id: data.weather[0].id, //날씨 조건
 					main: data.weather[0].main, //날씨
@@ -46,8 +48,13 @@ export default function WeatherContents() {
 					loading: false,
 				});
 			});
+		}, (err) => {
+			console.log("geo err! " + err);
+			setlocationErr(true);
 		});
 	};
+
+
 
 	useEffect(() => {
 		getCurrentLocation();
@@ -102,60 +109,82 @@ export default function WeatherContents() {
 
 	return (
 		<>
-			<S_WeatherWrap>
-				<S_Title>today's weather</S_Title>
-				<S_Cont>
-					<S_LeftCont>
-						<S_Weather>날씨</S_Weather>
-						{selectIcon()}
-						<S_WeatherInfo>{weather.main}</S_WeatherInfo>
-					</S_LeftCont>
-					<S_RightCont>
-						<S_Temp>
-							<li>
-								<S_HighestTemp>최고기온</S_HighestTemp>
-								<S_HighestCount>
-									{weather.temp_max}
-									<S_Celsius src={Ellipse} />
-								</S_HighestCount>
-							</li>
-							<li>
-								<S_MinimumTemp>최저기온</S_MinimumTemp>
-								<S_MinimumCount>
-									{weather.temp_min}
-									<S_Celsius src={Ellipse} />
-								</S_MinimumCount>
-							</li>
-							<li>
-								<S_TempCurrent>현재기온</S_TempCurrent>
-								<S_TempCurrentCount>
-									{weather.temp}
-									<S_Celsius src={Ellipse} />
-								</S_TempCurrentCount>
-							</li>
-						</S_Temp>
+			{locationErr ? (
+				<S_WeatherWrap>
+					<S_Title>today's weather</S_Title>
+					<S_ErrImg src={ErrImg} alt="위치 정보 오류"></S_ErrImg>
+					<S_ErrText>위치정보를 불러올 수 없습니다.</S_ErrText>
+				</S_WeatherWrap>
+			)
 
-						<S_Location>
-							<S_ForecastTime>{weather.name}</S_ForecastTime>
-							<S_CurrentLocation>{timedate}</S_CurrentLocation>
-						</S_Location>
+				: (<S_WeatherWrap>
+					<S_Title>today's weather</S_Title>
+					<S_Cont>
+						<S_LeftCont>
+							<S_Weather>날씨</S_Weather>
+							{selectIcon()}
+							<S_WeatherInfo>{weather.main}</S_WeatherInfo>
+						</S_LeftCont>
+						<S_RightCont>
+							<S_Temp>
+								<li>
+									<S_HighestTemp>최고기온</S_HighestTemp>
+									<S_HighestCount>
+										{weather.temp_max}
+										<S_Celsius src={Ellipse} />
+									</S_HighestCount>
+								</li>
+								<li>
+									<S_MinimumTemp>최저기온</S_MinimumTemp>
+									<S_MinimumCount>
+										{weather.temp_min}
+										<S_Celsius src={Ellipse} />
+									</S_MinimumCount>
+								</li>
+								<li>
+									<S_TempCurrent>현재기온</S_TempCurrent>
+									<S_TempCurrentCount>
+										{weather.temp}
+										<S_Celsius src={Ellipse} />
+									</S_TempCurrentCount>
+								</li>
+							</S_Temp>
 
-						<S_Sun>
-							<S_Sunrise>
-								<S_SunriseImg src={Sunrise} alt=""></S_SunriseImg>
-								<S_SunInfo>일출 : {sunrisedate}</S_SunInfo>
-							</S_Sunrise>
-							<S_Sunset>
-								<S_SunsetImg src={Sunset} alt=""></S_SunsetImg>
-								<S_SunInfo>일몰 : {sunsetdate}</S_SunInfo>
-							</S_Sunset>
-						</S_Sun>
-					</S_RightCont>
-				</S_Cont>
-			</S_WeatherWrap>
+							<S_Location>
+								<S_ForecastTime>{weather.name}</S_ForecastTime>
+								<S_CurrentLocation>{timedate}</S_CurrentLocation>
+							</S_Location>
+
+							<S_Sun>
+								<S_Sunrise>
+									<S_SunriseImg src={Sunrise} alt=""></S_SunriseImg>
+									<S_SunInfo>일출 : {sunrisedate}</S_SunInfo>
+								</S_Sunrise>
+								<S_Sunset>
+									<S_SunsetImg src={Sunset} alt=""></S_SunsetImg>
+									<S_SunInfo>일몰 : {sunsetdate}</S_SunInfo>
+								</S_Sunset>
+							</S_Sun>
+						</S_RightCont>
+					</S_Cont>
+				</S_WeatherWrap>)}
+
 		</>
 	);
 }
+
+const S_ErrImg = styled.img`
+	margin-left: 155px;
+	margin-top: 21px;
+	width: 48px;
+	height: 62px;
+`
+
+const S_ErrText = styled.p`
+	margin-top: 18px;
+	text-align: center;
+	font-size: 14px;
+`
 
 const S_WeatherWrap = styled.div`
 	width: 358px;
@@ -174,6 +203,7 @@ const S_Title = styled.p`
 	width: 111px;
 	justify-content: center;
 	margin-left: 124px;
+	margin-top: 4px;
 	padding: 1px;
 	font-size: 12px;
 	box-sizing: border-box;
