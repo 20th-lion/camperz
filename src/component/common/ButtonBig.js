@@ -26,7 +26,7 @@ const S_Button = styled.button`
 	${(props) =>
 		props.active === false &&
 		css`
-			background-color: '#8F9475';
+			background-color: #8f9475;
 			:hover {
 			}
 			pointer-events: none;
@@ -34,10 +34,10 @@ const S_Button = styled.button`
 	${(props) =>
 		props.isfollow
 			? css`
-					background-color: '#8F9475';
-					color: '#F3F1E8';
+					background-color: #8f9475;
+					color: #f3f1e8;
 			  `
 			: css`
-					background-color: '#5C6145';
+					background-color: #5c6145;
 			  `};
 `;

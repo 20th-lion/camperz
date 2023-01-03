@@ -11,7 +11,7 @@ export default function Button({ onClick, text, active }) {
 }
 
 const S_Button = styled.button`
-	background-color: '#5C6145';
+	background-color: #5c6145;
 	width: 85px;
 	height: 32px;
 	border-radius: 32px;
@@ -24,7 +24,7 @@ const S_Button = styled.button`
 	${(props) =>
 		!props.active &&
 		css`
-			background-color: '#8F9475';
+			background-color: #8f9475;
 			:hover {
 			}
 			pointer-events: none;
