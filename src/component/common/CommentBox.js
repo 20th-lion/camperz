@@ -68,7 +68,7 @@ const S_CommentBox = styled.div`
 	justify-content: center;
 	align-items: center;
 	border-top: 1px solid #dbdbdb;
-	background-color: '#E3E3D3';
+	background-color: #e3e3d3;
 	gap: 18px;
 	position: relative;
 `;
@@ -84,7 +84,7 @@ const S_CommentInput = styled.input`
 	height: 36px;
 	border-radius: 18px;
 	border: 1px solid #92918a;
-	background-color: '#E3E3D3';
+	background-color: #e3e3d3;
 	padding: 0 38px 0 13px;
 	font-size: 14px;
 	line-height: 15px;
