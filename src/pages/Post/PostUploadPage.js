@@ -22,6 +22,8 @@ export default function PostUploadPage() {
 			postDetailLoader(id).then((res) => {
 				setText(res.data.post.content);
 				setFileImage(res.data.post.image);
+				setPreConvertedImg(res.data.post.image);
+				// console.log(res);
 			});
 			setMode('edit');
 		} else if (id === undefined) {
@@ -36,6 +38,7 @@ export default function PostUploadPage() {
 			// console.log(e.target.files[0]);
 			setPreConvertedImg(e.target.files[0]);
 			setFileImage(URL.createObjectURL(e.target.files[0]));
+			console.log(e.target.files[0]);
 		}
 		// console.log(e.target.files[0]);
 		//e.target.files[0]는 0번째 이미지 값입니다.
