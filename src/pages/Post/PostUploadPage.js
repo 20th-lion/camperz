@@ -5,9 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ImgUploadButton from '../../component/common/ImgUploadButton';
 import UploadButton from '../../component/post/UploadButton';
 import Header from '../../component/common/Header';
-
 import { getMyInfo } from '../../lib/apis/profileApis';
-// import { postUploader } from '../../lib/apis/postApis';
 
 export default function PostUploadPage() {
 	const [text, setText] = useState('');
@@ -35,12 +33,9 @@ export default function PostUploadPage() {
 		if (e.target.files[0] === undefined) {
 			console.log('사진없음');
 		} else {
-			// console.log(e.target.files[0]);
 			setPreConvertedImg(e.target.files[0]);
 			setFileImage(URL.createObjectURL(e.target.files[0]));
-			console.log(e.target.files[0]);
 		}
-		// console.log(e.target.files[0]);
 		//e.target.files[0]는 0번째 이미지 값입니다.
 	};
 
