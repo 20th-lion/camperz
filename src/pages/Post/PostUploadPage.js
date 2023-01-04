@@ -5,9 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ImgUploadButton from '../../component/common/ImgUploadButton';
 import UploadButton from '../../component/post/UploadButton';
 import Header from '../../component/common/Header';
-
 import { getMyInfo } from '../../lib/apis/profileApis';
-// import { postUploader } from '../../lib/apis/postApis';
 
 export default function PostUploadPage() {
 	const [text, setText] = useState('');
@@ -22,12 +20,11 @@ export default function PostUploadPage() {
 			postDetailLoader(id).then((res) => {
 				setText(res.data.post.content);
 				setFileImage(res.data.post.image);
+				setPreConvertedImg(res.data.post.image);
+				// console.log(res);
 			});
-		}
-		if (id !== undefined) {
 			setMode('edit');
-		}
-		if (id === undefined) {
+		} else if (id === undefined) {
 			setMode('new');
 		}
 	}, []);
@@ -36,11 +33,9 @@ export default function PostUploadPage() {
 		if (e.target.files[0] === undefined) {
 			console.log('사진없음');
 		} else {
-			// console.log(e.target.files[0]);
 			setPreConvertedImg(e.target.files[0]);
 			setFileImage(URL.createObjectURL(e.target.files[0]));
 		}
-		// console.log(e.target.files[0]);
 		//e.target.files[0]는 0번째 이미지 값입니다.
 	};
 
@@ -108,16 +103,15 @@ const S_PostTextArea = styled.textarea`
 	width: 100%;
 	min-height: calc(50vh - 40px);
 
-  word-break: keep-all;
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 400;
-  word-break: break-all;
-  ::placeholder {
-    font-size: 12px;
-    font-weight: 100;
-  }
-
+	word-break: keep-all;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: 400;
+	word-break: break-all;
+	::placeholder {
+		font-size: 12px;
+		font-weight: 100;
+	}
 `;
 const S_PictureArea = styled.img`
 	width: 293px;

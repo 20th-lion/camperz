@@ -43,11 +43,22 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 		// 이미지가 있는 경우
 		if (fileImage !== undefined) {
 			await postImageUploader(preConvertedImg).then((res) => {
-				if (mode === 'edit') {
+				if (mode === 'edit' && typeof preConvertedImg === 'object') {
 					const postContent = {
 						post: {
 							content: text,
 							image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`,
+						},
+					};
+
+					postEditer(postId, postContent).then((res) => {
+						navigate(`/postdetail/${res.data.post.id}`, { replace: true });
+					});
+				} else {
+					const postContent = {
+						post: {
+							content: text,
+							image: preConvertedImg,
 						},
 					};
 
