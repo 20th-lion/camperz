@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export default function Button({ onClick, text, active }) {
+	console.log(active);
 	return (
 		<>
 			<S_Button onClick={onClick} active={active}>
