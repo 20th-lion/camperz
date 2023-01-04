@@ -14,16 +14,18 @@
 ---
 
   🚐 [1. 서비스 소개](#1) 💨  
-  🚐 [2. 프로젝트 목표](#2) 💨  
+  🚐 [2. 팀원 소개](#2) 💨  
   🚐 [3. 개발 기간](#3) 💨  
-  🚐 [4. 팀 문화와 협업 방법](#4) 💨  
-  🚐 [5. 팀원 소개 및 역할 분담](#5) 💨  
-  🚐 [6. 사용 기술과 개발 환경](#6) 💨  
-  🚐 [7. 폴더 구조](#7) 💨  
-  🚐 [8. 구현 기능](#8) 💨  
-  🚐 [9. 핵심기능, 코드 포인트](#9) 💨  
-  🚐 [10. 트러블슈팅](#10) 💨  
-  🚐 [11. 마무리](#11) 💨  
+  🚐 [4. 프로젝트 목표](#4) 💨  
+  🚐 [5. 우리가 일하는 방법](#5) 💨  
+  🚐 [6. 컨벤션](#6) 💨  
+  🚐 [7. 개발 환경](#7) 💨  
+  🚐 [8. 폴더 구조](#8) 💨  
+  🚐 [9. 역할 분담](#9) 💨  
+  🚐 [10. 기능 시연](#10) 💨  
+  🚐 [11. 코드 특징과 구현 방식](#11) 💨  
+  🚐 [12. 트러블슈팅](#11) 💨  
+  🚐 [13. 프로젝트를 마치며](#11) 💨  
 
 ---
 
@@ -169,24 +171,24 @@
 
 ### 1) 홈+채팅
 
-|[Splash](https://)|[회원가입/프로필 설정](https://)|[로그인](https://)|
+|[Splash](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#1-splash)|[회원가입/프로필 설정](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#2-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%ED%94%84%EB%A1%9C%ED%95%84-%EC%84%A4%EC%A0%95)|[로그인](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#3-%EB%A1%9C%EA%B7%B8%EC%9D%B8)|
 |:-:|:-:|:-:|
 |<img width=300 src='https://user-images.githubusercontent.com/70703716/210491885-2dcace18-ea58-4ac5-bf98-b74f2eaabdac.gif'> |<img width=300 src='https://user-images.githubusercontent.com/70703716/210498001-eea42291-6698-498a-908c-9e9d3bef2ad4.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210491123-49105262-ae47-4e4c-afe3-4ed575a4ebab.gif'>|
-|[홈 피드](https://)|[유저 검색](https://)|[날씨/채팅](https://)|
+|[**홈 피드**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#4-%ED%99%88-%ED%94%BC%EB%93%9C)|[**유저 검색**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#5-%EC%9C%A0%EC%A0%80-%EA%B2%80%EC%83%89)|[**날씨/채팅**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#6-%EB%82%A0%EC%94%A8%EC%B1%84%ED%8C%85)|
 |<img width=300 src='https://user-images.githubusercontent.com/70703716/210542124-613770d3-b63c-4297-9176-020007deccf2.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210491217-041f56f7-5e88-4db7-b08e-ce949358eaea.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210488539-7ff28cb1-6161-45a7-a626-822e0b72b7f8.gif'>|
 
 ## 2) 게시물 작성
 
-|[게시물 등록]()|[게시물 수정/삭제]()|[게시물 상세 페이지]()
+|[**게시물 등록**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#1-%EA%B2%8C%EC%8B%9C%EB%AC%BC-%EB%93%B1%EB%A1%9D)|[**게시물 수정/삭제**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#2-%EA%B2%8C%EC%8B%9C%EB%AC%BC-%EC%88%98%EC%A0%95%EC%82%AD%EC%A0%9C)|[**게시물 상세 페이지**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#3-%EA%B2%8C%EC%8B%9C%EB%AC%BC-%EC%83%81%EC%84%B8-%ED%8E%98%EC%9D%B4%EC%A7%80)
 |:-:|:-:|:-:|
 |<img width=300 src='https://user-images.githubusercontent.com/70703716/210488458-b40d874b-0d52-4b05-8f9c-afd750c036b1.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210488481-0840f315-b947-4687-90e4-13ff79073bf6.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210489095-2dd2b3e9-fd2a-4e63-ac5c-5d1d5183adca.gif'>
 
 ## 3) 프로필
 
-|[내 프로필]()|[프로필 수정]()|[상품 등록]()|
+|[**내 프로필**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#1-%EB%82%B4-%ED%94%84%EB%A1%9C%ED%95%84)|[**프로필 수정**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#2-%ED%94%84%EB%A1%9C%ED%95%84-%EC%88%98%EC%A0%95)|[**상품 등록**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#3-%EC%83%81%ED%92%88-%EB%93%B1%EB%A1%9D)|
 |:-:|:-:|:-:|
 |<img width=300 src='https://user-images.githubusercontent.com/70703716/210491281-4939dd30-b1f7-486a-a01e-1cab8e3e34bf.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210492413-9dcd9c4e-dad3-4c3d-807e-d3f74fb19549.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210488512-e9582886-87f5-4cce-af6c-27912170d482.gif'>
-|[상품 수정/삭제]()|[팔로잉/팔로워]()|[로그아웃]()|
+|[**상품 수정/삭제**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#4-%EC%83%81%ED%92%88-%EC%88%98%EC%A0%95%EC%82%AD%EC%A0%9C)|[**팔로잉/팔로워**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#5-%ED%8C%94%EB%A1%9C%EC%9E%89%ED%8C%94%EB%A1%9C%EC%9B%8C)|[**로그아웃**](https://github.com/20th-lion/camperz/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85#6-%EB%A1%9C%EA%B7%B8%EC%95%84%EC%9B%83)|
 |<img width=300 src='https://user-images.githubusercontent.com/70703716/210488517-05b3ce4b-004a-403e-8c31-9b1f4158c713.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210491754-e77b8eb2-a005-4b45-8be1-c614b6a180ee.gif'>|<img width=300 src='https://user-images.githubusercontent.com/70703716/210491136-4d216436-bfbe-4776-b012-837e9a1333a3.gif'>|
 
 
