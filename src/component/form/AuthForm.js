@@ -38,7 +38,7 @@ export default function AuthForm({ formType, errorMsg, onSubmit, onVerifyEmail, 
 			}
 		} else {
 			//errorMsg가 모두 null이고 input값이 비어있지 않으면 버튼 활성화
-			if (Object.values(errorMsg).every((v) => v !== null) && !!inputs.email && !!inputs.password) {
+			if (Object.values(errorMsg).every((v) => !v) && !!inputs.email && inputs.password.length > 5) {
 				setBtnActive(true);
 			} else {
 				setBtnActive(false);
