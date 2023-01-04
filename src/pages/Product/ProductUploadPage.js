@@ -7,7 +7,6 @@ import { imageUpload } from '../../lib/apis/imageUploadApi';
 import Header from '../../component/common/Header';
 import Button from '../../component/common/Button';
 import ProductForm from '../../component/form/ProductForm';
-import { BASE_URL } from '../../lib/apis/customAxios';
 
 export default function ProductUploadPage() {
 	const navigate = useNavigate();
@@ -21,7 +20,7 @@ export default function ProductUploadPage() {
 
 	const handleSaveBtn = async () => {
 		await imageUpload(productInfo.itemImage).then((res) => {
-			const itemImage = BASE_URL + res.data.filename;
+			const itemImage = 'https://mandarin.api.weniv.co.kr/' + res.data.filename;
 			registProduct({ ...productInfo, itemImage });
 		});
 		navigate('/profile');

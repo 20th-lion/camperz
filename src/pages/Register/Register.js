@@ -8,7 +8,6 @@ import ButtonRectangle from '../../component/common/ButtonRectangle';
 import { imageUpload } from './../../lib/apis/imageUploadApi';
 import { getRegisterApiResponse } from '../../lib/apis/registerApis';
 import { validateEmail, validatePassword } from '../../lib/utils/registerValidation';
-import { BASE_URL } from '../../lib/apis/customAxios';
 
 export default function Register() {
 	const navigate = useNavigate();
@@ -49,7 +48,7 @@ export default function Register() {
 	const handleRegister = async () => {
 		await imageUpload(userInfo.image).then((res) => {
 			const fileName = res.data.filename || '1671513886026.png';
-			const imageUrl = BASE_URL + fileName;
+			const imageUrl = 'https://mandarin.api.weniv.co.kr/' + fileName;
 			getRegisterApiResponse({ ...userInfo, image: imageUrl }).then((res) => {
 				if (res.data.message === '회원가입 성공') {
 					navigate('/login');
