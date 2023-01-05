@@ -111,7 +111,9 @@
 
 <img src='https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black'> <img src='https://img.shields.io/badge/styled-components-DB7093?style=for-the-badge&logo=styled-components&logoColor=black'>
 
-- 개발: React / Styled Components
+- 개발: 
+    * FE: React / Styled Components
+    * BE: 제공된 API 사용
   
 - 디자인: 포토샵, 피그마
 
