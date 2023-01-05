@@ -41,6 +41,7 @@
 |                             🔗[GitHub](https://github.com/itso-wavy)                             |                                                  🔗[GitHub](https://github.com/jy1475)                                                   |                                                🔗[GitHub](https://github.com/HyunSu3949)                                                 |                            🔗[GitHub](https://github.com/mayo516)                            |
 |                                                             팀장, 기록 담당                                                             |                                                               피그마 담당                                                               |                                                                개발 담당                                                                |                                                                CRUD 담당                                                                |
 
+
 ## <span id='3'>3. 개발 기간</span>
 **`22/12/04 - 23/12/30`**
 
