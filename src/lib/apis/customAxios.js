@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://mandarin.api.weniv.co.kr';
+export const BASE_URL = 'https://mandarin.api.weniv.co.kr';
 const TOKEN = localStorage.getItem('token');
 
 export const axiosPublic = axios.create({

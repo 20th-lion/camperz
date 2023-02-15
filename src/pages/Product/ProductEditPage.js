@@ -8,6 +8,7 @@ import Button from '../../component/common/Button';
 import { getProductDetail } from '../../lib/apis/productApis';
 import { editProduct } from './../../lib/apis/productApis';
 import { imageUpload } from '../../lib/apis/imageUploadApi';
+import { BASE_URL } from './../../lib/apis/customAxios';
 
 export default function ProductEditPage() {
 	const navigate = useNavigate();
@@ -24,9 +25,7 @@ export default function ProductEditPage() {
 
 	const handleSaveBtn = async () => {
 		await imageUpload(productInfo.itemImage).then(async (res) => {
-			const itemImage = res.data.filename
-				? 'https://mandarin.api.weniv.co.kr/' + res.data.filename
-				: productInfo.itemImage;
+			const itemImage = res.data.filename ? `${BASE_URL}/${res.data.filename}` : productInfo.itemImage;
 			await editProduct(id, { ...productInfo, itemImage });
 		});
 		navigate('/profile');

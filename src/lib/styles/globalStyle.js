@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 // 전역 스타일링
 import reset from 'styled-reset';
 // 리셋
+import spinner from '../../assets/image/spinner.gif';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -95,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .loading-indicator::after {
-    content: url("https://mandarin.api.weniv.co.kr/1672628195069.gif");
+    content: url(${spinner});
     position: fixed;
     width: 100%;
     top: 50%;

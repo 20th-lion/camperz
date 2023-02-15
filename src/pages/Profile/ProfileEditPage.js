@@ -8,6 +8,7 @@ import Header from '../../component/common/Header';
 import BackButton from '../../component/common/BackButton';
 import Button from '../../component/common/Button';
 import ProfileForm from '../../component/form/ProfileForm';
+import { BASE_URL } from './../../lib/apis/customAxios';
 
 export default function ProfileEditPage() {
 	const navigate = useNavigate();
@@ -37,7 +38,7 @@ export default function ProfileEditPage() {
 
 	const handleSaveBtn = async () => {
 		await imageUpload(userInfo.image).then((res) => {
-			const image = res.data.filename ? 'https://mandarin.api.weniv.co.kr/' + res.data.filename : userInfo.image;
+			const image = res.data.filename ? `${BASE_URL}/${res.data.filename}` : userInfo.image;
 			editProfile({ ...userInfo, image });
 		});
 		localStorage.setItem('accountname', userInfo.accountname);
