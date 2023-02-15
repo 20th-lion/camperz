@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import { postUploader, postEditer } from '../../lib/apis/postApis';
 import { postImageUploader } from '../../lib/apis/imageUploadApi';
+import { BASE_URL } from '../../lib/apis/customAxios';
+
 export default function UploadButton({ fileImage, text, preConvertedImg, mode, postId }) {
 	let uploadValidation = false;
 	const navigate = useNavigate();
@@ -47,7 +49,7 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 					const postContent = {
 						post: {
 							content: text,
-							image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`,
+							image: `${BASE_URL}/${res.data.filename}`,
 						},
 					};
 
@@ -71,7 +73,7 @@ export default function UploadButton({ fileImage, text, preConvertedImg, mode, p
 					const postContent = {
 						post: {
 							content: text,
-							image: `https://mandarin.api.weniv.co.kr/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
+							image: `${BASE_URL}/${res.data.filename}`, //"imageurl1, imageurl2" 형식으로
 						},
 					};
 

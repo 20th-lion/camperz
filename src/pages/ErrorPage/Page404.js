@@ -20,7 +20,7 @@ export default function Page404() {
 			<Header />
 			<S_Main>
 				<S_Page404Wrapper>
-					<S_NotFoundImg src={iconSrc} />
+					<S_NotFoundImg src={iconSrc} alt="404에러 아이콘" />
 					<S_ErrorMsg>페이지를 찾을 수 없습니다. :(</S_ErrorMsg>
 					{isLogedIn ? (
 						<S_Button onClick={handleHomeBtn}>홈으로 가기</S_Button>
